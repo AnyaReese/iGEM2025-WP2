@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home | iGem Winter Project</title>
+        <!-- mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- display -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="./static/css/basic.css">
+    </head>
+    <body>
+        <div class="top_bar">
+            <!-- <div class="web_icon"></div> -->
+                <div class="logo_wrap">
+                    <img id="team_logo" src="./static/img/test.jpeg" alt="">
+                </div>
+            <div class="menu_wrap">
+                <div id="team" class="menu_item">
+                    <div class="title active">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="#" target="_top">Member</a></li>
+                        <li><a href="#" target="_top">Attributions</a></li>
+                        <li><a href="#" target="_top">Partnership</a></li>
+                        <li><a href="#" target="_top">Collaborations</a></li>
+                    </ul>
+                </div>
+                <div id="project" class="menu_item cur">
+                    <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="#" target="_top">Description</a></li>
+                        <li><a href="#" target="_top">Design</a></li>
+                        <li><a href="#" target="_top">Implementation</a></li>
+                        <li><a href="#" target="_top">Contribution</a></li>
+                        <li><a href="#" target="_top">Safety</a></li>
+                    </ul>
+                </div>
+                <div id="parts" class="menu_item">
+                    <div class="title">Parts<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="#" target="_top">Part Collection</a></li>
+                        <li><a href="#" target="_top">New Parts</a></li>
+                        <li><a href="#" target="_top">Measurement</a></li>
+                        <li><a href="#" target="_top">Improvement</a></li>
+                    </ul>
+                </div>
+                <div id="experiments" class="menu_item">
+                    <div class="title">Experiments<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="#" target="_top">Results</a></li>
+                        <li><a href="#" target="_top">Model</a></li>
+                        <li><a href="#" target="_top">Hardware</a></li>
+                        <li><a href="#" target="_top">Proof of Concept</a></li>
+                        <li><a href="#" target="_top">Engineering</a></li>
+                        <li><a href="#" target="_top">Protocol</a></li>
+                        <li><a href="#" target="_top">Notebook</a></li>
+                    </ul>
+                </div>
+                <div id="human" class="menu_item">
+                    <div class="title">Human Practices<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="#" target="_top">Integrated Human Practices</a></li>
+                        <li><a href="#" target="_top">Education</a></li>
+                        <li><a href="#" target="_top">Inclusivity</a></li>
+                        <li><a href="#" target="_top">Communication</a></li>
+                        <li><a href="#" target="_top">Entrepreneurship</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- test pic -->
+        <div class="banner">
+            <img src="./static/img/anyareese.jpg" alt="">
+        </div>
+        <div class="banner" style="margin: 0;">
+            <img src="./static/img/anyareese.jpg" alt="">
+        </div>
+        <div class="banner" style="margin: 0;">
+            <img src="./static/img/anyareese.jpg" alt="">
+        </div>
+        <!-- footer -->
+        <footer id="footer">
+            <!-- <div class="web_icon">项目logo</div> -->
+                <div class="logo_wrap">
+                    <img id="team_logo" src="./static/img/logo-footer.png" alt="">
+                </div>
+            <div class="follow">
+                <div class="title">Follow Us</div>
+                <ul class="follow_list">
+                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="title">Contact Us</div>
+                <div class="email">ZJU_China@outlook.com</div>
+            </div>
+        </footer>
+    </body>
+    <script>
+        // menu
+        const menu_btn = document.getElementById('menu');
+        menu_btn.onclick = () => {
+            if(menu_btn.classList.contains('active')) {
+                menu_btn.classList.remove('active');
+            } else {
+                menu_btn.classList.add('active');
+            }
+        }
+    </script>
+</html>
