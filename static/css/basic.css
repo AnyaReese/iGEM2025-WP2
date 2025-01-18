@@ -347,7 +347,7 @@ body {
     }
     
     .top_bar .menu_wrap .menu_item .title {
-        font-size: 20px;
+        font-size: 16px;
         padding-left: 10px;
     }
     
@@ -366,7 +366,8 @@ body {
     }
     
     .top_bar .menu_wrap .menu_item .choice li a {
-        padding: 10px 15px;
+        padding: 8px 15px;
+        font-size: 14px;
     }
     
     #footer {

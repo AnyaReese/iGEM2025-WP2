@@ -101,12 +101,22 @@
         </footer>
     </body>
     <script>
-        // 获取菜单按钮元素
         const menuBtn = document.querySelector('.menu_btn');
+        const menuWrap = document.querySelector('.menu_wrap');
         
-        // 添加点击事件监听器
+        // add event listener
         menuBtn.addEventListener('click', () => {
             menuBtn.classList.toggle('active');
+            menuWrap.classList.toggle('active');
+        });
+        
+        // add event listener to the whole document
+        document.addEventListener('click', (event) => {
+            // check if the click is outside the menu button or menu area
+            if (!menuBtn.contains(event.target) && !menuWrap.contains(event.target)) {
+                menuBtn.classList.remove('active');
+                menuWrap.classList.remove('active');
+            }
         });
     </script>
 </html>
