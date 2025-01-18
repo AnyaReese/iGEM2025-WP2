@@ -298,16 +298,18 @@ body {
 /* Media queries */
 @media(width < 900px), (orientation: portrait) {
     .top_bar .menu_btn {
-        display: flex;
+        display: flex;  /* 在窄窗口显示菜单按钮 */
         align-items: center;
         color: var(--gray);
         font-size: 30px;
         transform: rotateZ(0deg);
         transition: .3s;
+        cursor: pointer;
     }
     
     .top_bar .menu_btn.active {
         color: var(--blue);
+        /* transform: rotateZ(180deg); */
     }
     
     .top_bar .menu_wrap {
@@ -351,7 +353,7 @@ body {
     
     .top_bar .menu_wrap .menu_item .choice {
         border-radius: 5px;
-        box-shadow: 0 0 15px #6CC3A4;
+        box-shadow: 0 0 15px #71859a;
         flex-shrink: 0;
         width: 100%;
         position: relative;

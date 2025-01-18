@@ -11,7 +11,9 @@
     </head>
     <body>
         <div class="top_bar">
-            <!-- <div class="web_icon"></div> -->
+            <div class="menu_btn">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
                 <div class="logo_wrap">
                     <img id="team_logo" src="./static/img/test.jpeg" alt="">
                 </div>
@@ -99,14 +101,12 @@
         </footer>
     </body>
     <script>
-        // menu
-        const menu_btn = document.getElementById('menu');
-        menu_btn.onclick = () => {
-            if(menu_btn.classList.contains('active')) {
-                menu_btn.classList.remove('active');
-            } else {
-                menu_btn.classList.add('active');
-            }
-        }
+        // 获取菜单按钮元素
+        const menuBtn = document.querySelector('.menu_btn');
+        
+        // 添加点击事件监听器
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+        });
     </script>
 </html>
