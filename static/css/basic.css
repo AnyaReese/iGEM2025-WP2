@@ -103,6 +103,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: nowrap;
     gap: 5px;
 }
 
@@ -112,6 +113,9 @@ body {
     display: flex;
     align-items: center;
     text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: auto;
 }
 
 .top_bar .menu_wrap .menu_item .title {
