@@ -8,15 +8,25 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link rel="stylesheet" href="./static/css/basic.css">
+        <link rel="stylesheet" href="./static/css/load.css">
     </head>
     <body>
+        <!-- Loading 遮罩 -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="./static/img/loading.png" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <!-- Topbar 移到外面 -->
         <div class="top_bar">
             <div class="menu_btn">
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
-                <div class="logo_wrap">
-                    <img id="team_logo" src="./static/img/test.jpeg" alt="">
-                </div>
+            <div class="logo_wrap">
+                <img id="team_logo" src="./static/img/test.jpeg" alt="">
+            </div>
             <div class="menu_wrap">
                 <div id="team" class="menu_item">
                     <div class="title active">Team<ion-icon name="caret-back-outline"></ion-icon></div>
@@ -70,35 +80,39 @@
                 </div>
             </div>
         </div>
-        <!-- test pic -->
-        <div class="banner">
-            <img src="./static/img/anyareese.jpg" alt="">
-        </div>
-        <div class="banner" style="margin: 0;">
-            <img src="./static/img/anyareese.jpg" alt="">
-        </div>
-        <div class="banner" style="margin: 0;">
-            <img src="./static/img/anyareese.jpg" alt="">
-        </div>
-        <!-- footer -->
-        <footer id="footer">
-            <!-- <div class="web_icon">项目logo</div> -->
+
+        <!-- 主要内容容器（不包含topbar） -->
+        <div class="main-content" style="opacity: 0;">
+            <!-- banner和其他内容 -->
+            <div class="banner">
+                <img src="./static/img/anyareese.jpg" alt="">
+            </div>
+            <div class="banner" style="margin: 0;">
+                <img src="./static/img/anyareese.jpg" alt="">
+            </div>
+            <div class="banner" style="margin: 0;">
+                <img src="./static/img/anyareese.jpg" alt="">
+            </div>
+            
+            <!-- footer -->
+            <footer id="footer">
                 <div class="logo_wrap">
                     <img id="team_logo" src="./static/img/logo-footer.png" alt="">
                 </div>
-            <div class="follow">
-                <div class="title">Follow Us</div>
-                <ul class="follow_list">
-                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
-                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
-                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
-                </ul>
-            </div>
-            <div class="contact">
-                <div class="title">Contact Us</div>
-                <div class="email">ZJU_China@outlook.com</div>
-            </div>
-        </footer>
+                <div class="follow">
+                    <div class="title">Follow Us</div>
+                    <ul class="follow_list">
+                        <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                        <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <div class="title">Contact Us</div>
+                    <div class="email">ZJU_China@outlook.com</div>
+                </div>
+            </footer>
+        </div>
     </body>
     <script>
         const menuBtn = document.querySelector('.menu_btn');
@@ -118,5 +132,40 @@
                 menuWrap.classList.remove('active');
             }
         });
+
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loading-container');
+            const mainContent = document.querySelector('.main-content');
+            
+            if (loader && mainContent) {
+                // 添加loading淡出
+                loader.classList.add('fade-out');
+                
+                // 等待loading淡出动画完成后
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    // 显示主内容
+                    mainContent.style.opacity = '1';
+                    mainContent.style.transition = 'opacity 0.8s ease-in';
+                }, 300);
+            }
+        });
+
+        // 超时保护
+        setTimeout(() => {
+            const loader = document.querySelector('.loading-container');
+            const mainContent = document.querySelector('.main-content');
+            
+            if (loader && loader.style.display !== 'none') {
+                loader.classList.add('fade-out');
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    if (mainContent) {
+                        mainContent.style.opacity = '1';
+                        mainContent.style.transition = 'opacity 0.8s ease-in';
+                    }
+                }, 300);
+            }
+        }, 6000);
     </script>
 </html>

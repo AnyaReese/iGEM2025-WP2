@@ -1,0 +1,131 @@
+/* 双环旋转 */
+.loading-spinner-double {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3498db;
+  }
+  
+  &::before {
+    animation: spin 1.5s linear infinite;
+  }
+  
+  &::after {
+    border-top-color: #e74c3c;
+    animation: spin 2s linear infinite reverse;
+  }
+}
+
+/* 脉冲效果 */
+.loading-spinner-pulse {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  background-color: #3498db;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+}
+
+/* 确保topbar始终在最上层 */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 10000; /* 比loading容器更高 */
+}
+
+.loading-container {
+    position: fixed;
+    top: 60px;  /* 从topbar下方开始 */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);  /* 减去topbar高度 */
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.loading-spinner-image {
+    width: 50vw;
+    max-width: 300px;
+    aspect-ratio: 1;
+    animation: rotate 4s linear infinite;
+    
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.loading-text {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
+    animation: fade 3s ease-in-out infinite;
+}
+
+/* 确保旋转动画正确定义 */
+@keyframes rotate {
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
+
+.main-content {
+    opacity: 0;
+    min-height: calc(100vh - 60px); /* 减去topbar高度 */
+    width: 100%;
+    margin-top: 60px; /* 为topbar留出空间 */
+}
+
+@keyframes fade {
+    0% { opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+.loading-container.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+}
