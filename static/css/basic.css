@@ -415,3 +415,22 @@ body {
         height: auto;
     }
 }
+
+/* 添加滚动进度条样式 */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, #4CAF50, #2196F3);  /* 渐变色效果 */
+    z-index: 9999;
+    transition: width 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* 添加轻微阴影 */
+}
+
+/* 可选：悬停效果 */
+.scroll-progress:hover {
+    height: 5px;
+    transition: height 0.2s ease;
+}

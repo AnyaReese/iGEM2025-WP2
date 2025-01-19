@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="./static/css/load.css">
     </head>
     <body>
+        <!-- 进度条放在最前面 -->
+        <div class="scroll-progress"></div>
+        
         <!-- Loading 遮罩 -->
         <div class="loading-container">
             <div class="loading-spinner-image">
@@ -167,5 +170,14 @@
                 }, 300);
             }
         }, 6000);
+
+        // 添加滚动进度条控制
+        window.addEventListener('scroll', function() {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            document.querySelector('.scroll-progress').style.width = scrolled + '%';
+        });
     </script>
 </html>
