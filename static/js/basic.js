@@ -19,15 +19,16 @@ document.addEventListener('click', (event) => {
 // Loading animation control
 window.addEventListener('load', function() {
     const loader = document.querySelector('.loading-container');
-    const mainContent = document.querySelector('.main-content');
+    const mainContent = document.querySelector('.main') || document.querySelector('.main-content');
     
-    if (loader && mainContent) {
+    if (loader) {
         loader.classList.add('fade-out');
-        
         setTimeout(() => {
             loader.style.display = 'none';
-            mainContent.style.opacity = '1';
-            mainContent.style.transition = 'opacity 0.8s ease-in';
+            if (mainContent) {
+                mainContent.style.opacity = '1';
+                mainContent.style.transition = 'opacity 0.8s ease-in';
+            }
         }, 300);
     }
 });
@@ -35,7 +36,7 @@ window.addEventListener('load', function() {
 // Loading timeout protection
 setTimeout(() => {
     const loader = document.querySelector('.loading-container');
-    const mainContent = document.querySelector('.main-content');
+    const mainContent = document.querySelector('.main') || document.querySelector('.main-content');
     
     if (loader && loader.style.display !== 'none') {
         loader.classList.add('fade-out');

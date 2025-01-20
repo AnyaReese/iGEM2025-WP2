@@ -1,0 +1,161 @@
+/* Main layout */
+.main {
+    display: flex;
+    min-height: calc(100vh - 60px); /* 60px is the height of the top bar */
+    margin-top: 0;
+    position: relative;
+    padding-top: 40px;
+}
+
+/* Banner styles */
+.banner {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Menu background */
+.menubg {
+    width: 25%;
+    background: var(--back);
+    position: absolute;
+    top: 40px; /* 40px is the height of the top bar */
+    bottom: auto;
+    /* TODO: height is not fixed */
+    max-height: calc(100vh - 60px - 300px); /* 300px denotes the banner height */
+    left: 0;
+    box-shadow: none;
+    transition: none;
+}
+
+/* When the page is scrolled up, the menu is fixed at the top */
+.menubg.fixed {
+    position: fixed;
+    top: 60px; /* 60px is the height of the top bar */
+    max-height: calc(100vh - 60px);
+}
+
+/* Menu styles */
+.menu {
+    padding: 30px 20px;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gray) transparent;
+}
+
+/* Webkit scrollbar */
+.menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.menu::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.menu::-webkit-scrollbar-thumb {
+    background-color: var(--gray);
+    border-radius: 3px;
+}
+
+/* Menu item level 1 */
+.menu .t1 {
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.menu .t1 > span {
+    display: block;
+    padding: 10px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gray);
+    transition: 0.3s ease;
+    border-radius: 4px;
+}
+
+.menu .t1:hover > span {
+    color: var(--blue);
+    background-color: var(--hover-bg);
+}
+
+/* Menu item level 2 */
+.menu .t2 {
+    display: none;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+.menu .t1.active .t2 {
+    display: block;
+}
+
+.menu .t2 a {
+    display: block;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray);
+    transition: 0.3s ease;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+}
+
+.menu .t2 a:hover,
+.menu .t2 a.active {
+    color: var(--blue);
+}
+
+/* Content area */
+.content {
+    flex: 1;
+    margin-left: 25%;
+    padding: 0 40px;
+    max-width: 1200px;
+}
+
+/* Section styles */
+.content section {
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.content section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+    .main {
+        padding-top: 20px;
+    }
+
+    .menubg {
+        position: fixed;
+        transform: translateX(-100%);
+        width: 280px;
+        z-index: 998;
+        transition: transform 0.3s ease;
+        top: 60px;
+        max-height: calc(100vh - 60px);
+    }
+
+    .menubg.active {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 0 20px;
+    }
+}
