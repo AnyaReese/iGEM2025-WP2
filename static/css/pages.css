@@ -1,31 +1,31 @@
 /* Main layout */
 .main {
     display: flex;
-    min-height: calc(100vh - 60px); /* 60px is the height of the top bar */
+    min-height: calc(100vh - var(--topbar-height, 60px)); /* 60px is the height of the top bar */
     margin-top: 0;
     position: relative;
-    padding-top: 60px;
+    padding-top: var(--topbar-height, 60px);
 }
 
-/* Menu background */
+/* Menu background - dynamically adjusts height based on banner and topbar */
 .menubg {
     width: 25%;
     background: var(--back);
     position: absolute;
-    top: 40px; /* 40px is the height of the top bar */
+    top: var(--topbar-height, 40px); /* Height of topbar */
     bottom: auto;
-    /* TODO: height is not fixed */
-    max-height: calc(100vh - 60px - 300px); /* 300px denotes the banner height */
+    /* Calculate max-height dynamically based on banner and topbar */
+    max-height: calc(100vh - var(--topbar-height, 60px) - var(--banner-height, 300px));
     left: 0;
     box-shadow: none;
     transition: all 0.3s ease;
 }
 
-/* When the page is scrolled up, the menu is fixed at the top */
+/* Fixed menu state when scrolled */
 .menubg.fixed {
     position: fixed;
-    top: 60px; /* 60px is the height of the top bar */
-    max-height: calc(100vh - 60px);
+    top: var(--topbar-height, 60px);
+    max-height: calc(100vh - var(--topbar-height, 60px));
 }
 
 /* Menu styles */
@@ -114,7 +114,7 @@
 
 /* Section styles */
 .content section {
-    margin-bottom: 60px;
+    margin-bottom: var(--topbar-height, 60px);
     opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease;
@@ -230,10 +230,10 @@
     /* Ensure menu is visible in mobile view */
     .menu_wrap {
         position: fixed;
-        top: 60px; /* Height of topbar */
+        top: var(--topbar-height, 60px); /* Height of topbar */
         left: 0;
         width: 100%;
-        height: calc(100vh - 60px);
+        height: calc(100vh - var(--topbar-height, 60px));
         background: var(--back);
         transform: translateX(-100%);
         transition: transform 0.3s ease;

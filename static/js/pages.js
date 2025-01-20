@@ -60,16 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mobile menu toggle - use topbar menu
-    if (window.innerWidth <= 900) {
-        if (menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                menuWrap.classList.toggle('active');
-                menuBtn.classList.toggle('active');
-            });
-        }
-    }
-
     // Scroll spy with Intersection Observer
     const observerOptions = {
         threshold: 0.2,
@@ -183,4 +173,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // Set CSS variables for dynamic heights
+    function updateHeights() {
+        const bannerHeight = banner ? banner.offsetHeight : 300;
+        const topBarHeight = topBar ? topBar.offsetHeight : 60;
+        
+        document.documentElement.style.setProperty('--banner-height', bannerHeight + 'px');
+        document.documentElement.style.setProperty('--topbar-height', topBarHeight + 'px');
+    }
+
+    // Initialize heights on load
+    updateHeights();
+
+    // Recalculate on window resize
+    window.addEventListener('resize', updateHeights);
+
+    // Recalculate after image load (as it may affect banner height)
+    if (banner) {
+        const bannerImg = banner.querySelector('img');
+        if (bannerImg) {
+            bannerImg.addEventListener('load', updateHeights);
+        }
+    }
 });

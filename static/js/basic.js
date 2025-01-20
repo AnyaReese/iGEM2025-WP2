@@ -1,13 +1,3 @@
-// Menu button control
-const menuBtn = document.querySelector('.menu_btn');
-const menuWrap = document.querySelector('.menu_wrap');
-
-// Menu click event
-menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
-    menuWrap.classList.toggle('active');
-});
-
 // Close menu when clicking outside
 document.addEventListener('click', (event) => {
     if (!menuBtn.contains(event.target) && !menuWrap.contains(event.target)) {
@@ -108,4 +98,31 @@ window.addEventListener('load', function() {
 // Add Home click event
 document.querySelector('#home .title')?.addEventListener('click', () => {
     window.location.href = './index.html';  // or use appropriate path
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Get DOM elements
+    const menuBtn = document.querySelector('.menu_btn');
+    const menuWrap = document.querySelector('.menu_wrap');
+    const topBar = document.querySelector('.top_bar');
+
+    // Set CSS variable for topbar height
+    function updateTopBarHeight() {
+        const topBarHeight = topBar ? topBar.offsetHeight : 60;
+        document.documentElement.style.setProperty('--topbar-height', topBarHeight + 'px');
+    }
+
+    // Initialize height on load
+    updateTopBarHeight();
+
+    // Update on window resize
+    window.addEventListener('resize', updateTopBarHeight);
+
+    // Mobile menu toggle
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            menuWrap.classList.toggle('active');
+        });
+    }
 });
