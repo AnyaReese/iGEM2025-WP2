@@ -82,7 +82,7 @@ body {
         transparent 100%
     );
     position: absolute;
-    bottom: -20px; /* 将渐变效果放在顶部栏下方 */
+    bottom: -20px;
     left: 0;
 }
 
@@ -142,7 +142,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Current menu display - 修改选择器以确保能正确匹配 */
+/* Current menu display */
 .top_bar .menu_wrap .menu_item.cur .title,
 .top_bar .menu_wrap .menu_item.cur .title a {
     color: var(--blue);
@@ -152,17 +152,20 @@ body {
     margin-bottom: -2px;
 }
 
-/* remove ordinary menu display */
+/* Link styles */
 .top_bar .menu_wrap .menu_item .title a {
-    color: var(--gray);  /* 使用默认颜色 */
+    color: var(--gray);
 }
 
-/* 保持hover效果 */
-.top_bar .menu_wrap .menu_item:hover .title,
-.top_bar .menu_wrap .menu_item:hover .title a {
+/* Hover effects */
+.top_bar .menu_wrap .menu_item:hover .title {
     color: var(--blue);
     background-color: var(--hover-bg);
-    text-shadow: none;
+}
+
+.top_bar .menu_wrap .menu_item .title a {
+    color: var(--gray);
+    text-decoration: none;
 }
 
 .top_bar .menu_wrap .menu_item:hover ion-icon {
@@ -175,8 +178,8 @@ body {
     color: var(--blue);
     text-decoration: none;
     border-bottom: 2px solid var(--blue);
-    padding-bottom: 5px;  /* 添加底部内边距补偿下划线的高度 */
-    margin-bottom: -2px;  /* 抵消下划线造成的位移 */
+    padding-bottom: 5px;  /* add bottom padding to compensate for underline height */
+    margin-bottom: -2px;  /* offset underline to avoid shifting */
 }
 
 /* Submenu styles */
@@ -324,7 +327,7 @@ body {
 /* Media queries */
 @media(width < 900px), (orientation: portrait) {
     .top_bar .menu_btn {
-        display: flex;  /* 在窄窗口显示菜单按钮 */
+        display: flex;  /* display menu button on mobile */
         align-items: center;
         color: var(--gray);
         font-size: 30px;
@@ -442,20 +445,20 @@ body {
     }
 }
 
-/* 添加滚动进度条样式 */
+/* add scroll progress bar */
 .scroll-progress {
     position: fixed;
     top: 0;
     left: 0;
     width: 0%;
     height: 3px;
-    background: linear-gradient(to right, #4CAF50, #2196F3);  /* 渐变色效果 */
+    background: linear-gradient(to right, #4CAF50, #2196F3);  /* gradient effect */
     z-index: 9999;
     transition: width 0.1s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* 添加轻微阴影 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* add a little shadow */
 }
 
-/* 可选：悬停效果 */
+/* hover scroll progress effect */
 .scroll-progress:hover {
     height: 5px;
     transition: height 0.2s ease;

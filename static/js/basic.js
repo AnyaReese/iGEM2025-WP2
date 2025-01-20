@@ -1,14 +1,14 @@
-// 菜单按钮控制
+// Menu button control
 const menuBtn = document.querySelector('.menu_btn');
 const menuWrap = document.querySelector('.menu_wrap');
 
-// 菜单点击事件
+// Menu click event
 menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
     menuWrap.classList.toggle('active');
 });
 
-// 点击外部关闭菜单
+// Close menu when clicking outside
 document.addEventListener('click', (event) => {
     if (!menuBtn.contains(event.target) && !menuWrap.contains(event.target)) {
         menuBtn.classList.remove('active');
@@ -16,7 +16,7 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// 加载动画控制
+// Loading animation control
 window.addEventListener('load', function() {
     const loader = document.querySelector('.loading-container');
     const mainContent = document.querySelector('.main-content');
@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
     }
 });
 
-// 加载超时保护
+// Loading timeout protection
 setTimeout(() => {
     const loader = document.querySelector('.loading-container');
     const mainContent = document.querySelector('.main-content');
@@ -49,7 +49,7 @@ setTimeout(() => {
     }
 }, 20000);
 
-// 滚动进度条控制
+// Scroll progress bar control
 window.addEventListener('scroll', function() {
     const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -58,7 +58,7 @@ window.addEventListener('scroll', function() {
     document.querySelector('.scroll-progress').style.width = scrolled + '%';
 });
 
-// 动态获取topbar高度
+// Dynamically get topbar height
 function updateTopbarHeight() {
     const topBar = document.querySelector('.top_bar');
     if (topBar) {
@@ -67,27 +67,27 @@ function updateTopbarHeight() {
     }
 }
 
-// 页面加载和窗口大小改变时更新高度
+// Update height on page load and window resize
 window.addEventListener('load', updateTopbarHeight);
 window.addEventListener('resize', updateTopbarHeight);
 
-// 设置当前页面高亮 (但其实在 html 中直接手动设置了)
+// Set current page highlight (Actually I set it manually in html)
 window.addEventListener('load', function() {
-    // 获取当前页面URL
+    // Get current page URL
     const currentPath = window.location.pathname;
-    console.log('Current path:', currentPath); // 调试日志
+    console.log('Current path:', currentPath); // Debug log
     
-    // 移除所有cur类
+    // Remove all cur classes
     document.querySelectorAll('.menu_item').forEach(item => {
         item.classList.remove('cur');
     });
     
-    // 检查是否是首页
+    // Check if it's homepage
     if (currentPath.endsWith('/index.html') || currentPath.endsWith('/') || currentPath.endsWith('/AnyaIgem/')) {
         document.querySelector('#home')?.classList.add('cur');
         console.log('Setting home as active');
     } 
-    // 检查其他页面
+    // Check other pages
     else {
         const pageName = currentPath.split('/').pop();
         console.log('Page name:', pageName);
@@ -99,7 +99,12 @@ window.addEventListener('load', function() {
         }
     }
     
-    // 输出当前激活的元素
+    // Output current active element
     const activeElement = document.querySelector('.menu_item.cur');
     console.log('Active element:', activeElement);
+});
+
+// Add Home click event
+document.querySelector('#home .title')?.addEventListener('click', () => {
+    window.location.href = './index.html';  // or use appropriate path
 });
