@@ -70,3 +70,36 @@ function updateTopbarHeight() {
 // 页面加载和窗口大小改变时更新高度
 window.addEventListener('load', updateTopbarHeight);
 window.addEventListener('resize', updateTopbarHeight);
+
+// 设置当前页面高亮 (但其实在 html 中直接手动设置了)
+window.addEventListener('load', function() {
+    // 获取当前页面URL
+    const currentPath = window.location.pathname;
+    console.log('Current path:', currentPath); // 调试日志
+    
+    // 移除所有cur类
+    document.querySelectorAll('.menu_item').forEach(item => {
+        item.classList.remove('cur');
+    });
+    
+    // 检查是否是首页
+    if (currentPath.endsWith('/index.html') || currentPath.endsWith('/') || currentPath.endsWith('/AnyaIgem/')) {
+        document.querySelector('#home')?.classList.add('cur');
+        console.log('Setting home as active');
+    } 
+    // 检查其他页面
+    else {
+        const pageName = currentPath.split('/').pop();
+        console.log('Page name:', pageName);
+        
+        if (pageName === 'description.html' || pageName === 'design.html' || pageName === 'implementation.html' || pageName === 'results.html') {
+            document.querySelector('#project')?.classList.add('cur');
+        } else if (pageName === 'team.html' || pageName === 'attributions.html' || pageName === 'partnership.html') {
+            document.querySelector('#team')?.classList.add('cur');
+        }
+    }
+    
+    // 输出当前激活的元素
+    const activeElement = document.querySelector('.menu_item.cur');
+    console.log('Active element:', activeElement);
+});

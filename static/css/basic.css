@@ -142,7 +142,22 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Hover effects */
+/* Current menu display - 修改选择器以确保能正确匹配 */
+.top_bar .menu_wrap .menu_item.cur .title,
+.top_bar .menu_wrap .menu_item.cur .title a {
+    color: var(--blue);
+    text-decoration: none;
+    border-bottom: 2px solid var(--blue);
+    padding-bottom: 5px;
+    margin-bottom: -2px;
+}
+
+/* remove ordinary menu display */
+.top_bar .menu_wrap .menu_item .title a {
+    color: var(--gray);  /* 使用默认颜色 */
+}
+
+/* 保持hover效果 */
 .top_bar .menu_wrap .menu_item:hover .title,
 .top_bar .menu_wrap .menu_item:hover .title a {
     color: var(--blue);
@@ -157,7 +172,6 @@ body {
 
 /* Current menu display */
 .top_bar .menu_wrap .menu_item.cur .title {
-    
     color: var(--blue);
     text-decoration: none;
     border-bottom: 2px solid var(--blue);
