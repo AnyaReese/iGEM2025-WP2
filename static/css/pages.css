@@ -174,6 +174,11 @@
     transform: translateY(-50%) scale(1.1);
 }
 
+/* Collapse button hover effect */
+.menu-collapse-btn:hover {
+    transform: scale(1.1);
+}
+
 /* sidebar collapse state */
 .menubg.collapsed {
     width: 0;
@@ -198,7 +203,7 @@
 /* Mobile styles */
 @media (max-width: 900px) {
     .main {
-        padding-top: 20px;
+        padding-top: var(--topbar-height, 60px);
     }
 
     .menubg {
@@ -227,21 +232,8 @@
         display: none !important; /* Force hide in mobile mode */
     }
 
-    /* Ensure menu is visible in mobile view */
-    .menu_wrap {
-        position: fixed;
-        top: var(--topbar-height, 60px); /* Height of topbar */
-        left: 0;
-        width: 100%;
-        height: calc(100vh - var(--topbar-height, 60px));
-        background: var(--back);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-        z-index: 997; /* Below menubg but above other content */
-    }
-
     /* Show menu when active */
-    .menu_wrap.active {
+    .menubg .menu_wrap.active {
         transform: translateX(0);
     }
 
