@@ -6,67 +6,68 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuBg = document.querySelector('.menubg');
     const banner = document.querySelector('.banner');
     const topBar = document.querySelector('.top_bar');
+    const menuWrap = document.querySelector('.menu_wrap');
 
     // calculate key positions
     const bannerBottom = banner.offsetTop + banner.offsetHeight;
     const topBarHeight = topBar.offsetHeight;
 
-    // Listen to scroll events to control sidebar position
+    // Listen to scroll events to control sidebar position - PC only
     window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        
-        // When scrolling past the bottom of the banner, fix the sidebar
-        if (scrollTop >= bannerBottom - topBarHeight) {
-            menuBg.classList.add('fixed');
-        } else {
-            menuBg.classList.remove('fixed');
+        if (window.innerWidth > 900) {
+            const scrollTop = window.scrollY;
+            if (scrollTop >= bannerBottom - topBarHeight) {
+                menuBg.classList.add('fixed');
+            } else {
+                menuBg.classList.remove('fixed');
+            }
         }
     });
 
-    // Menu item click handler
-    menuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A') return;
-            
-            const wasActive = this.classList.contains('active');
-            menuItems.forEach(mi => mi.classList.remove('active'));
-            if (!wasActive) this.classList.add('active');
-        });
-    });
-
-    // Menu link click handler with smooth scroll
-    menuLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            menuLinks.forEach(a => a.classList.remove('active'));
-            this.classList.add('active');
-
-            const targetId = this.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            if (targetSection) {
-                const offset = window.innerWidth <= 900 ? 60 : 80; // Consider the height of the top navigation bar
-                const targetPosition = targetSection.offsetTop - offset;
+    // Menu item click handler - PC only
+    if (window.innerWidth > 900) {
+        menuItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') return;
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                const wasActive = this.classList.contains('active');
+                menuItems.forEach(mi => mi.classList.remove('active'));
+                if (!wasActive) this.classList.add('active');
+            });
+        });
+    }
 
-                // Automatically close the menu on mobile
-                if (window.innerWidth <= 900) {
-                    menuBg.classList.remove('active');
-                    menuBtn.classList.remove('active');
+    // Menu link click handler with smooth scroll - PC only
+    if (window.innerWidth > 900) {
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                menuLinks.forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+
+                const targetId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const offset = 80;
+                    const targetPosition = targetSection.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
                 }
-            }
+            });
         });
-    });
+    }
 
-    // Mobile menu toggle
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            menuBg.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-        });
+    // Mobile menu toggle - use topbar menu
+    if (window.innerWidth <= 900) {
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                menuWrap.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        }
     }
 
     // Scroll spy with Intersection Observer
@@ -112,6 +113,74 @@ document.addEventListener('DOMContentLoaded', function() {
         const itemText = item.querySelector('span').textContent.toLowerCase();
         if (itemText.includes(pageName)) {
             item.classList.add('active');
+        }
+    });
+
+    // add collapse and expand button
+    const collapseBtn = document.querySelector('.menu-collapse-btn');
+    const expandBtn = document.querySelector('.menu-expand-btn');
+    const content = document.querySelector('.content');
+    let wasMobileView = false; // add a flag to track if mobile view has been entered
+
+    function toggleMenu(collapsed) {
+        if (collapsed) {
+            menuBg.classList.add('collapsed');
+            content.classList.add('full-width');
+        } else {
+            menuBg.classList.remove('collapsed');
+            content.classList.remove('full-width');
+        }
+        localStorage.setItem('menuCollapsed', collapsed);
+    }
+
+    // check if from link
+    const isFromLink = document.referrer.includes(window.location.host);
+    
+    if (collapseBtn) {
+        // get collapse state from localStorage
+        const isCollapsed = localStorage.getItem('menuCollapsed') === 'true';
+        
+        // initialize collapse state: if from link, expand; otherwise use saved state
+        if (window.innerWidth <= 900) {
+            toggleMenu(true);
+        } else if (isFromLink) {
+            toggleMenu(false);  // expand when from link
+        } else {
+            toggleMenu(isCollapsed);  // use saved state
+        }
+
+        // collapse button click event
+        collapseBtn.addEventListener('click', () => {
+            toggleMenu(true);
+        });
+
+        // expand button click event
+        if (expandBtn) {
+            expandBtn.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+        }
+    }
+
+    // handle window size change
+    window.addEventListener('resize', () => {
+        if (window.innerWidth <= 900) {
+            wasMobileView = true; // mark as mobile view entered
+            toggleMenu(true);
+            menuItems.forEach(item => item.classList.remove('active'));
+        } else if (isFromLink) {
+            // expand when from link and desktop
+            toggleMenu(false);
+        } else {
+            if (wasMobileView) {
+                // expand when from mobile and desktop
+                toggleMenu(false);
+                wasMobileView = false;
+            } else {
+                // use saved state
+                const isCollapsed = localStorage.getItem('menuCollapsed') === 'true';
+                toggleMenu(isCollapsed);
+            }
         }
     });
 });
