@@ -32,25 +32,23 @@
             </div>
             <div class="menu_wrap">
                 <div id="home" class="menu_item cur">
-                    <div class="title">Home</div>
+                    <div class="title"><a href="./index.html">Home</a></div>
                 </div>
                 <div id="team" class="menu_item">
                     <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
                     <ul class="choice">
-                        <li><a href="#" target="_top">Member</a></li>
-                        <li><a href="#" target="_top">Attributions</a></li>
-                        <li><a href="#" target="_top">Partnership</a></li>
-                        <li><a href="#" target="_top">Collaborations</a></li>
+                        <li><a href="./wiki/team.html">Team</a></li>
+                        <li><a href="./wiki/attributions.html">Attributions</a></li>
+                        <li><a href="./wiki/partnership.html">Partnership</a></li>
                     </ul>
                 </div>
                 <div id="project" class="menu_item">
                     <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
                     <ul class="choice">
-                        <li><a href="#" target="_top">Description</a></li>
-                        <li><a href="#" target="_top">Design</a></li>
-                        <li><a href="#" target="_top">Implementation</a></li>
-                        <li><a href="#" target="_top">Contribution</a></li>
-                        <li><a href="#" target="_top">Safety</a></li>
+                        <li><a href="./wiki/description.html">Description</a></li>
+                        <li><a href="./wiki/design.html">Design</a></li>
+                        <li><a href="./wiki/implementation.html">Implementation</a></li>
+                        <li><a href="./wiki/results.html">Results</a></li>
                     </ul>
                 </div>
                 <div id="parts" class="menu_item">
@@ -65,7 +63,6 @@
                 <div id="experiments" class="menu_item">
                     <div class="title">Experiments<ion-icon name="caret-back-outline"></ion-icon></div>
                     <ul class="choice">
-                        <li><a href="#" target="_top">Results</a></li>
                         <li><a href="#" target="_top">Model</a></li>
                         <li><a href="#" target="_top">Hardware</a></li>
                         <li><a href="#" target="_top">Proof of Concept</a></li>
@@ -119,68 +116,6 @@
                 </div>
             </footer>
         </div>
+        <script src="./static/js/basic.js"></script>
     </body>
-    <script>
-        const menuBtn = document.querySelector('.menu_btn');
-        const menuWrap = document.querySelector('.menu_wrap');
-        
-        // add event listener
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
-            menuWrap.classList.toggle('active');
-        });
-        
-        // add event listener to the whole document
-        document.addEventListener('click', (event) => {
-            // check if the click is outside the menu button or menu area
-            if (!menuBtn.contains(event.target) && !menuWrap.contains(event.target)) {
-                menuBtn.classList.remove('active');
-                menuWrap.classList.remove('active');
-            }
-        });
-
-        window.addEventListener('load', function() {
-            const loader = document.querySelector('.loading-container');
-            const mainContent = document.querySelector('.main-content');
-            
-            if (loader && mainContent) {
-                // 添加loading淡出
-                loader.classList.add('fade-out');
-                
-                // 等待loading淡出动画完成后
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    // 显示主内容
-                    mainContent.style.opacity = '1';
-                    mainContent.style.transition = 'opacity 0.8s ease-in';
-                }, 300);
-            }
-        });
-
-        // 超时保护
-        setTimeout(() => {
-            const loader = document.querySelector('.loading-container');
-            const mainContent = document.querySelector('.main-content');
-            
-            if (loader && loader.style.display !== 'none') {
-                loader.classList.add('fade-out');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    if (mainContent) {
-                        mainContent.style.opacity = '1';
-                        mainContent.style.transition = 'opacity 0.8s ease-in';
-                    }
-                }, 300);
-            }
-        }, 6000);
-
-        // 添加滚动进度条控制
-        window.addEventListener('scroll', function() {
-            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            
-            document.querySelector('.scroll-progress').style.width = scrolled + '%';
-        });
-    </script>
 </html>

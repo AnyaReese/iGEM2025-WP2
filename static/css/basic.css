@@ -157,6 +157,7 @@ body {
 
 /* Current menu display */
 .top_bar .menu_wrap .menu_item.cur .title {
+    
     color: var(--blue);
     text-decoration: none;
     border-bottom: 2px solid var(--blue);

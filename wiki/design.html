@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Description | iGem Winter Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../static/css/basic.css">
+        <link rel="stylesheet" href="../static/css/load.css">
+        <!-- 预加载模板 -->
+        <link rel="preload" href="./template.html" as="fetch" crossorigin="anonymous">
+    </head>
+    <body style="opacity: 0">
+        <!-- 加载动画 -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="../static/img/loading.png" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <div class="main-content">
+            <h1>Project Design</h1>
+            <p>这是项目描述页面的内容。</p>
+        </div>
+
+        <script type="module">
+            import Template from '../static/js/template.js';
+            // 页面加载完成后再初始化模板
+            document.addEventListener('DOMContentLoaded', () => {
+                Template.load();
+            });
+        </script>
+    </body>
+</html>

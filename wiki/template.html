@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{PAGE_TITLE}} | iGem Winter Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="../static/css/basic.css">
+        <link rel="stylesheet" href="../static/css/load.css">
+    </head>
+    <body>
+        <!-- 进度条 -->
+        <div class="scroll-progress"></div>
+        
+        <!-- Loading 遮罩 -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="../static/img/loading.png" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <!-- Topbar -->
+        <div class="top_bar">
+            <div class="menu_btn">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="logo_wrap">
+                <img id="team_logo" src="../static/img/test.jpeg" alt="">
+            </div>
+            <div class="menu_wrap">
+                <div id="home" class="menu_item">
+                    <div class="title"><a href="../index.html">Home</a></div>
+                </div>
+                <div id="team" class="menu_item">
+                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./team.html">Team</a></li>
+                        <li><a href="./attributions.html">Attributions</a></li>
+                        <li><a href="./partnership.html">Partnership</a></li>
+                    </ul>
+                </div>
+                <div id="project" class="menu_item">
+                    <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./description.html">Description</a></li>
+                        <li><a href="./design.html">Design</a></li>
+                        <li><a href="./implementation.html">Implementation</a></li>
+                        <li><a href="./results.html">Results</a></li>
+                    </ul>
+                </div>
+                <!-- ... 其他菜单项 ... -->
+            </div>
+        </div>
+
+        <!-- 主要内容容器 -->
+        <div class="main-content" style="opacity: 0;">
+            {{MAIN_CONTENT}}
+            
+            <!-- footer -->
+            <footer id="footer">
+                <div class="logo_wrap">
+                    <img id="team_logo" src="../static/img/logo-footer.png" alt="">
+                </div>
+                <div class="follow">
+                    <div class="title">Follow Us</div>
+                    <ul class="follow_list">
+                        <li><a href="https://space.bilibili.com/700401359"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                        <li><a href="https://twitter.com/ZjuChina"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                        <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                    </ul>
+                </div>
+                <div class="contact">
+                    <div class="title">Contact Us</div>
+                    <div class="email">ZJU_China@outlook.com</div>
+                </div>
+            </footer>
+        </div>
+        <script src="../static/js/basic.js"></script>
+    </body>
+</html>
