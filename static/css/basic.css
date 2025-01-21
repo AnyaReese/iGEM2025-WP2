@@ -459,6 +459,25 @@ body {
         width: 100%;
         height: auto;
     }
+    
+    .top_bar .logo_wrap {
+        margin-left: auto;  /* push logo to the right */
+        padding-right: 0;   /* remove right padding */
+    }
+    
+    /* if logo and menu button order need to be adjusted */
+    .top_bar {
+        display: flex;
+        justify-content: flex-start;  /* ensure menu button on the left */
+    }
+    
+    .top_bar .menu_btn {
+        order: 1;  /* order: menu button first */
+    }
+    
+    .top_bar .logo_wrap {
+        order: 2;  /* order: logo last */
+    }
 }
 
 /* add scroll progress bar */

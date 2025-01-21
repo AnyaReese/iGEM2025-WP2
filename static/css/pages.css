@@ -30,7 +30,7 @@
 
 /* Menu styles */
 .menu {
-    padding: 30px 20px;
+    padding: 0px 40px;
     height: 100%;
     overflow-y: auto;
     scrollbar-width: thin;
@@ -60,11 +60,12 @@
 .menu .t1 > span {
     display: block;
     padding: 10px 15px;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     color: var(--gray);
     transition: 0.3s ease;
     border-radius: 4px;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
 .menu .t1:hover > span {
@@ -86,12 +87,13 @@
 .menu .t2 a {
     display: block;
     padding: 8px 15px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--gray);
     transition: 0.3s ease;
     text-decoration: none;
     border-left: 2px solid transparent;
+    font-family: "Helvetica Neue", "Arial", sans-serif;
 }
 
 .menu .t2 a:hover,
@@ -146,9 +148,9 @@
 
 /* Expand button base styles */
 .menu-expand-btn {
-    position: fixed;
+    position: absolute;
     left: 8px;
-    top: 50%;
+    top: calc(var(--topbar-height, 60px) + 20px);
     width: 24px;
     height: 24px;
     background: var(--blue);
@@ -158,9 +160,14 @@
     justify-content: center;
     cursor: pointer;
     color: white;
-    transform: translateY(-50%);
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 1000;
+}
+
+/* When menu is fixed, the expand button is fixed */
+.menubg.fixed + .menu-expand-btn {
+    position: fixed;
+    top: calc(var(--topbar-height, 60px) + 20px);
 }
 
 /* Show expand button when menu is collapsed */
@@ -171,7 +178,7 @@
 
 /* Expand button hover effect */
 .menu-expand-btn:hover {
-    transform: translateY(-50%) scale(1.1);
+    transform: scale(1.1);
 }
 
 /* Collapse button hover effect */
