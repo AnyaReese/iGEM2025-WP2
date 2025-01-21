@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Menu items control
-    const menuItems = document.querySelectorAll('.menu .t1');
-    const menuLinks = document.querySelectorAll('.menu .t2 a');
-    const menuBtn = document.querySelector('.menu_btn');
+    const menuItems = document.querySelectorAll('.sidebar .t1');
+    const menuLinks = document.querySelectorAll('.sidebar .t2 a');
+    // const menuBtn = document.querySelector('.menu_btn');
     const menuBg = document.querySelector('.menubg');
     const banner = document.querySelector('.banner');
     const topBar = document.querySelector('.top_bar');
-    const menuWrap = document.querySelector('.menu_wrap');
+    // const menuWrap = document.querySelector('.menu_wrap');
 
     // calculate key positions
     const bannerBottom = banner.offsetTop + banner.offsetHeight;
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (entry.isIntersecting) {
                 // highlight the corresponding menu item
                 const id = entry.target.id;
-                const activeLink = document.querySelector(`.menu .t2 a[href="#${id}"]`);
+                const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
                 
                 if (activeLink) {
                     menuLinks.forEach(link => link.classList.remove('active'));
