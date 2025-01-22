@@ -4,19 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = document.querySelectorAll('.sidebar .t2 a');
     // const menuBtn = document.querySelector('.menu_btn');
     const menuBg = document.querySelector('.menubg');
-    const banner = document.querySelector('.banner');
+    const pageTitle = document.querySelector('.page-title-bg');
     const topBar = document.querySelector('.top_bar');
     // const menuWrap = document.querySelector('.menu_wrap');
 
     // calculate key positions
-    const bannerBottom = banner.offsetTop + banner.offsetHeight;
+    const pageTitleBottom = pageTitle ? pageTitle.offsetTop + pageTitle.offsetHeight : 0;
     const topBarHeight = topBar.offsetHeight;
 
     // Listen to scroll events to control sidebar position - PC only
     window.addEventListener('scroll', () => {
         if (window.innerWidth > 900) {
             const scrollTop = window.scrollY;
-            if (scrollTop >= bannerBottom - topBarHeight) {
+            if (scrollTop >= pageTitleBottom - topBarHeight) {
                 menuBg.classList.add('fixed');
             } else {
                 menuBg.classList.remove('fixed');
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Set CSS variables for dynamic heights
     function updateHeights() {
-        const bannerHeight = banner ? banner.offsetHeight : 300;
+        const bannerHeight = pageTitle ? pageTitle.offsetHeight : 300;
         const topBarHeight = topBar ? topBar.offsetHeight : 60;
         
         document.documentElement.style.setProperty('--banner-height', bannerHeight + 'px');
@@ -190,8 +190,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', updateHeights);
 
     // Recalculate after image load (as it may affect banner height)
-    if (banner) {
-        const bannerImg = banner.querySelector('img');
+    if (pageTitle) {
+        const bannerImg = pageTitle.querySelector('img');
         if (bannerImg) {
             bannerImg.addEventListener('load', updateHeights);
         }

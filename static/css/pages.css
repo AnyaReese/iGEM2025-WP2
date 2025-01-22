@@ -1,3 +1,9 @@
+:root {
+    --banner-height: 300px;
+    --title-height: 500px;
+    /* --title-height-mobile: 300px; */
+}
+
 /* Main layout */
 .main {
     display: flex;
@@ -15,7 +21,7 @@
     top: var(--topbar-height, 40px); /* Height of topbar */
     bottom: auto;
     /* Calculate max-height dynamically based on banner and topbar */
-    max-height: calc(100vh - var(--topbar-height, 60px) - var(--banner-height, 300px));
+    max-height: calc(100vh - var(--topbar-height, 60px) - var(--title-height, 300px));
     left: 0;
     box-shadow: none;
     transition: all 0.3s ease;
@@ -299,7 +305,7 @@ figcaption {
     max-width: 800px;
 }
 
-/* 响应式处理 */
+/* Responsive styles */
 @media (max-width: 768px) {
     .img-grid {
         flex-direction: column;
@@ -347,16 +353,64 @@ figcaption {
         transform: translateX(0);
     }
 
-    /* Adjust banner for mobile */
-    .banner {
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-    }
-
     .menubg.collapsed .sidebar {
         opacity: 0;
         visibility: hidden;
         transform: translateX(-100%);
     }
+}
+
+/* flexible page title background */
+.page-title-bg {
+    width: 100%;
+    height: var(--title-height, 300px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.page-title-bg .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.page-title-bg:hover .bg-image {
+    transform: scale(1.05);  /* zoom when hover */
+}
+
+.page-title-bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));  /* gradient mask */
+    z-index: 2;
+}
+
+.page-title-bg .title-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: white;
+    padding:calc(var(--title-height, 300px)/3)  20px;  /* vertical padding is important according to the img height */
+    /* margin-bottom: 40px; */
+}
+
+.page-title-bg .title-content h1 {
+    font-size: 60px;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);  /* Text shadow */
 }
