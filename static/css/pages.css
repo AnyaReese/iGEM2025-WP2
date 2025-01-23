@@ -2,6 +2,11 @@
     --banner-height: 300px;
     --title-height: 500px;
     /* --title-height-mobile: 300px; */
+    --content-font:  "Cascadia Code", "Cascadia Mono", monospace;
+    --title-font: "Trade Winds", serif;
+    --header-font: "Cascadia Code", "Cascadia Mono", monospace;
+    --stroke-color: #83aaff;
+    --stroke-width: 4px;
 }
 
 /* Main layout */
@@ -114,6 +119,8 @@
     padding: 0 40px;
     max-width: 1200px;
     transition: margin-left 0.3s ease;
+    font-family: var(--content-font);
+    line-height: 1.6;
 }
 
 .content.full-width {
@@ -131,9 +138,29 @@
     margin-right: auto;
 }
 
+
+/* Content area text indentation */
+.content p {
+    text-indent: 2em;  /* every paragraph has a indent */
+    margin-bottom: 1.2em;
+}
+
+/* Content area h1 style */
+.content h1 {
+    font-size: 2em;  /* 2em title */
+    color: #6B9080;
+    font-family: var(--header-font);
+    font-weight: bold;
+    margin-top: 0em;
+    margin-bottom: 0.5em;
+}
+
 /* Section styles, cancel the animation for ordinary sections content */
 .content section {
     margin-bottom: var(--topbar-height, 60px);
+    font-size: 1.2em;
+    font-family: var(--content-font);
+    margin: 0 0 20px 40px;
     /* opacity: 0;
     transform: translateY(20px);
     transition: all 0.6s ease; */
@@ -305,6 +332,68 @@ figcaption {
     max-width: 800px;
 }
 
+/* flexible page title background */
+.page-title-bg {
+    width: 100%;
+    height: var(--title-height, 300px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.page-title-bg .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.page-title-bg:hover .bg-image {
+    transform: scale(1.05);  /* zoom when hover */
+}
+
+.page-title-bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));  /* gradient mask */
+    z-index: 2;
+}
+
+.page-title-bg .title-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    padding:calc(var(--title-height, 300px)/3.5)  20px;  /* vertical padding is important according to the img height */
+    /* margin-bottom: 40px; */
+}
+
+.page-title-bg .title-content h1 {
+    /* use clamp to set font size range */
+    font-size: clamp(70px, 8vw, 100px);
+    margin: 0;
+    font-weight: 600;
+    font-family: var(--title-font);
+    text-shadow: 
+        var(--stroke-width) var(--stroke-width) 0 var(--stroke-color), 
+        calc(-1*var(--stroke-width)) var(--stroke-width) 0 var(--stroke-color), 
+        var(--stroke-width) calc(-1*var(--stroke-width)) 0 var(--stroke-color), 
+        calc(-1*var(--stroke-width)) calc(-1*var(--stroke-width)) 0 var(--stroke-color);
+    color: white;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
     .img-grid {
@@ -358,59 +447,36 @@ figcaption {
         visibility: hidden;
         transform: translateX(-100%);
     }
+
+    /* adjust content section margin */
+    .content section {
+        margin: 0 0 20px 20px;  /* change from 40px to 20px */
+    }
+
+    /* adjust title area */
+    .page-title-bg .title-content h1 {
+        font-size: calc(100px * 1vw);  /* reduce title font size */
+        padding: 20px 10px;
+    }
+
+    /* adjust content area padding */
+    .content {
+        padding: 0 20px;  /* change from 40px to 20px */
+    }
+
+    .content.full-width {
+        padding: 0 20px;  /* change from 80px to 20px */
+    }
 }
 
-/* flexible page title background */
-.page-title-bg {
-    width: 100%;
-    height: var(--title-height, 300px);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin-bottom: 30px;
+/* extra adjustment for smaller screens */
+@media (max-width: 480px) {
+    .content section {
+        margin: 0 0 15px 10px;  /* smaller margin */
+    }
+
+    .page-title-bg .title-content h1 {
+        font-size: 40px;  /* further reduce title font size */
+    }
 }
 
-.page-title-bg .bg-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1;
-    transition: transform 0.3s ease;
-}
-
-.page-title-bg:hover .bg-image {
-    transform: scale(1.05);  /* zoom when hover */
-}
-
-.page-title-bg .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));  /* gradient mask */
-    z-index: 2;
-}
-
-.page-title-bg .title-content {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    color: white;
-    padding:calc(var(--title-height, 300px)/3)  20px;  /* vertical padding is important according to the img height */
-    /* margin-bottom: 40px; */
-}
-
-.page-title-bg .title-content h1 {
-    font-size: 60px;
-    margin: 0;
-    font-weight: 600;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);  /* Text shadow */
-}
