@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 // show section animation
-                entry.target.classList.add('visible');
+                // entry.target.classList.add('visible');
             }
         });
     }, observerOptions);
