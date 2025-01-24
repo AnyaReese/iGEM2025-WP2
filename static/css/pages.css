@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Cascadia Code';
+    src: url('../fonts/CascadiaCode.ttf') format('truetype');
+    font-weight: 200 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --banner-height: 300px;
     --title-height: 500px;
@@ -271,6 +279,7 @@
     display: block;
     border-radius: 8px;  /* rounded corners */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);  /* shadow effect */
+    justify-content: center;
 }
 
 /* two images layout */

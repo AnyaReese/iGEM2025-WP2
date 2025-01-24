@@ -7,8 +7,8 @@
 - [x] sidebar 兼容性调整，展开按钮位置修复
 - [x] pages 主体页面在折叠 sidebar 后位置调整
 - [x] pages 并列图片窄窗口响应样式调整
-- [ ] sidebar 样式调整：设置切换动画丝滑一点。
-- [ ] topbar menu 大纲确定
+- [x] sidebar 样式调整：设置切换动画丝滑一点。
+- [x] topbar menu 大纲确定
 - [ ] 移动端 logo 显示位置调整
 - [ ] 图表，数学公式，内容标题，参考文献
 - [ ] 鼠标 hover 透图

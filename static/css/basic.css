@@ -1,6 +1,16 @@
 /* Import fonts */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800'); 
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,800'); 
+@import url('https://fonts.googleapis.com/css2?family=Trade+Winds&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+@font-face {
+    font-family: 'Cascadia Code';
+    src: url('../fonts/CascadiaCode.ttf') format('truetype');
+    font-weight: 200 700;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* Reset and base styles */
 * {
@@ -12,6 +22,8 @@
     -webkit-user-drag: none;
     font-family: 'Montserrat', 'Poppins', sans-serif;
     scroll-behavior: smooth;
+    --menu-title-font: 'Montserrat', 'Poppins', sans-serif;
+    --menu-item-font: "Cascadia Code", monospace;
 }
 
 /* Basic element styles */
@@ -47,6 +59,8 @@ img {
     --d-green: #55d4b1;
     --l-green: #dcf4ed;
     --ll-green: #e7f7f5;
+    --topbar-gradient-start: #cfd2ef;
+    --topbar-gradient-end: #f1f7fe;
 }
 
 /* Body styles */
@@ -146,6 +160,7 @@ body {
     transition: all 0.3s ease;
     padding: 5px 5px;
     border-radius: 4px;
+    font-family: var(--menu-title-font);
 }
 
 .top_bar .menu_wrap .menu_item ion-icon {
@@ -200,6 +215,7 @@ body {
 
 /* Submenu styles */
 .top_bar .menu_wrap .menu_item .choice {
+    font-family: var(--menu-item-font);
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -239,6 +255,7 @@ body {
 }
 
 .top_bar .menu_wrap .menu_item .choice li a {
+    font-family: var(--menu-item-font);
     padding: 5px 10px;
     display: block;
     width: 100%;
