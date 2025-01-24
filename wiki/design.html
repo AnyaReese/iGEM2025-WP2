@@ -7,6 +7,8 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link rel="stylesheet" href="../static/css/basic.css">
         <link rel="stylesheet" href="../static/css/load.css">
+        <link rel="stylesheet" href="../static/css/pages.css">
+        <link rel="stylesheet" href="../static/css/components.css">
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -29,83 +31,283 @@
                 <a href="../index.html"><img id="team_logo" src="../static/img/test.jpeg" alt=""></a>
             </div>
             <div class="menu_wrap">
-                <div id="team" class="menu_item">
-                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
-                    <ul class="choice">
-                        <li><a href="./team.html">Team</a></li>
-                        <li><a href="./attributions.html">Attributions</a></li>
-                        <li><a href="./partnership.html">Partnership</a></li>
-                    </ul>
-                </div>
-                <div id="project" class="menu_item cur">
+                <div id="project" class="menu_item menu_item_cur">
                     <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
                     <ul class="choice">
                         <li><a href="./description.html">Description</a></li>
                         <li><a href="./design.html">Design</a></li>
                         <li><a href="./implementation.html">Implementation</a></li>
+                        <li><a href="./contribution.html">Contribution</a></li>
+                        <li><a href="./safety.html">Safety</a></li>
+                    </ul>
+                </div>
+                <div id="wetlab" class="menu_item">
+                    <div class="title">Wet Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
                         <li><a href="./results.html">Results</a></li>
+                        <li><a href="./proof.html">Proof</a></li>
+                        <li><a href="./part.html">Part</a></li>
+                        <li><a href="./protocol.html">Protocol</a></li>
+                        <li><a href="./engineering.html">Engineering</a></li>
+                        <li><a href="./measurement.html">Measurement</a></li>
+                        <li><a href="./notebook.html">Notebook</a></li>
                     </ul>
                 </div>
-                <div id="parts" class="menu_item">
-                    <div class="title">Parts<ion-icon name="caret-back-outline"></ion-icon></div>
+                <div id="drylab" class="menu_item">
+                    <div class="title">Dry Lab<ion-icon name="caret-back-outline"></ion-icon></div>
                     <ul class="choice">
-                        <li><a href="#" target="_top">Part Collection</a></li>
-                        <li><a href="#" target="_top">New Parts</a></li>
-                        <li><a href="#" target="_top">Measurement</a></li>
-                        <li><a href="#" target="_top">Improvement</a></li>
-                    </ul>
-                </div>
-                <div id="experiments" class="menu_item">
-                    <div class="title">Experiments<ion-icon name="caret-back-outline"></ion-icon></div>
-                    <ul class="choice">
-                        <li><a href="#" target="_top">Model</a></li>
-                        <li><a href="#" target="_top">Hardware</a></li>
-                        <li><a href="#" target="_top">Proof of Concept</a></li>
-                        <li><a href="#" target="_top">Engineering</a></li>
-                        <li><a href="#" target="_top">Protocol</a></li>
-                        <li><a href="#" target="_top">Notebook</a></li>
+                        <li><a href="./model.html">Model</a></li>
+                        <li><a href="./software.html">Software</a></li>
+                        <li><a href="./hardware.html">Hardware</a></li>
                     </ul>
                 </div>
                 <div id="human" class="menu_item">
-                    <div class="title">Human Practices<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <div class="title">Human Practice<ion-icon name="caret-back-outline"></ion-icon></div>
                     <ul class="choice">
-                        <li><a href="#" target="_top">Integrated Human Practices</a></li>
-                        <li><a href="#" target="_top">Education</a></li>
-                        <li><a href="#" target="_top">Inclusivity</a></li>
-                        <li><a href="#" target="_top">Communication</a></li>
-                        <li><a href="#" target="_top">Entrepreneurship</a></li>
+                        <li><a href="./hp.html">Integrated Human Practice</a></li>
+                        <li><a href="./education.html">Education & Public Engagement</a></li>
+                        <li><a href="./entrepreneurship.html">Entrepreneurship</a></li>
                     </ul>
                 </div>
+                <div id="team" class="menu_item">
+                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./attributions.html">Attributions</a></li>
+                        <li><a href="./member.html">Member</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Banner -->
+        <!-- <div class="banner">
+            <img src="../static/img/logo-footer.png" alt="Description Banner">
+        </div> -->
+        <!-- Page Title Background -->
+        <div class="page-title-bg">
+            <div class="bg-image" style="background-image: url('../static/img/logo-footer.png')"></div>
+            <div class="overlay"></div>
+            <div class="title-content">
+                <h1>Design</h1>
             </div>
         </div>
 
-        <!-- main content -->
-        <div class="main-content" style="opacity: 0;">
-            <!-- design content -->
-            <div class="content-section">
-                <h1>Project Design</h1>
-                <p>This is the design content...</p>
+        <!-- Main content wrapper -->
+        <div class="main">
+            <!-- Sidebar wrapper -->
+            <div class="menubg">
+                <div class="sidebar">
+                    <!-- sidebar collapse button -->
+                    <div class="menu-collapse-btn">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </div>
+                    
+                    <div class="t1">
+                        <span>Introduction</span>
+                        <div class="t2">
+                            <a href="#background">Background</a>
+                            <a href="#objectives">Objectives</a>
+                        </div>
+                    </div>
+                    <div class="t1">
+                        <span>Project Details</span>
+                        <div class="t2">
+                            <a href="#design">Design</a>
+                            <a href="#implementation">Implementation</a>
+                            <a href="#results">Results</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <!-- footer -->
-            <footer id="footer">
-                <div class="logo_wrap">
-                    <img id="team_logo" src="../static/img/logo-footer.png" alt="">
+
+            <!-- sidebar expand button -->
+            <div class="menu-expand-btn">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+
+            <!-- Content area -->
+            <div class="content">
+                <section id="background">
+                    <h1>Background</h1>
+                    <p>Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...Your background content here...</p>
+                </section>
+
+                <section id="objectives">
+                    <h1>Objectives</h1>
+                    <p>Your objectives content here...</p>
+                </section>
+
+                <div class="description">
+                    <!-- single image -->
+                    <img src="../static/img/anyareese.jpg" alt="description" class="page-img">
+                    
+                    <!-- two images side by side -->
+                    <figure class="img-grid-with-caption">
+                        <div class="img-grid">
+                            <img src="../static/img/anyareese.jpg" alt="description1">
+                            <img src="../static/img/anyareese.jpg" alt="description2">
+                        </div>
+                        <figcaption>image description for two images</figcaption>
+                    </figure>
+                    
+                    <section id="design">
+                        <h1>Design</h1>
+                        <p>Your design content here...</p>
+                    </section>
+
+                    <!-- image with caption -->
+                    <figure>
+                        <img src="../static/img/anyareese.jpg" alt="description">
+                        <figcaption>image description</figcaption>
+                    </figure>
                 </div>
-                <div class="follow">
-                    <div class="title">Follow Us</div>
-                    <ul class="follow_list">
-                        <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
-                        <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
-                        <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
-                    </ul>
-                </div>
-                <div class="contact">
-                    <div class="title">Contact Us</div>
-                    <div class="email">ZJU_China@outlook.com</div>
-                </div>
-            </footer>
+
+                <section id="math-test">
+                    <h1>Mathematical Formulas</h1>
+                    <div class="math-block">
+                        <p>The quadratic formula is:</p>
+                        \[x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\]
+                        
+                        <p>And here's an inline formula: \(E = mc^2\)</p>
+                    </div>
+                </section>
+
+                <section id="chart-test">
+                    <h1>Data Visualization</h1>
+                    <div class="chart-container">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </section>
+
+                <section id="references">
+                    <h1>References</h1>
+                    <div class="reference-list">
+                        <div class="reference-item" id="ref1">
+                            <span class="ref-number">[1]</span>
+                            <span class="ref-content">Author, A. (2023). Title of the paper. <em>Journal Name</em>, 10(2), 123-145.</span>
+                            <a href="#" class="ref-link" target="_blank">DOI: 10.1234/example</a>
+                        </div>
+                        <div class="reference-item" id="ref2">
+                            <span class="ref-number">[2]</span>
+                            <span class="ref-content">Author, B., & Author, C. (2022). Another paper title. <em>Another Journal</em>, 15(4), 67-89.</span>
+                            <a href="#" class="ref-link" target="_blank">DOI: 10.5678/example</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="logo_wrap">
+                <img id="team_logo" src="../static/img/logo-footer.png" alt="">
+            </div>
+            <div class="follow">
+                <div class="title">Follow Us</div>
+                <ul class="follow_list">
+                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="title">Contact Us</div>
+                <div class="email">ZJU_China@outlook.com</div>
+            </div>
+        </footer>
         <script src="../static/js/basic.js"></script>
+        <script src="../static/js/pages.js"></script>
+        <script>
+            // Only load MathJax when there is a math-block
+            const loadMathJax = () => {
+                if (document.querySelector('.math-block')) {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+                    script.id = 'MathJax-script';
+                    script.async = true;
+                    document.head.appendChild(script);
+                }
+            };
+
+            // Only load Chart.js when there is a chart-container
+            const loadChartJS = () => {
+                if (document.querySelector('.chart-container')) {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+                    script.defer = true;
+                    document.head.appendChild(script);
+                    script.onload = initCharts;
+                }
+            };
+
+            // 图表配置和选项
+            const chartConfig = {
+                type: 'line',
+                data: {
+                    labels: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5'],
+                    datasets: [{
+                        label: 'Sample Data',
+                        data: [12, 19, 3, 5, 2],
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    resizeDelay: 0,
+                    onResize: function(chart, size) {
+                        chart.resize();
+                    }
+                }
+            };
+
+            const pieConfig = {
+                type: 'pie',
+                data: {
+                    labels: ['Red', 'Blue', 'Yellow'],
+                    datasets: [{
+                        data: [300, 50, 100],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    resizeDelay: 0,
+                    onResize: function(chart, size) {
+                        chart.resize();
+                    }
+                }
+            };
+
+            // Initialize charts
+            const initCharts = () => {
+                const ctx = document.getElementById('myChart').getContext('2d');
+                const pieCtx = document.getElementById('pieChart').getContext('2d');
+                
+                const lineChart = new Chart(ctx, chartConfig);
+                const pieChart = new Chart(pieCtx, pieConfig);
+
+                // Add window resize listener
+                window.addEventListener('resize', () => {
+                    lineChart.resize();
+                    pieChart.resize();
+                });
+            };
+
+            // Check if these libraries need to be loaded after the page loads
+            window.addEventListener('load', () => {
+                loadMathJax();
+                loadChartJS();
+            });
+        </script>
     </body>
 </html>

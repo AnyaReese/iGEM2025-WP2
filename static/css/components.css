@@ -1,0 +1,62 @@
+/* Math block */
+.math-block {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+/* Chart container */
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Reference list */
+.reference-list {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.reference-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.reference-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ref-number {
+    color: #666;
+    min-width: 30px;
+}
+
+.ref-content {
+    flex: 1;
+    min-width: 200px;
+}
+
+.ref-link {
+    color: var(--blue-light);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.ref-link:hover {
+    color: var(--blue-dark);
+    text-decoration: underline;
+}
