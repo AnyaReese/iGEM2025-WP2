@@ -11,8 +11,8 @@
     --title-height: 500px;
     /* --title-height-mobile: 300px; */
     --sidebar-font: "Cascadia Code", "Cascadia Mono", monospace;
-    /* --content-font: 'Comic Sans MS', 'Comic Sans', cursive */
-    --content-font: "Cascadia Code", "Cascadia Mono", monospace;
+    --content-font: "Comic Sans MS", "Comic Sans", "Cascadia Code", "Cascadia Mono", monospace;
+    /* --content-font: "Cascadia Code", "Cascadia Mono", monospace; */
     --title-font: "Trade Winds", serif;
     --header-font: "Ubuntu", sans-serif;
     --stroke-color: #83aaff;
@@ -175,21 +175,98 @@
     margin-bottom: 0.5em;
 }
 
-/* Section styles, cancel the animation for ordinary sections content */
-.content section {
+/* Content area text styles */
+.content h2 {
+    font-size: 1.5em;
+    color: var(--highlight-color);
+    font-family: var(--header-font);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.content h2 {
+    font-size: 1.5em;
+    color: var(--black);
+    font-family: var(--header-font);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+/* References styles */
+.references {
+    font-size: 0.9em;
+    color: var(--gray);
+    margin-left: 2em;
+    text-indent: -2em;  /* 悬挂缩进 */
+}
+
+.references li {
+    margin-bottom: 0.8em;
+    list-style: none;  /* 移除默认列表样式 */
+}
+
+/* Superscript reference numbers */
+.content sup {
+    color: var(--highlight-color);
+    font-size: 0.8em;
+    margin: 0 0.2em;
+    cursor: pointer;
+}
+
+/* List styles with custom markers */
+.content ul, .content ol {
+    margin: 1em 0 1em 2em;
+    line-height: 1.6;
+    font-family: var(--content-font);
+}
+
+.content ul li {
+    position: relative;
+    margin-bottom: 0.5em;
+    padding-left: 1em;
+    text-indent: 0;  /* cancel text indent */
+    list-style: none;  /* remove default list style */
+    font-family: var(--content-font);
+}
+
+/* Custom list marker */
+.content ul li::before {
+    content: "•";  /* TODO: use a custom icon */
+    position: absolute;
+    left: -1em;
+    color: var(--gray);
+    font-family: var(--content-font);
+}
+
+/* Ordered list styles */
+.content ol li {
+    position: relative;
+    margin-bottom: 0.5em;
+    padding-left: 0.5em;
+    text-indent: 0;
+}
+
+/* Custom ordered list marker */
+.content blockquote ul li::before,
+.content .quote ul li::before {
+    color: inherit;
+}
+
+/* Section styles */
+.content > section {
     margin-bottom: var(--topbar-height, 60px);
     font-size: 1.2em;
     font-family: var(--content-font);
     margin: 0 0 20px 40px;
-    /* opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease; */
 }
 
-/* .content section.visible {
-    opacity: 1;
-    transform: translateY(0);
-} */
+/* Ensure nested sections don't increase font size */
+.content section section {
+    font-size: 1em;  /* reset font size */
+    margin: 0 0 20px 0;  /* remove left margin, cuz it's nested */
+}
 
 /* sidebar collapse button */
 .menu-collapse-btn {

@@ -18,7 +18,7 @@
     padding: 0;
     box-sizing: border-box;
     list-style: none;
-    user-select: none;
+    /* user-select: none; */ /* comment this line so we can enable text selection^ ^ */
     -webkit-user-drag: none;
     font-family: 'Montserrat', 'Poppins', sans-serif;
     scroll-behavior: smooth;
