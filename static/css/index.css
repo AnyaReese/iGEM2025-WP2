@@ -14,10 +14,10 @@
     height: 100%;
     object-fit: cover;
     z-index: 2;
-    mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                transparent 50px, black 150px);
+    /* mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                transparent 70px, black 150px);
     -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                        transparent 50px, black 150px);
+                        transparent 70px, black 150px); */
     transition: mask-image 0.3s ease, -webkit-mask-image 0.3s ease;
 }
 
@@ -34,7 +34,7 @@
 /* hover effect: display the back image*/
 .dual-image-container:hover .front-image {
     mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                transparent 100px, black 200px);
+                transparent 120px, black 200px);
     -webkit-mask-image: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                        transparent 100px, black 200px);
+                        transparent 120px, black 200px);
 }
