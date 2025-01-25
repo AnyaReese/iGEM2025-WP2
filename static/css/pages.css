@@ -11,7 +11,8 @@
     --title-height: 500px;
     /* --title-height-mobile: 300px; */
     --sidebar-font: "Cascadia Code", "Cascadia Mono", monospace;
-    --content-font:  "Cascadia Code", "Cascadia Mono", monospace;
+    /* --content-font: 'Comic Sans MS', 'Comic Sans', cursive */
+    --content-font: "Cascadia Code", "Cascadia Mono", monospace;
     --title-font: "Trade Winds", serif;
     --header-font: "Ubuntu", sans-serif;
     --stroke-color: #83aaff;
