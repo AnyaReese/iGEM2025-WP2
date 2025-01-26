@@ -25,57 +25,24 @@ const initGifControl = () => {
     const gifContainer = document.querySelector('.top-gif-container');
     if (!gifContainer) return;
 
-    // create static and gif images
-    const staticImg = document.createElement('img');
+    // create gif image
     const gifImg = document.createElement('img');
     
     // GIF path
-    const gifPath = './static/img/icanmove.gif';
+    const gifPath = './static/img/cat2sun.gif';
     
-    // create a temporary image to load the GIF
-    const tempGif = new Image();
-    tempGif.src = gifPath;
-    tempGif.onload = function() {
-        // use canvas to get the first frame of the GIF
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = this.width;
-        canvas.height = this.height;
-        ctx.drawImage(this, 0, 0);
-        
-        // set images src
-        staticImg.src = canvas.toDataURL('image/png');
-        gifImg.src = gifPath;
-    };
+    // set image src
+    gifImg.src = gifPath;
 
-    // set class names
-    staticImg.className = 'paused-gif';
+    // set class name
     gifImg.className = 'playing-gif';
-    gifImg.style.display = 'none';  // hide gif image
 
-    // append images to container
+    // append image to container
     gifContainer.innerHTML = '';  // clear container
-    gifContainer.appendChild(staticImg);
     gifContainer.appendChild(gifImg);
 
     // enable pointer events
     gifContainer.style.pointerEvents = 'auto';
-
-    // toggle play/pause on click
-    let isPlaying = false;
-    gifContainer.addEventListener('click', () => {
-        if (!isPlaying) {
-            // play GIF
-            staticImg.style.display = 'none';
-            gifImg.style.display = 'block';
-            isPlaying = true;
-        } else {
-            // pause GIF
-            staticImg.style.display = 'block';
-            gifImg.style.display = 'none';
-            isPlaying = false;
-        }
-    });
 };
 
 // Initialize dual image effect
