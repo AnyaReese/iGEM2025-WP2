@@ -140,9 +140,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     const pageName = currentPath.split('/').pop().replace('.html', '');
     menuItems.forEach(item => {
-        const itemText = item.querySelector('span').textContent.toLowerCase();
-        if (itemText.includes(pageName)) {
-            item.classList.add('active');
+        const clickTarget = item.querySelector('span, a');
+        if (!clickTarget) return;
+        
+        // if is a link, only handle active state
+        if (clickTarget.tagName.toLowerCase() === 'a') {
+            // handle active state
+            clickTarget.addEventListener('click', function(e) {
+                menuItems.forEach(mi => mi.classList.remove('active'));
+                item.classList.add('active');
+            });
+        } else {
+            // span tag keep the original expand/collapse function
+            item.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') return;
+                
+                const wasActive = this.classList.contains('active');
+                menuItems.forEach(mi => mi.classList.remove('active'));
+                if (!wasActive) this.classList.add('active');
+            });
         }
     });
 
@@ -153,6 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let wasMobileView = false; // add a flag to track if mobile view has been entered
 
     function toggleMenu(collapsed) {
+        // console.log('Toggling menu:', collapsed);
+        
         if (collapsed) {
             menuBg.classList.add('collapsed');
             content.classList.add('full-width');
@@ -160,6 +178,10 @@ document.addEventListener('DOMContentLoaded', function() {
             menuBg.classList.remove('collapsed');
             content.classList.remove('full-width');
         }
+        
+        // force repaint
+        menuBg.offsetHeight;
+        
         localStorage.setItem('menuCollapsed', collapsed);
     }
 
@@ -180,13 +202,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // collapse button click event
-        collapseBtn.addEventListener('click', () => {
+        collapseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
             toggleMenu(true);
         });
 
         // expand button click event
         if (expandBtn) {
-            expandBtn.addEventListener('click', () => {
+            expandBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
                 toggleMenu(false);
             });
         }
