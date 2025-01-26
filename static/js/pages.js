@@ -60,6 +60,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Reference link click handler with smooth scroll
+    const refLinks = document.querySelectorAll('.content sup a');
+    refLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetRef = document.getElementById(targetId);
+            if (targetRef) {
+                const offset = 80; // use the same offset as the menu links
+                const targetPosition = targetRef.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
     // Scroll spy with Intersection Observer
     const observerOptions = {
         threshold: 0.2,
