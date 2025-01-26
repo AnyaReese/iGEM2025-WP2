@@ -16,12 +16,13 @@
 - [ ] quote、table 样式调整
 - [ ] 动画效果制作
 - [ ] description 大致页面内容、大纲排版调试，具体内容等 wet lab 对接了再修改。
+- [ ] 小猫缩放和图片还未同步
 
 ## 美工 & 风格
 
 - [ ] 首页图效果选择
 - [ ] header svg etc
-- [ ] list icon 样式
+- [x] list icon 样式
 
 ![alt text](img/README/image-1.png)
 
