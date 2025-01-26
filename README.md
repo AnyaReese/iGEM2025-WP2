@@ -22,5 +22,5 @@
 - [ ] header svg etc
 - [ ] list icon 样式
 
-![alt text](img/README/image.png)
+![alt text](img/README/image-1.png)
 

@@ -225,19 +225,30 @@
 .content ul li {
     position: relative;
     margin-bottom: 0.5em;
-    padding-left: 1em;
+    padding-left: 2em; /* save space for icon */
     text-indent: 0;  /* cancel text indent */
     list-style: none;  /* remove default list style */
     font-family: var(--content-font);
+    display: flex;  /* use flex layout */
+    align-items: flex-start;  /* align to top */
+}
+  
+.content ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.3em;  /* adjust icon position */
+    width: 1.5em;
+    height: 1.5em;
+    background-image: url("../img/paw.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex-shrink: 0;  /* prevent icon from shrinking */
 }
 
-/* Custom list marker */
-.content ul li::before {
-    content: "•";  /* TODO: use a custom icon */
-    position: absolute;
-    left: -1em;
-    color: var(--gray);
-    font-family: var(--content-font);
+.content ul li p {
+    margin: 0;  /* remove default margin */
+    text-indent: 0;  /* ensure no indent */
 }
 
 /* Ordered list styles */
