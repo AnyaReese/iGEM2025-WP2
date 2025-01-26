@@ -28,14 +28,20 @@ const initGifControl = () => {
     // create gif image
     const gifImg = document.createElement('img');
     
-    // GIF path
+    // GIF path and fallback image path
     const gifPath = './static/img/cat2sun.gif';
+    const fallbackPath = './static/img/cat2sun-first.png';
     
     // set image src
     gifImg.src = gifPath;
 
     // set class name
     gifImg.className = 'playing-gif';
+
+    // handle gif loading error
+    gifImg.onerror = () => {
+        gifImg.src = fallbackPath;
+    };
 
     // append image to container
     gifContainer.innerHTML = '';  // clear container
