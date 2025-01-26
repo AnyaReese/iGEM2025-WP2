@@ -11,10 +11,11 @@
 - [x] topbar menu 大纲确定
 - [x] 图表，数学公式，内容标题，参考文献
 - [x] 鼠标 hover 透图
+- [x] list 样式调整
 - [ ] 半窄窗口 sidebar 如果太长了会无法显示，需要添加滚动。完全不想修。。
-- [ ] list、quote、table 样式调整
+- [ ] quote、table 样式调整
 - [ ] 动画效果制作
-
+- [ ] description 大致页面内容、大纲排版调试，具体内容等 wet lab 对接了再修改。
 
 ## 美工 & 风格
 
