@@ -68,12 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            const id = entry.target.id;
+            const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
+            const activeT1Link = document.querySelector(`.sidebar .t1 > a[href="#${id}"]`);
+            
             if (entry.isIntersecting) {
-                // highlight the corresponding menu item
-                const id = entry.target.id;
-                const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
-                
+                // handle the entering view
                 if (activeLink) {
+                    // handle the submenu
                     menuLinks.forEach(link => link.classList.remove('active'));
                     activeLink.classList.add('active');
                     
@@ -83,10 +85,29 @@ document.addEventListener('DOMContentLoaded', function() {
                         menuItems.forEach(item => item.classList.remove('active'));
                         parentItem.classList.add('active');
                     }
+                } else if (activeT1Link) {
+                    // handle the big title
+                    menuLinks.forEach(link => link.classList.remove('active'));
+                    menuItems.forEach(item => item.classList.remove('active'));
+                    
+                    // highlight the current t1 item
+                    const parentItem = activeT1Link.closest('.t1');
+                    if (parentItem) {
+                        parentItem.classList.add('active');
+                    }
+                    activeT1Link.classList.add('active');
                 }
-                
-                // show section animation
-                // entry.target.classList.add('visible');
+            } else {
+                // handle the leaving view
+                if (activeLink) {
+                    activeLink.classList.remove('active');
+                } else if (activeT1Link) {
+                    activeT1Link.classList.remove('active');
+                    const parentItem = activeT1Link.closest('.t1');
+                    if (parentItem) {
+                        parentItem.classList.remove('active');
+                    }
+                }
             }
         });
     }, observerOptions);

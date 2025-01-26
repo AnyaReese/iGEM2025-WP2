@@ -83,7 +83,8 @@
     cursor: pointer;
 }
 
-.sidebar .t1 > span {
+.sidebar .t1 > span,
+.sidebar .t1 > a {
     display: block;
     padding: 10px 15px;
     font-size: 18px;
@@ -92,13 +93,23 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 4px;
     font-family: var(--sidebar-font);
+    text-decoration: none;
 }
 
-/* highlight current page */
+/* on display background when active */
 .sidebar .t1.active > span,
-.sidebar .t1:hover > span {
+.sidebar .t1.active > a,
+.sidebar .t1 > span.active,
+.sidebar .t1 > a.active {
     color: var(--highlight-color);
     background-color: var(--hover-bg);
+}
+
+/* hover effect only change text color, not background */
+.sidebar .t1:hover > span,
+.sidebar .t1 > span:hover,
+.sidebar .t1 > a:hover {
+    color: var(--highlight-color);
 }
 
 /* sidebar item level 2 */
@@ -257,6 +268,19 @@
     margin-bottom: 0.5em;
     padding-left: 0.5em;
     text-indent: 0;
+}
+
+/* add bold style */
+.content ul li p strong{
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.3em;
+}
+
+.content strong,
+.content b {
+    font-family: "Comic Sans MS", "Comic Sans", monospace;
+    font-weight: bold;
 }
 
 /* Custom ordered list marker */
