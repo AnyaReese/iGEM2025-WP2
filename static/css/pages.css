@@ -212,6 +212,16 @@
     margin-bottom: 0.5em;
 }
 
+.content h3 {
+    font-size: 1.3em;
+    color: var(--black);
+    font-family: var(--content-font);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+/* Content area text styles */
 .content h2 {
     font-size: 1.5em;
     color: var(--black);
