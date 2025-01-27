@@ -118,13 +118,13 @@
 /* video section */
 .video-section {
     position: relative;
-    width: 100%;
+    width: auto;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2rem;
-    overflow: hidden; /* 防止背景元素溢出 */
+    overflow: hidden; /* prevent background element from overflowing */
 }
 
 /* 背景图片 */
@@ -143,7 +143,6 @@
     pointer-events: none;
 }
 
-
 .video-section::after {
     content: '';
     position: absolute;
@@ -160,7 +159,7 @@
     pointer-events: none;
 }
 
-/* 视频容器样式 */
+/* video container */
 .video-container {
     position: relative;
     width: 70%;
