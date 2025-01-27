@@ -711,3 +711,59 @@ figcaption {
         background-color: transparent;
     }
 }
+
+/* Quote styles */
+.quote {
+    background-color: rgba(234, 238, 247, 0.776);
+    border-left: 4px solid #cbd8fbc6;
+    margin: 20px 0;
+    padding: 10px 25px;
+    border-radius: 0 8px 8px 0; /* rounded corners */
+    font-style: italic;
+    color: #666;
+    position: relative;
+    transition: all 0.3s ease;
+    font-family: var(--content-font);
+    font-size: 0.8em;
+    line-height: 1.6;
+}
+
+/* quote paragraph */
+.quote p {
+    margin: 0;
+    text-indent: 0;
+}
+
+/* quote source */
+.quote-source {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.9em;
+    font-style: normal;
+    color: var(--gray);
+    text-align: right;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+/* quote source hover effect */
+.quote-source:hover {
+    color: var(--stroke-hover);
+    text-decoration: underline;
+}
+
+/* quote hover effect */
+.quote:hover {
+    background-color: rgba(183, 225, 255, 0.15);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transform: translateX(5px);
+}
+
+/* adjust padding for narrow screens */
+@media screen and (max-width: 768px) {
+    .quote {
+        padding: 12px 15px;
+        margin: 15px 0;
+        font-size: 0.75em;
+    }
+}
