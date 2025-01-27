@@ -92,11 +92,11 @@
 }
 
 /* gif position on narrow screen */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     .top-gif-container img {
-        width: 30%; 
-        top: 62%;
-        left: 4%;
+        width: 25%; 
+        top: 59%;
+        left: 3%;
     }
 }
 
