@@ -49,8 +49,8 @@
 }
 
 .top-gif-container img {
-    max-width: 200px;
-    width: 100%;
+    width: 20%;          /* chang in to relative width */
+    max-width: none;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -89,5 +89,14 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+}
+
+/* gif position on narrow screen */
+@media screen and (max-width: 768px) {
+    .top-gif-container img {
+        width: 30%; 
+        top: 62%;
+        left: 4%;
+    }
 }
 
