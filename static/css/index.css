@@ -100,3 +100,18 @@
     }
 }
 
+/* prevent image from being selected */
+.dual-image-container img,
+.top-gif-container img,
+.proj-title-container img {
+    -webkit-user-select: none;    /* Safari */
+    -moz-user-select: none;       /* Firefox */
+    -ms-user-select: none;        /* IE/Edge */
+    user-select: none;            /* standard syntax */
+    -webkit-user-drag: none;      /* Safari */
+    -khtml-user-drag: none;       /* Konqueror */
+    -moz-user-drag: none;         /* Firefox */
+    -o-user-drag: none;           /* Opera */
+    pointer-events: none;         /* prevent dragging */
+}
+
