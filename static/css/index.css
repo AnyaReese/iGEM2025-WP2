@@ -115,3 +115,97 @@
     pointer-events: none;         /* prevent dragging */
 }
 
+/* video section */
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow: hidden; /* 防止背景元素溢出 */
+}
+
+/* 背景图片 */
+.video-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/anyareese.jpg');
+    background-size: cover;
+    background-position: center;
+    /* filter: brightness(0.7) blur(5px); */
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+.video-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(
+        45deg,
+        rgba(173, 216, 230, 0.3) 0%,
+        rgba(0, 0, 0, 0.5) 100%
+    ); */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* 视频容器样式 */
+.video-container {
+    position: relative;
+    width: 70%;
+    /* background: rgba(240, 240, 240, 0.9); */
+    padding: 1px 15px;
+    border-radius: 10px;
+    /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
+    z-index: 1;
+}
+
+.video-title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 3vw;
+    font-weight: 800;
+    font-family: "Cascadia Code";
+    color: #ffffff; /* TODO: font color for video title */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    top: -5vw;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    z-index: 2;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (max-width: 900px) {
+    .video-container {
+        width: 90%;
+    }
+    
+    .video-title {
+        font-size: 6vw;
+        top: -7vw;
+    }
+}
+

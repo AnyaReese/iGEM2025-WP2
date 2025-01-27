@@ -51,10 +51,27 @@ const initGifControl = () => {
     gifContainer.style.pointerEvents = 'auto';
 };
 
+const initVideoSection = () => {
+    const video = document.getElementById('mainVideo');
+    if (!video) return;
+    
+    // video loaded
+    video.addEventListener('loadeddata', () => {
+        video.parentElement.classList.add('loaded');
+    });
+    
+    // add video error handling
+    video.addEventListener('error', () => {
+        console.error('video load failed');
+        video.parentElement.classList.add('error');
+    });
+};
+
 // Initialize dual image effect
 window.addEventListener('load', () => {
     initDualImageEffect();
     initGifControl();
+    initVideoSection();
 });
 
 function playGif(element) {
