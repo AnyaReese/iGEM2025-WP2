@@ -81,8 +81,8 @@
 }
 
 .proj-title-container img {
-    max-width: 800px;
-    width: 80%;
+    /* max-width: 800px; */
+    width: 74%;
     height: auto;
     display: block;
     margin: 0 auto;
