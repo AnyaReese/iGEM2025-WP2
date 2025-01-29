@@ -76,19 +76,57 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;       /* cast on the whole area */
-    z-index: 99;         /* between dual images and top gif */
+    height: 100%;
+    z-index: 99;
+    pointer-events: auto;
 }
 
 .proj-title-container img {
-    /* max-width: 800px; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 60%;
     height: auto;
-    display: block;
-    margin: 0 auto;
-    position: relative;
+}
+
+.title-empty,
+.title-full {
+    position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: auto;
+}
+
+/* emp always there */
+.title-empty {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* full init */
+.title-full {
+    opacity: 1;
+    z-index: 2; /* ensure full image is on top of emp image */
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); /* init: full image is hidden */
+    transition: clip-path 3s ease; /* add transition effect */
+}
+
+/* after click, full image is shown from left to right */
+.proj-title-container.show .title-full {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* fullt expand */
+}
+
+.proj-title-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 /* gif position on narrow screen */
@@ -223,19 +261,3 @@
     height: 100%;
     object-fit: cover;
 }
-
-.dual-image-container img,
-.top-gif-container img,
-.proj-title-container img,
-.mask-container img {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-    pointer-events: none;
-}
-

@@ -67,11 +67,24 @@ const initVideoSection = () => {
     });
 };
 
+const initTitleTransition = () => {
+    const dualImageContainer = document.querySelector('.dual-image-container');
+    const titleContainer = document.querySelector('.proj-title-container');
+    
+    if (!dualImageContainer || !titleContainer) return;
+    
+    // whole
+    dualImageContainer.addEventListener('click', () => {
+        titleContainer.classList.add('show');
+    });
+};
+
 // Initialize dual image effect
 window.addEventListener('load', () => {
     initDualImageEffect();
     initGifControl();
     initVideoSection();
+    initTitleTransition();
 });
 
 function playGif(element) {
