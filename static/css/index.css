@@ -92,7 +92,7 @@
 }
 
 /* gif position on narrow screen */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .top-gif-container img {
         width: 14%; 
         top: 55%;
