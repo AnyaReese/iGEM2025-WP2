@@ -45,18 +45,18 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 4;
+    z-index: 100;
 }
 
 .top-gif-container img {
-    width: 20%;          /* chang in to relative width */
+    width: 15%;          /* chang in to relative width */
     max-width: none;
     height: auto;
     display: block;
     margin: 0 auto;
     position: relative;
-    top: 73%;
-    left: 2%;
+    top: 68%;
+    left: 0%;
     transform: translateY(-50%);
     cursor: pointer;
 }
@@ -77,12 +77,12 @@
     left: 0;
     width: 100%;
     height: 100%;       /* cast on the whole area */
-    z-index: 3;         /* between dual images and top gif */
+    z-index: 99;         /* between dual images and top gif */
 }
 
 .proj-title-container img {
     /* max-width: 800px; */
-    width: 74%;
+    width: 60%;
     height: auto;
     display: block;
     margin: 0 auto;
@@ -94,9 +94,9 @@
 /* gif position on narrow screen */
 @media screen and (max-width: 900px) {
     .top-gif-container img {
-        width: 25%; 
-        top: 59%;
-        left: 3%;
+        width: 14%; 
+        top: 55%;
+        left: 0%;
     }
 }
 
@@ -127,7 +127,7 @@
     overflow: hidden; /* prevent background element from overflowing */
 }
 
-/* 背景图片 */
+/* background image */
 .video-section::before {
     content: '';
     position: absolute;
@@ -135,7 +135,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/anyareese.jpg');
+    /* background-image: url('../img/anyareese.jpg'); */
     background-size: cover;
     background-position: center;
     /* filter: brightness(0.7) blur(5px); */
@@ -177,7 +177,7 @@
     font-size: 3vw;
     font-weight: 800;
     font-family: "Cascadia Code";
-    color: #ffffff; /* TODO: font color for video title */
+    color: #54507b; /* TODO: font color for video title */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     top: -5vw;
     left: 50%;
@@ -206,5 +206,36 @@
         font-size: 6vw;
         top: -7vw;
     }
+}
+
+.mask-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;  /* all the elements behind the mask */
+    pointer-events: none;  /* prevent clicking through the mask */
+}
+
+.mask-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dual-image-container img,
+.top-gif-container img,
+.proj-title-container img,
+.mask-container img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    pointer-events: none;
 }
 
