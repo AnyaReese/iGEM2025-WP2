@@ -1,4 +1,4 @@
-/* 重写main-content和content样式，使其占满页面 */
+/* rewrite main-content and content */
 .main-content {
     width: 100%;
     padding: 0;
@@ -6,16 +6,18 @@
 }
 
 .content {
-    margin-left: 0 !important; /* 覆盖pages.css的默认margin */
-    padding: 0 !important; /* 覆盖默认padding */
-    max-width: none !important; /* 移除最大宽度限制 */
+    margin-left: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
     width: 100%;
+    display: block;
+    /* overflow: visible; [!Note] important or footer will be stretched */
 }
 
-/* 部门标题样式 */
+/* department section */
 .department-section {
     padding: 40px 0;
-    background-color: #c0e3ff; /* 加深的蓝色背景 */
+    background-color: #c0e3ff;
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
@@ -25,14 +27,13 @@
     text-align: center;
     font-size: 48px;
     font-weight: bold;
-    /* 使用更圆润可爱的字体组合 */
     font-family: "Comic Sans MS", "Varela Round", "Quicksand", var(--header-font);
     margin: 0;
     padding: 0;
-    color: #434464; /* 调整文字颜色以适应新背景 */
+    color: #434464; /* Adjust text color to fit new background */
     position: relative;
     z-index: 1;
-    /* 添加立体感 */
+    /* Add 3D effect */
     text-shadow: 
         0 1px 0 #cccccc,
         0 2px 0 #c9c9c9,
@@ -46,20 +47,20 @@
         0 5px 10px rgba(0,0,0,.25),
         0 10px 10px rgba(0,0,0,.2),
         0 20px 20px rgba(0,0,0,.15);
-    /* 添加过渡效果 */
+    /* Add transition effect */
     transition: all 0.3s ease;
 }
 
-/* 背景动画效果 - 白色流光 */
+/* Background animation effect - white glow */
 .department-section::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;  /* 修改初始位置在左侧 */
-    width: 100%;  /* 调整宽度 */
+    left: -100%;  /* Modify initial position to the left */
+    width: 100%;  /* Adjust width */
     height: 100%;
     background: linear-gradient(
-        90deg,  /* 改为水平方向的渐变 */
+        90deg,  /* Change to horizontal gradient */
         transparent 0%,
         rgba(255, 255, 255, 0.2) 45%,
         rgba(255, 255, 255, 0.8) 50%,
@@ -67,21 +68,21 @@
         transparent 100%
     );
     z-index: 0;
-    transform: skewX(-25deg);  /* 添加倾斜效果 */
+    transform: skewX(-25deg);  /* Add tilt effect */
 }
 
-/* 鼠标悬浮时触发动画 */
+/* Hover animation trigger */
 .department-section:hover::before {
-    animation: shine-horizontal 1.5s ease-in-out;  /* 调整动画时间和缓动效果 */
+    animation: shine-horizontal 1.5s ease-in-out;  /* Adjust animation time and easing effect */
 }
 
-/* 鼠标悬浮效果 */
+/* Hover effect */
 .department-title:hover {
     transform: translateY(-5px);
-    color: #dee9ff; /* 深蓝色 */
+    color: #dee9ff; /* Dark blue */
 }
 
-/* 修改为水平方向的动画关键帧 */
+/* Change to horizontal animation keyframes */
 @keyframes shine-horizontal {
     0% {
         left: -100%;
@@ -91,7 +92,7 @@
     }
 }
 
-/* 成员展示区域容器 */
+/* member container */
 .member-container {
     display: flex;
     flex-wrap: wrap;
@@ -103,7 +104,7 @@
     margin: 0 auto;
 }
 
-/* 成员卡片 */
+/* member card */
 .member-card {
     width: 300px;
     height: 400px;
@@ -111,7 +112,7 @@
     cursor: pointer;
 }
 
-/* 卡片内部容器 */
+/* card inner container */
 .card-inner {
     position: relative;
     width: 100%;
@@ -121,12 +122,12 @@
     transform-style: preserve-3d;
 }
 
-/* 悬浮时翻转效果 */
+/* Hover flip effect */
 .member-card:hover .card-inner {
     transform: rotateY(180deg);
 }
 
-/* 卡片正面和背面的共同样式 */
+/* common style for front and back of card */
 .card-front, .card-back {
     position: absolute;
     width: 100%;
@@ -138,7 +139,7 @@
     padding: 20px;
 }
 
-/* 卡片正面样式 */
+/* front of card */
 .card-front {
     display: flex;
     flex-direction: column;
@@ -146,13 +147,13 @@
     gap: 15px;
 }
 
-/* 成员头像容器 */
+/* member avatar container */
 .member-avatar {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     overflow: hidden;
-    border: 8px solid #8498cf; /* 中蓝色边框 */
+    border: 8px solid #8498cf; /* medium blue border */
     margin-top: 20px;
 }
 
@@ -162,26 +163,26 @@
     object-fit: cover;
 }
 
-/* 成员姓名 */
+/* member name */
 .member-name {
     font-size: 24px;
     color: var(--dblue);
     font-weight: bold;
     margin-top: 15px;
-    font-family: var(--header-font);  /* 使用Ubuntu字体 */
+    font-family: var(--header-font);  /* use Ubuntu font */
 }
 
-/* 成员部门标签 */
+/* member department label */
 .member-department {
-    background-color: #7888b2; /* 深蓝色背景 */
+    background-color: #7888b2; /* Deep dark blue background */
     color: white;
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 14px;
-    font-family: var(--content-font);  /* 使用Comic Sans MS字体 */
+    font-family: var(--content-font);  /* use cosmic content font */
 }
 
-/* 卡片背面样式 */
+/* back of card */
 .card-back {
     transform: rotateY(180deg);
     display: flex;
@@ -192,7 +193,7 @@
     overflow: hidden;
 }
 
-/* 自我介绍文本容器 */
+/* self-introduction text container */
 .member-bio {
     font-size: 16px;
     line-height: 1.8;
@@ -201,10 +202,10 @@
     font-family: var(--content-font);
     position: relative;
     z-index: 1;
-    quotes: "\"" "\""; /* 使用转义的双引号 */
+    quotes: "\"" "\""; /* use escaped double quotes */
 }
 
-/* 添加引号装饰 */
+/* add quote decoration */
 .member-bio::before,
 .member-bio::after {
     position: absolute;
@@ -226,7 +227,7 @@
     right: 5px;
 }
 
-/* 添加背景装饰 */
+/* add background decoration */
 .card-back::before {
     content: "";
     position: absolute;
@@ -240,7 +241,7 @@
     pointer-events: none;
 }
 
-/* 添加底部装饰线 */
+/* add bottom decoration line */
 .member-bio::after {
     content: "";
     position: absolute;
@@ -248,23 +249,22 @@
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
-    height: 3px; /* 增加线条粗细 */
+    height: 3px; /* increase line thickness */
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(25, 118, 210, 0.8), /* 增加不透明度 */
+        rgba(25, 118, 210, 0.8), /* increase opacity */
         transparent
     );
-    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3); /* 添加阴影效果 */
+    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3); /* add shadow effect */
 }
 
-/* 鼠标悬浮效果 */
+/* hover effect on card */
 .card-back:hover .member-bio {
     transform: scale(1.02);
     transition: transform 0.3s ease;
 }
 
-/* 响应式布局调整 */
 @media (max-width: 768px) {
     .department-section {
         padding: 30px 0;
