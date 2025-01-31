@@ -177,7 +177,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--content-height, 100vh); /* dynamic height */
+     /* dynamic height */
+    /* height: var(--content-height, 400vh); */
+    height: 500vh;
     opacity: 0.15;
     pointer-events: none;
     z-index: -1;

@@ -14,6 +14,13 @@
     /* overflow: visible; [!Note] important or footer will be stretched */
 }
 
+/* override content height */
+.content::before {
+     /* dynamic height */
+    /* height: var(--content-height, 400vh); */
+    height: 300vh;
+}
+
 /* department section */
 .department-section {
     padding: 40px 0;

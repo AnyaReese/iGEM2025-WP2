@@ -16,13 +16,23 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', () => {
         if (window.innerWidth > 900) {
             const scrollTop = window.scrollY;
-            if (scrollTop >= pageTitleBottom - topBarHeight) {
-                menuBg.classList.add('fixed');
+            const pageTitleBottom = pageTitle ? pageTitle.getBoundingClientRect().bottom + window.scrollY : 0;
+            const topBarHeight = topBar ? topBar.offsetHeight : 60;
+
+            // add anti-shake
+            const threshold = 5; // add a buffer zone
+            
+            if (scrollTop >= (pageTitleBottom - topBarHeight - threshold)) {
+                if (!menuBg.classList.contains('fixed')) {
+                    menuBg.classList.add('fixed');
+                }
             } else {
-                menuBg.classList.remove('fixed');
+                if (menuBg.classList.contains('fixed')) {
+                    menuBg.classList.remove('fixed');
+                }
             }
         }
-    });
+    }, { passive: true }); // add passive to
 
     // Menu item click handler - PC only
     if (window.innerWidth > 900) {
