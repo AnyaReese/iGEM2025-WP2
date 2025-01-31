@@ -225,6 +225,22 @@
     font-weight: bold;
     margin-top: 0em;
     margin-bottom: 0.5em;
+    position: relative;
+    padding-left: 30px;
+}
+
+.content h1::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 500px;
+    height: 80px;
+    background: url('../img/headerdeco.svg') no-repeat;
+    background-size: contain;
+    opacity: 1.0;
+    z-index: -1;
 }
 
 /* Content area text styles */
@@ -261,12 +277,12 @@
     font-size: 0.9em;
     color: var(--gray);
     margin-left: 2em;
-    text-indent: -2em;  /* 悬挂缩进 */
+    text-indent: -2em;  /* hanging indent */
 }
 
 .references li {
     margin-bottom: 0.8em;
-    list-style: none;  /* 移除默认列表样式 */
+    list-style: none;  /* remove default list style */
 }
 
 /* Superscript reference numbers */
