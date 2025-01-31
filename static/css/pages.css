@@ -36,8 +36,13 @@
     --stroke-width: 4px;
     --highlight-color: #6673ac;
     --hover-bg: rgba(173, 216, 230, 0.377);
-    --glow-white: rgb(164, 210, 255);  /* 白色发光 */
-    --glow-accent: rgba(131, 170, 255, 0.3);  /* 蓝色发光 */
+    --glow-white: rgb(164, 210, 255);
+    --glow-accent: rgba(131, 170, 255, 0.3);
+    --star-font-size: 30px;
+    --star-opacity: 0.8;
+    --star-glow: 15px;
+    --star-min-opacity: 0.3;
+    --star-min-glow: 8px;
 }
 
 /* Main layout */
@@ -808,5 +813,162 @@ figcaption {
         padding: 12px 15px;
         margin: 15px 0;
         font-size: 0.75em;
+    }
+}
+
+/* random star decoration */
+.page-title-bg .bg-image::before {
+    content: '✧';
+    position: absolute;
+    left: 15%;
+    top: 25%;
+    animation: 
+        starFloat 4s ease-in-out infinite,
+        starTwinkle 1.5s ease-in-out infinite;
+    color: #ffffff;
+    opacity: var(--star-opacity);
+    text-shadow: 0 0 var(--star-glow) var(--glow-white);
+    z-index: 3;
+    font-size: var(--star-font-size);
+}
+
+.page-title-bg .bg-image::after {
+    content: '✦';
+    position: absolute;
+    right: 20%;
+    top: 30%;
+    animation: 
+        starFloat 4s ease-in-out infinite 0.8s,
+        starTwinkle 1.5s ease-in-out infinite 0.3s;
+    color: #ffffff;
+    opacity: var(--star-opacity);
+    text-shadow: 0 0 var(--star-glow) var(--glow-white);
+    z-index: 3;
+    font-size: var(--star-font-size);
+}
+
+.page-title-bg .overlay::before {
+    content: '❋';
+    position: absolute;
+    left: 25%;
+    bottom: 30%;
+    animation: 
+        starFloat 4s ease-in-out infinite 1.6s,
+        starTwinkle 1.5s ease-in-out infinite 0.7s;
+    color: #ffffff;
+    opacity: var(--star-opacity);
+    text-shadow: 0 0 var(--star-glow) var(--glow-white);
+    z-index: 3;
+    font-size: var(--star-font-size);
+}
+
+.page-title-bg .overlay::after {
+    content: '✧';
+    position: absolute;
+    right: 25%;
+    bottom: 25%;
+    animation: 
+        starFloat 4s ease-in-out infinite 2.4s,
+        starTwinkle 1.5s ease-in-out infinite 1.1s;
+    color: #ffffff;
+    opacity: var(--star-opacity);
+    text-shadow: 0 0 var(--star-glow) var(--glow-white);
+    z-index: 3;
+    font-size: var(--star-font-size);
+}
+
+.page-title-bg .title-content::before {
+    content: '✦';
+    position: absolute;
+    left: 80%;
+    top: 15%;
+    animation: 
+        starFloat 4s ease-in-out infinite 3.2s,
+        starTwinkle 1.5s ease-in-out infinite 0.5s;
+    color: #ffffff;
+    opacity: var(--star-opacity);
+    text-shadow: 0 0 var(--star-glow) var(--glow-white);
+    z-index: 3;
+    font-size: var(--star-font-size);
+}
+
+/* star float animation */
+@keyframes starFloat {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(5px, 5px); }
+}
+
+/* Star twinkle animation */
+@keyframes starTwinkle {
+    0%, 100% { 
+        opacity: var(--star-opacity);
+        text-shadow: 0 0 var(--star-glow) var(--glow-white);
+    }
+    50% { 
+        opacity: var(--star-min-opacity);
+        text-shadow: 0 0 var(--star-min-glow) var(--glow-white);
+    }
+}
+
+/* mobile style */
+@media screen and (max-width: 768px) {
+    .page-title-bg::before {
+        left: 50%;
+        top: 30%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        letter-spacing: 10px;
+        animation: floatMobile 3s ease-in-out infinite;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .page-title-bg::after {
+        left: 50%;
+        top: 80%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        letter-spacing: 10px;
+        animation: floatMobile 3s ease-in-out infinite reverse;
+        width: 100%;
+        text-align: center;
+    }
+
+    @keyframes floatMobile {
+        0%, 100% { transform: translate(-50%, -50%); }
+        50% { transform: translate(-50%, calc(-50% + 10px)); }
+    }
+}
+
+/* decoration line */
+.page-title-bg .title-content h1::before,
+.page-title-bg .title-content h1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 100px;
+    height: 3px;
+    background: #ffffff;
+    opacity: var(--star-opacity);
+    box-shadow: 0 0 var(--star-glow) var(--glow-white);
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: block;
+}
+
+.page-title-bg .title-content h1::before {
+    right: calc(100% + 20px);
+}
+
+.page-title-bg .title-content h1::after {
+    left: calc(100% + 20px);
+}
+
+@media screen and (max-width: 768px) {
+    .page-title-bg .title-content h1::before,
+    .page-title-bg .title-content h1::after {
+        opacity: 0;
+        transform: translateY(-50%) scaleX(0);
+        visibility: hidden;
     }
 }
