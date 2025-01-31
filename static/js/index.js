@@ -29,8 +29,8 @@ const initGifControl = () => {
     const gifImg = document.createElement('img');
     
     // GIF path and fallback image path
-    const gifPath = './static/img/cat2sun.gif';
-    const fallbackPath = './static/img/cat2sun-first.png';
+    const gifPath = './static/img/home/cat2sun.gif';
+    const fallbackPath = './static/img/home/cat2sun-first.png';
     
     // set image src
     gifImg.src = gifPath;

@@ -264,10 +264,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // parallax scroll effect
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
+        const content = document.querySelector('.content');
+        const footer = document.querySelector('#footer');
+        const viewportHeight = window.innerHeight;
+        
+        // calculate footer position
+        const footerTop = footer ? footer.getBoundingClientRect().top + window.scrollY : content.scrollHeight;
+        const viewportBottom = scrolled + viewportHeight;
+        
+        // reset when just touching the footer
+        if (Math.ceil(viewportBottom) >= Math.floor(footerTop)) {
+            requestAnimationFrame(() => {
+                document.documentElement.style.setProperty('--scroll-offset', '0px');
+                document.documentElement.style.setProperty('--scroll-rotation', '0deg');
+            });
+            return;
+        }
+        
+        // normal scroll offset calculation
         const rate = scrolled * 0.3;
-        const rotation = scrolled * 0.1;
-        document.documentElement.style.setProperty('--scroll-offset', `${rate}px`);
-        document.documentElement.style.setProperty('--scroll-rotation', `${rotation}deg`);
+        requestAnimationFrame(() => {
+            document.documentElement.style.setProperty('--scroll-offset', `${rate}px`);
+            document.documentElement.style.setProperty('--scroll-rotation', `${scrolled * 0.1}deg`);
+        });
     });
 
     // get and set the actual height of content
