@@ -52,7 +52,7 @@
 /* Menu background - dynamically adjusts height based on banner and topbar */
 .menubg {
     width: 25%;
-    background: var(--back);
+    /* background: var(--back); */
     position: absolute;
     top: var(--topbar-height, 40px); /* Height of topbar */
     bottom: auto;
@@ -167,6 +167,31 @@
     transition: margin-left 0.3s ease;
     font-family: var(--content-font);
     line-height: 1.6;
+    position: relative;
+}
+
+/* add background decoration layer */
+.content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--content-height, 100vh); /* dynamic height */
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: -1;
+    transform-origin: center;
+    transition: transform 1.2s cubic-bezier(0.34, 2.00, 0.64, 0.6); /* bounce bounce (o^v^o) */
+    transform: translateY(var(--scroll-offset, 0));
+    background: 
+        url('../img/backdeco.svg') left top no-repeat,
+        url('../img/backdeco.svg') right 10% no-repeat,
+        url('../img/backdeco.svg') left 20% no-repeat,
+        url('../img/backdeco.svg') right 40% no-repeat,
+        url('../img/backdeco.svg') left 60% no-repeat,
+        url('../img/backdeco.svg') right 80% no-repeat,
+        url('../img/backdeco.svg') left 90% no-repeat;
 }
 
 .content.full-width {

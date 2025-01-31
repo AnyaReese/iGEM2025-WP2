@@ -129,3 +129,26 @@
     visibility: hidden;
     transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
 }
+
+/* mobile */
+@media screen and (max-width: 768px) {
+    .loading-spinner-image {
+        width: 70vw;
+        max-width: 200px;
+    }
+
+    .loading-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .loading-spinner-image {
+        width: 60vw;
+        max-width: 150px;
+    }
+
+    .loading-text {
+        font-size: 1rem;
+    }
+}

@@ -260,4 +260,25 @@ document.addEventListener('DOMContentLoaded', function() {
             bannerImg.addEventListener('load', updateHeights);
         }
     }
+
+    // parallax scroll effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const rate = scrolled * 0.3;
+        const rotation = scrolled * 0.1;
+        document.documentElement.style.setProperty('--scroll-offset', `${rate}px`);
+        document.documentElement.style.setProperty('--scroll-rotation', `${rotation}deg`);
+    });
+
+    // get and set the actual height of content
+    function updateContentHeight() {
+        const contentHeight = content.scrollHeight;
+        document.documentElement.style.setProperty('--content-height', `${contentHeight}px`);
+    }
+
+    // initialize the height
+    updateContentHeight();
+
+    // recalculate when window size changes
+    window.addEventListener('resize', updateContentHeight);
 });
