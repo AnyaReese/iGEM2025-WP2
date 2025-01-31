@@ -15,14 +15,15 @@
 - [ ] 半窄窗口 sidebar 如果太长了会无法显示，需要添加滚动。完全不想修。。
 - [ ] quote、table 样式调整
 - [ ] 动画效果制作
-- [ ] description 大致页面内容、大纲排版调试，具体内容等 wet lab 对接了再修改。
+- [x] description 大致页面内容、大纲排版调试，具体内容等 wet lab 对接了再修改。
 - [x] 小猫缩放和图片还未同步
 - [x] 成员页面样式调整
-- [ ] BUG: 滑动某些情况下背景装饰会让 footer 变长
+- [x] BUG: 滑动某些情况下背景装饰会让 footer 变长。实际上不是 footer 的原因，是动态获取 content-height 的时候拉长了。
 
 ## 美工 & 风格
 
-- [ ] 首页图效果选择
+- [x] 首页图效果选择
+- [ ] homepage 大纲、相关内容确定
 - [x] header svg etc
 - [x] list icon 样式
 
