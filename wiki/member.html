@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Members | iGem Winter Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./static/img/favicon.ico">
+        <link rel="icon" type="image/png" href="../static/img/favicon.ico">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="../static/css/basic.css">
+        <link rel="stylesheet" href="../static/css/load.css">
+        <link rel="stylesheet" href="../static/css/pages.css">
+        <link rel="stylesheet" href="../static/css/member.css">
+    </head>
+    <body>
+        <!-- scroll progress bar -->
+        <div class="scroll-progress"></div>
+        
+        <!-- Loading cast -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="../static/img/loading.svg" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <!-- Topbar -->
+        <div class="top_bar">
+            <div class="menu_btn">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="logo_wrap">
+                <a href="../index.html"><img id="team_logo" src="../static/img/logo-apart-text.svg" alt=""></a>
+            </div>
+            <div class="menu_wrap">
+                <div id="project" class="menu_item">
+                    <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./description.html">Description</a></li>
+                        <li><a href="./design.html">Design</a></li>
+                        <li><a href="./implementation.html">Implementation</a></li>
+                        <li><a href="./contribution.html">Contribution</a></li>
+                        <li><a href="./safety.html">Safety</a></li>
+                    </ul>
+                </div>
+                <div id="wetlab" class="menu_item">
+                    <div class="title">Wet Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./results.html">Results</a></li>
+                        <li><a href="./proof.html">Proof</a></li>
+                        <li><a href="./part.html">Part</a></li>
+                        <li><a href="./protocol.html">Protocol</a></li>
+                        <li><a href="./engineering.html">Engineering</a></li>
+                        <li><a href="./measurement.html">Measurement</a></li>
+                        <li><a href="./notebook.html">Notebook</a></li>
+                    </ul>
+                </div>
+                <div id="drylab" class="menu_item">
+                    <div class="title">Dry Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./model.html">Model</a></li>
+                        <li><a href="./software.html">Software</a></li>
+                        <li><a href="./hardware.html">Hardware</a></li>
+                    </ul>
+                </div>
+                <div id="human" class="menu_item">
+                    <div class="title">Human Practice<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./hp.html">Integrated Human Practice</a></li>
+                        <li><a href="./education.html">Education & Public Engagement</a></li>
+                        <li><a href="./entrepreneurship.html">Entrepreneurship</a></li>
+                    </ul>
+                </div>
+                <div id="team" class="menu_item menu_item_cur">
+                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./attributions.html">Attributions</a></li>
+                        <li><a href="./member.html">Member</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- 添加标题背景区域 -->
+            <div class="page-title-bg">
+                <div class="bg-image" style="background-image: url('../static/img/members/member.jpg');"></div>
+                <div class="overlay"></div>
+                <div class="title-content">
+                    <h1>Members</h1>
+                </div>
+            </div>
+
+            <div class="content">
+                <!-- Wet Lab Section -->
+                <div class="department-section">
+                    <div class="department-title">Wet Lab</div>
+                </div>
+                <div class="member-container">
+                    <!-- Wet Lab Member 1 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab1.jpg" alt="Member 1">
+                                </div>
+                                <h2 class="member-name">Member 1</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...Self introduction...Self introduction...Self introduction...Self introduction...Self introduction...Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 2 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab2.jpg" alt="Member 2">
+                                </div>
+                                <h2 class="member-name">Member 2</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 3 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab3.jpg" alt="Member 3">
+                                </div>
+                                <h2 class="member-name">Member 3</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 4 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab4.jpg" alt="Member 4">
+                                </div>
+                                <h2 class="member-name">Member 4</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 5 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab5.jpg" alt="Member 5">
+                                </div>
+                                <h2 class="member-name">Member 5</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 6 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab6.jpg" alt="Member 6">
+                                </div>
+                                <h2 class="member-name">Member 6</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 7 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab7.jpg" alt="Member 7">
+                                </div>
+                                <h2 class="member-name">Member 7</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wet Lab Member 8 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/wetlab8.jpg" alt="Member 8">
+                                </div>
+                                <h2 class="member-name">Member 8</h2>
+                                <div class="member-department">Wet Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dry Lab Section -->
+                <div class="department-section">
+                    <div class="department-title">Dry Lab</div>
+                </div>
+                <div class="member-container">
+                    <!-- Dry Lab Member 1 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/drylab1.jpg" alt="Member 1">
+                                </div>
+                                <h2 class="member-name">Member 1</h2>
+                                <div class="member-department">Dry Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dry Lab Member 2 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/drylab2.jpg" alt="Member 2">
+                                </div>
+                                <h2 class="member-name">Member 2</h2>
+                                <div class="member-department">Dry Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dry Lab Member 3 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/drylab3.jpg" alt="Member 3">
+                                </div>
+                                <h2 class="member-name">Member 3</h2>
+                                <div class="member-department">Dry Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dry Lab Member 4 -->
+                    <div class="member-card">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="member-avatar">
+                                    <img src="../static/img/members/drylab4.jpg" alt="Member 4">
+                                </div>
+                                <h2 class="member-name">Member 4</h2>
+                                <div class="member-department">Dry Lab</div>
+                            </div>
+                            <div class="card-back">
+                                <p class="member-bio">
+                                    Self introduction...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="logo_wrap">
+                <img id="team_logo" src="../static/img/Logo-round-text.svg" alt="">
+            </div>
+            <div class="follow">
+                <div class="title">Follow Us</div>
+                <ul class="follow_list">
+                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="title">Contact Us</div>
+                <div class="email">ZJU_China@outlook.com</div>
+            </div>
+        </footer>
+
+        <!-- 添加 basic.js 引用 -->
+        <script src="../static/js/basic.js"></script>
+    </body>
+</html>

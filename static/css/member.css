@@ -1,0 +1,292 @@
+/* 重写main-content和content样式，使其占满页面 */
+.main-content {
+    width: 100%;
+    padding: 0;
+    margin-top: var(--topbar-height, 80px);
+}
+
+.content {
+    margin-left: 0 !important; /* 覆盖pages.css的默认margin */
+    padding: 0 !important; /* 覆盖默认padding */
+    max-width: none !important; /* 移除最大宽度限制 */
+    width: 100%;
+}
+
+/* 部门标题样式 */
+.department-section {
+    padding: 40px 0;
+    background-color: #c0e3ff; /* 加深的蓝色背景 */
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.department-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    /* 使用更圆润可爱的字体组合 */
+    font-family: "Comic Sans MS", "Varela Round", "Quicksand", var(--header-font);
+    margin: 0;
+    padding: 0;
+    color: #434464; /* 调整文字颜色以适应新背景 */
+    position: relative;
+    z-index: 1;
+    /* 添加立体感 */
+    text-shadow: 
+        0 1px 0 #cccccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0,0,0,.1),
+        0 0 5px rgba(0,0,0,.1),
+        0 1px 3px rgba(0,0,0,.3),
+        0 3px 5px rgba(0,0,0,.2),
+        0 5px 10px rgba(0,0,0,.25),
+        0 10px 10px rgba(0,0,0,.2),
+        0 20px 20px rgba(0,0,0,.15);
+    /* 添加过渡效果 */
+    transition: all 0.3s ease;
+}
+
+/* 背景动画效果 - 白色流光 */
+.department-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;  /* 修改初始位置在左侧 */
+    width: 100%;  /* 调整宽度 */
+    height: 100%;
+    background: linear-gradient(
+        90deg,  /* 改为水平方向的渐变 */
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 45%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0.2) 55%,
+        transparent 100%
+    );
+    z-index: 0;
+    transform: skewX(-25deg);  /* 添加倾斜效果 */
+}
+
+/* 鼠标悬浮时触发动画 */
+.department-section:hover::before {
+    animation: shine-horizontal 1.5s ease-in-out;  /* 调整动画时间和缓动效果 */
+}
+
+/* 鼠标悬浮效果 */
+.department-title:hover {
+    transform: translateY(-5px);
+    color: #dee9ff; /* 深蓝色 */
+}
+
+/* 修改为水平方向的动画关键帧 */
+@keyframes shine-horizontal {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 200%;
+    }
+}
+
+/* 成员展示区域容器 */
+.member-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 成员卡片 */
+.member-card {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* 卡片内部容器 */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* 悬浮时翻转效果 */
+.member-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 卡片正面和背面的共同样式 */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* 卡片正面样式 */
+.card-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+/* 成员头像容器 */
+.member-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid #8498cf; /* 中蓝色边框 */
+    margin-top: 20px;
+}
+
+.member-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 成员姓名 */
+.member-name {
+    font-size: 24px;
+    color: var(--dblue);
+    font-weight: bold;
+    margin-top: 15px;
+    font-family: var(--header-font);  /* 使用Ubuntu字体 */
+}
+
+/* 成员部门标签 */
+.member-department {
+    background-color: #7888b2; /* 深蓝色背景 */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: var(--content-font);  /* 使用Comic Sans MS字体 */
+}
+
+/* 卡片背面样式 */
+.card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f3f3fec9;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 自我介绍文本容器 */
+.member-bio {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #2C3E50;
+    padding: 25px;
+    font-family: var(--content-font);
+    position: relative;
+    z-index: 1;
+    quotes: "\"" "\""; /* 使用转义的双引号 */
+}
+
+/* 添加引号装饰 */
+.member-bio::before,
+.member-bio::after {
+    position: absolute;
+    font-size: 60px;
+    font-family: Georgia, serif;
+    opacity: 0.2;
+    color: #1976D2;
+}
+
+.member-bio::before {
+    content: open-quote;
+    top: -10px;
+    left: 5px;
+}
+
+.member-bio::after {
+    content: close-quote;
+    bottom: -40px;
+    right: 5px;
+}
+
+/* 添加背景装饰 */
+.card-back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.3) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+/* 添加底部装饰线 */
+.member-bio::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px; /* 增加线条粗细 */
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(25, 118, 210, 0.8), /* 增加不透明度 */
+        transparent
+    );
+    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3); /* 添加阴影效果 */
+}
+
+/* 鼠标悬浮效果 */
+.card-back:hover .member-bio {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 768px) {
+    .department-section {
+        padding: 30px 0;
+    }
+    
+    .department-title {
+        font-size: 36px;
+    }
+    
+    .member-container {
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    .member-bio {
+        font-size: 14px;
+        padding: 20px;
+        line-height: 1.6;
+    }
+    
+    .member-bio::before,
+    .member-bio::after {
+        font-size: 40px;
+    }
+}
