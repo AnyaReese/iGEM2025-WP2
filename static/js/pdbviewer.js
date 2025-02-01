@@ -2,8 +2,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     const viewerElement = document.getElementById('viewport');
     if (viewerElement) {
-        // create NGL Stage
-        const stage = new NGL.Stage('viewport', { backgroundColor: 'white' });
+        // Create NGL Stage with disabled default tooltip
+        const stage = new NGL.Stage('viewport', { 
+            backgroundColor: 'white',
+            tooltip: false
+        });
+
+        // Set global display parameters
+        stage.setParameters({
+            impostor: true,
+            quality: 'medium',
+            showTooltip: false
+        });
 
         // handle window size change
         window.addEventListener('resize', function() {
@@ -24,9 +34,51 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // add ball+stick representation (only for abnormal residues)
-                component.addRepresentation('ball+stick', {
+                const ballStickRepr = component.addRepresentation('ball+stick', {
                     sele: 'hetero and not water',
                     opacity: 0.9
+                });
+
+                // Create custom tooltip
+                let tooltip = document.querySelector('.molecule-tooltip');
+                if (!tooltip) {
+                    tooltip = document.createElement('div');
+                    tooltip.className = 'molecule-tooltip';
+                    document.body.appendChild(tooltip);
+                }
+
+                // Handle mousemove event
+                stage.viewer.container.addEventListener('mousemove', function(event) {
+                    const rect = stage.viewer.container.getBoundingClientRect();
+                    const pickingData = stage.pickingControls.pick(
+                        event.clientX - rect.left,
+                        event.clientY - rect.top
+                    );
+
+                    if (pickingData && pickingData.atom) {
+                        const atom = pickingData.atom;
+                        const residue = atom.resname;
+                        const chain = atom.chainname;
+                        const resno = atom.resno;
+                        const atomname = atom.atomname;
+                        
+                        tooltip.innerHTML = `
+                            <div class="tooltip-content">
+                                <div>${residue}${resno}:${chain}</div>
+                                <div class="atom-name">${atomname}</div>
+                            </div>
+                        `;
+                        tooltip.style.display = 'block';
+                        tooltip.style.left = (event.clientX + 15) + 'px';  // Increased offset from cursor
+                        tooltip.style.top = (event.clientY - 15) + 'px';   // Increased offset from cursor
+                    } else {
+                        tooltip.style.display = 'none';
+                    }
+                });
+
+                // Hide tooltip when mouse leaves viewer
+                stage.viewer.container.addEventListener('mouseleave', function() {
+                    tooltip.style.display = 'none';
                 });
 
                 return component;

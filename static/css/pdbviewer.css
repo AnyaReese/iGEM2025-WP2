@@ -104,7 +104,6 @@
     margin: 15px 0;
 }
 
-/* 移动端适配 */
 @media (max-width: 768px) {
     #viewport {
         height: 250px;
@@ -114,4 +113,31 @@
         font-size: 14px;
         padding: 0 10px;
     }
+}
+
+/* Custom tooltip styles */
+.molecule-tooltip {
+    position: fixed;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    font-family: monospace;
+    white-space: nowrap;
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.molecule-tooltip .tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.molecule-tooltip .atom-name {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.9);  /* Increased opacity for better readability */
 }
