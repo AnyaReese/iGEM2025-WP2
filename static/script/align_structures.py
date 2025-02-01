@@ -1,29 +1,50 @@
 import os
-import sys
+# import sys
 import pymol
 from pymol import cmd
+import argparse
 
-# 使用命令行模式（不启动GUI）
-pymol.finish_launching(['pymol', '-c'])
+def align_structures(ref_name, mobile_name):
+    # use command line mode
+    pymol.finish_launching(['pymol', '-c'])
 
-try:
-    # 设置工作目录
-    current_dir = os.path.dirname(os.path.abspath(__file__))
+    try:
+        # set working directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        
+        # construct file paths
+        ref_path = os.path.join(current_dir, f"{ref_name}.pdb")
+        mobile_path = os.path.join(current_dir, f"{mobile_name}.pdb")
+        output_path = os.path.join(current_dir, f"{mobile_name}_aligned.pdb")
+        
+        # check if input files exist
+        if not os.path.exists(ref_path):
+            raise FileNotFoundError(f"Reference structure not found: {ref_path}")
+        if not os.path.exists(mobile_path):
+            raise FileNotFoundError(f"Mobile structure not found: {mobile_path}")
+        
+        # load structures
+        cmd.load(ref_path, ref_name)
+        cmd.load(mobile_path, mobile_name)
+        
+        # align structures
+        aln = cmd.align(mobile_name, ref_name)
+        print(f"Alignment RMSD: {aln[0]:.2f}")
+        
+        # save aligned structure
+        cmd.save(output_path, mobile_name)
+        print(f"Aligned structure saved as: {output_path}")
+        
+    except Exception as e:
+        print(f"Error occurred: {str(e)}")
+    finally:
+        # clean up
+        cmd.quit()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Align two PDB structures')
+    parser.add_argument('ref', help='Reference structure name (without .pdb)')
+    parser.add_argument('mobile', help='Mobile structure name (without .pdb)')
     
-    # 加载结构
-    cmd.load(os.path.join(current_dir, "rnf114.pdb"))
-    cmd.load(os.path.join(current_dir, "model_1.pdb"))
-    
-    # 进行对齐
-    aln = cmd.align("model_1", "rnf114")
-    print(f"Alignment RMSD: {aln[0]:.2f}")
-    
-    # 保存对齐后的结构
-    cmd.save(os.path.join(current_dir, "model_1_aligned.pdb"), "model_1")
-    print("Aligned structure saved successfully!")
-    
-except Exception as e:
-    print(f"Error occurred: {str(e)}")
-finally:
-    # 清理并退出
-    cmd.quit()
+    args = parser.parse_args()
+    align_structures(args.ref, args.mobile)
