@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+/* PDB viewer styles */
+.pdb-viewer-container {
+    width: 80%;
+    margin: 30px auto;  /* Save space for the label */
+    background: transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
+    padding: 15px;
+    position: relative;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* shadow text */
+/* .pdb-viewer-container::before {
+    content: "3D Viewer";
+    position: absolute;
+    top: -30px;
+    right: 28px;
+    color: rgba(83, 109, 159, 0.85);
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    transform: rotate(-2deg);
+    letter-spacing: 1px;
+    z-index: 1;
+} */
+
+/* main text */
+/* .pdb-viewer-container::after {
+    content: "3D Viewer";
+    position: absolute;
+    top: -35px;
+    right: 20px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    transform: rotate(-2deg);
+    letter-spacing: 1px;
+    z-index: 2;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    -webkit-text-stroke: 2px rgba(169, 190, 255, 0.8);
+} */
+
+#viewport {
+    width: 100%;
+    height: 400px;
+    background: transparent;
+    transition: height 0.3s ease;
+}
+
+.pdb-controls {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    #viewport {
+        height: 250px;
+    }
+    
+    .pdb-controls {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+}
+
+/* PDB viewer styles */
+.structure-button {
+    font-size: 12px;
+    color: var(--gray-dark);
+    backdrop-filter: blur(4px);
+}
+
+.structure-button:hover {
+    transform: translateY(-1px);
+}
+
+.structure-button:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .structure-button {
+        font-size: 10px;
+        padding: 4px 8px !important;
+    }
+    
+    .structure-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* PDB viewer description styles */
+.pdb-viewer-container .description {
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--gray);
+    text-align: left;
+    margin: 15px 0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    #viewport {
+        height: 250px;
+    }
+    
+    .pdb-viewer-container .description {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+}
