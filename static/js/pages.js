@@ -37,13 +37,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu item click handler - PC only
     if (window.innerWidth > 900) {
         menuItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') return;
-                
-                const wasActive = this.classList.contains('active');
-                menuItems.forEach(mi => mi.classList.remove('active'));
-                if (!wasActive) this.classList.add('active');
-            });
+            // check if sidebar item has subitems
+            const hasSubmenu = item.querySelector('.t2') !== null;
+            
+            if (hasSubmenu) {
+                const titleSpan = item.querySelector('span');
+                if (titleSpan) {
+                    titleSpan.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const wasActive = item.classList.contains('active');
+                        
+                        // close other sidebar
+                        menuItems.forEach(mi => {
+                            if (mi !== item) {
+                                mi.classList.remove('active');
+                            }
+                        });
+                        
+                        // toggle active state
+                        item.classList.toggle('active');
+                    });
+                }
+            }
         });
     }
 

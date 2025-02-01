@@ -133,6 +133,29 @@
     color: var(--highlight-color);
 }
 
+/* add sub sidebar span icon */
+.sidebar .t1 > span {
+    position: relative;
+    padding-right: 30px;
+}
+
+.sidebar .t1 > span::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid var(--gray);
+    border-bottom: 2px solid var(--gray);
+    transform: translateY(-50%) rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.sidebar .t1.active > span::after {
+    transform: translateY(-50%) rotate(-135deg);
+}
+
 /* sidebar item level 2 */
 .sidebar .t2 {
     display: none;
