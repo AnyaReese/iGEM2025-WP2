@@ -59,29 +59,34 @@
     width: 25%;
     /* background: var(--back); */
     position: absolute;
-    top: var(--topbar-height, 40px); /* Height of topbar */
-    bottom: auto;
-    /* Calculate max-height dynamically based on banner and topbar */
-    max-height: calc(100vh - var(--topbar-height, 60px) - var(--title-height, 300px));
+    top: var(--topbar-height, 40px);
+    bottom: 0;
+    height: calc(100vh - var(--topbar-height, 60px) - var(--title-height, 300px));
     left: 0;
     box-shadow: none;
     transition: all 0.3s ease;
+    overflow: visible;
 }
 
 /* Fixed menu state when scrolled */
 .menubg.fixed {
     position: fixed;
     top: calc(var(--topbar-height, 60px) + 20px);
-    max-height: calc(100vh - var(--topbar-height, 60px));
+    height: calc(100vh - var(--topbar-height, 60px) - 20px);
 }
 
 /* Menu styles */
 .sidebar {
-    padding: 0px 40px;
+    padding: 0px 40px 0px 20px;
     height: 100%;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--gray) transparent;
+    direction: rtl;
+}
+
+.sidebar > * {
+    direction: ltr;
 }
 
 /* Webkit scrollbar */
