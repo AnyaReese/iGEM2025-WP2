@@ -110,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '-20% 0px -20% 0px'
     };
 
+    // Keep track of currently visible sections
+    let visibleSections = new Set();
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const id = entry.target.id;
@@ -117,7 +120,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const activeT1Link = document.querySelector(`.sidebar .t1 > a[href="#${id}"]`);
             
             if (entry.isIntersecting) {
-                // handle the entering view
+                // Add section to visible set
+                visibleSections.add(id);
+                
                 if (activeLink) {
                     // handle the submenu
                     menuLinks.forEach(link => link.classList.remove('active'));
@@ -142,14 +147,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     activeT1Link.classList.add('active');
                 }
             } else {
-                // handle the leaving view
-                if (activeLink) {
-                    activeLink.classList.remove('active');
-                } else if (activeT1Link) {
-                    activeT1Link.classList.remove('active');
-                    const parentItem = activeT1Link.closest('.t1');
-                    if (parentItem) {
-                        parentItem.classList.remove('active');
+                // Only remove highlight if section is no longer visible AND another section is visible
+                visibleSections.delete(id);
+                
+                if (visibleSections.size > 0) {
+                    if (activeLink) {
+                        activeLink.classList.remove('active');
+                    } else if (activeT1Link) {
+                        activeT1Link.classList.remove('active');
+                        const parentItem = activeT1Link.closest('.t1');
+                        if (parentItem) {
+                            parentItem.classList.remove('active');
+                        }
                     }
                 }
             }
