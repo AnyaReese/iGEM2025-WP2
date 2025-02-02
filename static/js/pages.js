@@ -51,11 +51,37 @@ document.addEventListener('DOMContentLoaded', function() {
                         menuItems.forEach(mi => {
                             if (mi !== item) {
                                 mi.classList.remove('active');
+                                // remove all links' active state
+                                const links = mi.querySelectorAll('a');
+                                links.forEach(link => link.classList.remove('active'));
                             }
                         });
                         
                         // toggle active state
                         item.classList.toggle('active');
+                        
+                        // if collapse menu, remove the link's active state
+                        if (!item.classList.contains('active')) {
+                            const links = item.querySelectorAll('a');
+                            links.forEach(link => link.classList.remove('active'));
+                        }
+                    });
+                }
+            } else {
+                // for items without submenu, add click handler
+                const link = item.querySelector('a');
+                if (link) {
+                    link.addEventListener('click', function(e) {
+                        // remove all other highlights
+                        menuItems.forEach(mi => {
+                            mi.classList.remove('active');
+                            const links = mi.querySelectorAll('a');
+                            links.forEach(l => l.classList.remove('active'));
+                        });
+                        
+                        // set current item's highlight
+                        item.classList.add('active');
+                        this.classList.add('active');
                     });
                 }
             }
