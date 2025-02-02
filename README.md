@@ -14,18 +14,20 @@
 - [x] list 样式调整
 - [x] 半窄窗口 sidebar 如果太长了会无法显示，需要添加滚动。完全不想修。。哈哈还是修了。
 - [x] quote
+- [ ] 缩放显示。缩小到很小之后需要修改 content-height，最好加点限制否则缩小到 33% 以下丑丑的。
 - [ ] table 样式调整
-- [ ] 动画效果制作
+- [ ] 动画效果制作。scrollreveal 还没用上呢。
+- [ ] 先休息。
 - [x] description 大致页面内容、大纲排版调试，具体内容等 wet lab 对接了再修改。
 - [x] 小猫缩放和图片还未同步
 - [x] 成员页面样式调整
-- [x] BUG: 滑动某些情况下背景装饰会让 footer 变长。实际上不是 footer 的原因，是动态获取 content-height 的时候拉长了。
+- [x] 滑动某些情况下背景装饰会让 footer 变长。实际上不是 footer 的原因，是动态获取 content-height 的时候拉长了。
 - [x] 3D 模型展示效果
 
 ## 美工 & 风格
 
 - [x] 首页图效果选择
-- [ ] homepage 大纲、相关内容确定
+- [ ] homepage 大纲、相关内容确定。等 promotion video 大纲出了看看有什么能捞的。
 - [x] header svg etc
 - [x] list icon 样式
 
