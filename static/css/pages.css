@@ -394,18 +394,67 @@
     text-indent: 0;  /* ensure no indent */
 }
 
-/* add bold style */
-.content ul li p strong{
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 0.3em;
-}
-
-.content strong,
-.content b {
+/* Base bold style for plain text */
+.content p strong,
+.content p b {
     font-family: "Comic Sans MS", "Comic Sans", monospace;
     font-weight: bold;
+    position: relative;
 }
+
+/* Base underline effect for plain text */
+.content p strong::after,
+.content p b::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.3em;
+    background-color: rgba(131, 170, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: -1;
+    border-radius: 2px;
+}
+
+/* Hover effect for plain text */
+.content p strong:hover::after,
+.content p b:hover::after {
+    height: 0.8em;
+    background-color: rgba(255, 162, 243, 0.3);
+}
+
+/* Special style for list items */
+.content ul li strong,
+.content ul li b {
+    font-family: "Comic Sans MS", "Comic Sans", monospace;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+    margin-right: 0.3em;
+}
+
+/* Special underline effect for list items */
+/* .content ul li strong::after,
+.content ul li b::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.3em;
+    background-color: rgba(131, 170, 255, 0.765);
+    transition: all 0.3s ease;
+    z-index: -1;
+    border-radius: 2px;
+} */
+
+/* Hover effect for list items */
+/* .content ul li strong:hover::after,
+.content ul li b:hover::after {
+    height: 0.8em;
+    background-color: rgba(198, 177, 255, 0.664);
+} */
 
 /* Custom ordered list marker */
 .content blockquote ul li::before,
@@ -1021,4 +1070,44 @@ figcaption {
         transform: translateY(-50%) scaleX(0);
         visibility: hidden;
     }
+}
+
+/* Link styles */
+.content a {
+    font-family: var(--content-font);
+    color: var(--highlight-color);
+    text-decoration: none;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Underline effect */
+.content a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--highlight-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effects */
+.content a:hover {
+    color: var(--stroke-hover);
+}
+
+.content a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Skip certain elements */
+.content sup a::after,
+.sidebar a::after,
+.reference-list a::after {
+    display: none;
 }
