@@ -335,17 +335,47 @@
     font-family: var(--content-font);
 }
 
+.content ol {
+    counter-reset: item;  /* reset counter */
+}
+
+.content ol li {
+    position: relative;
+    margin-bottom: 0.5em;
+    padding-left: 2em;
+    text-indent: 0;
+    list-style: none;
+    font-family: var(--content-font);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.content ol li::before {
+    content: counter(item) ".";  /* add number and dot */
+    counter-increment: item;  /* increment counter */
+    position: absolute;
+    left: 0;
+    color: var(--highlight-color);  /* use theme color */
+    font-weight: bold;
+}
+
+.content ol li p {
+    margin: 0;
+    text-indent: 0;
+}
+
 .content ul li {
     position: relative;
     margin-bottom: 0.5em;
-    padding-left: 2em; /* save space for icon */
-    text-indent: 0;  /* cancel text indent */
-    list-style: none;  /* remove default list style */
+    padding-left: 2em;
+    text-indent: 0;
+    list-style: none;
     font-family: var(--content-font);
-    display: flex;  /* use flex layout */
-    align-items: flex-start;  /* align to top */
+    display: flex;
+    align-items: flex-start;
 }
-  
+
 .content ul li::before {
     content: "";
     position: absolute;
@@ -362,14 +392,6 @@
 .content ul li p {
     margin: 0;  /* remove default margin */
     text-indent: 0;  /* ensure no indent */
-}
-
-/* Ordered list styles */
-.content ol li {
-    position: relative;
-    margin-bottom: 0.5em;
-    padding-left: 0.5em;
-    text-indent: 0;
 }
 
 /* add bold style */
