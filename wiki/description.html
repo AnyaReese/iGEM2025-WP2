@@ -302,10 +302,22 @@
                             </li>
                             
                             <!-- TODO: Change this fig to chart -->
-                            <figure>
+                            <!-- <figure>
                                 <img src="../static/img/description/todo.png" alt="AQP0 targeting strategy">
                                 <figcaption>Figure todo: AQP0 structure and targeting peptide design strategy</figcaption>
-                            </figure>
+                            </figure> -->
+                        
+                            <div class="chart-container">
+                                <div style="display: flex; gap: 20px;">
+                                    <div style="flex: 1;">
+                                        <canvas id="humanAQP0Chart"></canvas>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <canvas id="sheepAQP0Chart"></canvas>
+                                    </div>
+                                </div>
+                            <figcaption>Chart: Comparison of amino acid frequency distribution between human and sheep AQP0.</figcaption>
+                            </div>
 
                             <figure>
                                 <img src="../static/img/description/8.png" alt="AQP0 targeting strategy">
@@ -615,5 +627,6 @@
         <script src="../static/js/basic.js"></script>
         <script src="../static/js/pages.js"></script>
         <script src="../static/js/pdbviewer.js"></script>
+        <script src="../static/js/components.js"></script>
     </body>
 </html>
