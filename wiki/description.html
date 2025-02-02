@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="../static/css/load.css">
         <link rel="stylesheet" href="../static/css/pages.css">
         <link rel="stylesheet" href="../static/css/components.css">
+        <link rel="stylesheet" href="../static/css/pdbviewer.css">
+        <script src="https://unpkg.com/ngl@2.0.0-dev.37/dist/ngl.js"></script>
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -112,12 +114,13 @@
                     <div class="t1">
                         <span>Core Technology</span>
                         <div class="t2">
-                            <a href="#innovative-solution">Innovative Solution: Contact Lens-Based Drug Delivery System</a>
-                            <a href="#molecular-mechanisms">Molecular Mechanisms of Cataracts and Therapeutic Challenges</a>
-                            <a href="#drug-design">Drug Molecular Design and Optimization</a>
-                            <a href="#advantages">Advantages of Contact Lenses in Drug Delivery</a>
-                            <a href="#pharmacokinetics">Pharmacokinetics and Concentration Optimization</a>
-                            <a href="#validation">Model Validation and Experimental Analysis</a>
+                            <a href="#molecular-mechanisms">1. Molecular Mechanisms of Cataracts and Treatment Bottlenecks</a>
+                            <a href="#innovative-solution">2. Innovative Solution: Contact Lens-Based Drug Delivery System</a>
+                            <a href="#advantages">3. Advantages of Contact Lenses in Drug Delivery</a>
+                            <a href="#drug-design">4. Drug Molecular Design and Optimization</a>
+                            <a href="#chassis-design">5. Chassis Design and Production Method</a>
+                            <a href="#biosafety-reporting">6. Biosafety Reporting Module</a>
+                            <a href="#validation">7. Model Validation and Experimental Analysis</a>
                         </div>
                     </div>
 
@@ -142,38 +145,31 @@
             <div class="content">
                 <section id="background">
                     <h1>Background</h1>
-                    <p>"The eyes are the windows to the soul." Leonardo da Vinci's famous quote perfectly captures the significance of vision in human perception of the world. However, cataracts, the most common cause of blindness globally<sup><a href="#ref1">[1]</a></sup>, impact millions annually, particularly among middle-aged and elderly populations.</p>
+                    <p>"The eye is the window to the soul." This famous quote by Leonardo da Vinci precisely highlights the critical role of vision in how humans perceive the world. However, cataracts are the most common cause of blindness globally<sup><a href="#ref1">[1]</a></sup>, affecting tens of millions of people annually, especially among middle-aged and elderly populations.</p>
                     
                     <figure>
                         <img src="../static/img/description/1.png" alt="Cataract prevalence">
-                        <figcaption>Figure 1: Age-standardised prevalence of blindness, moderate vision impairment, and severe vision impairment because of cataract in 2020</figcaption>
+                        <figcaption>
+                            Figure 1: Age-standardised prevalence of blindness, moderate vision impairment, and severe vision impairment due to cataracts in 2020
+                            <div class="source">
+                                Source: Cicinelli MV, et al. Cataracts. Lancet. 2023<sup><a href="#ref1">[1]</a></sup>
+                            </div>
+                        </figcaption>
                     </figure>
                     
-                    <p>Currently, the mainstream treatment for cataracts involves surgically removing the clouded lens and replacing it with an artificial intraocular lens. While this method is considered the gold standard by the American Academy of Ophthalmology<sup><a href="#ref2">[2]</a></sup>, it demands significant medical resources and is not widely accessible in underdeveloped regions...</p>
+                    <p>Currently, the mainstream treatment for cataracts involves surgically removing the cloudy lens and implanting an artificial intraocular lens. This method demands substantial medical resources and is not widely accessible in underdeveloped regions. According to the <strong>American Academy of Ophthalmology</strong>, surgery remains the gold standard for cataract treatment<sup><a href="#ref2">[2]</a></sup>.</p>
+                    
+                    <p>Existing pharmacological treatments, such as eye drops, face challenges like poor drug absorption, short retention time, and the burden of frequent administration, making it difficult to achieve ideal therapeutic outcomes<sup><a href="#ref3">[3]</a></sup>. For example, antioxidants and protein aggregation reversal agents have shown some efficacy in cataract models, but due to the anatomical and physiological barriers of the eye, traditional eye drops face limited effectiveness<sup><a href="#ref4">[4]</a></sup>. Although nanotechnology has made some progress in drug delivery, further research is needed to solidify the therapeutic efficacy of these compounds and improve delivery methods<sup><a href="#ref5">[5]</a></sup>.</p>
                 </section>
 
                 <section id="core-technology">
                     <h1>Core Technology</h1>
-                    
-                    <section id="innovative-solution">
-                        <h2>Innovative Solution: Contact Lens-Based Drug Delivery System</h2>
-                        <p>Our project proposes a groundbreaking approach: using contact lenses as a drug delivery vehicle. By combining bioengineering and modern materials science, we designed a contact lens capable of sustained drug release. Utilizing a biohydrogel form that already secretes hyaluronic acid for dry eye treatment<sup><a href="#ref6">[6]</a></sup>, we modified the system to also release RNF114 for cataract therapy<sup><a href="#ref7">[7]</a></sup>. This dual-function contact lens addresses the limitations of traditional treatments by:</p>
-                        
-                        <ul>
-                            <li>
-                                <p>Enabling continuous drug release and targeted delivery to the lens.</p>
-                            </li>
-                            <li>
-                                <p>Reducing the frequency of drug administration while aiming to increase average drug concentration and minimize systemic toxicity.</p>
-                            </li>
-                        </ul>
-                    </section>
 
                     <section id="molecular-mechanisms">
-                        <h2>Molecular Mechanisms of Cataracts and Therapeutic Challenges</h2>
-                        <p><strong>Cataract formation</strong> is closely linked to protein misfolding and aggregation in the lens, with the small heat shock protein CRYAA playing a pivotal role. When CRYAA function is compromised due to environmental stress (e.g., low temperatures, oxidative conditions) or genetic mutations (e.g., the CRYAA Y118D mutation), its molecular chaperone activity is diminished, accelerating protein aggregation and insoluble deposits. These aggregates result in lens opacification, leading to visual impairment and, eventually, blindness<sup><a href="#ref8">[8]</a></sup><sup><a href="#ref9">[9]</a></sup><sup><a href="#ref10">[10]</a></sup><sup><a href="#ref11">[11]</a></sup>.</p>
+                        <h2>1. Molecular Mechanisms of Cataracts and Treatment Bottlenecks</h2>
+                        <p>The core pathology of cataract formation is linked to the misfolding and aggregation of lens proteins, with the small heat shock protein CRYAA playing a crucial role. When its function is impaired, environmental stressors (such as low temperature and oxidative stress) or genetic mutations (like the CRYAA Y118D mutation) can cause CRYAA to lose its chaperone activity. This accelerates protein aggregation and the formation of insoluble deposits. Such protein aggregates lead to lens opacity, resulting in visual impairment or even blindness<sup><a href="#ref6">[6]</a></sup><sup><a href="#ref7">[7]</a></sup><sup><a href="#ref8">[8]</a></sup><sup><a href="#ref9">[9]</a></sup>.</p>
                         
-                        <p>To disrupt this vicious cycle, our team selected the <strong>E3 ubiquitin ligase RNF114</strong>, which can accurately identify misfolded CRYAA proteins and tag them for degradation via ubiquitination. Studies have demonstrated RNF114's significant effectiveness in reducing lens opacity in cold-induced and oxidative stress-related cataract models<sup><a href="#ref7">[7]</a></sup>. This therapeutic target offers an unprecedented opportunity for innovation.</p>
+                        <p>To break this vicious cycle, the team selected the E3 ubiquitin ligase RNF114. RNF114 precisely identifies misfolded CRYAA proteins and tags them for degradation through ubiquitination, thereby restoring lens transparency. Research has shown that RNF114 significantly reduces lens opacity in cold-induced and oxidative stress-related cataract models<sup><a href="#ref10">[10]</a></sup>. This therapeutic target offers unprecedented breakthrough potential.</p>
 
                         <p><strong>Key Technological Modules:</strong></p>
                         <ul>
@@ -206,8 +202,35 @@
                         </ul>
                     </section>
 
+                    <section id="innovative-solution">
+                        <h2>2. Innovative Solution: Contact Lens-Based Drug Delivery System</h2>
+                        <p>Our project proposes a groundbreaking approach: using contact lenses as a drug delivery vehicle. By combining bioengineering and modern materials science, we designed a contact lens capable of sustained drug release. Utilizing a biohydrogel form that already secretes hyaluronic acid for dry eye treatment<sup><a href="#ref6">[6]</a></sup>, we modified the system to also release RNF114 for cataract therapy<sup><a href="#ref7">[7]</a></sup>. This dual-function contact lens addresses the limitations of traditional treatments by:</p>
+                        
+                        <ul>
+                            <li>
+                                <p>Enabling continuous drug release and targeted delivery to the lens.</p>
+                            </li>
+                            <li>
+                                <p>Reducing the frequency of drug administration while aiming to increase average drug concentration and minimize systemic toxicity.</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="advantages">
+                        <h2>3. Advantages of Contact Lenses in Drug Delivery</h2>
+                        <p>Compared to conventional eye drops, drug-loaded contact lenses provide significant technological advantages:</p>
+                        <ul>
+                            <li>
+                                <p><strong>Prolonged Drug Retention:</strong> Contact lenses adhere closely to the eye surface, significantly reducing the loss of medication due to blinking or tear drainage. This design dramatically improves drug retention time within tear film, enhancing utilization efficiency.</p>
+                            </li>
+                            <li>
+                                <p><strong>Sustained Drug Release:</strong> The hydrogel structure of the contact lenses facilitates controlled, long-term release of therapeutic agents, ensuring stable concentrations at the target site and reducing the need for frequent administration.</p>
+                            </li>
+                        </ul>
+                    </section>
+
                     <section id="drug-design">
-                        <h2>Drug Molecular Design and Optimization</h2>
+                        <h2>4.Drug Molecular Design and Optimization</h2>
                         <ul>
                             <li>
                                 <p><strong>Enhanced Permeability:</strong> TAT peptide technology is employed to modify the RNF114 protein with short peptide sequences, boosting its transmembrane capability. This technology has been shown to enhance the ability of proteins to traverse barriers such as the blood-brain barrier and the corneal barrier, although the intact corneal epithelium can act as a barrier to penetration, which can be overcome by disrupting the epithelium<sup><a href="#ref12">[12]</a></sup>. Flexible linker peptides ensure that the three-dimensional structure of RNF114 remains intact, facilitating smooth passage through the corneal barrier.</p>
@@ -220,7 +243,7 @@
                             </li>
                         </ul>
 
-                        <h3>Chassis Design and Production Method</h3>
+                        <h3>3. Chassis Design and Production Method</h3>
                         <p>To ensure stable drug expression and production, we employed engineered yeast as a biological chassis. Yeast offers several advantages:</p>
                         <ul>
                             <li>
@@ -249,18 +272,45 @@
                         </ul>
                     </section>
 
-                    <section id="advantages">
-                        <h2>Advantages of Contact Lenses in Drug Delivery</h2>
-                        <p>Compared to conventional eye drops, drug-loaded contact lenses provide significant technological advantages:</p>
+                    <section id="chassis-design">
+                        <h2>5. Chassis Design and Production Method</h2>
+                        <p>To ensure stable expression and production of RNF114, we chose the SHuffle E. coli expression system as our biological factory. This system offers:</p>
                         <ul>
                             <li>
-                                <p><strong>Prolonged Drug Retention:</strong> Contact lenses adhere closely to the eye surface, significantly reducing the loss of medication due to blinking or tear drainage. This design dramatically improves drug retention time within tear film, enhancing utilization efficiency.</p>
+                                <p><strong>Enhanced Disulfide Bond Formation:</strong> Facilitates the correct folding of complex proteins.</p>
                             </li>
                             <li>
-                                <p><strong>Sustained Drug Release:</strong> The hydrogel structure of the contact lenses facilitates controlled, long-term release of therapeutic agents, ensuring stable concentrations at the target site and reducing the need for frequent administration.</p>
+                                <p><strong>Standard Plasmid Backbone:</strong> Provides flexibility for introducing additional expression frameworks if needed in the future, such as co-expressing auxiliary proteins required for RNF114 synthesis.</p>
                             </li>
                         </ul>
                     </section>
+
+                    <section id="biosafety-reporting">
+                        <h2>6. Biosafety Reporting Module</h2>
+                        <p>xxx</p>
+                        <ul>
+                            <li>
+                                <p><strong>xxx</strong> xxx</p>
+                            </li>
+                            <li>
+                                <p><strong>xxx</strong> xxx</p>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="chassis-design">
+                        <h2>7. Model Validation and Experimental Analysis</h2>
+                        <p>xxx</p>
+                        <ul>
+                            <li>
+                                <p><strong>xxx</strong> xxx</p>
+                            </li>
+                            <li>
+                                <p><strong>xxx</strong> xxx</p>
+                            </li>
+                        </ul>
+                    </section>
+                    
                 </section>
 
                 <section id="pharmacokinetics">
@@ -367,6 +417,72 @@
                             <span class="ref-content">Guo, X., Hutcheon, A. E., & Zieske, J. D. (2004). Transduction of functionally active TAT fusion proteins into cornea. <em>Exp Eye Res</em>, 78(5), 997-1005.</span>
                             <a href="https://doi.org/10.1016/j.exer.2003.12.010" class="ref-link" target="_blank">DOI: 10.1016/j.exer.2003.12.010</a>
                         </div>
+
+                        <div class="reference-item" id="ref13">
+                            <span class="ref-number">[13]</span>
+                            <span class="ref-content">Rykowska, I., Nowak, I., & Nowak, R. (2021). Soft Contact Lenses as Drug Delivery Systems: A Review. <em>Molecules</em>, 26(18).</span>
+                            <a href="https://doi.org/10.3390/molecules26185430" class="ref-link" target="_blank">DOI: 10.3390/molecules26185430</a>
+                        </div>
+
+                        <div class="reference-item" id="ref14">
+                            <span class="ref-number">[14]</span>
+                            <span class="ref-content">Wu, B., Li, M., Li, K., et al. (2021). Cell penetrating peptide TAT-functionalized liposomes for efficient ophthalmic delivery of flurbiprofen. <em>International Journal of Pharmaceutics</em>, 598, 120405.</span>
+                            <a href="https://doi.org/10.1016/j.ijpharm.2021.120405" class="ref-link" target="_blank">DOI: 10.1016/j.ijpharm.2021.120405</a>
+                        </div>
+
+                        <div class="reference-item" id="ref15">
+                            <span class="ref-number">[15]</span>
+                            <span class="ref-content">Rizzuti, M., Nizzardo, M., Zanetta, C., Ramirez, A., & Corti, S. (2015). Therapeutic applications of the cell-penetrating HIV-1 Tat peptide. <em>Drug Discovery Today</em>, 20(1), 76-85.</span>
+                            <a href="https://doi.org/10.1016/j.drudis.2014.09.017" class="ref-link" target="_blank">DOI: 10.1016/j.drudis.2014.09.017</a>
+                        </div>
+
+                        <div class="reference-item" id="ref16">
+                            <span class="ref-number">[16]</span>
+                            <span class="ref-content">Li, C., Cao, X. W., Zhao, J., et al. (2020). Effective Therapeutic Drug Delivery by GALA3, an Endosomal Escape Peptide with Reduced Hydrophobicity. <em>Journal of Membrane Biology</em>, 253, 139-152.</span>
+                            <a href="https://doi.org/10.1007/s00232-020-00109-2" class="ref-link" target="_blank">DOI: 10.1007/s00232-020-00109-2</a>
+                        </div>
+
+                        <div class="reference-item" id="ref17">
+                            <span class="ref-number">[17]</span>
+                            <span class="ref-content">Nicoud, L., Cohrs, N., Arosio, P., Norrant, E., & Morbidelli, M. (2015). Effect of polyol sugars on the stabilization of monoclonal antibodies. <em>Biophysical Chemistry</em>, 197, 40-46.</span>
+                            <a href="https://doi.org/10.1016/j.bpc.2014.12.003" class="ref-link" target="_blank">DOI: 10.1016/j.bpc.2014.12.003</a>
+                        </div>
+
+                        <div class="reference-item" id="ref18">
+                            <span class="ref-number">[18]</span>
+                            <span class="ref-content">Lu, W., Wang, R., Wang, P., Ma, S., & Xia, Q. (2021). Genetic Code Expansion System for Tight Control of Gene Expression in Bombyx mori Cell Lines. <em>Insects</em>, 12(12), 1081.</span>
+                            <a href="https://doi.org/10.3390/insects12121081" class="ref-link" target="_blank">DOI: 10.3390/insects12121081</a>
+                        </div>
+
+                        <div class="reference-item" id="ref19">
+                            <span class="ref-number">[19]</span>
+                            <span class="ref-content">Gonen, T., Cheng, Y., Sliz, P., et al. (2005). Lipid-protein interactions in double-layered two-dimensional AQP0 crystals. <em>Nature</em>, 438(7068), 633-638.</span>
+                            <a href="https://doi.org/10.1038/nature04321" class="ref-link" target="_blank">DOI: 10.1038/nature04321</a>
+                        </div>
+
+                        <div class="reference-item" id="ref20">
+                            <span class="ref-number">[20]</span>
+                            <span class="ref-content">Sjöhamn, J., & Hedfalk, K. (2014). Unraveling aquaporin interaction partners. <em>Biochimica et Biophysica Acta</em>, 1840(5), 1614-1623.</span>
+                            <a href="https://doi.org/10.1016/j.bbagen.2013.11.012" class="ref-link" target="_blank">DOI: 10.1016/j.bbagen.2013.11.012</a>
+                        </div>
+
+                        <div class="reference-item" id="ref21">
+                            <span class="ref-number">[21]</span>
+                            <span class="ref-content">Klein, J. S., Jiang, S., Galimidi, R. P., Keeffe, J. R., & Bjorkman, P. J. (2014). Design and characterization of structured protein linkers with differing flexibilities. <em>Protein Engineering, Design and Selection</em>, 27(10), 325-330.</span>
+                            <a href="https://doi.org/10.1093/protein/gzu043" class="ref-link" target="_blank">DOI: 10.1093/protein/gzu043</a>
+                        </div>
+
+                        <div class="reference-item" id="ref22">
+                            <span class="ref-number">[22]</span>
+                            <span class="ref-content">Ning, L., Geng, Y., Lovett-Barron, M., et al. (2022). A Bright, Nontoxic, and Non-aggregating red Fluorescent Protein for Long-Term Labeling of Fine Structures in Neurons. <em>Frontiers in Cell and Developmental Biology</em>, 10, 893468.</span>
+                            <a href="https://doi.org/10.3389/fcell.2022.893468" class="ref-link" target="_blank">DOI: 10.3389/fcell.2022.893468</a>
+                        </div>
+
+                        <div class="reference-item" id="ref23">
+                            <span class="ref-number">[23]</span>
+                            <span class="ref-content">Bennet, D., Estlack, Z., Reid, T., et al. (2018). A microengineered human corneal epithelium-on-a-chip for eye drops mass transport evaluation. <em>Lab on a Chip</em>, 18(11), 1539-1551.</span>
+                            <a href="https://doi.org/10.1039/C8LC00158H" class="ref-link" target="_blank">DOI: 10.1039/C8LC00158H</a>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -392,5 +508,6 @@
         </footer>
         <script src="../static/js/basic.js"></script>
         <script src="../static/js/pages.js"></script>
+        <script src="../static/js/pdbviewer.js"></script>
     </body>
 </html>
