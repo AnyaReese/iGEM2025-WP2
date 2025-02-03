@@ -101,3 +101,50 @@
     color: var(--blue-dark);
     text-decoration: underline;
 }
+
+/* compulsary hide changes from easypubmedicine */
+/* .reference-item img,
+.reference-item [class*="easypubmed"],
+.reference-item [class*="epm"],
+.reference-item [class*="epmc"],
+.reference-item [class*="altmetric"],
+.reference-item [class*="__dimensions"],
+.reference-item [id*="impact-factor"],
+.reference-item [class*="impact-factor"],
+.reference-item [class*="if-container"],
+.reference-item [class*="badge"],
+.reference-item [class*="metric"],
+.reference-item [class*="easypubmedicine"],
+.reference-item [class*="pubmed"],
+.reference-item [class*="medicine"],
+.reference-item [class*="citation"],
+.reference-item [class*="metrics"],
+.reference-item [class*="es-webpage"], */
+.reference-item [class*="es-"],
+.reference-item > div:not(.ref-number):not(.ref-content),
+.reference-item > span:not(.ref-number):not(.ref-content),
+.reference-item > a:not(.ref-link) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    position: absolute !important;
+    pointer-events: none !important;
+    clip: rect(0, 0, 0, 0) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+}
+
+
+/* .reference-item .es-webpage-collect,
+.reference-item [class*="es-webpage-collect"] {
+    display: none !important;
+} */
+
+/* 
+.reference-item {
+    overflow: visible !important;
+} */
