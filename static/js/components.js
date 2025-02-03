@@ -20,7 +20,7 @@ const loadChartJS = () => {
         dataLabelsScript.src = 'https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels';
         document.head.appendChild(dataLabelsScript);
 
-        // 等待两个脚本都加载完成后初始化图表
+        // wait for two scripts to load before initializing charts
         Promise.all([
             new Promise(resolve => chartScript.onload = resolve),
             new Promise(resolve => dataLabelsScript.onload = resolve)
