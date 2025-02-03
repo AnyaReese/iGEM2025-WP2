@@ -132,69 +132,81 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll spy with Intersection Observer
     const observerOptions = {
-        threshold: 0.2,
+        threshold: 0,  // 改为0，让我们能捕获任何可见性变化
         rootMargin: '-20% 0px -20% 0px'
     };
 
-    // Keep track of currently visible sections
-    let visibleSections = new Set();
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const id = entry.target.id;
-            const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
-            const activeT1Link = document.querySelector(`.sidebar .t1 > a[href="#${id}"]`);
-            
-            if (entry.isIntersecting) {
-                // Add section to visible set
-                visibleSections.add(id);
-                
-                if (activeLink) {
-                    // handle the submenu
-                    menuLinks.forEach(link => link.classList.remove('active'));
-                    activeLink.classList.add('active');
-                    
-                    // expand the parent menu item
-                    const parentItem = activeLink.closest('.t1');
-                    if (parentItem) {
-                        menuItems.forEach(item => item.classList.remove('active'));
-                        parentItem.classList.add('active');
-                    }
-                } else if (activeT1Link) {
-                    // handle the big title
-                    menuLinks.forEach(link => link.classList.remove('active'));
-                    menuItems.forEach(item => item.classList.remove('active'));
-                    
-                    // highlight the current t1 item
-                    const parentItem = activeT1Link.closest('.t1');
-                    if (parentItem) {
-                        parentItem.classList.add('active');
-                    }
-                    activeT1Link.classList.add('active');
-                }
-            } else {
-                // Only remove highlight if section is no longer visible AND another section is visible
-                visibleSections.delete(id);
-                
-                if (visibleSections.size > 0) {
-                    if (activeLink) {
-                        activeLink.classList.remove('active');
-                    } else if (activeT1Link) {
-                        activeT1Link.classList.remove('active');
-                        const parentItem = activeT1Link.closest('.t1');
-                        if (parentItem) {
-                            parentItem.classList.remove('active');
-                        }
-                    }
-                }
-            }
+    // 找到当前滚动位置对应的最近标题
+    function findNearestHeader() {
+        const scrollPosition = window.scrollY + window.innerHeight * 0.3; // 视口上方30%位置
+        const sections = Array.from(document.querySelectorAll('.content section[id]'));
+        
+        // 按照在文档中的位置排序
+        sections.sort((a, b) => {
+            const posA = a.getBoundingClientRect().top + window.scrollY;
+            const posB = b.getBoundingClientRect().top + window.scrollY;
+            return posA - posB;
         });
-    }, observerOptions);
 
-    // observe all sections
-    document.querySelectorAll('.content section').forEach(section => {
-        observer.observe(section);
-    });
+        // 找到第一个在当前滚动位置之前的section
+        let currentSection = null;
+        for (let section of sections) {
+            const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+            if (sectionTop <= scrollPosition) {
+                currentSection = section;
+            } else {
+                break;
+            }
+        }
+
+        return currentSection;
+    }
+
+    // 更新侧边栏高亮
+    function updateSidebarHighlight(section) {
+        if (!section) return;
+
+        const id = section.id;
+        const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
+        const activeT1Link = document.querySelector(`.sidebar .t1 > a[href="#${id}"]`);
+
+        // 清除所有高亮
+        menuLinks.forEach(link => link.classList.remove('active'));
+        menuItems.forEach(item => item.classList.remove('active'));
+
+        if (activeLink) {
+            // 如果是t2
+            activeLink.classList.add('active');
+            const parentItem = activeLink.closest('.t1');
+            if (parentItem) {
+                parentItem.classList.add('active');
+            }
+        } else if (activeT1Link) {
+            // 如果是t1
+            activeT1Link.classList.add('active');
+            const parentItem = activeT1Link.closest('.t1');
+            if (parentItem) {
+                parentItem.classList.add('active');
+            }
+        }
+    }
+
+    // 监听滚动事件
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+        if (scrollTimeout) {
+            window.cancelAnimationFrame(scrollTimeout);
+        }
+
+        scrollTimeout = window.requestAnimationFrame(() => {
+            const currentSection = findNearestHeader();
+            updateSidebarHighlight(currentSection);
+        });
+    }, { passive: true });
+
+    // 初始化时执行一次
+    const initialSection = findNearestHeader();
+    updateSidebarHighlight(initialSection);
 
     // initialize: expand the menu item corresponding to the current page
     const currentPath = window.location.pathname;
