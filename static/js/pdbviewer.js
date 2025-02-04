@@ -1,9 +1,8 @@
 // PDB Viewer initialization
-document.addEventListener('DOMContentLoaded', function() {
-    const viewerElement = document.getElementById('viewport');
+document.querySelectorAll('[id^="viewport"]').forEach(viewerElement => {
     if (viewerElement) {
         // Create NGL Stage with disabled default tooltip
-        const stage = new NGL.Stage('viewport', { 
+        const stage = new NGL.Stage(viewerElement.id, { 
             backgroundColor: 'white',
             tooltip: false
         });

@@ -45,7 +45,7 @@
     -webkit-text-stroke: 2px rgba(169, 190, 255, 0.8);
 } */
 
-#viewport {
+#viewport, #viewport-2 {
     width: 100%;
     height: 400px;
     background: transparent;
