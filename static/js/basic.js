@@ -83,10 +83,20 @@ window.addEventListener('load', function() {
         const pageName = currentPath.split('/').pop();
         console.log('Page name:', pageName);
         
-        if (pageName === 'description.html' || pageName === 'design.html' || pageName === 'implementation.html' || pageName === 'results.html') {
+        if (pageName === 'description.html' || pageName === 'design.html' || pageName === 'safety.html') {
             document.querySelector('#project')?.classList.add('cur');
-        } else if (pageName === 'team.html' || pageName === 'attributions.html' || pageName === 'partnership.html') {
+        } else if (pageName === 'member.html' || pageName === 'afftibutions.html') {
             document.querySelector('#team')?.classList.add('cur');
+        } else if (pageName === 'construction.html' || pageName === 'engineering.html' || 
+                   pageName === 'protocal.html' || pageName === 'parts.html') {
+            document.querySelector('#wetlab')?.classList.add('cur');
+        } else if (pageName === 'hardware.html' || pageName === 'model&software.html') {
+            document.querySelector('#drylab')?.classList.add('cur');
+        } else if (pageName === 'overview.html' || pageName === 'education.html' || 
+                   pageName === 'entrepreneurship.html' || pageName === 'ethical.html' || 
+                   pageName === 'inclusivity.html' || pageName === 'integrated.html' || 
+                   pageName === 'sustain.html') {
+            document.querySelector('#human')?.classList.add('cur');
         }
     }
     
