@@ -188,18 +188,22 @@
 
                         <figure>
                             <img src="../static/img/description/2.jpg" alt="Design and composition">
-                            <figcaption>Figure 2: Design and composition of the living self-lubricating contact lens (CL). Created with BioRender.com.</figcaption>
+                            <figcaption>
+                                Figure 2: Design and composition of the living self-lubricating CL. Created with BioRender.com<sup><a href="#ref11">[11]</a></sup>.
+                            </figcaption>
                         </figure>
 
                         <figure>
-                            <img src="../static/img/description/3.png" alt="Transparent hydrogel discs" style="width: 50%;">
-                            <figcaption>Figure 3: Transparent PVA-VS/PVA 100:0 hydrogel discs. Scale corresponds to 1 cm.</figcaption>
+                            <img src="../static/img/description/3.png" alt="Silicon mold" style="width: 50%;">
+                            <figcaption>
+                                Figure 3: Image of the silicon mold used for the formation of the bacterial ring-CL<sup><a href="#ref11">[11]</a></sup>.
+                            </figcaption>
                         </figure>
 
-                        <blockquote class="quote">
+                        <!-- <blockquote class="quote">
                             <p>Source for Figures 2 and 3: Puertas‐Bartolomé, M., Gutiérrez‐Urrutia, I., Teruel‐Enrico, L. L., et al. (2024). Self‐Lubricating, Living Contact Lenses. <em>Advanced Materials</em>, 36(27).</p>
                             <a href="https://doi.org/10.1002/adma.202313848" class="quote-source" target="_blank">https://doi.org/10.1002/adma.202313848</a>
-                        </blockquote>
+                        </blockquote> -->
 
                         <ul>
                             <li>
@@ -272,14 +276,14 @@
                         
                         <p>Interestingly, we discovered that the <strong>hyaluronic acid (HA) secretion module</strong>, initially designed to alleviate contact lens-induced dry eye, offers unexpected benefits. In addition to its moisturizing effects, HA serves as a promising ocular drug delivery excipient. Its high biocompatibility, biodegradability, and low immunogenicity enhance drug bioavailability. Currently available studies include drugs that utilize hyaluronic acid to act on the corpus cavernosum, conjunctiva, and anterior segment of the eye. Among which, Pilocarpine acting on the pupillary sphincter.</p>
 
-                        <figure>
+                        <!-- <figure>
                             <img src="../static/img/description/5.png" alt="HA drug delivery mechanism">
-                            <!-- <figcaption>Figure 5: Mechanism of hyaluronic acid-assisted drug delivery in ocular tissues</figcaption> -->
-                        </figure>
+                            <figcaption>Figure 5: Mechanism of hyaluronic acid-assisted drug delivery in ocular tissues</figcaption>
+                        </figure> -->
                             
                         <figure>
                             <img src="../static/img/description/6.png" alt="Drug stability enhancement">
-                            <figcaption>Figure 5 & 6: Mechanism of hyaluronic acid-assisted drug delivery in ocular tissues</figcaption>
+                            <figcaption>Figure 5: Mechanism of hyaluronic acid-assisted drug delivery in ocular tissues. (A) eyeball (B) aqueous humor circulation (C) retina</figcaption>
                         </figure>
 
                         <p>We hypothesize that this drug protects its stability at the ocular surface to the aqueous humor. Thus, the stability of the drug molecule can be ensured by synchronized release of HA.</p>
@@ -291,6 +295,7 @@
                         
                         <figure>
                             <img src="../static/img/description/7.png" alt="backup strategy" style="width: 60%;">
+                            <figcaption>Figure 6: pCDF-Mm2 system</figcaption>
                         </figure>
 
                         <h3>Targeting Modifications</h3>
@@ -322,7 +327,7 @@
 
                             <figure>
                                 <img src="../static/img/description/8.png" alt="AQP0 targeting strategy" style="width: 100%;">
-                                <figcaption>Figure 8: Sequence similarity: 90.8292%</figcaption>
+                                <figcaption>Figure 7: Sequence similarity: 90.8292%</figcaption>
                             </figure>
                             
                             <li>
@@ -341,7 +346,7 @@
 
                         <h4>Selecting the Attachment Site</h4>
 
-                        <p>Observing the dimensional structure of the drug to be modified, RNF114 (RNF114 3D structure), its possible site of action, the zinc finger, is located at amino acids 29-68 and 91-110 of the protein. We found that the N-terminal sequence of RNF114 is less folded, less confident, not a zinc finger, and less conserved, making it a suitable site for modification. Therefore, we chose to add the additional structure at the end of the N-terminus of RNF114.</p>
+                        <p>Observing the dimensional structure of the drug to be modified, RNF114 (RNF114 3D structure), its possible site of action, the zinc finger, is located at amino acids 29-68 and 91-110 of the protein. We found that the N-terminal sequence of RNF114 is less folded, less confident, not a zinc finger, and less conserved, making it a suitable site for modification. Therefore, we chose to add the additional structure at the end of the N-terminus of RNF114. Meanwhile, at the experimental stage, in order to quickly monitor the expression of RNF114, we attached GFP (green fluorescent protein) to the C-terminal end of the RNF114 protein via multiple copy number of rigid linker + flexible linker.</p>
 
                         <!-- pdb file -->
                         <section id="protein-structure">
@@ -385,7 +390,25 @@
                         <p>Since GALA peptides require conformational flexibility to function effectively, we added <strong>longer linkers</strong> to prevent structural interference with adjacent protein modules.</p>
 
                         <h4>Linker Selection</h4>
-                        <p>We evaluated linkers of varying lengths—<strong>GS3, GS5, and GS9</strong><sup><a href="#ref20">[20]</a></sup>—and assessed both <strong>flexible and rigid linkers</strong> respectively and we also tried to place the GALA peptide at the c-terminal end to test whether it could reduce the structural alteration of the GALA peptide on the protein. Finally, we found that the protein fusion method in the figure below had the least effect on the drug structure.</p>
+                        <p>We used alphafold3 to evaluate linkers of varying lengths—<strong>GS3, GS5, and GS9</strong><sup><a href="#ref20">[20]</a></sup>—and assessed both <strong>flexible and rigid linkers</strong><sup><a href="#ref24">[24]</a></sup> respectively and we also tried to place the GALA peptide at the c-terminal end to test whether it could reduce the structural alteration of the GALA peptide on the protein. Finally, we found that the protein fusion method in the figure below had the least effect on the drug structure.</p>
+
+                        <figure>
+                            <img src="../static/img/description/9.png" alt="Linker selection" style="width: 100%;">
+                            <figcaption>Figure 8TODO: Linker selection</figcaption>
+                        </figure>
+
+                        <!-- TODO: pdb file -->
+                        <section id="protein-structure">
+                            <div class="pdb-viewer-container">
+                                <div id="viewport" data-structures='[
+                                    {
+                                        "path": "../static/img/description/fold_gs5.pdb",
+                                        "color": "#7CB9E8",
+                                        "name": "Fold GS5"
+                                    }
+                                ]'></div>
+                            </div>
+                        </section>
 
                         <p>Ultimately, we identified the <strong>fusion protein configuration</strong> that preserved RNF114's structural integrity and functional activity most effectively.</p>
                     </section>
@@ -413,7 +436,7 @@
                         <h2>6. Biosafety Reporting Module</h2>
                         <p>Engineered bacteria are encapsulated in hydrogels and depend on nutrients in the tear fluid for survival, and are affected by factors such as temperature and nutrient elements in the ocular microenvironment. In order to be able to report in time when the bacterial activity decreases and there is a risk of lysis, and to warn users to replace their contact lenses, we designed a reporter module centered on the fluorescent protein Crismcon<sup><a href="#ref21">[21]</a></sup>.</p>
 
-                        <p>Co-expression of RNF114 and the fluorescent protein Crismcon was achieved through a multiple cis-transon structure, and the expression of RNF114 was made relatively higher by the difference in RBS intensity. After translation, the two coding genes are located on the same mRNA, and when the cellular activity decreases and the expression of RNF114 decreases, the expression of Crismcon also decreases, and a decrease in the fluorescence signal is detected to realize the safety risk report.</p>
+                        <p>Co-expression of RNF114 and the fluorescent protein Crismcon was achieved through a multiple cis-transon structure, and the expression of RNF114 was made relatively higher by the difference in RBS intensity. After translation, the two coding genes are located on the same mRNA, and when the cellular activity decreases and the expression of RNF114 decreases, the expression of Crismcon also decreases, and a decrease in the fluorescence signal is detected to realize the safety risk report. Previously, in the protein design module, we mentioned that in the experimental stage, in order to quickly monitor the expression of RNF114, GFP (green fluorescent protein) was connected to the C-terminal end of the RNF114 protein through multiple copy number of rigid linker + flexible linker, considering the existence of a certain degree of biotoxicity in GFP, in the final product, we only keep the Crismcon design.</p>
 
                         <p>We fused the fluorescent signal detection device into a black contact lens care case, pressed the button, the light source excites the fluorescent protein Crismson, and the fluorescent intensity emitted by the fluorescent protein is detected by the BH1750 sensor, which determines the safety level warning according to the predetermined threshold and displays it on the LCD screen.</p>
                     </section>
@@ -601,6 +624,12 @@
                             <span class="ref-number">[23]</span>
                             <span class="ref-content">Estlack, Z., et al. (2017). Microengineered biomimetic ocular models for ophthalmological drug development. <em>Lab on a Chip</em>, 17(9), 1539-1551.</span>
                             <a href="https://doi.org/10.1039/C7LC00112F" class="ref-link" target="_blank">DOI: 10.1039/C7LC00112F</a>
+                        </div>
+
+                        <div class="reference-item" id="ref24">
+                            <span class="ref-number">[24]</span>
+                            <span class="ref-content">Chen, X., Zaro, J. L., & Shen, W. C. (2013). Fusion protein linkers: property, design and functionality. <em>Advanced Drug Delivery Reviews</em>, 65(10), 1357-1369.</span>
+                            <a href="https://doi.org/10.1016/j.addr.2012.09.039" class="ref-link" target="_blank">DOI: 10.1016/j.addr.2012.09.039</a>
                         </div>
                     </div>
                 </section>
