@@ -1111,3 +1111,18 @@ figcaption {
 .reference-list a::after {
     display: none;
 }
+
+/* iframe container */
+.html-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.html-container iframe {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
