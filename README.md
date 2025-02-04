@@ -20,6 +20,7 @@
 - [ ] 动画效果制作。scrollreveal 还没用上呢。
 - [ ] 先休息。
 - [ ] edge 浏览器或某些情况下 content 字体加载不统一。
+- [ ] 加粗单词换行时不显示动态下划线。
 - [x] 参考文献 reference 卡片在 easypubmedicine 插件中显示会被拉长。改了 css 禁用这个类。quote 同。
 ![alt text](img/README/image-3.png)
 - [x] description 大致页面内容、大纲排版调试，具体内容等 wet lab 对接了再修改。

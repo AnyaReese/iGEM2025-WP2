@@ -45,6 +45,10 @@
     --star-min-glow: 8px;
 }
 
+* {
+    font-family: var(--content-font);
+}
+
 /* Main layout */
 .main {
     display: flex;
