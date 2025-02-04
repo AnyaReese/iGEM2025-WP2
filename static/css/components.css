@@ -123,7 +123,11 @@
 .reference-item [class*="es-"],
 .reference-item > div:not(.ref-number):not(.ref-content),
 .reference-item > span:not(.ref-number):not(.ref-content),
-.reference-item > a:not(.ref-link) {
+.reference-item > a:not(.ref-link),
+.quote [class*="es-"],
+.quote > div:not(.quote-content),
+.quote > span:not(.quote-content),
+.quote > a:not(.quote-source) {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
