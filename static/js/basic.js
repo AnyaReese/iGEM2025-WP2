@@ -1,4 +1,6 @@
 // Close menu when clicking outside
+const menuBtn = document.querySelector('.menu_btn');
+const menuWrap = document.querySelector('.menu_wrap');
 document.addEventListener('click', (event) => {
     if (!menuBtn.contains(event.target) && !menuWrap.contains(event.target)) {
         menuBtn.classList.remove('active');
