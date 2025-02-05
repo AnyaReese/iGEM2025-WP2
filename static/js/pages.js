@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const scrollTop = window.scrollY;
             const pageTitleBottom = pageTitle ? pageTitle.getBoundingClientRect().bottom + window.scrollY : 0;
             const topBarHeight = topBar ? topBar.offsetHeight : 60;
+            const footer = document.querySelector('#footer');
+            const viewportBottom = scrollTop + window.innerHeight;
+            const footerTop = footer ? footer.getBoundingClientRect().top + window.scrollY : Infinity;
 
             // add anti-shake
             const threshold = 5; // add a buffer zone
@@ -25,13 +28,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!sidebarBg.classList.contains('fixed')) {
                     sidebarBg.classList.add('fixed');
                 }
+                // 只有当viewport底部接触到footer时才设置footer高度
+                if (footer && viewportBottom >= footerTop) {
+                    document.documentElement.style.setProperty('--footer-height', `${footer.offsetHeight}px`);
+                } else {
+                    document.documentElement.style.setProperty('--footer-height', '0px');
+                }
             } else {
                 if (sidebarBg.classList.contains('fixed')) {
                     sidebarBg.classList.remove('fixed');
+                    document.documentElement.style.setProperty('--footer-height', '0px');
                 }
             }
         }
-    }, { passive: true }); // add passive to
+    }, { passive: true });
 
     // Menu item click handler - PC only
     if (window.innerWidth > 900) {

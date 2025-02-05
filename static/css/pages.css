@@ -68,6 +68,7 @@
     left: 0;
     box-shadow: none;
     transition: all 0.3s ease;
+    /* overflow: hidden; */
     overflow: visible;
 }
 
@@ -75,7 +76,7 @@
 .sidebarBg.fixed {
     position: fixed;
     top: calc(var(--topbar-height, 60px) + 20px);
-    height: calc(100vh - var(--topbar-height, 60px) - 20px);
+    height: calc(100vh - var(--topbar-height, 60px) - 20px - var(--footer-height)); /* footer-height controlled by pages.JS */
 }
 
 /* Menu styles */
