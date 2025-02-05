@@ -16,7 +16,7 @@
 - [x] quote
 - [ ] sidebar 高亮正确更新。
 - [ ] 缩放显示。缩小到很小之后需要修改 content-height，最好加点限制否则缩小到 33% 以下丑丑的。
-- [ ] table 样式调整
+- [ ] table、mathtex 样式调整
 - [ ] 动画效果制作。scrollreveal 还没用上呢。
 - [ ] 先休息。
 - [ ] edge 浏览器或某些情况下 content 字体加载不统一。
