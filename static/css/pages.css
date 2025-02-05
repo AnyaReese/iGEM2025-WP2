@@ -312,16 +312,6 @@
     margin-bottom: 0.5em;
 }
 
-/* Content area text styles */
-.content h2 {
-    font-size: 1.5em;
-    color: var(--black);
-    font-family: var(--header-font);
-    font-weight: bold;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-}
-
 /* References styles */
 .references {
     font-size: 0.9em;
