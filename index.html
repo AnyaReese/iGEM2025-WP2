@@ -89,7 +89,11 @@
             <div class="dual-image-container">
                 <!-- top gif -->
                 <div class="top-gif-container">
-                    <img src="./static/img/home/cat2sun.GIF" class="paused-gif" alt="Top Animation">
+                    <img src="./static/img/home/cat2sun.GIF" 
+                         class="paused-gif" 
+                         alt="Top Animation"
+                         onerror="this.onerror=null; this.src='./static/img/home/cat2sun-first.png';"
+                         onload="this.classList.add('loaded')">
                 </div>
                 <!-- project title -->
                 <div class="proj-title-container">
