@@ -289,13 +289,15 @@
                         <p>We hypothesize that this drug protects its stability at the ocular surface to the aqueous humor. Thus, the stability of the drug molecule can be ensured by synchronized release of HA.</p>
 
                         <h4>Rare Amino Acid Substitution (Backup Strategy)</h4>
-                        <p>If HA fails to sufficiently stabilize RNF114, we'll consider <strong>substituting rare amino acids</strong>. According to ExPASy predictions, arginine and lysine are the most frequently cleaved residues by ocular proteases. We plan to replace the five most vulnerable lysine residues with <strong>N-ε-Boc-lysine</strong>, using the <strong>Methanosarcina mazei PylRS variant (pCDF-Mm2)</strong> system<sup><a href="#ref17">[17]</a></sup>. The structural similarity between lysine and N-ε-Boc-lysine ensures minimal impact on RNF114's activity, while the bulky tert-butyl group provides steric hindrance against enzymatic cleavage.</p>
-                        
+                        <p>If RNF114 remains unstable after being encapsulated by hyaluronic acid, the replacement of specific amino acids can be considered. Using ExPASy PeptideCutter to predict the sensitive sites of RNF114 degradation by proteases, statistics show that phenylalanine at positions 27, 99, 151, 191, and 206 are all cleaved by enzymes five times. Therefore, these five positions are selected as replacement sites, and their codons are modified to UAG.</p>
+
+                        <p>The pEVOL-pAzf plasmid can generate a tRNA synthetase/tRNA pair that recognizes UAG and carries p-azidophenylalanine<sup><a href="#ref17">[17]</a></sup>. Introducing this plasmid into the strain can replace phenylalanine at the target positions with p-azidophenylalanine. The structures of these two amino acids are similar, so the replacement will not significantly affect the activity of RNF114, and the azido group can interfere with protease recognition.</p>
+
                         <p>Due to the complexity of this approach, it will serve as a contingency plan if HA-based stabilization proves insufficient.</p>
-                        
+
                         <figure>
                             <img src="../static/img/description/7.png" alt="backup strategy" style="width: 60%;">
-                            <figcaption>Figure 6: pCDF-Mm2 system</figcaption>
+                            <figcaption>Figure 6: pEVOL-pAzf system</figcaption>
                         </figure>
 
                         <h3>Targeting Modifications</h3>
@@ -586,8 +588,8 @@
 
                         <div class="reference-item" id="ref17">
                             <span class="ref-number">[17]</span>
-                            <span class="ref-content">Lu, W., Wang, R., Wang, P., Ma, S., & Xia, Q. (2021). Genetic Code Expansion System for Tight Control of Gene Expression in Bombyx mori Cell Lines. <em>Insects</em>, 12(12), 1081.</span>
-                            <a href="https://doi.org/10.3390/insects12121081" class="ref-link" target="_blank">DOI: 10.3390/insects12121081</a>
+                            <span class="ref-content">Tharp, J. M., Ehnbom, A., & Liu, W. R. (2018). tRNA: Structure, function, and applications. <em>RNA Biology</em>, 15(4-5), 441-452.</span>
+                            <a href="https://doi.org/10.1080/15476286.2017.1356561" class="ref-link" target="_blank">DOI: 10.1080/15476286.2017.1356561</a>
                         </div>
 
                         <div class="reference-item" id="ref18">

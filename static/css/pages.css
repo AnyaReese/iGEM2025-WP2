@@ -216,7 +216,8 @@
     width: 100%;
      /* dynamic height */
     /* height: var(--content-height, 400vh); */
-    height: 500vh;
+    /* in case of no content, set a minimum height */
+    height: 10vh; 
     opacity: 0.15;
     pointer-events: none;
     z-index: -1;
@@ -225,11 +226,11 @@
     transform: translateY(var(--scroll-offset, 0));
     background: 
         url('../img/backdeco.svg') left top no-repeat,
-        url('../img/backdeco.svg') right 10% no-repeat,
-        url('../img/backdeco.svg') left 20% no-repeat,
+        /* url('../img/backdeco.svg') right 10% no-repeat,
+        url('../img/backdeco.svg') left 20% no-repeat, */
         url('../img/backdeco.svg') right 40% no-repeat,
-        url('../img/backdeco.svg') left 60% no-repeat,
-        url('../img/backdeco.svg') right 80% no-repeat,
+        /* url('../img/backdeco.svg') left 60% no-repeat,
+        url('../img/backdeco.svg') right 80% no-repeat, */
         url('../img/backdeco.svg') left 90% no-repeat;
 }
 
