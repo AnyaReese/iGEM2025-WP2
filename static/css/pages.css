@@ -58,10 +58,9 @@
     padding-top: var(--topbar-height, 60px);
 }
 
-/* Menu background - dynamically adjusts height based on banner and topbar */
-.menubg {
+/* Sidebar background - dynamically adjusts height based on banner and topbar */
+.sidebarBg {
     width: 25%;
-    /* background: var(--back); */
     position: absolute;
     top: var(--topbar-height, 40px);
     bottom: 0;
@@ -72,8 +71,8 @@
     overflow: visible;
 }
 
-/* Fixed menu state when scrolled */
-.menubg.fixed {
+/* Fixed sidebar state when scrolled */
+.sidebarBg.fixed {
     position: fixed;
     top: calc(var(--topbar-height, 60px) + 20px);
     height: calc(100vh - var(--topbar-height, 60px) - 20px);
@@ -482,7 +481,7 @@
 }
 
 /* sidebar collapse button */
-.menu-collapse-btn {
+.sidebar-collapse-btn {
     position: absolute;
     right: -12px;
     top: 20px;
@@ -501,7 +500,7 @@
 }
 
 /* Expand button base styles */
-.menu-expand-btn {
+.sidebar-expand-btn {
     position: absolute;
     left: 8px;
     top: calc(var(--topbar-height, 60px) + 20px);
@@ -518,44 +517,44 @@
     z-index: 1000;
 }
 
-/* When menu is fixed, the expand button is fixed */
-.menubg.fixed + .menu-expand-btn {
+/* When sidebar is fixed, the expand button is fixed */
+.sidebarBg.fixed + .sidebar-expand-btn {
     position: fixed;
     top: calc(var(--topbar-height, 60px) + 20px);
 }
 
-/* Show expand button when menu is collapsed */
-.menubg.collapsed + .menu-expand-btn {
+/* Show expand button when sidebar is collapsed */
+.sidebarBg.collapsed + .sidebar-expand-btn {
     display: flex !important; /* Force display in desktop mode */
     opacity: 1;
 }
 
 /* Expand button hover effect */
-.menu-expand-btn:hover {
+.sidebar-expand-btn:hover {
     transform: scale(1.1);
 }
 
 /* Collapse button hover effect */
-.menu-collapse-btn:hover {
+.sidebar-collapse-btn:hover {
     transform: scale(1.1);
 }
 
 /* sidebar collapse state */
-.menubg.collapsed {
+.sidebarBg.collapsed {
     width: 0;
     min-width: 0;
     transition: all 0.3s ease;
     overflow: visible;
 }
 
-.menubg.collapsed .sidebar {
+.sidebarBg.collapsed .sidebar {
     opacity: 0;
     visibility: hidden;
     transform: translateX(-100%);
 }
 
 /* ensure button is visible and clickable in collapsed state */
-.menubg.collapsed .menu-collapse-btn {
+.sidebarBg.collapsed .sidebar-collapse-btn {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
@@ -769,7 +768,7 @@ figcaption {
         padding-top: var(--topbar-height, 60px);
     }
 
-    .menubg {
+    .sidebarBg {
         position: fixed;
         transform: translateX(-100%);
         width: 280px;
@@ -777,7 +776,7 @@ figcaption {
         transition: transform 0.3s ease;
     }
 
-    .menubg.active {
+    .sidebarBg.active {
         transform: translateX(0);
     }
 
@@ -786,21 +785,21 @@ figcaption {
         padding: 0 20px;
     }
 
-    .menu-collapse-btn {
+    .sidebar-collapse-btn {
         display: none;  /* mobile hidden */
     }
 
     /* Hide expand button in mobile view */
-    .menubg.collapsed + .menu-expand-btn {
+    .sidebarBg.collapsed + .sidebar-expand-btn {
         display: none !important; /* Force hide in mobile mode */
     }
 
     /* Show menu when active */
-    .menubg .menu_wrap.active {
+    .sidebarBg .menu_wrap.active {
         transform: translateX(0);
     }
 
-    .menubg.collapsed .sidebar {
+    .sidebarBg.collapsed .sidebar {
         opacity: 0;
         visibility: hidden;
         transform: translateX(-100%);

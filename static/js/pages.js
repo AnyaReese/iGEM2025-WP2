@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu items control
     const menuItems = document.querySelectorAll('.sidebar .t1');
     const menuLinks = document.querySelectorAll('.sidebar .t2 a');
-    // const menuBtn = document.querySelector('.menu_btn');
-    const menuBg = document.querySelector('.menubg');
+    const sidebarBg = document.querySelector('.sidebarBg');
     const pageTitle = document.querySelector('.page-title-bg');
     const topBar = document.querySelector('.top_bar');
     // const menuWrap = document.querySelector('.menu_wrap');
@@ -23,12 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const threshold = 5; // add a buffer zone
             
             if (scrollTop >= (pageTitleBottom - topBarHeight - threshold)) {
-                if (!menuBg.classList.contains('fixed')) {
-                    menuBg.classList.add('fixed');
+                if (!sidebarBg.classList.contains('fixed')) {
+                    sidebarBg.classList.add('fixed');
                 }
             } else {
-                if (menuBg.classList.contains('fixed')) {
-                    menuBg.classList.remove('fixed');
+                if (sidebarBg.classList.contains('fixed')) {
+                    sidebarBg.classList.remove('fixed');
                 }
             }
         }
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll spy with Intersection Observer
     const observerOptions = {
-        threshold: 0,  // 改为0，让我们能捕获任何可见性变化
+        threshold: 0,
         rootMargin: '-20% 0px -20% 0px'
     };
 
@@ -235,8 +234,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // add collapse and expand button
-    const collapseBtn = document.querySelector('.menu-collapse-btn');
-    const expandBtn = document.querySelector('.menu-expand-btn');
+    const collapseBtn = document.querySelector('.sidebar-collapse-btn');
+    const expandBtn = document.querySelector('.sidebar-expand-btn');
     const content = document.querySelector('.content');
     let wasMobileView = false; // add a flag to track if mobile view has been entered
 
@@ -244,15 +243,15 @@ document.addEventListener('DOMContentLoaded', function() {
         // console.log('Toggling menu:', collapsed);
         
         if (collapsed) {
-            menuBg.classList.add('collapsed');
+            sidebarBg.classList.add('collapsed');
             content.classList.add('full-width');
         } else {
-            menuBg.classList.remove('collapsed');
+            sidebarBg.classList.remove('collapsed');
             content.classList.remove('full-width');
         }
         
         // force repaint
-        menuBg.offsetHeight;
+        sidebarBg.offsetHeight;
         
         localStorage.setItem('menuCollapsed', collapsed);
     }
