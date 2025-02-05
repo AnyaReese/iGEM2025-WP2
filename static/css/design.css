@@ -1,6 +1,6 @@
 /* override content height */
 .content::before {
-    height: 100vh;
+    height: 80vh;
     background: 
         url('../img/backdeco.svg') left top no-repeat,
         url('../img/backdeco.svg') right 10% no-repeat,
