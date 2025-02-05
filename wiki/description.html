@@ -444,26 +444,10 @@
 
                         <p>We fused the fluorescent signal detection device into a black contact lens care case, pressed the button, the light source excites the fluorescent protein Crismson, and the fluorescent intensity emitted by the fluorescent protein is detected by the BH1750 sensor, which determines the safety level warning according to the predetermined threshold and displays it on the LCD screen.</p>
                         
-                        <h3>Suicide Switch in case of Leakage</h3>
-                        <ol>
-                            <li>
-                                <h4>Auxotrophic Bacterial System</h4>
-                                <p>In this system, we use the auxotrophic SHuffle T7-B strain as our engineered bacteria and have designed a metabolic complementation mechanism where bacteria A and B can only survive together, not independently. Bacteria A cannot synthesize tryptophan (Trp) but can provide histidine (His), while bacteria B cannot synthesize histidine (His) but can provide tryptophan (Trp). These two bacteria must provide each other with the required amino acids to maintain growth, and they cannot survive alone due to the lack of essential nutrients.</p>
-
-                                <p>We knocked out the trpA gene in bacteria A, making it unable to synthesize tryptophan, and knocked out the hisG gene in bacteria B, making it unable to synthesize histidine. Meanwhile, A overexpresses hisG to help provide histidine for B, and B overexpresses trpA to help provide tryptophan for A. Bacteria A and B form a strict metabolic symbiotic relationship where they can only grow in coexistence. Once separated, they will lose their survival ability due to nutritional deficiencies.</p>
-
-                                <p>This system is expected to ensure that if the hydrogel's containment of the engineered bacteria fails, the bacteria will die due to the lack of essential amino acids, preventing their spread to the eyeball and natural environment.</p>
-                            </li>
-                            <li>
-                                <h4>Killing Switch Based on Arabinose Operon</h4>
-                                <p>In addition to the auxotrophic bacterial system, we also designed a survival control mechanism based on the SHuffle T7-B engineered strain using the arabinose operon (AraC-P_BAD) system to regulate gene expression, enabling control over bacterial survival and death. Within the hydrogel, arabinose is gradually released into the surrounding environment of the engineered bacteria through a sustained-release mechanism, activating the P_BAD promoter to express the survival gene (essG) and ensuring bacterial survival within the hydrogel.</p>
-
-                                <p>When arabinose is absent, the P_BAD promoter becomes inactive, triggering the suicide gene (ccdB). This ensures that the SHuffle T7-B strain can survive normally within the hydrogel but activates its suicide mechanism in the external environment (lacking arabinose), ensuring selective survival or death of the bacteria.</p>
-
-                                <p>To achieve this goal, we constructed a dual-plasmid system: one plasmid contains the survival gene essG controlled by the P_BAD promoter, while the other plasmid controls the suicide gene module through the P_BAD promoter, enabling precise regulation of bacteria in different environments.</p>
-                            </li>
-                        </ol>
-
+                        <h3>Backup Plan: Suicide Switch in case of Leakage</h3>
+                        <p>We designed two approaches: In the first approach, our system uses a metabolic complementation mechanism to create a mutualistic bacterial system, employing auxotrophic SHuffle T7-B as the engineered strain. Bacterium A cannot synthesize tryptophan (Trp), while Bacterium B cannot synthesize histidine (His). They sustain growth by mutually supplying the necessary amino acids, but when isolated, they cannot survive due to nutrient deficiency. This system prevents bacterial spread to the eye or natural environments and ensures bacterial death if hydrogel containment fails.</p>
+                        
+                        <p>In the second approach, we utilize SHuffle T7-B engineered bacteria and control gene expression via the arabinose operon (AraC-P_BAD) system to regulate bacterial survival and death. In the hydrogel, arabinose is slowly released around the bacteria, activating the P_BAD promoter to express the survival gene (essG), ensuring bacterial viability. When arabinose is absent, the P_BAD promoter becomes inactive, activating the suicide gene (ccdB) and causing bacterial death. To achieve this, we designed a dual-plasmid system, with one plasmid controlling the survival gene essG and the other regulating the suicide gene, enabling environmentally dependent survival or death regulation.</p>
 
                     </section>
 
