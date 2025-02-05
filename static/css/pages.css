@@ -123,15 +123,25 @@
     border-radius: 4px;
     font-family: var(--sidebar-font);
     text-decoration: none;
+    background-color: transparent; /* 默认透明背景 */
 }
 
-/* on display background when active */
+/* active state */
 .sidebar .t1.active > span,
 .sidebar .t1.active > a,
 .sidebar .t1 > span.active,
 .sidebar .t1 > a.active {
     color: var(--highlight-color);
     background-color: var(--hover-bg);
+}
+
+/* inactive state */
+.sidebar .t1.inactive > span,
+.sidebar .t1.inactive > a,
+.sidebar .t1 > span.inactive,
+.sidebar .t1 > a.inactive {
+    color: var(--gray);
+    background-color: transparent;
 }
 
 /* hover effect only change text color, not background */

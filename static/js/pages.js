@@ -135,19 +135,19 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '-20% 0px -20% 0px'
     };
 
-    // 找到当前滚动位置对应的最近标题
+    // find the nearest header
     function findNearestHeader() {
-        const scrollPosition = window.scrollY + window.innerHeight * 0.3; // 视口上方30%位置
+        const scrollPosition = window.scrollY + window.innerHeight * 0.3;
         const sections = Array.from(document.querySelectorAll('.content section[id]'));
         
-        // 按照在文档中的位置排序
+        // sort by position in the document
         sections.sort((a, b) => {
             const posA = a.getBoundingClientRect().top + window.scrollY;
             const posB = b.getBoundingClientRect().top + window.scrollY;
             return posA - posB;
         });
 
-        // 找到第一个在当前滚动位置之前的section
+        // find the first section before the current scroll position
         let currentSection = null;
         for (let section of sections) {
             const sectionTop = section.getBoundingClientRect().top + window.scrollY;
@@ -161,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return currentSection;
     }
 
-    // 更新侧边栏高亮
+    // update sidebar highlight
     function updateSidebarHighlight(section) {
         if (!section) return;
 
@@ -169,28 +169,38 @@ document.addEventListener('DOMContentLoaded', function() {
         const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
         const activeT1Link = document.querySelector(`.sidebar .t1 > a[href="#${id}"]`);
 
-        // 清除所有高亮
-        menuLinks.forEach(link => link.classList.remove('active'));
-        menuItems.forEach(item => item.classList.remove('active'));
+        // clear all highlights and add inactive
+        menuLinks.forEach(link => {
+            link.classList.remove('active');
+            link.classList.add('inactive');
+        });
+        menuItems.forEach(item => {
+            item.classList.remove('active');
+            item.classList.add('inactive');
+        });
 
         if (activeLink) {
-            // 如果是t2
+            // if t2
             activeLink.classList.add('active');
+            activeLink.classList.remove('inactive');
             const parentItem = activeLink.closest('.t1');
             if (parentItem) {
                 parentItem.classList.add('active');
+                parentItem.classList.remove('inactive');
             }
         } else if (activeT1Link) {
-            // 如果是t1
+            // if t1
             activeT1Link.classList.add('active');
+            activeT1Link.classList.remove('inactive');
             const parentItem = activeT1Link.closest('.t1');
             if (parentItem) {
                 parentItem.classList.add('active');
+                parentItem.classList.remove('inactive');
             }
         }
     }
 
-    // 监听滚动事件
+    // listen to scroll events
     let scrollTimeout;
     window.addEventListener('scroll', () => {
         if (scrollTimeout) {
@@ -203,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { passive: true });
 
-    // 初始化时执行一次
+    // initialize: execute once
     const initialSection = findNearestHeader();
     updateSidebarHighlight(initialSection);
 
@@ -218,8 +228,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (clickTarget.tagName.toLowerCase() === 'a') {
             // handle active state
             clickTarget.addEventListener('click', function(e) {
-                menuItems.forEach(mi => mi.classList.remove('active'));
+                menuItems.forEach(mi => {
+                    mi.classList.remove('active');
+                    mi.classList.add('inactive');
+                });
                 item.classList.add('active');
+                item.classList.remove('inactive');
             });
         } else {
             // span tag keep the original expand/collapse function
@@ -227,8 +241,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (e.target.tagName === 'A') return;
                 
                 const wasActive = this.classList.contains('active');
-                menuItems.forEach(mi => mi.classList.remove('active'));
-                if (!wasActive) this.classList.add('active');
+                menuItems.forEach(mi => {
+                    mi.classList.remove('active');
+                    mi.classList.add('inactive');
+                });
+                if (!wasActive) {
+                    this.classList.add('active');
+                    this.classList.remove('inactive');
+                }
             });
         }
     });
