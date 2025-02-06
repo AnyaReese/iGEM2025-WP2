@@ -60,13 +60,13 @@
 
 /* Sidebar background - dynamically adjusts height based on banner and topbar */
 .sidebarBg {
-    width: 25%;
     position: absolute;
-    top: var(--topbar-height, 40px);
-    bottom: 0;
-    height: calc(100vh - var(--topbar-height, 60px) - var(--title-height, 300px));
-    left: 0;
-    box-shadow: none;
+    top: var(--topbar-height, 60px);
+    width: 25%;
+    min-width: 250px;
+    height: calc(100vh - var(--topbar-height, 60px));
+    background-color: transparent;
+    overflow-y: auto;  /* allow content scroll */
     transition: all 0.3s ease;
     /* overflow: hidden; */
     overflow: visible;
