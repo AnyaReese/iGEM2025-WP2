@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HP | Education | iGem Winter Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../../static/img/favicon.ico">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="../../static/css/basic.css">
+        <link rel="stylesheet" href="../../static/css/load.css">
+        <link rel="stylesheet" href="../../static/css/pages.css">
+        <!-- <link rel="stylesheet" href="../static/css/components.css"> -->
+        <style>
+            .questionnaire {
+                margin: 2em 0;
+                padding: 30px;
+                background: linear-gradient(135deg, 
+                    rgba(147, 197, 253, 0.3) 0%,
+                    rgba(196, 181, 253, 0.3) 50%,
+                    rgba(167, 243, 208, 0.3) 100%
+                );
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                position: relative;
+            }
+
+            .question-item {
+                margin-bottom: 2em;
+                padding: 20px;
+                background: rgba(255, 255, 255, 1);
+                border-radius: 8px;
+                position: relative;
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                box-shadow: 0 4px 16px rgba(31, 38, 135, 0.1);
+            }
+
+            .options {
+                margin: 15px 15px;
+                display: flex;
+                gap: 30px;
+            }
+
+            .option {
+                display: flex;
+                align-items: center;
+                padding: 10px 24px;
+                background: rgba(230, 249, 255, 0.403);
+                border-radius: 30px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                border: 2px solid transparent;
+            }
+
+            .option:hover {
+                background: rgba(255, 255, 255, 0.95);
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+            }
+
+            .option input[type="radio"] {
+                display: none;
+            }
+
+            .radio-custom {
+                width: 24px;
+                height: 24px;
+                border: 2px solid #007bff;
+                border-radius: 50%;
+                margin-right: 12px;
+                position: relative;
+                background: white;
+                transition: all 0.2s ease;
+            }
+
+            .option input[type="radio"]:checked + .radio-custom::after {
+                content: '';
+                width: 14px;
+                height: 14px;
+                background: #007bff;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                animation: radioScale 0.2s ease;
+            }
+
+            .option input[type="radio"]:checked ~ span {
+                color: #007bff;
+                font-weight: 500;
+            }
+
+            .option input[type="radio"]:checked + .radio-custom {
+                border-color: #007bff;
+                background: white;
+            }
+
+            .option span {
+                font-size: 16px;
+                color: #4a5568;
+                transition: all 0.2s ease;
+            }
+
+            .correct-option {
+                background: rgba(52, 211, 153, 0.1) !important;
+                border-color: #34D399 !important;
+            }
+
+            .correct-option .radio-custom {
+                border-color: #34D399;
+            }
+
+            .correct-option span {
+                color: #34D399;
+            }
+
+            .wrong-option {
+                background: rgba(239, 68, 68, 0.1) !important;
+                border-color: #EF4444 !important;
+            }
+
+            .wrong-option .radio-custom {
+                border-color: #EF4444;
+            }
+
+            .wrong-option span {
+                color: #EF4444;
+            }
+
+            @keyframes radioScale {
+                0% {
+                    transform: translate(-50%, -50%) scale(0);
+                }
+                50% {
+                    transform: translate(-50%, -50%) scale(1.2);
+                }
+                100% {
+                    transform: translate(-50%, -50%) scale(1);
+                }
+            }
+
+            .submit-btn {
+                background: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: background 0.3s;
+            }
+
+            .submit-btn:hover {
+                background: #0056b3;
+            }
+
+            .result-display {
+                margin-top: 20px;
+                padding: 15px;
+                border-radius: 4px;
+                display: none;
+            }
+
+            .correct {
+                background: #d4edda;
+                color: #155724;
+            }
+
+            .incorrect {
+                background: #f8d7da;
+                color: #721c24;
+            }
+
+            .correct-answer {
+                background: #f0fff4;
+                border-left-color: #38a169;
+            }
+
+            .incorrect-answer {
+                background: #fff5f5;
+                border-left-color: #e53e3e;
+            }
+
+            .answer-note {
+                margin-top: 10px;
+                padding: 8px;
+                background: #f8f9fa;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+
+            .language-toggle {
+                margin-bottom: 20px;
+                text-align: right;
+            }
+
+            .lang-btn {
+                padding: 8px 16px;
+                margin-left: 10px;
+                border: 2px solid #007bff;
+                background: white;
+                color: #007bff;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .lang-btn.active {
+                background: #007bff;
+                color: white;
+            }
+
+            .question-cn {
+                display: none;
+            }
+
+            .explanation {
+                margin-top: 10px;
+                padding: 10px;
+                background: #f8f9fa;
+                border-radius: 4px;
+                border-left: 3px solid #007bff;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .explanation.show {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- scroll progress bar -->
+        <div class="scroll-progress"></div>
+        
+        <!-- Loading cast -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="../../static/img/loading.svg" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <div class="top_bar">
+            <div class="menu_btn">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="logo_wrap">
+                <a href="../../index.html"><img id="team_logo" src="../../static/img/logo-apart-text.svg" alt=""></a>
+            </div>
+            <div class="menu_wrap">
+                <div id="project" class="menu_item">
+                    <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../description.html">Description</a></li>
+                        <li><a href="../design.html">Design</a></li>
+                        <li><a href="../safety.html">Safety</a></li>
+                    </ul>
+                </div>
+                <div id="wetlab" class="menu_item">
+                    <div class="title">Wet Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../wetlab/engineering.html">Engineering</a></li>
+                        <li><a href="../wetlab/construction.html">Construction</a></li>
+                        <li><a href="../wetlab/protocol.html">Protocol</a></li>
+                        <li><a href="../wetlab/parts.html">Parts</a></li>
+                    </ul>
+                </div>
+                <div id="drylab" class="menu_item">
+                    <div class="title">Dry Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../drylab/model&software.html">Model & Software</a></li>
+                        <li><a href="../drylab/hardware.html">Hardware</a></li>
+                    </ul>
+                </div>
+                <div id="human" class="menu_item">
+                    <div class="title">Human Practice<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./overview.html">Overview</a></li>
+                        <li><a href="./education.html">Education</a></li>
+                        <li><a href="./entrepreneurship.html">Entrepreneurship</a></li>
+                        <li><a href="./integrated.html">Integrated Human Practices</a></li>
+                        <li><a href="./inclusivity.html">Inclusivity</a></li>
+                        <li><a href="./sustain.html">Sustainable Development</a></li>
+                        <li><a href="./ethical.html">Ethical Framework</a></li>
+                    </ul>
+                </div>
+                <div id="team" class="menu_item">
+                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../team/attributions.html">Attributions</a></li>
+                        <li><a href="../team/member.html">Member</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Title Background -->
+        <div class="page-title-bg">
+            <div class="bg-image" style="background-image: url('../../static/img/hp-overview/overview.png')"></div>
+            <div class="overlay"></div>
+            <div class="title-content">
+                <h1>Education</h1>
+            </div>
+        </div>
+
+        <!-- Main content wrapper -->
+        <div class="main">
+            <!-- Sidebar wrapper -->
+            <div class="sidebarBg">
+                <div class="sidebar">
+                    <div class="sidebar-collapse-btn">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </div>
+                    
+                    <div class="t1">
+                        <a href="#childandelderly">Scientific enlightenment for children and care for the elderly</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#teenagers">Scientific exploration for teenagers</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#college">Science communication for adults and college students</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#multilanguage">Multi-language support, expanding the boundaries of science popularization</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#evaluation">Evaluation and iteration, continuous optimization of popular science effect</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- sidebar expand button -->
+            <div class="sidebar-expand-btn">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+
+            <!-- Content area -->
+            <div class="content">
+
+                <section id="introduction">
+                    <blockquote class="quote">
+                        "Let science step out of the laboratory, let brightness enter millions of households" - Using education as a bridge to promote technological inclusiveness.
+                    </blockquote>
+                    <p>We always believe that education is not only a tool for knowledge spreading, but also a key bridge to promote technological inclusiveness and bring science out of the laboratory and into households. Based on the characteristics and needs of different age groups, we have carefully designed a series of interesting and interactive science popularization activities, aiming to break the "ivory tower" of science and allow everyone to gain an insight into science.</p>
+                </section>
+
+                <section id="childandelderly">
+                    <h1>&nbsp;Scientific enlightenment for children and care for the elderly</h1>
+                    <p>For children and the elderly, we plan to carry out a series of fun and popular science activities based on the surrounding community to help them understand complex scientific concepts in a relaxed atmosphere.</p>
+                    <p><strong>A fun experiment</strong> will be one of the core highlights of the event. For example, in <strong>"Protein Aggregation in Milk"</strong> The experiment visually demonstrates the phenomenon of protein aggregation through a simple operation - using <strong>vinegar to coagulate milk</strong>. This is not only a fun experiment, but also can analogize the denaturation mechanism of lens proteins in cataracts, helping participants understand abstract biological principles in action. In addition, we designed the <strong>"Cataract Perspective Experience"</strong> session, which simulates blurred vision through atomized lenses or combines virtual reality (VR) technology to allow participants to immerse themselves in the visual impairment of cataract patients. The use of VR equipment will be adjusted flexibly according to the budget, and we plan to contact the teachers of the relevant laboratories ( 1) to explore the feasibility of borrowing equipment to ensure the efficient use of resources. These activities will be carried out in Zhejiang University Tianhong Kindergarten Shuiyue Park in Xihu District, Hangzhou City, and nearby neighbourhoods. The site is selected based on actual cooperation intention expectations and geographical convenience.</p>
+                    <p>In order to let children experience the fun of science in the game, we have specially designed <strong>puzzle games for primary students</strong>. The game form is innovatively based on the classic logic dog panel, focusing on the formation mechanism of cataracts and the drug clearance process design tasks, helping children cultivate scientific thinking in a relaxed and pleasant atmosphere.</p>
+                    <figure>
+                        <img src="../../static/img/hp-education/game.png" alt="">
+                    </figure>
+                </section>
+
+                <section id="teenagers">
+                    <h1>&nbsp;Scientific exploration for teenagers</h1>
+                    <p>For high school students with a certain biological foundation, we plan to cooperate with schools such as <strong>Xuejun Middle School</strong> and <strong>Hangzhou No.2 Middle School</strong> to offer a series of open courses. These courses will cover the <strong>basic knowledge of synthetic biology</strong>, including cutting-edge fields such as gene editing technology and the application of engineering bacteria, helping students broaden their scientific horizons. In the course, we will also introduce the team's research projects, stimulate students' participation enthusiasm through <strong>prize-winning Q&A sessions</strong>, and consolidate the learning effect.</p>
+                    <p>In addition, we have carefully designed a <strong>card game</strong> with "Cataract Pathogenesis and Treatment" as the core. The game includes character cards and strategy cards, such as RNF114 protein and CRYAA mutant, while strategy cards cover key concepts such as targeted delivery and ubiquitination markers. Through this interactive form, students can not only deepen their understanding of disease mechanisms, but also exercise their logical thinking and scientific reasoning abilities in game strategy.</p>
+                </section>
+
+                <section id="college">
+                    <h1>&nbsp;Science communication for adults and college students</h1>
+                    <p>For adults and college students, we will expand the coverage and influence of popular science through <strong>popular science lectures and online publicity</strong>.</p>
+                    <p>Firstly, we plan to launch a <strong>short video series</strong>, such as <strong>"3 Minutes to Understand New Cataract Therapy"</strong>, which analyzes the mechanism of RNF114 in cataract treatment through vivid animation, helping the audience to obtain professional and accurate scientific information in a short time.</p>
+                    <p>Secondly, we plan to hold an expert <strong>interview activity</strong>, inviting experts from the <strong>School of Medicine of Zhejiang University</strong> to interpret the clinical prospects of non-surgical treatment of cataracts. The interview format can be flexibly adjusted according to the needs, which can be either online LIVE, recorded videos or offline lectures to enhance interaction and communication with the audience. Currently, we have listed the list of potential cooperating experts (Attachment 1) to ensure the professionalism and authority of the lecture content.</p>
+                    <p>At the same time, we will hold a <strong>science popularization exhibition</strong>, showcasing dynamic demonstrations of <strong>contact lens drug delivery systems</strong>, combined with animations and physical models for easy-to-understand explanations. In addition, we will also produce promotional brochures to facilitate visitors to obtain science popularization information at any time. The exhibition location covers densely populated areas such as the Basic Library of Zhejiang University, the main building, and the front of the East District cafeteria. It will also be exhibited in surrounding community activity centers to cover a wider audience.</p>
+                </section>
+
+                <section id="multilanguage">
+                    <h1>&nbsp;Multi-language support, expanding the boundaries of science popularization</h1>
+                    <p>In order to expand the coverage of popular science, we are committed to achieving <strong>multilingual support</strong>, ensuring that people from different language backgrounds have equal access to scientific knowledge. All educational materials (including manuals, video subtitles, etc.) will be provided in both Chinese and English versions for the convenience of international students and expatriates.</p>
+                    <p>In addition, if conditions permit, we also plan to cooperate with for <strong>Xinjiang and Tibet</strong> to produce Tibetan and Uyghur versions of Promotion Videos, further promote the popularization of popular science resources in ethnic minority areas, and truly achieve barrier-free spread of science education.</p>
+                </section>
+
+                <section id="evaluation">
+                    <h1>&nbsp;Evaluation and iteration, continuous optimization of popular science effect</h1>
+                    <p>Science communication is not only the output of knowledge, but also requires effective feedback mechanisms to ensure the effectiveness of communication. To this end, we have developed a systematic <strong>evaluation and iteration mechanism</strong> to comprehensively measure the effectiveness of activities in a quantitative and qualitative way.</p>
+                    <p>In terms of <strong>quantitative evaluation</strong>, we have set clear target indicators, such as the number of participants in the activity needs to hit 1000, and evaluate the effect of knowledge popularization through cataract knowledge test (comparison before and after the activity), striving to <strong>achieve a 30% increase in knowledge mastery rate</strong>. The test questions will focus on daily scenarios and common knowledge, avoid being too obscure, and ensure that participants are easy to understand and answer.</p>
+
+                    <div class="questionnaire">
+                        <div class="language-toggle">
+                            <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+                            <button class="lang-btn" onclick="switchLanguage('cn')">中文</button>
+                        </div>
+                        <h2>Sample test questions / 可交互样题</h2>
+                        <div class="question-container">
+                            <div class="question-item">
+                                <div class="question-en">
+                                    <p>1. Cataracts are one of the leading causes of blindness worldwide.</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q1" value="true" onchange="showAnswer(this, 'q1')">
+                                            <span class="radio-custom"></span>
+                                            True
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q1" value="false" onchange="showAnswer(this, 'q1')">
+                                            <span class="radio-custom"></span>
+                                            False
+                                        </label>
+                                    </div>
+                                    <div class="explanation en" style="display: none">
+                                        <p class="note">Common sense: According to data from the World Health Organization, cataracts are the leading cause of blindness.</p>
+                                    </div>
+                                </div>
+                                <div class="question-cn">
+                                    <p>1. 白内障是全球导致失明的主要原因之一。</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q1_cn" value="true" onchange="showAnswer(this, 'q1')">
+                                            <span class="radio-custom"></span>
+                                            正确
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q1_cn" value="false" onchange="showAnswer(this, 'q1')">
+                                            <span class="radio-custom"></span>
+                                            错误
+                                        </label>
+                                    </div>
+                                    <div class="explanation cn" style="display: none">
+                                        <p class="note">常识：根据世界卫生组织数据，白内障是致盲首因。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-item">
+                                <div class="question-en">
+                                    <p>2. Currently the only treatment for cataracts is surgery.</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q2" value="true" onchange="showAnswer(this, 'q2')">
+                                            <span class="radio-custom"></span>
+                                            True
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q2" value="false" onchange="showAnswer(this, 'q2')">
+                                            <span class="radio-custom"></span>
+                                            False
+                                        </label>
+                                    </div>
+                                    <div class="explanation en" style="display: none">
+                                        <p class="note">Adaptation of existing treatments includes surgery and the usage of eye drops, and in addition, our project proposes the use of contact lenses to deliver medication for cataracts.</p>
+                                    </div>
+                                </div>
+                                <div class="question-cn">
+                                    <p>2. 目前白内障的唯一治疗方法是手术。</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q2_cn" value="true" onchange="showAnswer(this, 'q2')">
+                                            <span class="radio-custom"></span>
+                                            正确
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q2_cn" value="false" onchange="showAnswer(this, 'q2')">
+                                            <span class="radio-custom"></span>
+                                            错误
+                                        </label>
+                                    </div>
+                                    <div class="explanation cn" style="display: none">
+                                        <p class="note">白内障目前的治疗手段包括手术和眼药水，此外，我们的项目提出使用隐形眼镜递送药物治疗白内障。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-item">
+                                <div class="question-en">
+                                    <p>3. Direct exposure of engineered bacteria to air can cause biosafety risks.</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q3" value="true" onchange="showAnswer(this, 'q3')">
+                                            <span class="radio-custom"></span>
+                                            True
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q3" value="false" onchange="showAnswer(this, 'q3')">
+                                            <span class="radio-custom"></span>
+                                            False
+                                        </label>
+                                    </div>
+                                    <div class="explanation en" style="display: none">
+                                        <p class="note">Safety measures: Hydrogel encapsulation + UV inactivation system to prevent leakage.</p>
+                                    </div>
+                                </div>
+                                <div class="question-cn">
+                                    <p>3. 工程菌直接暴露在空气中会引发生物安全风险。</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q3_cn" value="true" onchange="showAnswer(this, 'q3')">
+                                            <span class="radio-custom"></span>
+                                            正确
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q3_cn" value="false" onchange="showAnswer(this, 'q3')">
+                                            <span class="radio-custom"></span>
+                                            错误
+                                        </label>
+                                    </div>
+                                    <div class="explanation cn" style="display: none">
+                                        <p class="note">安全措施：水凝胶封装+紫外线灭活系统防止泄漏。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-item">
+                                <div class="question-en">
+                                    <p>4. The drug absorption rate of traditional eye drops exceeds 50%.</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q4" value="true" onchange="showAnswer(this, 'q4')">
+                                            <span class="radio-custom"></span>
+                                            True
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q4" value="false" onchange="showAnswer(this, 'q4')">
+                                            <span class="radio-custom"></span>
+                                            False
+                                        </label>
+                                    </div>
+                                    <div class="explanation en" style="display: none">
+                                        <p class="note">Common sense: The absorption rate of traditional eye drops is only about 5%.</p>
+                                    </div>
+                                </div>
+                                <div class="question-cn">
+                                    <p>4. 传统眼药水的药物吸收率超过50%。</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q4_cn" value="true" onchange="showAnswer(this, 'q4')">
+                                            <span class="radio-custom"></span>
+                                            正确
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q4_cn" value="false" onchange="showAnswer(this, 'q4')">
+                                            <span class="radio-custom"></span>
+                                            错误
+                                        </label>
+                                    </div>
+                                    <div class="explanation cn" style="display: none">
+                                        <p class="note">常识：传统眼药水吸收率仅约5%。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="question-item">
+                                <div class="question-en">
+                                    <p>5. The function of RNF114 protein is to repair lens opacity.</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q5" value="true" onchange="showAnswer(this, 'q5')">
+                                            <span class="radio-custom"></span>
+                                            True
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q5" value="false" onchange="showAnswer(this, 'q5')">
+                                            <span class="radio-custom"></span>
+                                            False
+                                        </label>
+                                    </div>
+                                    <div class="explanation en" style="display: none">
+                                        <p class="note">Technical Core: RNF114 tags misfolded proteins and promotes their degradation.</p>
+                                    </div>
+                                </div>
+                                <div class="question-cn">
+                                    <p>5. RNF114蛋白的作用是修复晶状体混浊。</p>
+                                    <div class="options">
+                                        <label class="option">
+                                            <input type="radio" name="q5_cn" value="true" onchange="showAnswer(this, 'q5')">
+                                            <span class="radio-custom"></span>
+                                            正确
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="q5_cn" value="false" onchange="showAnswer(this, 'q5')">
+                                            <span class="radio-custom"></span>
+                                            错误
+                                        </label>
+                                    </div>
+                                    <div class="explanation cn" style="display: none">
+                                        <p class="note">技术核心：RNF114标记错误折叠蛋白并促使其降解。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>At the same time, we will collect <strong>qualitative feedback</strong>, including participants' evaluations of the most interesting parts and improvement suggestions, and analyze the dissemination effect by combining interactive data on social media (likes, comments, shares, etc.). Through the comprehensive analysis of these data, we will continuously optimize the activity design to ensure the spread of science and that our efforts meet the public's needs and have a profound social impact.</p>
+                    <p>We hope that through these multi-level and multi-form educational activities, science can truly step out of the laboratory and become the light that guide our way.</p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="logo_wrap">
+                <img id="team_logo" src="../../static/img/Logo-round-text.svg" alt="">
+            </div>
+            <div class="follow">
+                <div class="title">Follow Us</div>
+                <ul class="follow_list">
+                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="title">Contact Us</div>
+                <div class="email">ZJU_China@outlook.com</div>
+            </div>
+        </footer>
+
+        <!-- Add custom JavaScript before other scripts -->
+        <script>
+            function switchLanguage(lang) {
+                const enQuestions = document.querySelectorAll('.question-en');
+                const cnQuestions = document.querySelectorAll('.question-cn');
+                const buttons = document.querySelectorAll('.lang-btn');
+                
+                if (lang === 'cn') {
+                    // hide english questions
+                    enQuestions.forEach(q => q.style.display = 'none');
+                    cnQuestions.forEach(q => q.style.display = 'block');
+                    buttons[0].classList.remove('active');
+                    buttons[1].classList.add('active');
+                } else {
+                    // hide chinese questions
+                    enQuestions.forEach(q => q.style.display = 'block');
+                    cnQuestions.forEach(q => q.style.display = 'none');
+                    buttons[0].classList.add('active');
+                    buttons[1].classList.remove('active');
+                }
+
+                // reset all answer display status
+                const explanations = document.querySelectorAll('.explanation');
+                explanations.forEach(exp => {
+                    if (exp.classList.contains('show')) {
+                        if ((lang === 'cn' && exp.classList.contains('cn')) || 
+                            (lang === 'en' && exp.classList.contains('en'))) {
+                            exp.style.display = 'block';
+                        } else {
+                            exp.style.display = 'none';
+                        }
+                    }
+                });
+            }
+
+            function showAnswer(input, questionId) {
+                const correctAnswers = {
+                    q1: 'true',
+                    q2: 'false',
+                    q3: 'true',
+                    q4: 'false',
+                    q5: 'true'
+                };
+
+                const questionItem = input.closest('.question-item');
+                const options = questionItem.querySelectorAll('.option');
+                const explanations = questionItem.querySelectorAll('.explanation');
+                
+                // show answer explanation
+                explanations.forEach(exp => {
+                    exp.style.display = 'block';
+                    setTimeout(() => {
+                        exp.classList.add('show');
+                    }, 100);
+                });
+
+                // mark correct and wrong options
+                options.forEach(option => {
+                    const optionInput = option.querySelector('input');
+                    optionInput.disabled = true; // disable options to prevent repeated selection
+                    
+                    if (optionInput.value === correctAnswers[questionId]) {
+                        option.classList.add('correct-option');
+                    }
+                    
+                    if (optionInput === input && optionInput.value !== correctAnswers[questionId]) {
+                        option.classList.add('wrong-option');
+                    }
+                });
+
+                // mark the status of the whole question
+                if (input.value === correctAnswers[questionId]) {
+                    questionItem.classList.add('correct-answer');
+                } else {
+                    questionItem.classList.add('incorrect-answer');
+                }
+            }
+        </script>
+
+        <script src="../../static/js/basic.js"></script>
+        <script src="../../static/js/pages.js"></script>
+        <script src="../../static/js/pdbviewer.js"></script>
+        <script src="../../static/js/components.js"></script>
+    </body>
+</html>
