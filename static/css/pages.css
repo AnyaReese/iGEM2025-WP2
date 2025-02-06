@@ -1133,3 +1133,8 @@ figcaption {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     overflow: hidden;
 }
+
+/* Ethical Practices White Paper italic style */
+#ethical i {
+    color: #4A4A4A;      /* dark gray */
+}
