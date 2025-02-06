@@ -209,7 +209,7 @@
 .content {
     flex: 1;
     margin-left: 25%;
-    padding: 0 40px;
+    padding: 40px 40px 0 40px;  /* up right down left */
     max-width: 1200px;
     transition: margin-left 0.3s ease;
     font-family: var(--content-font);
@@ -248,8 +248,8 @@
 
 .content.full-width {
     margin-left: 0;
-    margin: 0 auto;  /* center display */
-    padding: 0 80px;  /* add right/left padding */
+    margin: 0 auto;
+    padding: 40px 80px 0 80px;
     width: 100%;
     max-width: 1400px;
 }
