@@ -13,11 +13,11 @@
         <style>
             .questionnaire {
                 margin: 2em 0;
-                padding: 30px;
+                padding: 20px;
                 background: linear-gradient(135deg, 
-                    rgba(147, 197, 253, 0.3) 0%,
-                    rgba(196, 181, 253, 0.3) 50%,
-                    rgba(167, 243, 208, 0.3) 100%
+                    rgba(147, 196, 253, 0.189) 0%,
+                    rgba(195, 181, 253, 0.107) 50%,
+                    rgba(167, 243, 208, 0.151) 100%
                 );
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
@@ -28,8 +28,8 @@
             }
 
             .question-item {
-                margin-bottom: 2em;
-                padding: 20px;
+                margin-bottom: 15px;
+                padding: 15px;
                 background: rgba(255, 255, 255, 1);
                 border-radius: 8px;
                 position: relative;
@@ -37,18 +37,25 @@
                 box-shadow: 0 4px 16px rgba(31, 38, 135, 0.1);
             }
 
+            .question-item p {
+                margin-bottom: 12px;
+                font-size: 18px;
+                line-height: 1.4;
+            }
+
             .options {
-                margin: 15px 15px;
+                margin: 15px 25px;
                 display: flex;
-                gap: 30px;
+                gap: 20px;
             }
 
             .option {
+                font-size: 16px;
                 display: flex;
                 align-items: center;
-                padding: 10px 24px;
-                background: rgba(230, 249, 255, 0.403);
-                border-radius: 30px;
+                padding: 8px 16px;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 20px;
                 cursor: pointer;
                 transition: all 0.3s ease;
                 border: 2px solid transparent;
@@ -65,27 +72,17 @@
             }
 
             .radio-custom {
-                width: 24px;
-                height: 24px;
+                width: 18px;
+                height: 18px;
                 border: 2px solid #007bff;
                 border-radius: 50%;
-                margin-right: 12px;
-                position: relative;
-                background: white;
-                transition: all 0.2s ease;
+                margin-right: 8px;
             }
 
             .option input[type="radio"]:checked + .radio-custom::after {
                 content: '';
-                width: 14px;
-                height: 14px;
-                background: #007bff;
-                border-radius: 50%;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                animation: radioScale 0.2s ease;
+                width: 10px;
+                height: 10px;
             }
 
             .option input[type="radio"]:checked ~ span {
@@ -99,9 +96,7 @@
             }
 
             .option span {
-                font-size: 16px;
-                color: #4a5568;
-                transition: all 0.2s ease;
+                font-size: 14px;
             }
 
             .correct-option {
