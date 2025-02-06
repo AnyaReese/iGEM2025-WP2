@@ -510,8 +510,8 @@ body {
     top: 0;
     left: 0;
     width: 0%;
-    height: 3px;
-    background: linear-gradient(to right, #4CAF50, #2196F3);  /* gradient effect */
+    height: 5px;
+    background: linear-gradient(to right, #ffc7fd, #9fd4ff);  /* gradient effect */
     z-index: 9999;
     transition: width 0.1s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* add a little shadow */
@@ -519,6 +519,6 @@ body {
 
 /* hover scroll progress effect */
 .scroll-progress:hover {
-    height: 5px;
+    height: 8px;
     transition: height 0.2s ease;
 }
