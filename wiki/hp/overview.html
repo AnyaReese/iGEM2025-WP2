@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Design | iGem Winter Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../../static/img/favicon.ico">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="../../static/css/basic.css">
+        <link rel="stylesheet" href="../../static/css/load.css">
+        <link rel="stylesheet" href="../../static/css/pages.css">
+        <!-- <link rel="stylesheet" href="../static/css/components.css"> -->
+        <style>
+            .section-link {
+                margin-left: 15px;
+                font-size: 0.8em;
+                opacity: 0.6;
+                transition: all 0.3s ease;
+                vertical-align: middle;
+            }
+
+            .section-link:hover {
+                opacity: 1;
+                transform: translateX(5px);
+            }
+
+            .section-link ion-icon {
+                font-size: 1.2em;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- scroll progress bar -->
+        <div class="scroll-progress"></div>
+        
+        <!-- Loading cast -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="../../static/img/loading.svg" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <div class="top_bar">
+            <div class="menu_btn">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="logo_wrap">
+                <a href="../../index.html"><img id="team_logo" src="../../static/img/logo-apart-text.svg" alt=""></a>
+            </div>
+            <div class="menu_wrap">
+                <div id="project" class="menu_item">
+                    <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../description.html">Description</a></li>
+                        <li><a href="../design.html">Design</a></li>
+                        <li><a href="../safety.html">Safety</a></li>
+                    </ul>
+                </div>
+                <div id="wetlab" class="menu_item">
+                    <div class="title">Wet Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../wetlab/engineering.html">Engineering</a></li>
+                        <li><a href="../wetlab/construction.html">Construction</a></li>
+                        <li><a href="../wetlab/protocol.html">Protocol</a></li>
+                        <li><a href="../wetlab/parts.html">Parts</a></li>
+                    </ul>
+                </div>
+                <div id="drylab" class="menu_item">
+                    <div class="title">Dry Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../drylab/model&software.html">Model & Software</a></li>
+                        <li><a href="../drylab/hardware.html">Hardware</a></li>
+                    </ul>
+                </div>
+                <div id="human" class="menu_item">
+                    <div class="title">Human Practice<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./overview.html">Overview</a></li>
+                        <li><a href="./education.html">Education</a></li>
+                        <li><a href="./entrepreneurship.html">Entrepreneurship</a></li>
+                        <li><a href="./integrated.html">Integrated Human Practices</a></li>
+                        <li><a href="./inclusivity.html">Inclusivity</a></li>
+                        <li><a href="./sustain.html">Sustainable Development</a></li>
+                        <li><a href="./ethical.html">Ethical Framework</a></li>
+                    </ul>
+                </div>
+                <div id="team" class="menu_item">
+                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="../team/attributions.html">Attributions</a></li>
+                        <li><a href="../team/member.html">Member</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Page Title Background -->
+        <div class="page-title-bg">
+            <div class="bg-image" style="background-image: url('../../static/img/hp-overview/overview.png')"></div>
+            <div class="overlay"></div>
+            <div class="title-content">
+                <h1>Human Practice</h1>
+            </div>
+        </div>
+
+        <!-- Main content wrapper -->
+        <div class="main">
+            <!-- Sidebar wrapper -->
+            <div class="sidebarBg">
+                <div class="sidebar">
+                    <!-- sidebar collapse button -->
+                    <div class="sidebar-collapse-btn">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </div>
+                    
+                    <div class="t1">
+                        <a href="#education">Education</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#entrepreneurship">Entrepreneurship</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#integrated">Integrated Human Practices</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#inclusivity">Inclusivity</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#sustainable">Sustainable Development</a>
+                    </div>
+                    <div class="t1">
+                        <a href="#ethical">Ethical Framework</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- sidebar expand button -->
+            <div class="sidebar-expand-btn">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+
+            <!-- Content area -->
+            <div class="content">
+                <section id="education">
+                    <h1>Education <a href="./education.html" class="section-link"><ion-icon name="arrow-forward-outline"></ion-icon></a></h1>
+                    <p>教育，是科学与人间最温柔的对话。我们为孩童架起牛奶凝固的微观世界，为老人揭开白内障的迷雾；在高中课堂播下合成生物学的火种，于大学校园点燃创新的激情。语言不再是屏障，方言与多语种交织成网，让边缘群体的声音被听见，让知识的触角延伸至最远的角落。通过趣味实验与虚拟现实的交融，白内障机制的迷雾在孩子们眼中化作探索的星光；在卡牌游戏的策略中，青少年的智慧与生命科学的奥秘悄然相遇。我们坚信，每一次实验的惊叹、每一场讲座的沉思，都是通向光明未来的阶梯——因为教育，不仅传递知识，更编织希望。</p>
+                </section>
+
+                <section id="entrepreneurship">
+                    <h1>Entrepreneurship <a href="./entrepreneurship.html" class="section-link"><ion-icon name="arrow-forward-outline"></ion-icon></a></h1>
+                    <p>我们始终相信，商业的使命是让技术向善生长。ClearCats®，不仅是隐于镜片的一缕微光，更是对传统医疗桎梏的温柔颠覆。我们以工程菌为笔，水凝胶为墨，书写非手术治疗的未来诗篇。在资本与良知的平衡中，我们选择让每一片镜片承载普惠的诺言；在市场的喧嚣中，我们倾听患者沉默的呼唤。因为真正的创新，不在利润的账簿，而在千万双重获清晰的眼眸中。我们深知，真正的商业向善，是让每一分投资都化作光明的火种，照亮那些被遗忘的角落。</p>
+                </section>
+
+                <section id="integrated">
+                    <h1>Integrated Human Practices <a href="./integrated.html" class="section-link"><ion-icon name="arrow-forward-outline"></ion-icon></a></h1>
+                    <p>技术若无人文的滋养，终将枯萎。我们与医生并肩，将论文中的RNF114蛋白化为治愈的密钥；与患者同行，让护理盒的语音提示抚平视障者的不安。伦理审查不是枷锁，而是守护生命的盾牌；田野调查不是任务，而是触摸真实的窗口。在技术的星河中，我们始终仰望人文的北极星——因为最伟大的发明，永远诞生于对人类需求的深切共情。</p>
+                </section>
+
+                <section id="inclusivity">
+                    <h1>Inclusivity <a href="./inclusivity.html" class="section-link"><ion-icon name="arrow-forward-outline"></ion-icon></a></h1>
+                    <p>光明，不应是少数人的奢侈品，当科技褪去冰冷的外壳，便成了平等的使者。我们为维吾尔族老人定制蓝色包装，避讳白色的哀伤；为穆斯林用户设计"斋月模式"，让信仰与治疗和谐共生。在浙江的乡村，动画教程跨越文字的鸿沟；在杭州的盲校，触觉反馈点亮黑暗中的路。包容，不是施舍，而是承认：每一份需求都独一无二，每一段人生都值得清晰的世界。</p>
+                </section>
+
+                <section id="sustainable">
+                    <h1>Sustainable Development <a href="./sustain.html" class="section-link"><ion-icon name="arrow-forward-outline"></ion-icon></a></h1>
+                    <p>可持续发展，是写给地球的情书。在项目的计划中，我们以玉米淀粉衍生的水凝胶，替代石油的枷锁；用内蒙古的固沙林的参与，中和生产镜片的碳足迹。在杭州的工厂，废料重生为医疗模型；我们深知，今天的每一克碳排放，都是对明日世界的负债——唯有以科技为笔，方能书写可持续发展的永恒篇章。</p>
+                </section>
+
+                <section id="ethical">
+                    <h1>Ethical Framework <a href="./ethical.html" class="section-link"><ion-icon name="arrow-forward-outline"></ion-icon></a></h1>
+                    <p>在技术的狂飙中，伦理是始终紧握的缰绳。我们邀请患者代表走进听证会，让法律专家审视每一处风险；在《伦理实践白皮书》中，将承诺化为年复一年的行动。活体工程菌的应用，不是冰冷的实验，而是与患者共担风险的誓言。我们坚信，唯有在伦理的基石上，医疗创新才能绽放出最纯净的光辉——因为每一份信任，都值得以生命的名义守护。</p>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="logo_wrap">
+                <img id="team_logo" src="../../static/img/Logo-round-text.svg" alt="">
+            </div>
+            <div class="follow">
+                <div class="title">Follow Us</div>
+                <ul class="follow_list">
+                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="title">Contact Us</div>
+                <div class="email">ZJU_China@outlook.com</div>
+            </div>
+        </footer>
+        <script src="../../static/js/basic.js"></script>
+        <script src="../../static/js/pages.js"></script>
+        <script src="../../static/js/pdbviewer.js"></script>
+        <script src="../../static/js/components.js"></script>
+        <script>
+            // Set content height
+            function setContentHeight() {
+                const contentSections = document.querySelectorAll('.content section');
+                let totalHeight = 0;
+                contentSections.forEach(section => {
+                    totalHeight += section.offsetHeight;
+                });
+                document.documentElement.style.setProperty('--content-height', `${Math.max(totalHeight, 100)}vh`);
+            }
+
+            // Initial set
+            window.addEventListener('load', setContentHeight);
+            // Update on window resize
+            window.addEventListener('resize', setContentHeight);
+        </script>
+    </body>
+</html>
