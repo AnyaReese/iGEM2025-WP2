@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="../../static/css/load.css">
         <link rel="stylesheet" href="../../static/css/pages.css">
         <link rel="stylesheet" href="../../static/css/components.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -158,11 +161,11 @@
 
                 <!-- Noah Module -->
                 <section id="noah">
-                    <h1>I. Noah</h1>
-                    <h2>i. LogosViewer</h2>
+                    <h2>I. Noah</h2>
+                    <h3>i. LogosViewer</h3>
                     <p>In this module, we mainly employed a group of mathematical methods, named as Match Scoring Sequence Alignment Model (MSSAM):</p>
                     
-                    <h3>1. Total Alignment Positions</h3>
+                    <h4>1. Total Alignment Positions</h4>
                     <div class="math-block">
                         \[T = \sum_{i=1}^n L_i \quad \color{gray}{\textit{(Format.1)}}\]
                     </div>
@@ -172,15 +175,24 @@
                         <li>\(\mathrm{N}\) &nbsp;is the number of sequence pairs</li>
                     </ul>
 
-                    <h3>2. Matched Positions</h3>
+                    <h4>2. Matched Positions</h4>
                     <div class="math-block">
                         \[M = \sum_{i=1}^n \sum_{j=1}^{L_i} \delta(S_{i,j}^{(1)}, S_{i,j}^{(2)}) \quad \color{gray}{\textit{(Format.2)}}\]
                     </div>
+
                     <p><strong>where:</strong></p>
                     <ul>
-                        <li>\(S_{i,j}^{(1)}, S_{i,j}^{(2)}\) &nbsp;denote the amino acid residues at position \(j\) in the \(i\)-th sequence pair</li>
-                        <li>\(\delta(x, y)\) &nbsp;is the Kronecker Delta Function: \[\delta(x, y) = \begin{cases} 1, & x = y \\ 0, & x \neq y \end{cases} \quad \color{gray}{\textit{(Format.3)}}\]</li>
+                        <li>\(S_{i,j}^{(1)}, S_{i,j}^{(2)}\) denote the amino acid residues at position \(j\) in the \(i\)-th sequence pair</li>
+                        <li>\(\delta(x, y)\) is the Kronecker Delta Function: \[\delta(x, y) = \begin{cases} 1, & x = y \\ 0, & x \neq y \end{cases} \quad \color{gray}{\textit{(Format.3)}}\]</li>
                     </ul>
+
+                    <h4>3. Adjustment Factor (Analogous to HMM Transition Probability)</h4>
+                    <div class="math-block">
+                        \[f = A^{(\frac{T-M}{T}\times k\times A)} + C \quad \color{gray}{\textit{(Format.4)}}\]
+                    </div>
+
+                    <p><strong>where:</strong></p>
+                    <p>A, B, C are Nonlinear Likelihood Correction Factor (NLCF), which can be implemented from the Convergence Process (CP) of parameters of the Hidden Markov Model (HMM). From articles <sup>[1]</sup><sup>[2]</sup> that analyzed these processes we have several methods that can solve the values of these parameters approximately, and results as Table.1 shows below:</p>
 
                     <!-- Table 1 -->
                     <div class="table-container">
@@ -190,7 +202,7 @@
                                 <tr>
                                     <th>Parameter</th>
                                     <th>App. Value</th>
-                                    <th>Error Rate (%)</th>
+                                    <th>Error Rate (%) <sup>[3]</sup></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -211,36 +223,234 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="table-note">Table.1 | App. Values of the parameters. For details of specific methods, view references 2 and 3 below.</p>
+                        <p class="table-note">For details of specific methods, view references 2 and 3 below.</p>
                     </div>
 
-                    <!-- Visualization Results -->
-                    <div class="figure">
-                        <div id="pieChart" class="interactive-chart"></div>
-                        <p class="caption">Fig.2 | Pie charts of amino acid frequency of human and sheep AQP0.</p>
+                    <h4>4. Similarity Score</h4>
+                    <div class="math-block">
+                        \[S = (\frac{M}{T}) \times f \times 100 \quad \color{gray}{\textit{(Format.5)}}\]
                     </div>
 
-                    <div class="figure">
-                        <img src="../../static/img/model/logo-graph.png" alt="Sequence Logo Graph">
-                        <p class="caption">Fig.3 | SLG of human and sheep AQP0, Exhibits a high degree of biological conservation.</p>
+                    <p>As excepted, LogosViewer conducts an amino acid composition analysis of two protein sequences, generates visual representations in form of Pie Charts (PC) (result shown in Fig.2) and sequence Logo Graph (SLG) (Fig.3), and computes the similarity (Code.1) between the two sequences.</p>
+
+                    <!-- graph container -->
+                    <div class="figure-container">
+                        <div class="chart-container">
+                            <div style="display: flex; gap: 20px;">
+                                <div style="flex: 1;">
+                                    <canvas id="humanAQP0Chart"></canvas>
+                                </div>
+                                <div style="flex: 1;">
+                                    <canvas id="sheepAQP0Chart"></canvas>
+                                </div>
+                            </div>
+                            <figcaption>
+                                <p>Fig.2 | Comparison of amino acid frequency distribution between human and sheep AQP0.</p>
+                            </figcaption>
+                        </div>
                     </div>
 
-                    <!-- Code Blocks -->
-                    <div class="code-block">
-                        <pre><code class="language-python">
-                            <!-- Code.1 content -->
-                        </code></pre>
-                        <p class="caption">Code.1 | Similarity computation implementation</p>
+                    <div class="figure-container">
+                        <figure>
+                            <img src="../../static/img/model/Figure3.png" alt="Sequence Logo Graph" style="width: 100%; height: auto;">
+                            <figcaption>
+                                <p>Fig.3 | Sequence Logo Graph (SLG) visualization of the protein sequences.</p>
+                                <p>Sequence similarity: 90.8292%</p>
+                            </figcaption>
+                        </figure>
                     </div>
 
-                    <h2>ii. NoahCC</h2>
-                    <!-- ... NoahCC content ... -->
+                    <!-- Code Block -->
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-title">Code.2 | Source code of LogosViewer module</span>
+                        </div>
+                        <div class="code-block">
+                            <pre><code class="language-python">
+# Source Code (Code.2)
+from collections import Counter
+import matplotlib.pyplot as plt
+import logomaker
+import matplotlib.patches as mpatches
+import os
+import platform
+import time
+from datetime import datetime
+
+print('''^^ProEpiphary^^ ''')
+print('''Module: Noah-LogosViewer 3.5''')
+print('''analyzing...''')
+
+def read_sequences(file_path):
+    """Read sequences from file"""
+    with open(file_path, 'r') as file:
+        sequences = file.readlines()
+    sequences = [line.strip() for line in sequences if line.strip()]
+    return sequences
+
+def pad_sequences(sequences):
+    """Pad sequences to equal length"""
+    max_len = max(len(seq) for seq in sequences)
+    padded_sequences = [seq.ljust(max_len, '-') for seq in sequences]
+    return padded_sequences
+
+def calculate_similarity(seq_list1, seq_list2):
+    """Calculate similarity between two sequence lists"""
+    if len(seq_list1) != len(seq_list2):
+        raise ValueError("Sequence lists must have the same length for comparison.")
+
+    total_positions = 0
+    matching_positions = 0
+
+    for seq1, seq2 in zip(seq_list1, seq_list2):
+        if len(seq1) != len(seq2):
+            raise ValueError("Each sequence pair must have the same length for comparison.")
+
+        total_positions += len(seq1)
+        matching_positions += sum(aa1 == aa2 for aa1, aa2 in zip(seq1, seq2))
+        influrate = 0.99516105 ** ((total_positions - matching_positions) / total_positions * 99.516105) + 0.00483894
+
+    similarity = (matching_positions / total_positions) * influrate * 100
+    return similarity
+
+def generate_combined_pie_chart(sequences1, sequences2, titles, file_name):
+    """Generate pie charts for amino acid frequencies"""
+    amino_acid_counts1 = Counter(''.join(sequences1).replace('-', ''))
+    amino_acid_counts2 = Counter(''.join(sequences2).replace('-', ''))
+
+    labels1, sizes1 = zip(*amino_acid_counts1.most_common())
+    labels2, sizes2 = zip(*amino_acid_counts2.most_common())
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 7))
+
+    axes[0].pie(sizes1, labels=labels1, autopct='%1.1f%%', startangle=90)
+    axes[0].set_title(titles[0], fontsize=14)
+    axes[0].axis('equal')
+
+    axes[1].pie(sizes2, labels=labels2, autopct='%1.1f%%', startangle=90)
+    axes[1].set_title(titles[1], fontsize=14)
+    axes[1].axis('equal')
+
+    plt.tight_layout()
+    plt.savefig(file_name)
+    print(f"Pie chart saved: {file_name}")
+    plt.close()
+
+def generate_combined_logo(sequences1, sequences2, titles, file_name, custom_colors, legend_labels=None):
+    """Generate sequence logo visualization"""
+    fig, axes = plt.subplots(1, 2, figsize=(20, 6))
+
+    logo_data1 = logomaker.alignment_to_matrix(sequences1, to_type='counts')
+    logo_data2 = logomaker.alignment_to_matrix(sequences2, to_type='counts')
+
+    logomaker.Logo(logo_data1, ax=axes[0], color_scheme=custom_colors)
+    axes[0].set_title(titles[0], fontsize=14)
+
+    logomaker.Logo(logo_data2, ax=axes[1], color_scheme=custom_colors)
+    axes[1].set_title(titles[1], fontsize=14)
+
+    if legend_labels:
+        axes[1].legend(handles=legend_labels, loc='upper left', bbox_to_anchor=(1.05, 0.85), title='Chemistry')
+
+    plt.tight_layout()
+    plt.savefig(file_name)
+    print(f"Sequence logo saved: {file_name}")
+    plt.close()
+
+# Color scheme for sequence logo
+custom_colors = {
+    letter: '#FF0000' for letter in 'DE'  # Acidic
+}
+custom_colors.update({
+    letter: '#000000' for letter in 'ACFHIJLMOPQZWXUV'  # Hydrophobic
+})
+custom_colors.update({
+    letter: '#0000FF' for letter in 'KR'  # Basic
+})
+custom_colors.update({
+    letter: '#00FF00' for letter in 'TSGY'  # Polar
+})
+custom_colors.update({
+    letter: '#800080' for letter in 'N'  # Neutral
+})
+
+legend_labels = [
+    mpatches.Patch(color='#FF0000', label='Acidic'),
+    mpatches.Patch(color='#0000FF', label='Basic'),
+    mpatches.Patch(color='#000000', label='Hydrophobic'),
+    mpatches.Patch(color='#800080', label='Neutral'),
+    mpatches.Patch(color='#00FF00', label='Polar'),
+]
+
+if __name__ == "__main__":
+    start_time = time.time()
+
+    print("Enter the full path for human AQP0 sequence file (e.g., human aqp0.txt):")
+    file1_path = input("Path 1: ").strip()
+    print('Enter the full path for Sheep AQP0 sequence file (e.g., sheep aqp0.txt):')
+    file2_path = input("Path 2: ").strip()
+    print('''
+    ''')
+
+    if not os.path.exists(file1_path):
+        print(f"Error: File not found -> {file1_path}")
+        exit(1)
+    if not os.path.exists(file2_path):
+        print(f"Error: File not found -> {file2_path}")
+        exit(1)
+
+    sequences1 = read_sequences(file1_path)
+    sequences2 = read_sequences(file2_path)
+
+    if not sequences1 or not sequences2:
+        print("One or both sequence files are empty.")
+        exit(1)
+    else:
+        sequences1 = pad_sequences(sequences1)
+        sequences2 = pad_sequences(sequences2)
+
+        output_dir = os.path.dirname(file1_path)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+        pie_chart_file = os.path.join(output_dir, f"Pie_Chart_( {timestamp} ).png")
+        generate_combined_pie_chart(
+            sequences1,
+            sequences2,
+            ["Human AQP0 Amino Acid Frequency", "Sheep AQP0 Amino Acid Frequency"],
+            pie_chart_file
+        )
+
+        logo_file = os.path.join(output_dir, f"Sequence_Logo_( {timestamp} ).png")
+        generate_combined_logo(
+            sequences1,
+            sequences2,
+            ["Human AQP0 Sequence Logo", "Sheep AQP0 Sequence Logo"],
+            logo_file,
+            custom_colors,
+            legend_labels
+        )
+
+        try:
+            similarity = calculate_similarity(sequences1, sequences2)
+            print(f"Sequence similarity: {similarity:.4f}%")
+            print('''Mission completed, view the results in the source folder now...''')
+        except ValueError as error:
+            print(f"Error calculating similarity: {error}")
+
+    end_time = time.time()
+    runtime = end_time - start_time
+    print("\n----- Local System Information -----")
+    print(f"Processor: {platform.processor()}")
+    print(f"Total runtime: {runtime:.2f} seconds")
+    print('''v1.2   (Last Update:31/01/2025)''')</code></pre>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Matthew Module -->
                 <section id="matthew">
-                    <h1>II. Matthew</h1>
-                    <h2>i. WebCrawler</h2>
+                    <h2>II. Matthew</h2>
+                    <h3>i. WebCrawler</h3>
                     <p>To identify new epitopes, specific experimental methods need to be designed to determine the surface frequency of each amino acid in AQP0...</p>
                     
                     <div class="figure">
@@ -248,7 +458,7 @@
                         <p class="caption">Fig.4 | The page of the BRST (powered by ThermoFisher)...</p>
                     </div>
 
-                    <h2>ii. BoolAcid</h2>
+                    <h3>ii. BoolAcid</h3>
                     <p>Before coding, it is crucial for us to firstly embody several mathematical modeling concepts, named as the Amino Acid to Bool Model (AABM), particularly related to sorting, quantification, and threshold determination.</p>
 
                     <h3>1. Calculation of Solvent Accessible Surface Area (SASA) and Sorting</h3>
