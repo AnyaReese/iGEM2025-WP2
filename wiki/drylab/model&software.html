@@ -194,7 +194,7 @@
                     </div>
 
                     <p><strong>where:</strong></p>
-                    <p>A, B, C are Nonlinear Likelihood Correction Factor (NLCF), which can be implemented from the Convergence Process (CP) of parameters of the Hidden Markov Model (HMM). From articles <sup>[1]</sup><sup>[2]</sup> that analyzed these processes we have several methods that can solve the values of these parameters approximately, and results as Table.1 shows below:</p>
+                    <p>A, B, C are Nonlinear Likelihood Correction Factor (NLCF), which can be implemented from the Convergence Process (CP) of parameters of the Hidden Markov Model (HMM). From articles <sup><a href="#ref1">[1]</a></sup><sup><a href="#ref2">[2]</a></sup> that analyzed these processes we have several methods that can solve the values of these parameters approximately, and results as Table.1 shows below:</p>
 
                     <!-- Table 1 -->
                     <div class="table-container">
@@ -204,7 +204,7 @@
                                 <tr>
                                     <th>Parameter</th>
                                     <th>App. Value</th>
-                                    <th>Error Rate (%) <sup>[3]</sup></th>
+                                    <th>Error Rate (%) <sup><a href="#ref3">[3]</a></sup></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -689,20 +689,17 @@ sys.exit(app.exec_())</code></pre>
                     <p>This sorting step is foundational of AABM for determining the exposure of amino acids to chemical reagents. Mathematically, this could be represented as:</p>
 
                     <div class="math-block">
-                        \[T = \sum_{i=1}^n L_i \quad \color{gray}{\textit{(Format.9)}}\]
+                        \[L = Sort(SASA) \quad \color{gray}{\textit{(Format.9)}}\]
                     </div>
                     
                     <p><strong>where:</strong></p>
                     <ul>
-                        <li><p>Li represents the length of the i-th aligned sequence</p></li>
-                        <li><p>N is the number of sequence pairs</p></li>
+                        <li><p> L is the reordered list of amino acids based on their SASA values</p></li>
                     </ul>
                     
 
-                    <p>where:</p>
-                    <ul>
-                        <li><p>S is the reordered list of amino acids based on their SASA values</p></li>
-                    </ul>
+                    <h4>2. Quantitative Chemical Modification and Frequency Measurement</h4>
+                    <p>Like the method we used in (Format.6), this step firstly focuses on quantifying the modification frequency . The modification frequency  can be seen as a proportion of the amino acid modification, which may depend on several experimental measurements (e.g., fluorescence, mass spectrometry <sup><a href="#ref6">[6]</a></sup>). The process repeats several times to obtain a mean modification frequency , which is used to define the Surface Exposure Rate (SER)  of each amino acid. Also, this step involves averaging over multiple trials to reduce measurement variability:</p>
 
                     <!-- SASA Results Table -->
                     <div class="table-container">
