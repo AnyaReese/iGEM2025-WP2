@@ -1138,3 +1138,120 @@ figcaption {
 #ethical i {
     color: #4A4A4A;      /* dark gray */
 }
+
+/* Table styles */
+.table-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2em auto;
+    overflow-x: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: white;
+}
+
+/* Table base styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-family: var(--content-font);
+    font-size: 0.9em;
+}
+
+/* Caption styles */
+table caption {
+    padding: 1em;
+    background: rgba(131, 170, 255, 0.1);
+    color: var(--highlight-color);
+    font-weight: bold;
+    text-align: left;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Header styles */
+thead th {
+    background: rgba(131, 170, 255, 0.2);
+    color: var(--highlight-color);
+    font-weight: bold;
+    padding: 1em;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+/* Row styles */
+tbody tr {
+    transition: all 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background: rgba(131, 170, 255, 0.05);
+}
+
+/* Cell styles */
+td {
+    padding: 1em;
+    border-bottom: 1px solid rgba(131, 170, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Hover effects */
+tbody tr:hover {
+    background: rgba(131, 170, 255, 0.1);
+    transform: translateX(5px);
+}
+
+/* Column hover effect */
+td:hover, th:hover {
+    background: rgba(131, 170, 255, 0.15);
+}
+
+/* First and last cell rounded corners */
+thead tr:first-child th:first-child {
+    border-top-left-radius: 8px;
+}
+
+thead tr:first-child th:last-child {
+    border-top-right-radius: 8px;
+}
+
+tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+/* Table note styles */
+.table-note {
+    margin-top: 0.5em;
+    color: var(--gray);
+    font-size: 0.8em;
+    text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .table-container {
+        margin: 1em -20px;
+        width: calc(100% + 40px);
+        border-radius: 0;
+    }
+    
+    table {
+        font-size: 0.8em;
+    }
+    
+    td, th {
+        padding: 0.8em;
+    }
+    
+    /* Disable transform on mobile */
+    tbody tr:hover {
+        transform: none;
+    }
+}
