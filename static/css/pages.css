@@ -1271,7 +1271,7 @@ tbody tr:last-child td:last-child {
 /* Code block container */
 .code-container {
     margin: 1em auto;
-    max-width: 80%;
+    max-width: 90%;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
     border-radius: 12px;
