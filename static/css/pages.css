@@ -833,11 +833,11 @@ figcaption {
 
     /* adjust content area padding */
     .content {
-        padding: 0 20px;  /* change from 40px to 20px */
+        padding: 40px 40px 0 40px;
     }
 
     .content.full-width {
-        padding: 0 20px;  /* change from 80px to 20px */
+        padding: 40px 40px 0 40px;  /* change from 80px to 20px */
     }
 }
 
