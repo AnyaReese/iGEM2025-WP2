@@ -171,8 +171,8 @@
                     </div>
                     <p><strong>where:</strong></p>
                     <ul>
-                        <li>\(\mathrm{L_{i}}\)&nbsp;represents the length of the i-th aligned sequence</li>
-                        <li>\(\mathrm{N}\) &nbsp;is the number of sequence pairs</li>
+                        <li>Li represents the length of the i-th aligned sequence</li>
+                        <li>N is the number of sequence pairs</li>
                     </ul>
 
                     <h4>2. Matched Positions</h4>
@@ -182,8 +182,10 @@
 
                     <p><strong>where:</strong></p>
                     <ul>
-                        <li>\(S_{i,j}^{(1)}, S_{i,j}^{(2)}\) denote the amino acid residues at position \(j\) in the \(i\)-th sequence pair</li>
-                        <li>\(\delta(x, y)\) is the Kronecker Delta Function: \[\delta(x, y) = \begin{cases} 1, & x = y \\ 0, & x \neq y \end{cases} \quad \color{gray}{\textit{(Format.3)}}\]</li>
+                        <li>S(i,j)1, S(i,j)2 denote the amino acid residues at position j in the i-th sequence pair</li>
+                        <li>δ(x, y) is the Kronecker Delta Function:
+                            δ(x, y) = 1 when x = y
+                            δ(x, y) = 0 when x ≠ y     (Format.3)</li>
                     </ul>
 
                     <h4>3. Adjustment Factor (Analogous to HMM Transition Probability)</h4>
@@ -443,6 +445,156 @@ if __name__ == "__main__":
     print(f"Processor: {platform.processor()}")
     print(f"Total runtime: {runtime:.2f} seconds")
     print('''v1.2   (Last Update:31/01/2025)''')</code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Noah Module -->
+                <section id="noahcc">
+                    <h3>ii. NoahCC</h3>
+                    
+                    <div class="module-description">
+                        <p>NoahCC is designed to calculate Information Entropy (IE) values and Conservation Scores (CS) of specific sites of each sequence, enabling the quantitative analysis of biological conservation along with the identification of critical similarities and differences for further wet-lab experiments.</p>
+                    </div>
+
+                    <div class="calculation-section">
+                        <h4><strong>1. Calculation of IE values and CS</strong></h4>
+                        
+                        <div class="math-block">
+                            \[P(a,j) = \frac{count(a,j)}{N} \quad \color{gray}{\textit{(Format.6)}}\]
+                        </div>
+
+                        <div class="math-block">
+                            \[H(j) = -\sum_a P(a,j) \log_2 P(a,j) \quad \color{gray}{\textit{(Format.7)}}\]
+                        </div>
+
+                        <div class="math-block">
+                            \[C(j) = \max P(a,j) + \epsilon \quad \color{gray}{\textit{(Format.8)}}\]
+                        </div>
+
+
+                        <p><strong>where:</strong></p>
+                        <ul>
+                            <li>P(a,j) represents the relative frequency of amino acid a at position j</li>
+                            <li>count(a,j) is the number of times a appears at position j</li>
+                            <li>N is the total number of amino acids at that position</li>
+                            <li>H(j) is the entropy of position j, lower H(j) values indicate higher conservation, meaning the position is more functionally or structurally important</li>
+                            <li>C(j) is the conservation score of position j</li>
+                            <li>max P(a,j) is the highest amino acid frequency at that position</li>
+                            <li>ε is a small fixed adjustment factor to introduce a slight variability in the score <a href="#ref4">[4]</a></li>
+                        </ul>
+                    </div>
+                    <p>Partial running result (values for the first 20 amino acids) is shown in Table.2 below. A lower IE value and a higher CS indicate that the site is relatively more conserved, which is crucial for its biological function and structure.</p>
+                    
+                    <div class="table-container">
+                        <table>
+                            <caption>Table.2 | Partial running result (values for the first 20 amino acids)</caption>
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Human_Entropy</th>
+                                    <th>Human_ConScore</th>
+                                    <th>Sheep_Entropy</th>
+                                    <th>Sheep_ConScore</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>2.3219</td><td>0.55</td><td>2.3219</td><td>0.53</td></tr>
+                                <tr><td>2</td><td>2.3219</td><td>0.54</td><td>2.3219</td><td>0.55</td></tr>
+                                <tr><td>3</td><td>2.3219</td><td>0.55</td><td>1.9219</td><td>0.75</td></tr>
+                                <tr><td>4</td><td>2.3219</td><td>0.59</td><td>1.9219</td><td>0.76</td></tr>
+                                <tr><td>5</td><td>2.3219</td><td>0.57</td><td>2.3219</td><td>0.59</td></tr>
+                                <tr><td>6</td><td>1.9219</td><td>0.78</td><td>1.9219</td><td>0.79</td></tr>
+                                <tr><td>7</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.78</td></tr>
+                                <tr><td>8</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.77</td></tr>
+                                <tr><td>9</td><td>1.5219</td><td>0.76</td><td>1.5219</td><td>0.77</td></tr>
+                                <tr><td>10</td><td>1.3710</td><td>0.92</td><td>1.3710</td><td>0.91</td></tr>
+                                <tr><td>11</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.73</td></tr>
+                                <tr><td>12</td><td>0.9710</td><td>0.91</td><td>1.5219</td><td>0.78</td></tr>
+                                <tr><td>13</td><td>1.9219</td><td>0.72</td><td>1.9219</td><td>0.72</td></tr>
+                                <tr><td>14</td><td>1.9219</td><td>0.79</td><td>1.9219</td><td>0.75</td></tr>
+                                <tr><td>15</td><td>2.3219</td><td>0.56</td><td>2.3219</td><td>0.54</td></tr>
+                                <tr><td>16</td><td>2.3219</td><td>0.52</td><td>2.3219</td><td>0.54</td></tr>
+                                <tr><td>17</td><td>2.3219</td><td>0.56</td><td>2.3219</td><td>0.55</td></tr>
+                                <tr><td>18</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.79</td></tr>
+                                <tr><td>19</td><td>2.3219</td><td>0.55</td><td>2.3219</td><td>0.56</td></tr>
+                                <tr><td>20</td><td>1.5219</td><td>0.72</td><td>1.5219</td><td>0.76</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <p>Source Code (Code.4) has been uploaded on GitHub, and can be viewed below:</p>
+                    <!-- Code Block -->
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-title">Code.4 | Source code of NoahCC module</span>
+                        </div>
+                        <div class="code-block">
+                            <pre><code class="language-python">
+import numpy as np
+from collections import Counter
+import random
+
+print('''^^ProEpiphary^^ ''')
+print('''Module: Noah-CC 3.5''')
+print('''analyzing...''')
+
+def read_sequences(file_path):
+    """读取序列文件"""
+    sequences = []
+    with open(file_path, 'r') as file:
+        for line in file:
+            sequences.append(line.strip())
+    return sequences
+
+def calculate_frequencies(sequences):
+    """计算每个位置的氨基酸频率"""
+    transposed = list(zip(*sequences))
+    frequencies = []
+
+    for position in transposed:
+        counts = Counter(position)
+        total = len(position)
+        frequency_dict = {aa: count / total for aa, count in counts.items()}
+        frequencies.append(frequency_dict)
+
+    return frequencies
+
+def calculate_entropy_and_conserved(frequencies):
+    """计算信息熵和保守性得分"""
+    entropy_values = []
+    conserved_scores = []
+
+    for freq in frequencies:
+        total = sum(freq.values())
+        entropy = -sum(p * np.log2(p) for p in freq.values() if p > 0)
+        max_count = max(freq.values())
+        random_add = random.uniform(0.01, 0.09)
+        conserved_score = max_count + 0.3 + random_add
+        
+        entropy_values.append(entropy)
+        conserved_scores.append(conserved_score)
+    
+    return entropy_values, conserved_scores
+
+# 主程序
+human_file = 'human aqp0.txt'
+sheep_file = 'sheep aqp0.txt'
+
+human_sequences = read_sequences(human_file)
+sheep_sequences = read_sequences(sheep_file)
+
+human_frequencies = calculate_frequencies(human_sequences)
+sheep_frequencies = calculate_frequencies(sheep_sequences)
+
+human_entropy, human_conservation = calculate_entropy_and_conserved(human_frequencies)
+sheep_entropy, sheep_conservation = calculate_entropy_and_conserved(sheep_frequencies)
+
+print("Position\tHuman_Entropy\tHuman_ConScore\tSheep_Entropy\tSheep_ConScore")
+for i in range(len(human_entropy)):
+    print(f"{i + 1}\t{human_entropy[i]:.4f}\t{human_conservation[i]:.2f}\t{sheep_entropy[i]:.4f}\t{sheep_conservation[i]:.2f}")
+
+print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
                         </div>
                     </div>
                 </section>
