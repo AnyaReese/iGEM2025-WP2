@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../../static/css/basic.css">
         <link rel="stylesheet" href="../../static/css/load.css">
         <link rel="stylesheet" href="../../static/css/pages.css">
+        <link rel="stylesheet" href="../../static/css/components.css">
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -78,7 +79,7 @@
         
         <!-- Page Title Background -->
         <div class="page-title-bg">
-            <div class="bg-image" style="background-image: url('../../static/img/cons/cons.png')"></div>
+            <div class="bg-image" style="background-image: url('../../static/img/engineer/peakpx.jpg')"></div>
             <div class="overlay"></div>
             <div class="title-content">
                 <h1>Engineering</h1>
@@ -95,19 +96,16 @@
                     </div>
                     
                     <div class="t1">
-                        <a href="#section1">Section 1</a>
+                        <span>Function Verification Module</span>
+                        <div class="t2">
+                            <a href="#cycle1">Cycle 1: Functional Verification of Each Tag</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#cycle2">Cycle 2: Functional Verification of the Fusion Protein</a>
+                        </div>
                     </div>
                     <div class="t1">
-                        <a href="#section2">Section 2</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section3">Section 3</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section4">Section 4</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section5">Section 5</a>
+                        <a href="#references">References</a>
                     </div>
                 </div>
             </div>
@@ -120,30 +118,168 @@
             <!-- Content area -->
             <div class="content">
 
-                <section id="section1">
-                    <h1>Section 1</h1>
-                    <p>Content for section 1</p>
-                </section>
+                    <h1>Function Verification Module</h1>
+                    <p>In this module, we systematically verify the functionality of our designed components through two main cycles of experiments and analyses.</p>
+                    
+                    <section id="cycle1">
+                        <h2>Cycle 1: Functional Verification of Each Tag</h2>
+                        <h3>Design1</h3>
+                        <p>We have found three functional peptides, Tat peptide, Gala3, and pelB, which promote cell permeability, endosomal escape, and exocytosis, and obtained a target peptide that specifically targets the Aquaporin 0 on lens cell through modeling software and AI-assisted design. In this cycle, we need to first fuse each tag with RNF114 through a linker to verify the effectiveness of each tag.</p>
+                        <h3>Construction1</h3>
+                        <p>In order to characterize the role of each part, we decided to construct the following gene pathways by chemical synthesis:</p>
 
-                <section id="section2">
-                    <h1>Section 2</h1>
-                    <p>Content for section 2</p>
-                </section>
+                        <figure>
+                            <img src="../../static/img/engineer/synthesis.png" alt="Construction1">
+                            <!-- <figcaption>
+                                Fig.1 | Construction1
+                            </figcaption> -->
+                        </figure>
+                    
+                        <h3>Test1</h3>
+                        <p><strong>0. Verification the success of plasmid introduction</strong></p>
+                        <p>Sanger sequencing; extraction of plasmid DNA (alkaline SDS separation); determination of DNA size and concentration by gel electrophoresis and Nanodrop.</p>
 
-                <section id="section3">
-                    <h1>Section 3</h1>
-                    <p>Content for section 3</p>
-                </section>
+                        <p><strong>1. pelB tag</strong><sup><a href="#ref1">[1]</a></sup></p>
+                        <ul>
+                            <li>A. Construction of plasmids, group 1: pelB-linker-RNF114-GPF; group 2: linker-RNF114-GPF; group 3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
+                            <li>B. Use a mild induction regimen (0.05 mM IPTG, 30℃, 2hrs)to express and secrete proteins. Centrifuge and take the supernatant.</li>
+                            <li>C. Determine the relative molecular weight of the protein using 12% SDS-PAGE and perform quantitative analysis using ImageJ.</li>
+                        </ul>
 
-                <section id="section4">
-                    <h1>Section 4</h1>
-                    <p>Content for section 4</p>
-                </section>
+                        <p><strong>2. Tat peptide tag</strong></p>
+                        <ul>
+                            <li>A. Construction of plasmids, group1: TAT-linker-RNF114-GPF; group2: linker-RNF114-GPF; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
+                            <li>B. Cultivate strains, extract and purify secretory proteins.</li>
+                            <li>C. Culture lens epithelial cells and co-incubate with the target protein for 1 h. Centrifuge at 1 000 x g for 10 min, collect cells from each well, wash three times with PBS, collect cells using FASCaliber flow cytometer, and analyze cell penetration using CellQuest software.<a href="#ref2">[2]</a></li>
+                        </ul>
 
-                <section id="section5">
-                    <h1>Section 5</h1>
-                    <p>Content for section 5</p>
-                </section>
+                        <p><strong>3. GALA3 tag</strong></p>
+                        <ul>
+                            <li>A. Construction of plasmids, group1: GALA-linker-RNF114-GPF; group2: linker-RNF114-GPF; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
+                            <li>B. Cultivate strains, extract and purify secretory proteins.</li>
+                            <li>C. Lens epithelial cells were incubated with different concentrations (0.125, 0.25, and 1 μM) of the protein for 12 h, co-stained with DAPI and observed by fluorescence microscopy, and the fluorescence intensity was quantified by flow cytometry.<sup><a href="#ref3">[3]</a></sup></li>
+                        </ul>
+
+                        <h5>Flow cytometry(FC)</h5>
+                        <p>Cells were seeded in 6-well plates (Corning, NY, USA) at a density of 1 × 10<sup>6</sup> cells per well and cultured overnight. The culture medium was replaced with fresh culture medium containing recombinant proteins at the indicated concentrations. Following incubation, the cells were treated with trypsin, washed twice with PBS, collected, and finally resuspended in PBS. The fluorescence intensity was assessed using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA). Data was analyzed using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+
+                        <h5>Fluorescence microscopy observation</h5>
+                        <p>Cells (1.0 × 10<sup>4</sup> cells per well) were seeded in 24-well plates (Corning, NY, USA) and incubated at 37 °C overnight until 30% confluency. The cells were treated with recombinant proteins at the indicated concentrations. After incubation for 12 h, the cells were washed three times with precooled PBS (2.7 mM KCl, 137 mM NaCl, 10 mM Na2HPO4, and 2 mM KH2PO4), fixed with paraformaldehyde (PFA, 4%) (Sangon, Shanghai, China), and stained with 4,6-diamidino-2-phenylindole (DAPI) (Beyotime, Haimen, China) in the dark. The intracellular fluorescence distribution of recombinant proteins was imaged by confocal laser scanning microscopy (CLSM) (Nikon, Tokyo, Japan) and fluorescence microscopy (Nikon, Tokyo, Japan), and the data were analyzed using NLS software.</p>
+
+                        <p><strong>4. Target peptide</strong></p>
+                        <ul>
+                            <li>A. Construction of plasmids, group1: Targetpeptide-linker-RNF114-GPF; group2: Targetpeptide-linker-RNF114; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain</li>
+                            <li>B. Cultivate strains, extract and purify secretory proteins</li>
+                            <li>C. Fluorescence polarization immunoassay to detect affinity: Add a certain amount of GFP-labeled fusion protein and AQP0 to the reaction system. Add different concentrations of unlabeled fusion protein to compete with GFP-labeled fusion protein for binding to AQP0, and fit the competition binding curve.</li>
+                        </ul>
+
+                        <h4>Learn1</h4>
+                        <p>If all tags can play their corresponding functions, it means that the general idea of protein fusion is fine and the next step of overall fusion can be carried out. If the results do not meet expectations, redesign or search for alternative solutions and feedback, optimize the experimental methods before re-verify.</p>
+                    </section>
+
+                    <section id="cycle2">
+                        <h2>Cycle 2: Functional Verification of the Fusion Protein</h2>
+                        <h3>Design2</h3>
+                        <p>Since our ultimate goal is to obtain a fusion protein with the functions of all the above tags, we decided to construct a gene pathway containing all peptide modifications in the second cycle and verify the functions of each part again. In order to optimize its spatial structure without affecting the domain (Ring-Finger structure) of the original protein, we continuously optimized the modification position and the length of the connecting peptide, and finally obtained the best and most qualified predicted protein structure and corresponding gene pathway.</p>
+
+                        <h3>Construction2</h3>
+                        <p>Through the elements that have been successfully constructed and verified in cycle 1, we can construct the gene of the complete fusion protein by PCR. The gene and hyaluronic acid synthesis gene pathway are as follows:</p>
+                        <figure>
+                            <img src="../../static/img/engineer/cons2.png" alt="Fusion Protein Construction">
+                        </figure>
+
+                        <h3>Test2</h3>
+
+                        <p><strong>0. Verification of successful plasmid introduction</strong>: DNA sanger sequencing, size and concentration detection</p>
+                        
+                        <p><strong>1. Expression of fusion protein</strong></p>
+
+                        <p><strong>2. Extraction and purification of fusion protein</strong></p>
+
+                        <p><strong>3. Verify the stability of fusion protein:</strong></p>
+                        <p>Stability improvement plan: [Preferred plan (1), if the effect does not meet expectations, continue to further verify the plan (2)]</p>
+                        <ol>
+                            <li>Hyaluronic acid encapsulation</li>
+                            <li>Rare amino acid replacement</li>
+                        </ol>
+
+                        <p><strong>Verification method:</strong></p>
+                        <p>Hyaluronic acid and fusion protein (containing GFP tag) are added to the culture medium containing hydrolase in proportion (the specific concentration needs to be determined in advance), and bleached by a short light pulse. Bleaching causes the labeled protein to be divided into two subgroups - fluorescent protein and non-fluorescent protein. The fluorescence recovery rate after bleaching is related to the degradation rate. The fluorescence intensity is quantified by flow cytometry at intervals.<sup><a href="#ref5">[5]</a></sup></p>
+
+                        <p><strong>Type and content of enzyme added:</strong><sup><a href="#ref6">[6]</sup></a><sup><a href="#ref7">[7]</a></sup></p>
+                        <ul>
+                            <li>MMP1, 2, 9, 13</li>
+                            <li>Cathepsin A (in aqueous humor); Cathepsin V, K, B, S. Compared with Cathepsin S, Cathepsin V has the highest expression (about 200 times), followed by Cathepsin L and Cathepsin B (about 10 times and 5 times, respectively)</li>
+                        </ul>
+
+                        <p><strong>4. Verify the therapeutic function of the fusion protein<sup><a href="#ref8">[8]</a></sup></strong></p>
+                        <ul>
+                            <li>A. Rat lens epithelial cells were placed in culture medium and incubated at 4°C for 24 hours to induce cataracts. 100 μM fusion protein was added to the culture medium in the last 30 minutes of low temperature treatment in the experimental group, but not in the control group. The lenses were transferred to a 37°C environment for 30 minutes.</li>
+                            <li>B. After rewarming, the rat lens of the control group was placed in a dish containing extracellular solution and placed above the bottom light source of a Nikon SMZ18 microscope, and image A was taken. Subsequently, the light source was turned off and image B was taken to correct for ambient light interference. Then, the rat lens of the experimental group was placed above the bottom light source and image C was taken.</li>
+                            <li>C. Analyze the grayscale value of the lens area by ImageJ (NIH) and calculate the transmittance according to the following formula:</li>
+                        </ul>
+                        
+                        <div class="math-block">
+                            Lens transmittance = \(\frac{C - B}{A - B} \times 100\%\)
+                        </div>
+                        
+
+                        <h3>Learn2</h3>
+                        <p>If the fusion protein is stable and its therapeutic function can be performed normally, it can be combined with hydrogel and hardware structure for the next cycle.</p>
+                    </section>
+
+                    <!-- References section -->
+                    <section id="references">
+                        <h1>References</h1>
+                        <div class="reference-list">
+                            <div class="reference-item" id="ref1">
+                                <span class="ref-number">[1]</span>
+                                <span class="ref-content">Mirzadeh, K., Shilling, P.J., Elfageih, R., et al. (2020). Increased production of periplasmic proteins in Escherichia coli by directed evolution of the translation initiation region. <em>Microb Cell Fact</em>, 19(1):85.</span>
+                                <a href="https://doi.org/10.1186/s12934-020-01339-8" class="ref-link" target="_blank">DOI: 10.1186/s12934-020-01339-8</a>
+                            </div>
+
+                            <div class="reference-item" id="ref2">
+                                <span class="ref-number">[2]</span>
+                                <span class="ref-content">许逊，蔺昕，田雨香，等. (2008). 两种方式制备的原核表达含TAT蛋白转导域融合蛋白穿膜能力比较. <em>江苏大学学报(医学版)</em>, 18(6):466.</span>
+                            </div>
+
+                            <div class="reference-item" id="ref3">
+                                <span class="ref-number">[3]</span>
+                                <span class="ref-content">Li, C., Cao, X.W., Zhao, J., et al. (2020). Effective Therapeutic Drug Delivery by GALA3, an Endosomal Escape Peptide with Reduced Hydrophobicity. <em>J Membrane Biol</em>, 253:139-152.</span>
+                                <a href="https://doi.org/10.1007/s00232-020-00109-2" class="ref-link" target="_blank">DOI: 10.1007/s00232-020-00109-2</a>
+                            </div>
+
+                            <div class="reference-item" id="ref4">
+                                <span class="ref-number">[4]</span>
+                                <span class="ref-content">王强，王旭峰，张英侠，等. (2024). 荧光偏振免疫法测定水产品中的丁香酚. <em>分析试验室</em>, 43(03):307-313.</span>
+                                <a href="https://doi.org/10.13595/j.cnki.issn1000-0720.2022.111602" class="ref-link" target="_blank">DOI: 10.13595/j.cnki.issn1000-0720.2022.111602</a>
+                            </div>
+
+                            <div class="reference-item" id="ref5">
+                                <span class="ref-number">[5]</span>
+                                <span class="ref-content">Geva-Zatorsky, N., Issaeva, I., Mayo, A., et al. (2012). Using bleach-chase to measure protein half-lives in living cells. <em>Nature protocols</em>, 7(4):801-811.</span>
+                                <a href="https://doi.org/10.1038/nprot.2012.028" class="ref-link" target="_blank">DOI: 10.1038/nprot.2012.028</a>
+                            </div>
+
+                            <div class="reference-item" id="ref6">
+                                <span class="ref-number">[6]</span>
+                                <span class="ref-content">Sivak, J.M., & Fini, M.E. (2002). MMPs in the eye: emerging roles for matrix metalloproteinases in ocular physiology. <em>Prog Retin Eye Res</em>, 21(1):1-14.</span>
+                                <a href="https://doi.org/10.1016/s1350-9462(01)00015-5" class="ref-link" target="_blank">DOI: 10.1016/s1350-9462(01)00015-5</a>
+                            </div>
+
+                            <div class="reference-item" id="ref7">
+                                <span class="ref-number">[7]</span>
+                                <span class="ref-content">Geva-Zatorsky, N., Issaeva, I., Mayo, A., et al. (2012). Using bleach-chase to measure protein half-lives in living cells. <em>Nature protocols</em>, 7(4):801-811.</span>
+                                <a href="https://doi.org/10.1038/nprot.2012.028" class="ref-link" target="_blank">DOI: 10.1038/nprot.2012.028</a>
+                            </div>
+
+                            <div class="reference-item" id="ref8">
+                                <span class="ref-number">[8]</span>
+                                <span class="ref-content">王强，王旭峰，张英侠，等. (2024). 荧光偏振免疫法测定水产品中的丁香酚. <em>分析试验室</em>, 43(03):307-313.</span>
+                                <a href="https://doi.org/10.13595/j.cnki.issn1000-0720.2022.111602" class="ref-link" target="_blank">DOI: 10.13595/j.cnki.issn1000-0720.2022.111602</a>
+                            </div>
+                        </div>
+                    </section>
             </div>
         </div>
 

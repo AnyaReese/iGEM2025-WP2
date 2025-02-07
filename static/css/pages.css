@@ -308,7 +308,7 @@
 
 .content h3 {
     font-size: 23px;
-    color: var(--black);
+    color: #6673ac;
     font-family: var(--content-font);
     font-weight: bold;
     margin-top: 1em;
@@ -317,7 +317,16 @@
 
 .content h4 {
     font-size: 22px;
-    color: var(--black);
+    color: #4e5a7b;
+    font-family: var(--content-font);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.content h5 {
+    font-size: 20px;
+    color: #4a4a4a;
     font-family: var(--content-font);
     font-weight: bold;
     margin-top: 1em;
