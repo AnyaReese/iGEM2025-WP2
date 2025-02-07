@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../../static/css/basic.css">
         <link rel="stylesheet" href="../../static/css/load.css">
         <link rel="stylesheet" href="../../static/css/pages.css">
+        <link rel="stylesheet" href="../../static/css/components.css">
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -95,19 +96,28 @@
                     </div>
                     
                     <div class="t1">
-                        <a href="#section1">Section 1</a>
+                        <a href="#overview">Overview</a>
                     </div>
+
                     <div class="t1">
-                        <a href="#section2">Section 2</a>
+                        <span>Modules</span>
+                        <div class="t2">
+                            <a href="#noah">I. Noah</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#matthew">II. Matthew</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#elijah">III. Elijah</a>
+                        </div>
                     </div>
+
                     <div class="t1">
-                        <a href="#section3">Section 3</a>
+                        <a href="#outlook">Outlook: Let Eyes Behold the Light</a>
                     </div>
+
                     <div class="t1">
-                        <a href="#section4">Section 4</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section5">Section 5</a>
+                        <a href="#references">References</a>
                     </div>
                 </div>
             </div>
@@ -119,30 +129,258 @@
 
             <!-- Content area -->
             <div class="content">
+                <section id="overview">
+                    <h1>Overview</h1>
+                    <p>In protein-protein interaction (PPI)-based drug design, the intricate nature of microscopic structures often leads to inefficiencies and limited precision in wet-lab experiments. To address these challenges, we developed <strong>ProEpiphary</strong>, an integrated computational platform with AI technics that designed to enhance experimental efficiency and accuracy, mainly comprising three core modules (Fig.1):</p>
+                    
+                    <!-- Figure 1 placeholder -->
+                    <figure>
+                        <img src="../../static/img/model/Figure1.png" alt="Framework of ProEpiphary" style="width: 100%; height: auto;">
+                        <figcaption>
+                            <p>Fig.1 | Framework of ProEpiphary.</p>
+                        </figcaption>
+                    </figure>
 
-                <section id="section1">
-                    <h1>Section 1</h1>
-                    <p>Content for section 1</p>
+                    <ul>
+                        <li>
+                            <p><strong>Noah: </strong>This module integrates <em>multi-scale computational biology algorithms</em> to intelligently screen and score human AQP0 protein homologs, effectively assisting in sample selection and validation for wet-lab experiments.</p>
+                        </li>
+
+                        <li>
+                            <p><strong>Matthew: </strong>Utilizing data-driven sequence rearrangement models and some open-source tools, Matthew employs <em>Machine Learning (ML)</em> to analyze target-protein's surface properties, facilitating the design of targeted peptides.</p>
+                        </li>
+
+                        <li>
+                            <p><strong>Elijah: </strong>Incorporating the <strong>EpiFind</strong> and <strong>DeepPepGen</strong> submodules, Elijah, employing <em>Deep Learning (DL)</em> techniques such as <em>Convolutional Neural Network (CNN)</em>, aims to characterize new epitopes automatically, generate target peptide sequence and predict the affinity of their combination. Meanwhile, the module also retains more room for future development. With sufficient experimental data and pretraining mechanisms, it is hoped to integrate with the two modules above, paving a full AI-driven workflow that accelerates drug discovery.</p>
+                        </li>
+                    </ul>
                 </section>
 
-                <section id="section2">
-                    <h1>Section 2</h1>
-                    <p>Content for section 2</p>
+                <!-- Noah Module -->
+                <section id="noah">
+                    <h1>I. Noah</h1>
+                    <h2>i. LogosViewer</h2>
+                    <p>In this module, we mainly employed a group of mathematical methods, named as Match Scoring Sequence Alignment Model (MSSAM):</p>
+                    
+                    <h3>1. Total Alignment Positions</h3>
+                    <div class="math-block">
+                        \[T = \sum_{i=1}^n L_i \quad \color{gray}{\textit{(Format.1)}}\]
+                    </div>
+                    <p><strong>where:</strong></p>
+                    <ul>
+                        <li>\(\mathrm{L_{i}}\)&nbsp;represents the length of the i-th aligned sequence</li>
+                        <li>\(\mathrm{N}\) &nbsp;is the number of sequence pairs</li>
+                    </ul>
+
+                    <h3>2. Matched Positions</h3>
+                    <div class="math-block">
+                        \[M = \sum_{i=1}^n \sum_{j=1}^{L_i} \delta(S_{i,j}^{(1)}, S_{i,j}^{(2)}) \quad \color{gray}{\textit{(Format.2)}}\]
+                    </div>
+                    <p><strong>where:</strong></p>
+                    <ul>
+                        <li>\(S_{i,j}^{(1)}, S_{i,j}^{(2)}\) &nbsp;denote the amino acid residues at position \(j\) in the \(i\)-th sequence pair</li>
+                        <li>\(\delta(x, y)\) &nbsp;is the Kronecker Delta Function: \[\delta(x, y) = \begin{cases} 1, & x = y \\ 0, & x \neq y \end{cases} \quad \color{gray}{\textit{(Format.3)}}\]</li>
+                    </ul>
+
+                    <!-- Table 1 -->
+                    <div class="table-container">
+                        <table>
+                            <caption>Table.1 | App. Values of the parameters</caption>
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>App. Value</th>
+                                    <th>Error Rate (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>0.99516105</td>
+                                    <td>0.0256</td>
+                                </tr>
+                                <tr>
+                                    <td>k</td>
+                                    <td>100.00000</td>
+                                    <td>0.0001</td>
+                                </tr>
+                                <tr>
+                                    <td>C</td>
+                                    <td>0.00483894</td>
+                                    <td>0.1623</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Visualization Results -->
+                    <div class="figure">
+                        <div id="pieChart" class="interactive-chart"></div>
+                        <p class="caption">Fig.2 | Pie charts of amino acid frequency of human and sheep AQP0.</p>
+                    </div>
+
+                    <div class="figure">
+                        <img src="../../static/img/model/logo-graph.png" alt="Sequence Logo Graph">
+                        <p class="caption">Fig.3 | SLG of human and sheep AQP0, Exhibits a high degree of biological conservation.</p>
+                    </div>
+
+                    <!-- Code Blocks -->
+                    <div class="code-block">
+                        <pre><code class="language-python">
+                            <!-- Code.1 content -->
+                        </code></pre>
+                        <p class="caption">Code.1 | Similarity computation implementation</p>
+                    </div>
+
+                    <h2>ii. NoahCC</h2>
+                    <!-- ... NoahCC content ... -->
                 </section>
 
-                <section id="section3">
-                    <h1>Section 3</h1>
-                    <p>Content for section 3</p>
+                <!-- Matthew Module -->
+                <section id="matthew">
+                    <h1>II. Matthew</h1>
+                    <h2>i. WebCrawler</h2>
+                    <p>To identify new epitopes, specific experimental methods need to be designed to determine the surface frequency of each amino acid in AQP0...</p>
+                    
+                    <div class="figure">
+                        <img src="../../static/img/model/brst.png" alt="BRST Interface">
+                        <p class="caption">Fig.4 | The page of the BRST (powered by ThermoFisher)...</p>
+                    </div>
+
+                    <h2>ii. BoolAcid</h2>
+                    <p>Before coding, it is crucial for us to firstly embody several mathematical modeling concepts, named as the Amino Acid to Bool Model (AABM), particularly related to sorting, quantification, and threshold determination.</p>
+
+                    <h3>1. Calculation of Solvent Accessible Surface Area (SASA) and Sorting</h3>
+                    <p>This sorting step is foundational of AABM for determining the exposure of amino acids to chemical reagents. Mathematically, this could be represented as:</p>
+                    
+                    <div class="formula">
+                        <img src="../../static/img/model/formula9.png" alt="SASA Formula">
+                    </div>
+                    <p>where:</p>
+                    <ul>
+                        <li>S is the reordered list of amino acids based on their SASA values</li>
+                    </ul>
+
+                    <!-- SASA Results Table -->
+                    <div class="table-container">
+                        <table>
+                            <caption>Table.3 | Samples of SASA reordered sequence of AQP0</caption>
+                            <thead>
+                                <tr>
+                                    <th>Chain</th>
+                                    <th>R.No.</th>
+                                    <th>Amino Acid</th>
+                                    <th>SASA (Å²)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>A</td>
+                                    <td>16</td>
+                                    <td>GLU</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>28</td>
+                                    <td>LEU</td>
+                                    <td>0</td>
+                                </tr>
+                                <!-- ... more rows ... -->
+                                <tr>
+                                    <td>A</td>
+                                    <td>34</td>
+                                    <td>TRP</td>
+                                    <td>219.7730674</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="table-note">For whole data, <a href="../../static/data/SASA_data.csv" download>click here</a> to download the table.</p>
+                    </div>
+
+                    <!-- Boolean Classification Table -->
+                    <div class="table-container">
+                        <table>
+                            <caption>Table.2 | An example of reordered sequence</caption>
+                            <thead>
+                                <tr>
+                                    <th>Bool Value (By experiment)</th>
+                                    <th>SASA (By computational calculation)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>0 0 0 ... 0 1 0 0 1 0 1 0 1 ... 1 1 1</td>
+                                    <td>0.01 0.05 0.59 ... 6.23 7.22 8.01 8.69 9.11 9.55 10.23 10.90 11.56 ... 56.26 59.22 63.18</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="caption">The mixed region is located between two ellipses.</p>
+                    </div>
+
+                    <!-- Code Block -->
+                    <div class="code-block">
+                        <pre><code class="language-python">
+                            # SASA Reordering Implementation
+                            def reorder_sasa(amino_acids, sasa_values):
+                                # Sort amino acids based on SASA values
+                                sorted_indices = np.argsort(sasa_values)
+                                return amino_acids[sorted_indices], sasa_values[sorted_indices]
+                        </code></pre>
+                        <p class="caption">Code.6 | Implementation of SASA reordering algorithm</p>
+                    </div>
                 </section>
 
-                <section id="section4">
-                    <h1>Section 4</h1>
-                    <p>Content for section 4</p>
+                <!-- Elijah Module -->
+                <section id="elijah">
+                    <h1>III. Elijah</h1>
+                    <h2>i. EpiFind</h2>
+                    <p>Given that designing peptides targeting known sites on AQP0 may interfere with its normal physiological functions...</p>
+
+                    <div class="figure">
+                        <div id="proteinViewer" class="interactive-viewer"></div>
+                        <p class="caption">Fig.5 | A screenshot of an interactive 3D visualization of AQP0 surface residues...</p>
+                    </div>
+
+                    <h2>ii. DeepPepGen</h2>
+                    <p>Looking forward, DeepPepGen is positioned to serve as the final predictive module in targeted peptide design pipelines. With sufficient development time and wet-lab experimental data for model training in subsequent phases, its ultimate objectives may include:</p>
+                    <ol>
+                        <li>Achieving end-to-end intelligent design of AQP0-binding peptides and providing direct candidate selections for drug conjugate components to experimental teams</li>
+                        <li>Establishing a generalizable framework extendable to other protein-protein interaction prediction tasks</li>
+                    </ol>
+
+                    <!-- Interactive Protein Viewer -->
+                    <div class="viewer-container">
+                        <div id="proteinViewer" class="interactive-viewer"></div>
+                        <div class="viewer-controls">
+                            <button onclick="resetView()">Reset View</button>
+                            <button onclick="toggleSurface()">Toggle Surface</button>
+                        </div>
+                        <p class="caption">Fig.5 | Interactive 3D visualization of AQP0 surface residues. For an interactive page, <a href="../../static/viewer/protein.html" target="_blank">click here</a> to open.</p>
+                    </div>
                 </section>
 
-                <section id="section5">
-                    <h1>Section 5</h1>
-                    <p>Content for section 5</p>
+                <!-- Outlook section -->
+                <section id="outlook">
+                    <h1>Outlook: Let Eyes Behold the Light</h1>
+                    <div class="quote-block">
+                        <p>"The light shineth in darkness; and the darkness comprehended it not. (John 1:5, KJV)"</p>
+                    </div>
+                    <p>Every time, in those midnights when I toss and turn before the flickering screen...</p>
+                    <!-- ... rest of the outlook content ... -->
+                </section>
+
+                <!-- References section -->
+                <section id="references">
+                    <h1>References</h1>
+                    <div class="reference-list">
+                        <div class="reference-item" id="ref1">
+                            <span class="ref-number">[1]</span>
+                            <span class="ref-content">Yoon B. J. (2009). Hidden Markov Models and their Applications in Biological Sequence Analysis. <em>Current genomics</em>, 10(6), 402–415.</span>
+                            <a href="https://doi.org/10.2174/138920209789177575" class="ref-link" target="_blank">https://doi.org/10.2174/138920209789177575</a>
+                        </div>
+                        <!-- Continue with other references... -->
+                    </div>
                 </section>
             </div>
         </div>
