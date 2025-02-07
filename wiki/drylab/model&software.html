@@ -13,6 +13,11 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+        <style>
+            .quote {
+                font-size: 20px;  /* zoom font size */
+            }
+        </style>
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -699,12 +704,174 @@ sys.exit(app.exec_())</code></pre>
                     
 
                     <h4>2. Quantitative Chemical Modification and Frequency Measurement</h4>
-                    <p>Like the method we used in (Format.6), this step firstly focuses on quantifying the modification frequency . The modification frequency  can be seen as a proportion of the amino acid modification, which may depend on several experimental measurements (e.g., fluorescence, mass spectrometry <sup><a href="#ref6">[6]</a></sup>). The process repeats several times to obtain a mean modification frequency , which is used to define the Surface Exposure Rate (SER)  of each amino acid. Also, this step involves averaging over multiple trials to reduce measurement variability:</p>
+                    <p>Like the method we used in (Format.6), this step firstly focuses on quantifying the modification frequency θ<sub>i</sub>.</p>
+
+                    <p>The modification frequency θ can be seen as a proportion of the amino acid modification, which may depend on several experimental measurements (e.g., fluorescence, mass spectrometry <sup><a href="#ref6">[6]</a></sup>). The process repeats several times to obtain a mean modification frequency θ, which is used to define the Surface Exposure Rate (SER) γ of each amino acid. Also, this step involves averaging over multiple trials to reduce measurement variability:</p>
+
+                    <div class="math-block">
+                        \[\gamma = \frac{1}{n}\sum_{i=1}^n \theta_i \quad \color{gray}{\textit{(Format.10)}}\]
+                    </div>
+
+                    <h4>3. Boolean Representation of SER</h4>
+                    <p>On L, amino acids with SASA values (by calculation) in the top γ are classified as Boolean true (1), while those in the bottom (1-γ) are classified as Boolean false (0).</p>
+
+                    <div class="math-block">
+                        \[L_{\text{Bool}}(i) = \begin{cases} 
+                        1 & \text{if SASA}_i \text{ is in the top } \gamma \\
+                        0 & \text{if SASA}_i \text{ is in the bottom } (1-\gamma)
+                        \end{cases} \quad \color{gray}{\textit{(Format.11)}}\]
+                    </div>
+
+                    <p>where SASA<sub>i</sub> is the SASA of the i-th amino acid in the sorted list L.</p>
+
+                    <p>And after completing the above steps, we will obtain a reordered sequence, which is the core of the results of AABM, as shown in the table (Table.2) below (for illustration purposes only, not representative of any actual conditions):</p>
+
+                    <!-- Boolean Classification Table -->
+                    <div class="table-container">
+                        <table>
+                            <caption>Table.3 | An example of reordered sequence.</caption>
+                            <thead>
+                                <tr>
+                                    <th>Position</th>
+                                    <th>Bool Value<br>(By experiment)</th>
+                                    <th>SASA (Å²)<br>(By computational calculation)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>1</td><td>0</td><td>0.01</td></tr>
+                                <tr><td>2</td><td>0</td><td>0.05</td></tr>
+                                <tr><td>3</td><td>0</td><td>0.59</td></tr>
+                                <tr class="ellipsis"><td colspan="3">...</td></tr>
+                                <tr><td>n-8</td><td>0</td><td>6.23</td></tr>
+                                <tr class="threshold-start"><td>n-7</td><td>1</td><td>7.22</td></tr>
+                                <tr><td>n-6</td><td>0</td><td>8.01</td></tr>
+                                <tr><td>n-5</td><td>0</td><td>8.69</td></tr>
+                                <tr><td>n-4</td><td>1</td><td>9.11</td></tr>
+                                <tr><td>n-3</td><td>0</td><td>9.55</td></tr>
+                                <tr><td>n-2</td><td>1</td><td>10.23</td></tr>
+                                <tr><td>n-1</td><td>0</td><td>10.90</td></tr>
+                                <tr class="threshold-end"><td>n</td><td>1</td><td>11.56</td></tr>
+                                <tr class="ellipsis"><td colspan="3">...</td></tr>
+                                <tr><td>N-2</td><td>1</td><td>56.26</td></tr>
+                                <tr><td>N-1</td><td>1</td><td>59.22</td></tr>
+                                <tr><td>N</td><td>1</td><td>63.18</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="table-note" style="font-size: 14px;">Note: The mixed region (threshold region) is highlighted between positions n-7 and n.</p>
+                    </div>
+
+                    <h4>4. Threshold Region Identification</h4>
+                    <p>The Boolean sequence L<sub>Bool</sub> exhibits a transition from 0 to 1, with a mixed region in between (also shown in Table.2). This mixed region is identified as the threshold region L<sub>Threshold</sub>, which separates exposed and non-exposed amino acids. This region can be modeled as a range of indices where the value of L<sub>Bool</sub> changes from 0 to 1.</p>
+
+                    <h4>5. Likelihood Threshold Determination</h4>
+                    <p>The final step of AABM is to determine the value of likelihood threshold. The threshold λ is determined by selecting a specific likelihood cutoff within the threshold region L<sub>Threshold</sub>. This likelihood cutoff corresponds to a specific SASA value, which defines the experimental threshold. Mathematically, this is expressed as:</p>
+
+                    <div class="math-block">
+                        \[\lambda = \text{argmax}(P(\text{SASA}|L_{\text{Threshold}})) \quad \color{gray}{\textit{(Format.12)}}\]
+                    </div>
+
+                    <p>where P(SASA|L<sub>Threshold</sub>) represents the likelihood function of SASA values within the threshold region.</p>
+
+                    <h4>6. Coding and results</h4>
+                    <p>Based on the aforementioned steps of AABM, we developed the AcidBool program, which implements the aforementioned principles and functions using Machine Learning methods. The source code has been uploaded on GitHub, some of the crucial part (for implementing the SASA reordered sequence) is shown below (Code.6).</p>
+
+                    <!-- Code Block -->
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-title">Code.6 | Source code of SASA calculation module</span>
+                        </div>
+                        <div class="code-block">
+                            <pre><code class="language-python">
+#Only a portion of the core code is displayed. For the complete code, view GitHub.
+#All paths in this code block are relative paths.
+
+import nglview as nv
+import freesasa
+import os
+import pandas as pd
+from Bio import PDB
+from IPython.display import display
+
+def get_residue_names(pdb_file):
+    parser = PDB.PDBParser(QUIET=True)
+    structure = parser.get_structure("protein", pdb_file)
+    residue_map = {}
+
+    for model in structure:
+        for chain in model:
+            for residue in chain:
+                if PDB.is_aa(residue, standard=True):
+                    chain_id = chain.id.upper()
+                    res_id = residue.get_id()
+                    res_num = str(res_id[1])
+                    if res_id[2] != " ":
+                        res_num += res_id[2]
+                    res_name = residue.get_resname()
+                    residue_map[(chain_id, res_num)] = res_name
+
+    return residue_map
+
+def visualize_pdb(pdb_file):
+    if not os.path.exists(pdb_file):
+        print(f"error: PDB file '{pdb_file}' does not exist, check file path!")
+        return None
+    try:
+        view = nv.show_file(pdb_file)
+        display(view)
+        return view
+    except Exception as e:
+        print(f"An error occurred while visualizing the PDB: {e}")
+        return None
+
+def calculate_sasa(pdb_file, output_xlsx="sasa_results.xlsx"):
+    if not os.path.exists(pdb_file):
+        print(f"error: PDB file '{pdb_file}' does not exist, check file path!")
+        return
+
+    try:
+        structure = freesasa.Structure(pdb_file)
+        result = freesasa.calc(structure)
+        sasa_values = result.residueAreas()
+
+        residue_names = get_residue_names(pdb_file)
+
+        sasa_list = []
+
+        for chain in sasa_values:
+            for resnum, residue_area in sasa_values[chain].items():
+                total_sasa = residue_area.total
+                res_name = residue_names.get((chain.upper(), str(resnum)), "UNK") 
+                sasa_list.append([chain, resnum, res_name, total_sasa])
+
+        df_sasa = pd.DataFrame(sasa_list, columns=["Chain", "R.No.", "Amino Acid", "SASA (Å²)"])
+        df_sasa = df_sasa.sort_values(by="SASA (Å²)", ascending=True).reset_index(drop=True)
+
+        df_sasa.to_excel(output_xlsx, index=False)
+        print(f"\nSASA calculation completed, see result blank in: {output_xlsx}")
+
+        print("\nSASA calculation result example (Sorted by SASA from smallest to largest):")
+        display(df_sasa)
+
+    except Exception as e:
+        print(f"an unexcepted error occurred: {e}")
+
+pdb_file = input("input PDB input-file path (or Enter with using '1ymg_chainA.pdb'):").strip()
+if not pdb_file:
+    pdb_file = r"1ymg_chainA.pdb"  
+
+output_xlsx = input("input Excel output-file path (or Enter with using 'sasa_results.xlsx'):").strip()
+if not output_xlsx:
+    output_xlsx = "sasa_results.xlsx"
+
+view = visualize_pdb(pdb_file)
+calculate_sasa(pdb_file, output_xlsx)</code></pre>
+                        </div>
+                    </div>
 
                     <!-- SASA Results Table -->
                     <div class="table-container">
                         <table>
-                            <caption>Table.3 | Samples of SASA reordered sequence of AQP0</caption>
+                            <caption>Table.4 | Samples of SASA reordered sequence of AQP0</caption>
                             <thead>
                                 <tr>
                                     <th>Chain</th>
@@ -726,7 +893,63 @@ sys.exit(app.exec_())</code></pre>
                                     <td>LEU</td>
                                     <td>0</td>
                                 </tr>
-                                <!-- ... more rows ... -->
+                                <tr>
+                                    <td>A</td>
+                                    <td>45</td>
+                                    <td>ALA</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>96</td>
+                                    <td>GLY</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>93</td>
+                                    <td>GLN</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>101</td>
+                                    <td>ALA</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" style="text-align: center;">...</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>11</td>
+                                    <td>ARG</td>
+                                    <td>156.0559543</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>10</td>
+                                    <td>TRP</td>
+                                    <td>165.2894264</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>202</td>
+                                    <td>TRP</td>
+                                    <td>173.1687551</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>196</td>
+                                    <td>ARG</td>
+                                    <td>194.5681726</td>
+                                </tr>
+                                <tr>
+                                    <td>A</td>
+                                    <td>156</td>
+                                    <td>ARG</td>
+                                    <td>218.3954819</td>
+                                </tr>
                                 <tr>
                                     <td>A</td>
                                     <td>34</td>
@@ -735,78 +958,170 @@ sys.exit(app.exec_())</code></pre>
                                 </tr>
                             </tbody>
                         </table>
+                        <p class="table-note" style="font-size: 14px;">For whole data, click <sup><a href="TODO" target="_blank">here</a></sup> to download the table.</p>
                     </div>
 
-                    <!-- Boolean Classification Table -->
-                    <div class="table-container">
-                        <table>
-                            <caption>Table.2 | An example of reordered sequence</caption>
-                            <thead>
-                                <tr>
-                                    <th>Bool Value (By experiment)</th>
-                                    <th>SASA (By computational calculation)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0 0 0 ... 0 1 0 0 1 0 1 0 1 ... 1 1 1</td>
-                                    <td>0.01 0.05 0.59 ... 6.23 7.22 8.01 8.69 9.11 9.55 10.23 10.90 11.56 ... 56.26 59.22 63.18</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p class="caption">The mixed region is located between two ellipses.</p>
-                    </div>
-
-                    <!-- Code Block -->
-                    <!-- <div class="code-block">
-                        <pre><code class="language-python">
-                            # SASA Reordering Implementation
-                            def reorder_sasa(amino_acids, sasa_values):
-                                # Sort amino acids based on SASA values
-                                sorted_indices = np.argsort(sasa_values)
-                                return amino_acids[sorted_indices], sasa_values[sorted_indices]
-                        </code></pre>
-                        <p class="caption">Code.6 | Implementation of SASA reordering algorithm</p>
-                    </div> -->
+                    
                 </section>
+                
 
                 <!-- Elijah Module -->
                 <section id="elijah">
-                    <h1>III. Elijah</h1>
-                    <h2>i. EpiFind</h2>
-                    <p>Given that designing peptides targeting known sites on AQP0 may interfere with its normal physiological functions...</p>
+                    <h2>III. Elijah</h2>
+                    <h3>i. EpiFind</h3>
+                    <p>Given that designing peptides targeting known sites on AQP0 may interfere with its normal physiological functions <sup><a href="#ref7">[7]</a></sup><sup><a href="#ref8">[8]</a></sup>, and that peptide binding to AQP0 could trigger cellular pinocytosis <sup><a href="#ref9">[9]</a></sup>, we firstly developed EpiFind in Elijah.</p>
 
-                    <div class="figure">
-                        <div id="proteinViewer" class="interactive-viewer"></div>
-                        <figcaption>Fig.5 | A screenshot of an interactive 3D visualization of AQP0 surface residues...</figcaption>
-                    </div>
+                    <p>As a computational program for epitope identification and screening by integrating outputs from Matthew Module, EpiFind employs a Hierarchical Attention Network (HAN) to evaluate physicochemical environments and biological spatial conformational features through weighted feature analysis, which has been proved that are more efficient and accurate <sup><a href="#ref10">[10]</a></sup>, thereby generating an initial set of potential novel epitopes on AQP0 (results shown below in Fig.5, source code in Code.7). These candidate epitopes are subsequently transferred to DeepPepGen for de-novo peptide generation.</p>
 
-                    <h2>ii. DeepPepGen</h2>
+                    <figure>
+                        <img src="../../static/img/model/Figure5.png" alt="EpiFind screenshot" style="width: 100%; height: auto;">
+                        <figcaption>
+                            Fig.5 | A screenshot of an interactive 3D visualization of AQP0 surface residues, highlighting solvent-accessible amino acids (those whose SASA > threshold, for whole data, click <a href="path/to/attachment2.pdf" download>here</a> to download the table) in red, with full rotation, zoom, and hover functionality for detailed structural analysis in following processes. For an interactive page (in HTML format), click <a href="path/to/attachment3.html" target="_blank" style="font-size: 14px;">here</a> to open.
+                        </figcaption>
+                    </figure>
+
+                    <h3>ii. DeepPepGen</h3>
                     <p>Looking forward, DeepPepGen is positioned to serve as the final predictive module in targeted peptide design pipelines. With sufficient development time and wet-lab experimental data for model training in subsequent phases, its ultimate objectives may include:</p>
                     <ol>
                         <li>Achieving end-to-end intelligent design of AQP0-binding peptides and providing direct candidate selections for drug conjugate components to experimental teams</li>
                         <li>Establishing a generalizable framework extendable to other protein-protein interaction prediction tasks</li>
                     </ol>
 
-                    <!-- Interactive Protein Viewer -->
-                    <div class="viewer-container">
-                        <div id="proteinViewer" class="interactive-viewer"></div>
-                        <div class="viewer-controls">
-                            <button onclick="resetView()">Reset View</button>
-                            <button onclick="toggleSurface()">Toggle Surface</button>
+                    <!-- Code Block -->
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-title">Code.7 | Source code of EpiFind module</span>
                         </div>
-                        <p class="caption">Fig.5 | Interactive 3D visualization of AQP0 surface residues. For an interactive page, <a href="#" target="_blank">click here</a> to open.</p>
+                        <div class="code-block">
+                            <pre><code class="language-python">
+#All paths in this code block are relative paths.
+
+import pandas as pd
+from biopandas.pdb import PandasPdb
+import plotly.graph_objects as go
+import numpy as np
+import webbrowser
+
+print('''^^ProEpiphary^^ ''')
+print('''Module: Elijah-EpiFind 3.5''')
+print('''analyzing...''')
+
+sasa_df = pd.read_excel(r"C:\Users\11960\Documents\zju\sasa_results.xlsx")
+non_zero_sasa = sasa_df[sasa_df["SASA (Å²)"] > 0]["SASA (Å²)"]
+threshold = non_zero_sasa.median() if len(non_zero_sasa) > 0 else 0.0
+threshold = 35.596   #Likelihood Threshold Replacement
+print(f"Threshould: {threshold:.3f} Å²")
+
+ppdb = PandasPdb().read_pdb(r"1ymg_chainA.pdb")
+atom_df = ppdb.df['ATOM']
+
+# Get CA atoms
+ca_df = atom_df[atom_df['atom_name'] == 'CA'].copy()
+ca_df['residue_number'] = ca_df['residue_number'].astype(int)
+
+# Create SASA lookup dictionary
+sasa_dict = {(row['Chain'], row['R.No.']): row['SASA (Å²)'] 
+             for _, row in sasa_df.iterrows()}
+
+# Color mapping based on SASA threshold
+colors = []
+surface_residues = []
+
+for _, row in ca_df.iterrows():
+    chain = row['chain_id']
+    res_no = row['residue_number']
+    res_name = row['residue_name']
+    
+    sasa = sasa_dict.get((chain, res_no), 0.0)
+    
+    if sasa > threshold:
+        colors.append("red")
+        surface_residues.append({
+            "Chain": chain,
+            "Residue Number": res_no,
+            "Amino Acid": res_name,
+            "SASA (Å²)": sasa
+        })
+    else:
+        colors.append("black")
+
+# Create 3D visualization
+fig = go.Figure(data=[
+    go.Scatter3d(
+        x=ca_df['x_coord'],
+        y=ca_df['y_coord'],
+        z=ca_df['z_coord'],
+        mode='markers',
+        marker=dict(
+            size=7.5,
+            color=colors,
+            opacity=0.8
+        ),
+        hovertext=[
+            f"{row['residue_name']}{row['residue_number']} ({row['chain_id']})" 
+            for _, row in ca_df.iterrows()
+        ]
+    )
+])
+
+fig.update_layout(
+    title=f"AQP0 Surface AAs Visualization ( with Est.Threshold: {threshold:.3f}Å² )",
+    scene=dict(
+        xaxis_title='X (Å)',
+        yaxis_title='Y (Å)',
+        zaxis_title='Z (Å)',
+        aspectmode='data'
+    ),
+    width=1200,
+    height=1000
+)
+
+fig.show()
+fig.write_html(r"Surface_AAs_3D_View.html")
+webbrowser.open("Surface_AAs_3D_View.html")
+
+# Save surface residues to Excel
+surface_df = pd.DataFrame(surface_residues)
+surface_df = surface_df.sort_values(by=["Chain", "Residue Number"])
+
+output_path = r"Surface_AAs.xlsx"
+surface_df.to_excel(output_path, index=False)
+print(f"Results already saved to: {output_path}")</code></pre>
+                        </div>
                     </div>
+
+                    <p>In the future, we will continue to optimize the model and expand its application scope.</p>
+
+                    <h3>iii. DeepPepGen</h3>
+                    <p>At the beginning of WP, we planned to develop DeepPepGen as a whole-process affinity prediction platform that can automatically generate target peptide from the learning of AQP0. However, it is not a small feat. Due to the absence of established standard datasets and the practical challenges in obtaining direct wet-lab experimental validation data during WP phase, it remains particularly challenging to complete full-scale code implementation and model training for DeepPepGen at this stage. Considering these constraints, in WP, this section will primarily focus on:</p>
+                    <ol>
+                        <li>Elaborating design rationale through comprehensive literature review and analysis of existing computational models</li>
+                        <li>Presenting the conceptual framework architecture of DeepPepGen through schematic diagrams (Fig.6)</li>
+                    </ol>
+
+                    <figure>
+                        <img src="../../static/img/model/Figure6.png" alt="Framework of DeepPepGen" style="width: 100%; height: auto;">
+                        <figcaption>
+                            Fig.6 | Framework of DeepPepGen. Peptide segments are processed through PepGPT <sup><a href="#ref11">[11]</a></sup> for encoding, followed by feature extraction, physicochemical calculation, and normalization. The refined features are then combined using dual matrix generation <sup><a href="#ref12">[12]</a></sup> and Self-Attention Fusion (SAF) <sup><a href="#ref13">[13]</a></sup> blocks to generate the target peptide with high prediction score of affinity for wet-lab to advance Drug Conjugation process.
+                        </figcaption>
+                    </figure>
+
+                    <p>Looking forward, DeepPepGen is positioned to serve as the final predictive module in targeted peptide design pipelines. With sufficient development time and wet-lab experimental data for model training in subsequent phases, its ultimate objectives may include:</p>
+                    <ol>
+                        <li>Achieving end-to-end intelligent design of AQP0-binding peptides and providing direct candidate selections for drug conjugate components to experimental teams</li>
+                        <li>Establishing a generalizable framework extendable to other protein-protein interaction prediction tasks</li>
+                    </ol>
+
                 </section>
 
                 <!-- Outlook section -->
                 <section id="outlook">
                     <h1>Outlook: Let Eyes Behold the Light</h1>
-                    <div class="quote-block">
-                        <p>"The light shineth in darkness; and the darkness comprehended it not. (John 1:5, KJV)"</p>
-                    </div>
-                    <p>Every time, in those midnights when I toss and turn before the flickering screen...</p>
-                    <!-- ... rest of the outlook content ... -->
+                    
+                    <p>"The light shineth in darkness; and the darkness comprehended it not. (John 1:5, KJV)" Every time, in those midnights when I toss and turn before the flickering screen, such verses linger always crossed my mind and gave me strength, like dawnlight through the valley of the shadow (Psalm 23:4).</p>
+                    <p>Life stands as our mutual magnum opus, and when the revelation of "Let there be light" (Genesis 1:3) is proclaimed, our lucent eyes become the most precious gift through which life allows us to commune with all creation. I just always muse: to decode life's ciphers through inspired algorithms, letting truth's radiance dissolve the veils of obscurity, that all may freely behold "fields, woods, towns, rivers, clouds, sunshine, and all that lies before us" (Charlotte Brontë, Jane Eyre)—and I believe this just embodies the very essence that iGEM advocates, where neo-synthetic biology will embrace modeling, coding, software and AI to unveil the used-to-be hidden harmonies like protein design or drug discovery, expanding the frontier of human ingenuity indefatigably.</p>
+                    <p>In all with zeal I hope, that our codes and methods may just translate into more healing visions, that through crystalline polypeptides we may weave light's lexicon, and sincerely, that no one left behind, we all, in our shared pilgrimage through science, may truly become the light of the world (Matthew 5:14).</p>
+
                 </section>
 
                 <!-- References section -->
