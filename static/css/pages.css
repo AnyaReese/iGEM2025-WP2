@@ -266,6 +266,7 @@
 .content p {
     text-indent: 2em;  /* every paragraph has a indent */
     margin-bottom: 1.2em;
+    font-size: 21px;
     font-family: var(--content-font);
 }
 
@@ -306,7 +307,16 @@
 }
 
 .content h3 {
-    font-size: 1.3em;
+    font-size: 23px;
+    color: var(--black);
+    font-family: var(--content-font);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.content h4 {
+    font-size: 22px;
     color: var(--black);
     font-family: var(--content-font);
     font-weight: bold;
@@ -350,6 +360,7 @@
     position: relative;
     margin-bottom: 0.5em;
     padding-left: 2em;
+    font-size: 1em;
     text-indent: 0;
     list-style: none;
     font-family: var(--content-font);
@@ -369,6 +380,7 @@
 
 .content ol li p {
     margin: 0;
+    font-size: 1em;
     text-indent: 0;
 }
 

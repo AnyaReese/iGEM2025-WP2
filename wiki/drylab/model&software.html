@@ -140,7 +140,7 @@
                     <figure>
                         <img src="../../static/img/model/Figure1.png" alt="Framework of ProEpiphary" style="width: 100%; height: auto;">
                         <figcaption>
-                            <p>Fig.1 | Framework of ProEpiphary.</p>
+                            Fig.1 | Framework of ProEpiphary.
                         </figcaption>
                     </figure>
 
@@ -225,7 +225,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <p class="table-note">For details of specific methods, view references 2 and 3 below.</p>
+                        <p class="table-note" style="font-size: 14px;">For details of specific methods, view references 2 and 3 below.</p>
                     </div>
 
                     <h4>4. Similarity Score</h4>
@@ -247,7 +247,7 @@
                                 </div>
                             </div>
                             <figcaption>
-                                <p>Fig.2 | Comparison of amino acid frequency distribution between human and sheep AQP0.</p>
+                                Fig.2 | Comparison of amino acid frequency distribution between human and sheep AQP0.
                             </figcaption>
                         </div>
                     </div>
@@ -256,8 +256,10 @@
                         <figure>
                             <img src="../../static/img/model/Figure3.png" alt="Sequence Logo Graph" style="width: 100%; height: auto;">
                             <figcaption>
-                                <p>Fig.3 | Sequence Logo Graph (SLG) visualization of the protein sequences.</p>
-                                <p>Sequence similarity: 90.8292%</p>
+                                Fig.3 | Sequence Logo Graph (SLG) visualization of the protein sequences.
+                            </figcaption>
+                            <figcaption>
+                                Sequence similarity: 90.8292%
                             </figcaption>
                         </figure>
                     </div>
@@ -447,90 +449,88 @@ if __name__ == "__main__":
     print('''v1.2   (Last Update:31/01/2025)''')</code></pre>
                         </div>
                     </div>
-                </section>
 
                 <!-- Noah Module -->
-                <section id="noahcc">
-                    <h3>ii. NoahCC</h3>
+                <h3>ii. NoahCC</h3>
                     
-                    <div class="module-description">
-                        <p>NoahCC is designed to calculate Information Entropy (IE) values and Conservation Scores (CS) of specific sites of each sequence, enabling the quantitative analysis of biological conservation along with the identification of critical similarities and differences for further wet-lab experiments.</p>
-                    </div>
+                <div class="module-description">
+                    <p>NoahCC is designed to calculate Information Entropy (IE) values and Conservation Scores (CS) of specific sites of each sequence, enabling the quantitative analysis of biological conservation along with the identification of critical similarities and differences for further wet-lab experiments.</p>
+                </div>
 
-                    <div class="calculation-section">
-                        <h4><strong>1. Calculation of IE values and CS</strong></h4>
+                <div class="calculation-section">
+                    <h4>1. Calculation of IE values and CS</h4>
                         
-                        <div class="math-block">
-                            \[P(a,j) = \frac{count(a,j)}{N} \quad \color{gray}{\textit{(Format.6)}}\]
-                        </div>
-
-                        <div class="math-block">
-                            \[H(j) = -\sum_a P(a,j) \log_2 P(a,j) \quad \color{gray}{\textit{(Format.7)}}\]
-                        </div>
-
-                        <div class="math-block">
-                            \[C(j) = \max P(a,j) + \epsilon \quad \color{gray}{\textit{(Format.8)}}\]
-                        </div>
-
-
-                        <p><strong>where:</strong></p>
-                        <ul>
-                            <li>P(a,j) represents the relative frequency of amino acid a at position j</li>
-                            <li>count(a,j) is the number of times a appears at position j</li>
-                            <li>N is the total number of amino acids at that position</li>
-                            <li>H(j) is the entropy of position j, lower H(j) values indicate higher conservation, meaning the position is more functionally or structurally important</li>
-                            <li>C(j) is the conservation score of position j</li>
-                            <li>max P(a,j) is the highest amino acid frequency at that position</li>
-                            <li>ε is a small fixed adjustment factor to introduce a slight variability in the score <a href="#ref4">[4]</a></li>
-                        </ul>
+                    <div class="math-block">
+                        \[P(a,j) = \frac{count(a,j)}{N} \quad \color{gray}{\textit{(Format.6)}}\]
                     </div>
-                    <p>Partial running result (values for the first 20 amino acids) is shown in Table.2 below. A lower IE value and a higher CS indicate that the site is relatively more conserved, which is crucial for its biological function and structure.</p>
-                    
-                    <div class="table-container">
-                        <table>
-                            <caption>Table.2 | Partial running result (values for the first 20 amino acids)</caption>
-                            <thead>
-                                <tr>
-                                    <th>Position</th>
-                                    <th>Human_Entropy</th>
-                                    <th>Human_ConScore</th>
-                                    <th>Sheep_Entropy</th>
-                                    <th>Sheep_ConScore</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>1</td><td>2.3219</td><td>0.55</td><td>2.3219</td><td>0.53</td></tr>
-                                <tr><td>2</td><td>2.3219</td><td>0.54</td><td>2.3219</td><td>0.55</td></tr>
-                                <tr><td>3</td><td>2.3219</td><td>0.55</td><td>1.9219</td><td>0.75</td></tr>
-                                <tr><td>4</td><td>2.3219</td><td>0.59</td><td>1.9219</td><td>0.76</td></tr>
-                                <tr><td>5</td><td>2.3219</td><td>0.57</td><td>2.3219</td><td>0.59</td></tr>
-                                <tr><td>6</td><td>1.9219</td><td>0.78</td><td>1.9219</td><td>0.79</td></tr>
-                                <tr><td>7</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.78</td></tr>
-                                <tr><td>8</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.77</td></tr>
-                                <tr><td>9</td><td>1.5219</td><td>0.76</td><td>1.5219</td><td>0.77</td></tr>
-                                <tr><td>10</td><td>1.3710</td><td>0.92</td><td>1.3710</td><td>0.91</td></tr>
-                                <tr><td>11</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.73</td></tr>
-                                <tr><td>12</td><td>0.9710</td><td>0.91</td><td>1.5219</td><td>0.78</td></tr>
-                                <tr><td>13</td><td>1.9219</td><td>0.72</td><td>1.9219</td><td>0.72</td></tr>
-                                <tr><td>14</td><td>1.9219</td><td>0.79</td><td>1.9219</td><td>0.75</td></tr>
-                                <tr><td>15</td><td>2.3219</td><td>0.56</td><td>2.3219</td><td>0.54</td></tr>
-                                <tr><td>16</td><td>2.3219</td><td>0.52</td><td>2.3219</td><td>0.54</td></tr>
-                                <tr><td>17</td><td>2.3219</td><td>0.56</td><td>2.3219</td><td>0.55</td></tr>
-                                <tr><td>18</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.79</td></tr>
-                                <tr><td>19</td><td>2.3219</td><td>0.55</td><td>2.3219</td><td>0.56</td></tr>
-                                <tr><td>20</td><td>1.5219</td><td>0.72</td><td>1.5219</td><td>0.76</td></tr>
-                            </tbody>
-                        </table>
+
+                    <div class="math-block">
+                        \[H(j) = -\sum_a P(a,j) \log_2 P(a,j) \quad \color{gray}{\textit{(Format.7)}}\]
                     </div>
+
+                    <div class="math-block">
+                        \[C(j) = \max P(a,j) + \epsilon \quad \color{gray}{\textit{(Format.8)}}\]
+                    </div>
+
+
+                    <p><strong>where:</strong></p>
+                    <ul>
+                        <li>P(a,j) represents the relative frequency of amino acid a at position j</li>
+                        <li>count(a,j) is the number of times a appears at position j</li>
+                        <li>N is the total number of amino acids at that position</li>
+                        <li>H(j) is the entropy of position j, lower H(j) values indicate higher conservation, meaning the position is more functionally or structurally important</li>
+                        <li>C(j) is the conservation score of position j</li>
+                        <li>max P(a,j) is the highest amino acid frequency at that position</li>
+                        <li>ε is a small fixed adjustment factor to introduce a slight variability in the score <a href="#ref4">[4]</a></li>
+                    </ul>
+                </div>
+                <p>Partial running result (values for the first 20 amino acids) is shown in Table.2 below. A lower IE value and a higher CS indicate that the site is relatively more conserved, which is crucial for its biological function and structure.</p>
                     
-                    <p>Source Code (Code.4) has been uploaded on GitHub, and can be viewed below:</p>
-                    <!-- Code Block -->
-                    <div class="code-container">
-                        <div class="code-header">
-                            <span class="code-title">Code.4 | Source code of NoahCC module</span>
-                        </div>
-                        <div class="code-block">
-                            <pre><code class="language-python">
+                <div class="table-container">
+                    <table>
+                        <caption>Table.2 | Partial running result (values for the first 20 amino acids)</caption>
+                        <thead>
+                            <tr>
+                                <th>Position</th>
+                                <th>Human_Entropy</th>
+                                <th>Human_ConScore</th>
+                                <th>Sheep_Entropy</th>
+                                <th>Sheep_ConScore</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>2.3219</td><td>0.55</td><td>2.3219</td><td>0.53</td></tr>
+                            <tr><td>2</td><td>2.3219</td><td>0.54</td><td>2.3219</td><td>0.55</td></tr>
+                            <tr><td>3</td><td>2.3219</td><td>0.55</td><td>1.9219</td><td>0.75</td></tr>
+                            <tr><td>4</td><td>2.3219</td><td>0.59</td><td>1.9219</td><td>0.76</td></tr>
+                            <tr><td>5</td><td>2.3219</td><td>0.57</td><td>2.3219</td><td>0.59</td></tr>
+                            <tr><td>6</td><td>1.9219</td><td>0.78</td><td>1.9219</td><td>0.79</td></tr>
+                            <tr><td>7</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.78</td></tr>
+                            <tr><td>8</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.77</td></tr>
+                            <tr><td>9</td><td>1.5219</td><td>0.76</td><td>1.5219</td><td>0.77</td></tr>
+                            <tr><td>10</td><td>1.3710</td><td>0.92</td><td>1.3710</td><td>0.91</td></tr>
+                            <tr><td>11</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.73</td></tr>
+                            <tr><td>12</td><td>0.9710</td><td>0.91</td><td>1.5219</td><td>0.78</td></tr>
+                            <tr><td>13</td><td>1.9219</td><td>0.72</td><td>1.9219</td><td>0.72</td></tr>
+                            <tr><td>14</td><td>1.9219</td><td>0.79</td><td>1.9219</td><td>0.75</td></tr>
+                            <tr><td>15</td><td>2.3219</td><td>0.56</td><td>2.3219</td><td>0.54</td></tr>
+                            <tr><td>16</td><td>2.3219</td><td>0.52</td><td>2.3219</td><td>0.54</td></tr>
+                            <tr><td>17</td><td>2.3219</td><td>0.56</td><td>2.3219</td><td>0.55</td></tr>
+                            <tr><td>18</td><td>1.9219</td><td>0.76</td><td>1.9219</td><td>0.79</td></tr>
+                            <tr><td>19</td><td>2.3219</td><td>0.55</td><td>2.3219</td><td>0.56</td></tr>
+                            <tr><td>20</td><td>1.5219</td><td>0.72</td><td>1.5219</td><td>0.76</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                    
+                <p>Source Code (Code.4) has been uploaded on GitHub, and can be viewed below:</p>
+                <!-- Code Block -->
+                <div class="code-container">
+                    <div class="code-header">
+                        <span class="code-title">Code.4 | Source code of NoahCC module</span>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-python">
 import numpy as np
 from collections import Counter
 import random
@@ -595,33 +595,113 @@ for i in range(len(human_entropy)):
     print(f"{i + 1}\t{human_entropy[i]:.4f}\t{human_conservation[i]:.2f}\t{sheep_entropy[i]:.4f}\t{sheep_conservation[i]:.2f}")
 
 print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
-                        </div>
                     </div>
-                </section>
+                </div>
+            </section>
 
                 <!-- Matthew Module -->
                 <section id="matthew">
                     <h2>II. Matthew</h2>
                     <h3>i. WebCrawler</h3>
-                    <p>To identify new epitopes, specific experimental methods need to be designed to determine the surface frequency of each amino acid in AQP0...</p>
+                    <p>To identify new epitopes, specific experimental methods need to be designed to determine the surface frequency of each amino acid in AQP0 (i.e., to assess whether it is located on the protein surface and can specifically bind to ligands such as targeting peptides). Since different amino acids can specifically react with different biotinylation reagents in a quantifiable manner, the identification of suitable biotinylation reagents is critical to the success of the experiment. Based on this principle, we integrated the Biotinylation Reagent Selection Tool (BRST) (Fig.4) <sup><a href="#ref5">[5]</a></sup>, which includes an open-source platform developed by Thermo Fisher, into the WebScrawler submodule of Matthew. This integration facilitates the rapid screening of potential biotin labeling reagents for wet-lab experiments, serving as the foundation for the subsequent BoolAcid submodule.</p>
                     
-                    <div class="figure">
-                        <img src="../../static/img/model/brst.png" alt="BRST Interface">
-                        <p class="caption">Fig.4 | The page of the BRST (powered by ThermoFisher)...</p>
-                    </div>
+                    <figure>
+                        <img src="../../static/img/model/Figure4.png" alt="BRST Interface">
+                        <figcaption>
+                            Fig. 4 | The page of the BRST (powered by ThermoFisher), an open-source platform, aids in selecting biotinylation reagents for wet-lab, mainly based on parameters such as spacer arm length, crosslinking reactivity, membrane permeability, and water solubility, to optimize experimental design for specific AA surface frequency determination.
+                        </figcaption>
+                    </figure>
+
+                    <p>Source Code (Code.5) has been uploaded on GitHub, and can be viewed below:</p>
+                    <!-- Code Block -->
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-title
+                            ">Code.5 | Source code of WebCrawler module</span>
+                        </div>
+                        <div class="code-block
+                        ">
+                            <pre><code class="language-python
+                            ">
+import sys
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget
+from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEnginePage
+
+print('''
+^^ProEpiphary^^ ''')
+print('''
+Module: Matthew-WebCrawler 3.5''')
+print('''
+analyzing...''')
+class WebApp(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Biotinylation Reagent Selection Tool (powered by thermofisher)     last update 30012025 @mlmzzzooo")
+        self.setGeometry(100, 100, 1200, 800)
+
+        self.browser = QWebEngineView()
+        self.browser.setUrl(QUrl("https://www.thermofisher.cn/cn/zh/home/life-science/protein-biology/protein-labeling-crosslinking/biotinylation/biotinylation-reagent-selection-tool.html"))
+
+        self.browser.page().runJavaScript("""
+            var unwantedElements = document.querySelectorAll('header, footer, .nav, .sidebar, .content-header, .other-unwanted-elements');
+            unwantedElements.forEach(function(el) {
+                el.style.display = 'none';
+            });
+
+            var tables = document.querySelectorAll('table');
+            tables.forEach(function(table, index) {
+                if (index == 0 || index == 1) {
+                    table.style.display = 'block';
+                } else {
+                    table.style.display = 'none';
+                }
+            });
+
+            var allElements = document.body.querySelectorAll('*');
+            allElements.forEach(function(el) {
+                if (el.tagName !== 'TABLE' && el !== tables[0] && el !== tables[1]) {
+                    el.style.display = 'none';
+                }
+            });
+        """)
+
+        central_widget = QWidget()
+        layout = QVBoxLayout()
+        layout.addWidget(self.browser)
+
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
+
+app = QApplication(sys.argv)
+window = WebApp()
+window.show()
+sys.exit(app.exec_())</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
 
                     <h3>ii. BoolAcid</h3>
                     <p>Before coding, it is crucial for us to firstly embody several mathematical modeling concepts, named as the Amino Acid to Bool Model (AABM), particularly related to sorting, quantification, and threshold determination.</p>
 
-                    <h3>1. Calculation of Solvent Accessible Surface Area (SASA) and Sorting</h3>
+                    <h4>1. Calculation of Solvent Accessible Surface Area (SASA) and Sorting</h4>
                     <p>This sorting step is foundational of AABM for determining the exposure of amino acids to chemical reagents. Mathematically, this could be represented as:</p>
-                    
-                    <div class="formula">
-                        <img src="../../static/img/model/formula9.png" alt="SASA Formula">
+
+                    <div class="math-block">
+                        \[T = \sum_{i=1}^n L_i \quad \color{gray}{\textit{(Format.9)}}\]
                     </div>
+                    
+                    <p><strong>where:</strong></p>
+                    <ul>
+                        <li><p>Li represents the length of the i-th aligned sequence</p></li>
+                        <li><p>N is the number of sequence pairs</p></li>
+                    </ul>
+                    
+
                     <p>where:</p>
                     <ul>
-                        <li>S is the reordered list of amino acids based on their SASA values</li>
+                        <li><p>S is the reordered list of amino acids based on their SASA values</p></li>
                     </ul>
 
                     <!-- SASA Results Table -->
@@ -681,7 +761,7 @@ print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
                     </div>
 
                     <!-- Code Block -->
-                    <div class="code-block">
+                    <!-- <div class="code-block">
                         <pre><code class="language-python">
                             # SASA Reordering Implementation
                             def reorder_sasa(amino_acids, sasa_values):
@@ -690,7 +770,7 @@ print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
                                 return amino_acids[sorted_indices], sasa_values[sorted_indices]
                         </code></pre>
                         <p class="caption">Code.6 | Implementation of SASA reordering algorithm</p>
-                    </div>
+                    </div> -->
                 </section>
 
                 <!-- Elijah Module -->
@@ -701,7 +781,7 @@ print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
 
                     <div class="figure">
                         <div id="proteinViewer" class="interactive-viewer"></div>
-                        <p class="caption">Fig.5 | A screenshot of an interactive 3D visualization of AQP0 surface residues...</p>
+                        <figcaption>Fig.5 | A screenshot of an interactive 3D visualization of AQP0 surface residues...</figcaption>
                     </div>
 
                     <h2>ii. DeepPepGen</h2>
@@ -718,7 +798,7 @@ print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
                             <button onclick="resetView()">Reset View</button>
                             <button onclick="toggleSurface()">Toggle Surface</button>
                         </div>
-                        <p class="caption">Fig.5 | Interactive 3D visualization of AQP0 surface residues. For an interactive page, <a href="../../static/viewer/protein.html" target="_blank">click here</a> to open.</p>
+                        <p class="caption">Fig.5 | Interactive 3D visualization of AQP0 surface residues. For an interactive page, <a href="#" target="_blank">click here</a> to open.</p>
                     </div>
                 </section>
 
@@ -738,10 +818,80 @@ print('''v1.5   (Last Update:03/02/2025)''')</code></pre>
                     <div class="reference-list">
                         <div class="reference-item" id="ref1">
                             <span class="ref-number">[1]</span>
-                            <span class="ref-content">Yoon B. J. (2009). Hidden Markov Models and their Applications in Biological Sequence Analysis. <em>Current genomics</em>, 10(6), 402–415.</span>
-                            <a href="https://doi.org/10.2174/138920209789177575" class="ref-link" target="_blank">https://doi.org/10.2174/138920209789177575</a>
+                            <span class="ref-content">Yoon, B. J. (2009). Hidden Markov Models and their Applications in Biological Sequence Analysis. <em>Current genomics</em>, 10(6), 402–415.</span>
+                            <a href="https://doi.org/10.2174/138920209789177575" class="ref-link" target="_blank">DOI: 10.2174/138920209789177575</a>
                         </div>
-                        <!-- Continue with other references... -->
+                        
+                        <div class="reference-item" id="ref2">
+                            <span class="ref-number">[2]</span>
+                            <span class="ref-content">Li, J., Lee, JY., & Liao, L. (2021). A new algorithm to train hidden Markov models for biological sequences with partial labels. <em>BMC Bioinformatics</em>, 22, 162.</span>
+                            <a href="https://doi.org/10.1186/s12859-021-04080-0" class="ref-link" target="_blank">DOI: 10.1186/s12859-021-04080-0</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref3">
+                            <span class="ref-number">[3]</span>
+                            <span class="ref-content">Porter, T. M., Hajibabaei, M. (2021). Profile hidden Markov model sequence analysis can help remove putative pseudogenes from DNA barcoding and metabarcoding datasets. <em>BMC Bioinformatics</em>, 22, 256.</span>
+                            <a href="https://doi.org/10.1186/s12859-021-04180-x" class="ref-link" target="_blank">DOI: 10.1186/s12859-021-04180-x</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref4">
+                            <span class="ref-number">[4]</span>
+                            <span class="ref-content">Delgado-Bonal, A., & Marshak, A. (2019). Approximate Entropy and Sample Entropy: A Comprehensive Tutorial. <em>Entropy</em>, 21(6), 541.</span>
+                            <a href="https://doi.org/10.3390/e21060541" class="ref-link" target="_blank">DOI: 10.3390/e21060541</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref5">
+                            <span class="ref-number">[5]</span>
+                            <span class="ref-content">Thermo Fisher Scientific. (n.d.). Biotinylation reagent selection tool. Thermo Fisher Scientific. Retrieved February 2, 2025, from <a href="https://www.thermofisher.com/sg/en/home/life-science/protein-biology/protein-labeling-crosslinking/biotinylation/biotinylation-reagent-selection-tool.html" target="_blank">https://www.thermofisher.com/sg/en/home/life-science/protein-biology/protein-labeling-crosslinking/biotinylation/biotinylation-reagent-selection-tool.html</a></span>
+                        </div>
+                        
+                        <div class="reference-item" id="ref6">
+                            <span class="ref-number">[6]</span>
+                            <span class="ref-content">Spickett, C. M., & Pitt, A. R. (2012). Protein oxidation: role in signalling and detection by mass spectrometry. <em>Amino acids</em>, 42(1), 5-21.</span>
+                            <a href="https://doi.org/10.1007/s00726-010-0585-4" class="ref-link" target="_blank">DOI: 10.1007/s00726-010-0585-4</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref7">
+                            <span class="ref-number">[7]</span>
+                            <span class="ref-content">Schey, K. L., Wang, Z., Wenke, J., & Qi, Y. (2014). Aquaporins in the eye: expression, function, and roles in ocular disease. <em>Biochimica et biophysica acta</em>, 1840(5), 1513–1523.</span>
+                            <a href="https://doi.org/10.1016/j.bbagen.2013.10.037" class="ref-link" target="_blank">DOI: 10.1016/j.bbagen.2013.10.037</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref8">
+                            <span class="ref-number">[8]</span>
+                            <span class="ref-content">Gutierrez, D. B., Garland, D. L., Schwacke, J. H., Hachey, D. L., & Schey, K. L. (2016). Spatial distributions of phosphorylated membrane proteins aquaporin 0 and MP20 across young and aged human lenses. <em>Experimental eye research</em>, 149, 59–65.</span>
+                            <a href="https://doi.org/10.1016/j.exer.2016.06.015" class="ref-link" target="_blank">DOI: 10.1016/j.exer.2016.06.015</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref9">
+                            <span class="ref-number">[9]</span>
+                            <span class="ref-content">Wang, Z., & Schey, K. L. (2011). Aquaporin-0 interacts with the FERM domain of ezrin/radixin/moesin proteins in the ocular lens. <em>Investigative ophthalmology & visual science</em>, 52(8), 5079-5087.</span>
+                            <a href="https://doi.org/10.1167/iovs.10-6998" class="ref-link" target="_blank">DOI: 10.1167/iovs.10-6998</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref10">
+                            <span class="ref-number">[10]</span>
+                            <span class="ref-content">Mousavi, S., Afghah, F., Acharya, U. R. (2020). HAN-ECG: An interpretable atrial fibrillation detection model using hierarchical attention networks. <em>Computers in Biology and Medicine</em>, 127, 104057.</span>
+                            <a href="https://doi.org/10.1016/j.compbiomed.2020.104057" class="ref-link" target="_blank">DOI: 10.1016/j.compbiomed.2020.104057</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref11">
+                            <span class="ref-number">[11]</span>
+                            <span class="ref-content">Rehana, H., Çam, N. B., Basmaci, M., Zheng, J., Jemiyo, C., He, Y., Özgür, A., & Hur, J. (2023). Evaluation of GPT and BERT-based models on identifying protein-protein interactions in biomedical text. <em>ArXiv</em>, arXiv:2303.17728v2.</span>
+                        </div>
+                        
+                        <div class="reference-item" id="ref12">
+                            <span class="ref-number">[12]</span>
+                            <span class="ref-content">Yang, M., et al. (2023). MIX-TPI: A flexible prediction framework for TCR-pMHC interactions based on multimodal representations. <em>Bioinformatics</em>, 39(8), btad475.</span>
+                            <a href="https://doi.org/10.1093/bioinformatics/btad475" class="ref-link" target="_blank">DOI: 10.1093/bioinformatics/btad475</a>
+                        </div>
+                        
+                        <div class="reference-item" id="ref13">
+                            <span class="ref-number">[13]</span>
+                            <span class="ref-content">Shin, B., Park, S., Kang, K., & Ho, J.C. (2019). Self-Attention Based Molecule Representation for Predicting Drug-Target Interaction. <em>Proceedings of the 4th Machine Learning for Healthcare Conference</em>, 106:230-248.</span>
+                            <a href="https://proceedings.mlr.press/v106/shin19a.html" class="ref-link" target="_blank">Link to paper</a>
+                        </div>
+                        
                     </div>
                 </section>
             </div>
