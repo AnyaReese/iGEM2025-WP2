@@ -3,6 +3,7 @@
     width: 100%;
     padding: 0;
     margin-top: var(--topbar-height, 80px);
+    min-height: 100vh;
 }
 
 .content {
@@ -11,14 +12,12 @@
     max-width: none !important;
     width: 100%;
     display: block;
-    /* overflow: visible; [!Note] important or footer will be stretched */
+    overflow-y: visible;
+    height: auto;
 }
 
-/* override content height */
 .content::before {
-     /* dynamic height */
-    /* height: var(--content-height, 400vh); */
-    height: 300vh;
+    content: none;
 }
 
 /* department section */
@@ -195,75 +194,132 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     background-color: #f3f3fec9;
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* 添加背景装饰图案 */
+.card-back::before {
+    content: "✨";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    opacity: 0.7;
+    animation: float 3s ease-in-out infinite;
+}
+
+.card-back::after {
+    content: "🍀";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 24px;
+    opacity: 0.3;
+    animation: float 3s ease-in-out infinite reverse;
+}
+
+/* 添加浮动动画 */
+@keyframes float {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
 }
 
 /* self-introduction text container */
 .member-bio {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 14px;
+    text-align: center;
+    line-height: 2;
     color: #2C3E50;
-    padding: 25px;
-    font-family: var(--content-font);
+    padding: 20px;
+    font-family: "Comic Sans MS", "Varela Round", var(--content-font);
     position: relative;
     z-index: 1;
-    quotes: "\"" "\""; /* use escaped double quotes */
+    height: auto;
+    max-width: 85%;
+    margin: auto;
+    
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    transition: all 0.3s ease;
+    border: 1px solid rgba(176, 196, 222, 0.3);
 }
 
-/* add quote decoration */
-.member-bio::before,
-.member-bio::after {
-    position: absolute;
-    font-size: 60px;
-    font-family: Georgia, serif;
-    opacity: 0.2;
-    color: #1976D2;
-}
-
+/* 添加装饰性角标 */
 .member-bio::before {
-    content: open-quote;
-    top: -10px;
-    left: 5px;
-}
-
-.member-bio::after {
-    content: close-quote;
-    bottom: -40px;
-    right: 5px;
-}
-
-/* add background decoration */
-.card-back::before {
-    content: "";
+    content: "🎨";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.3) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.3) 0%, transparent 40%);
-    pointer-events: none;
-}
-
-/* add bottom decoration line */
-.member-bio::after {
-    content: "";
-    position: absolute;
-    bottom: 15px;
+    top: -15px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 3px; /* increase line thickness */
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(25, 118, 210, 0.8), /* increase opacity */
-        transparent
-    );
-    box-shadow: 0 2px 4px rgba(25, 118, 210, 0.3); /* add shadow effect */
+    font-size: 24px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+/* 添加跳动动画 */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    50% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* 悬停效果增强 */
+.member-bio:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    border-color: rgba(176, 196, 222, 0.5);
+}
+
+/* 添加文字emoji动画效果 */
+.member-bio emoji {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.member-bio:hover emoji {
+    animation: wiggle 1s ease-in-out infinite;
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+/* 自定义滚动条样式 */
+.card-back::-webkit-scrollbar {
+    width: 4px;
+}
+
+.card-back::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.card-back::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.3);
+    border-radius: 2px;
 }
 
 /* hover effect on card */
@@ -287,13 +343,15 @@
     }
     
     .member-bio {
-        font-size: 14px;
-        padding: 20px;
-        line-height: 1.6;
+        font-size: 13px;
+        padding: 15px;
+        line-height: 1.8;
+        max-width: 90%;
     }
     
-    .member-bio::before,
-    .member-bio::after {
-        font-size: 40px;
+    .card-back::before,
+    .card-back::after,
+    .member-bio::before {
+        font-size: 20px;
     }
 }
