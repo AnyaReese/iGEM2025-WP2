@@ -1163,7 +1163,7 @@ figcaption {
 /* Table styles */
 .table-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 950px;
     margin: 2em auto;
     overflow-x: auto;
     border-radius: 8px;
