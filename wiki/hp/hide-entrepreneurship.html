@@ -356,9 +356,29 @@
                             border-radius: 50%;
                             z-index: -1;
                         }
+
+                        @media (max-width: 900px) {
+                            .force-circle, .center-circle {
+                                width: 90px;
+                                height: 90px;
+                                font-size: 11px;
+                            }
+                            .five-forces-diagram {
+                                width: 400px;
+                                height: 400px;
+                            }
+                            .bottom-left {
+                                left: 100px;
+                                bottom: 45px;
+                            }
+                            .bottom-right {
+                                right: 100px;
+                                bottom: 45px;
+                            }
+                            
+                        }
                     </style>
 
-                    <!-- 添加五力模型分析表格 -->
                     <div class="table-container" style="width: 95%; margin: 20px auto;">
                         <table style="width: 100%;">
                             <caption>Porter's Five Forces Analysis of ClearCats Project</caption>
