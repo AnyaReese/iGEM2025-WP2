@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="../../static/css/basic.css">
         <link rel="stylesheet" href="../../static/css/load.css">
         <link rel="stylesheet" href="../../static/css/pages.css">
+        <link rel="stylesheet" href="../../static/css/components.css">
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -78,7 +79,7 @@
         
         <!-- Page Title Background -->
         <div class="page-title-bg">
-            <div class="bg-image" style="background-image: url('../../static/img/cons/cons.png')"></div>
+            <div class="bg-image" style="background-image: url('../../static/img/hardware/hardware.png')"></div>
             <div class="overlay"></div>
             <div class="title-content">
                 <h1>Hardware</h1>
@@ -95,20 +96,31 @@
                     </div>
                     
                     <div class="t1">
-                        <a href="#section1">Section 1</a>
+                        <a href="#introduction">Introduction</a>
                     </div>
+
                     <div class="t1">
-                        <a href="#section2">Section 2</a>
+                        <span>Eye Simulation Chip</span>
+                        <div class="t2">
+                            <a href="#appearance1">Appearance</a>
+                            <a href="#design1">Circuit Design</a>
+                            <a href="#code1">Main Function Code</a>
+                        </div>
                     </div>
+
                     <div class="t1">
-                        <a href="#section3">Section 3</a>
+                        <span>Cell Activity Detection Contact Lens Case</span>
+                        <div class="t2">
+                            <a href="#appearance2">Appearance</a>
+                            <a href="#design2">Circuit Design</a>
+                            <a href="#code2">Main Function Code</a>
+                        </div>
                     </div>
+
                     <div class="t1">
-                        <a href="#section4">Section 4</a>
+                        <a href="#reference">Reference</a>
                     </div>
-                    <div class="t1">
-                        <a href="#section5">Section 5</a>
-                    </div>
+
                 </div>
             </div>
 
@@ -120,30 +132,141 @@
             <!-- Content area -->
             <div class="content">
 
-                <section id="section1">
-                    <h1>Section 1</h1>
-                    <p>Content for section 1</p>
+                <section id="introduction">
+                    <h1>Introduction</h1>
+                    <p>This project aims to provide breakthrough treatment solutions for eye diseases such as cataracts, with a focus on a long-acting drug delivery platform based on hydrogel contact lenses. The platform utilizes bioengineered miniature bioreactors to continuously secrete therapeutic components, such as RNF114. By adhering to the surface of the eye, the contact lenses overcome the issues of low drug absorption rates and short retention times associated with traditional eye drops, fundamentally improving the effectiveness of drug treatment while reducing systemic toxicity and the burden of frequent administration.</p>
+                    <p>To test the therapeutic effect of the developed contact lenses, it is necessary to conduct biological experiments to verify the sustained release of RNF114 and the final amount of drug delivered to the lens. Since animal experiments are not within the scope of iGEM, we utilize microfluidic technology by stacking multilayer chips to simulate the drug delivery path in the human eye. This approach enables convenient, fast, and reproducible experiments, while also providing an iterative solution for the evaluation of ocular drug delivery.</p>
+                    <p>At the same time, to alert users to replace the contact lenses in time when the microbial activity declines, ensuring that the microbes remain highly active and continue to effectively secrete RNF114 while avoiding contamination of the eye from the microbial lysate, we have designed a user-friendly contact lens case. This case integrates a fluorescence detection device, which detects the active fluorescent signal emitted by the embedded bioreactors in the contact lenses. This helps users quickly determine whether the contact lenses are still active and safe for continued use.</p>
+                    
+                    <p><strong>Here are the two devices we designed:</strong></p>
+                    <ol>
+                        <li><strong>Eye Simulation Chip</strong></li>
+                        <li><strong>Cell Activity Detection Contact Lens Case</strong></li>
+                    </ol>
                 </section>
 
-                <section id="section2">
-                    <h1>Section 2</h1>
-                    <p>Content for section 2</p>
+                <h1>Eye Simulation Chip</h1>
+                <section id="appearance1">
+                    <h2>Appearance</h2>
+                    <p>To detect the drug content that reaches the lens, we will simulate the drug delivery method using contact lenses on the eye. At predetermined time points, we will pause the aqueous humor reflux, collect the instantaneous aqueous humor, and then reinject the aqueous humor to continue circulation, in order to measure the drug concentration within it. The specific process can be found in Wet Lab-Engineering-Production Expression Verification Module-Cycle3.</p>
+                    <p>We need to simulate the process of the drug moving from the contact lens, through the tear film layer, across the cornea, and finally reaching the aqueous humor reflux.</p>
+
+                    <p>The eye simulation chip we designed consists of three parts, as shown in the diagram from top to bottom (the main material of the chip is PDMS):</p>
+
+                    <ul>
+                        <li>Tear layer</li>
+                        <li>Cornea layer</li>
+                        <li>Aqueous humor drainage layer</li>
+                    </ul>
+
+                    <h3>Tear layer</h3>
+                    <p>Driven by a micro stepper pump, it simulates the flow of the tear film and the flushing effect caused by intermittent blinking.</p>
+
+                    <!-- TODO: add tear layer image -->
+                    <figure>
+                        <img src="../../static/img/hardware/tear.png" alt="Eye Simulation Chip Tear Layer">
+                        <figcaption>Eye Simulation Chip Tear Layer</figcaption>
+                    </figure>
+
+                    <h3>Cornea layer</h3>
+                    <p>We proceeded with the corneal layer construction as follows:</p>
+
+                    <figure>
+                        <img src="../../static/img/hardware/vitreous.png" alt="Eye Simulation Chip Cornea Layer">
+                        <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                    </figure>
+
+                    <ol>
+                        <li>Production of cell culture scaffolds: We use compression molded polystyrene cell culture media (Alvetex®, Reprocell). The 3D printed molds were used to compress and heated at 100°C for 15 min to induce permanent deformation, resulting in a corneal layer medium that conformed to the radius of curvature, which was set at 7 mm.</li>
+
+                        <figure>
+                            <img src="../../static/img/hardware/printed.png" alt="Eye Simulation Chip Cornea Layer" style="width: 50%;">
+                            <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                        </figure>
+                        <li>Corneal stromal</li>
+                        <ol>
+                        <li>Corneal stromal formation: Primary human keratocytes were trypsinized and suspended in a solution prepared by mixing rat tail type 1 collagen (2 mg/ml) with deionized  water, 10X PBS, and 1N NaOH. The final concentration of suspended cells was 1 million cells/ml. In the next step, 25 µl of this cell-containing collagen precursor solution was dispended on the scaffold surface and then gently suctioned through a channel in the aqueous layer into the hole in the stent. Gelation of collagen was achieved by  incubating the seeded device in a humidified cell culture incubator (37 ºC, 5% CO2) for 30  minutes.</li>
+
+                            <figure>
+                                <img src="../../static/img/hardware/form.png" alt="Eye Simulation Chip Cornea Layer" style="width: 80%;">
+                                <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                            </figure>
+
+                            <li>Corneal cell inoculation: controlled cell suspension adherence to a gelatinized stromal surface</li>
+
+                            <figure>
+                                <img src="../../static/img/hardware/seeded.png" alt="Eye Simulation Chip Cornea Layer" style="width: 50%;">
+                                <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                            </figure>
+                        </ol>
+
+                        <li>Corneal layer assembly</li>
+                        <ol>
+                            <li>Corneal layer plate material: PDMS</li>
+                            <li>The shaped medium was bonded to the PDMS plate by polymerization reaction, and the substrate construction and cell inoculation were carried out sequentially</li>
+                            <li>A layer of PDMS was attached to the bottom layer to simulate the iris.</li>
+                        </ol>
+                    </ol>
+
+
+
                 </section>
 
-                <section id="section3">
-                    <h1>Section 3</h1>
+                <section id="design1">
+                    <h2>Circuit Design</h2>
                     <p>Content for section 3</p>
                 </section>
 
-                <section id="section4">
-                    <h1>Section 4</h1>
+                <section id="code1">
+                    <h2>Main Function Code</h2>
                     <p>Content for section 4</p>
                 </section>
 
-                <section id="section5">
-                    <h1>Section 5</h1>
+                <h1>Cell Activity Detection Contact Lens Case</h1>
+                <section id="appearance2">
+                    <h2>Appearance</h2>
                     <p>Content for section 5</p>
                 </section>
+
+                <section id="design2">
+                    <h2>Circuit Design</h2>
+                    <p>Content for section 6</p>
+                </section>
+
+                <section id="code2">
+                    <h2>Main Function Code</h2>
+                    <p>Content for section 7</p>
+                </section>
+
+                <section id="reference">
+                    <h1>Reference</h1>
+                    <div class="reference-list">
+                        <div class="reference-item" id="ref1">
+                            <span class="ref-number">[1]</span>
+                            <span class="ref-content">Bennet D, Estlack Z, Reid T, et al. A microengineered human corneal epithelium-on-a-chip for eye drops mass transport evaluation. <em>Lab on a Chip</em>, 2018, 18(11): 1539-1551.</span>
+                            <a href="https://pubs.rsc.org/en/content/articlelanding/2018/lc/c8lc00158h" class="ref-link" target="_blank">DOI: 10.1039/C8LC00158H</a>
+                        </div>
+
+                        <div class="reference-item" id="ref2">
+                            <span class="ref-number">[2]</span>
+                            <span class="ref-content">Seo J, Byun W Y, Alisafaei F, et al. Multiscale reverse engineering of the human ocular surface. <em>Nature Medicine</em>, 2019, 25(8): 1310-1318.</span>
+                            <a href="https://www.nature.com/articles/s41591-019-0531-2" class="ref-link" target="_blank">DOI: 10.1038/s41591-019-0531-2</a>
+                        </div>
+
+                        <div class="reference-item" id="ref3">
+                            <span class="ref-number">[3]</span>
+                            <span class="ref-content">Estlack Z, Bennet D, Reid T, et al. Microengineered biomimetic ocular models for ophthalmological drug development. <em>Lab on a Chip</em>, 2017, 17(9): 1539-1551.</span>
+                            <a href="https://pubs.rsc.org/en/content/articlelanding/2017/lc/c7lc00112f" class="ref-link" target="_blank">DOI: 10.1039/C7LC00112F</a>
+                        </div>
+
+                        <div class="reference-item" id="ref4">
+                            <span class="ref-number">[4]</span>
+                            <span class="ref-content">Ning L, Yang G, Lovett-Barron M, et al. A bright, nontoxic, and non-aggregating red fluorescent protein for long-term labeling of fine structures in neurons. <em>Frontiers in Cell and Developmental Biology</em>, 2022, 10: 893468.</span>
+                            <a href="https://doi.org/10.3389/fcell.2022.893468" class="ref-link" target="_blank">DOI: 10.3389/fcell.2022.893468</a>
+                        </div>
+                    </div>
+                </section>
+                
             </div>
         </div>
 
