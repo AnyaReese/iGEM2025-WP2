@@ -16,10 +16,10 @@
 - [x] quote
 - [x] sidebar 高亮正确更新。
 - [x] 缩放显示。缩小到很小之后需要修改 content-height，最好加点限制否则缩小到 33% 以下丑丑的。
-- [ ] table、mathtex 样式调整
-- [ ] 动画效果制作。scrollreveal 还没用上呢。
-- [ ] 先休息。
-- [ ] 加粗单词换行时不显示动态下划线。
+- [x] table、mathtex 样式调整
+- [ ] Homepage 动画效果制作。
+- [ ] 先休息。呜呜呜呜呜呜
+- [ ] id 跳转不精确
 - [x] edge 浏览器或某些情况下 content 字体加载不统一。
 - [x] 参考文献 reference 卡片在 easypubmedicine 插件中显示会被拉长。改了 css 禁用这个类。quote 同。
 ![alt text](img/README/image-3.png)
