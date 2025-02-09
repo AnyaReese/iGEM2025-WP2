@@ -9,6 +9,198 @@
         <link rel="stylesheet" href="../../static/css/basic.css">
         <link rel="stylesheet" href="../../static/css/load.css">
         <link rel="stylesheet" href="../../static/css/pages.css">
+        <style>
+            .quote {
+                font-size: 20px;
+            }
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+                padding: 2rem;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 15px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .timeline-item {
+                position: relative;
+                padding-left: 2rem;
+                transition: all 0.3s ease;
+            }
+
+            /* 左侧时间线 */
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 2px;
+                background: #6B7DB3;
+                opacity: 0.3;
+            }
+
+            /* 时间点标记 */
+            .timeline-item::after {
+                content: '';
+                position: absolute;
+                left: -6px;
+                top: 0;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: #6B7DB3;
+                transition: all 0.3s ease;
+            }
+
+            .timeline-item:hover::after {
+                transform: scale(1.5);
+                background: #4A5B8C;
+            }
+
+            .timeline-header h3 {
+                color: #6B7DB3;
+                font-size: 1.8rem;
+                margin-bottom: 0.5rem;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+
+            .timeline-item:hover .timeline-header h3 {
+                color: #4A5B8C;
+            }
+
+            .timeline-header .subtitle {
+                color: #333;
+                font-size: 1.2rem;
+                margin-bottom: 1.5rem;
+                font-weight: 500;
+            }
+
+            .timeline-content {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .timeline-content li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+                padding: 0.8rem 1rem;
+                background: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .timeline-content li::before {
+                content: '•';
+                margin-right: 1rem;
+                color: #6B7DB3;
+                font-size: 1.5rem;
+            }
+
+            .timeline-content li:hover {
+                transform: translateX(10px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                background: #f8f9ff;
+            }
+
+            /* 响应式设计 */
+            @media (max-width: 768px) {
+                .timeline {
+                    padding: 1rem;
+                }
+                
+                .timeline-item {
+                    padding-left: 1.5rem;
+                }
+                
+                .timeline-header h3 {
+                    font-size: 1.5rem;
+                }
+                
+                .timeline-header .subtitle {
+                    font-size: 1rem;
+                }
+                
+                .timeline-content li {
+                    font-size: 0.9rem;
+                }
+            }
+
+            /* 打印样式优化 */
+            @media print {
+                .timeline {
+                    background: none;
+                    box-shadow: none;
+                }
+                
+                .timeline-content li {
+                    box-shadow: none;
+                    border: 1px solid #eee;
+                }
+            }
+
+            .timeline-goal {
+                margin: 1rem 0;
+                padding: 1.2rem;
+                background: linear-gradient(
+                    135deg,
+                    rgba(107, 125, 179, 0.15) 0%,
+                    rgba(107, 125, 179, 0.08) 50%,
+                    rgba(107, 125, 179, 0.02) 100%
+                );
+                border-radius: 12px;
+                font-size: 1.1rem;
+                color: #2c3e50;
+                line-height: 1.6;
+                border-left: 3px solid rgba(107, 125, 179, 0.5);
+                transition: all 0.3s ease;
+            }
+
+            .timeline-goal:hover {
+                background: linear-gradient(
+                    135deg,
+                    rgba(107, 125, 179, 0.2) 0%,
+                    rgba(107, 125, 179, 0.1) 50%,
+                    rgba(107, 125, 179, 0.03) 100%
+                );
+                transform: translateX(5px);
+            }
+
+            .timeline-goal strong {
+                color: #6B7DB3;
+                font-weight: 600;
+                margin-right: 0.5rem;
+            }
+
+            /* 深色模式支持 */
+            @media (prefers-color-scheme: dark) {
+                .timeline-goal {
+                    background: linear-gradient(
+                        135deg,
+                        rgba(139, 161, 227, 0.15) 0%,
+                        rgba(139, 161, 227, 0.08) 50%,
+                        rgba(139, 161, 227, 0.02) 100%
+                    );
+                    border-left-color: rgba(139, 161, 227, 0.5);
+                }
+                
+                .timeline-goal:hover {
+                    background: linear-gradient(
+                        135deg,
+                        rgba(139, 161, 227, 0.2) 0%,
+                        rgba(139, 161, 227, 0.1) 50%,
+                        rgba(139, 161, 227, 0.03) 100%
+                    );
+                }
+            }
+        </style>
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -94,20 +286,21 @@
                         <ion-icon name="chevron-back-outline"></ion-icon>
                     </div>
                     
+                    <!-- sidebar content -->
+                    <!-- <div class="t1">
+                        <a href="#introduction">Marginalized group survey</a>
+                    </div> -->
                     <div class="t1">
-                        <a href="#section1">Section 1</a>
+                        <a href="#marginalized">Marginalized Group Survey</a>
                     </div>
                     <div class="t1">
-                        <a href="#section2">Section 2</a>
+                        <a href="#accessible">Accessible Design</a>
                     </div>
                     <div class="t1">
-                        <a href="#section3">Section 3</a>
+                        <a href="#cultural">Cross-cultural Communication</a>
                     </div>
                     <div class="t1">
-                        <a href="#section4">Section 4</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section5">Section 5</a>
+                        <a href="#timeline">Pre-mid-late Stage Planning</a>
                     </div>
                 </div>
             </div>
@@ -120,29 +313,83 @@
             <!-- Content area -->
             <div class="content">
 
-                <section id="section1">
-                    <h1>Section 1</h1>
-                    <p>Content for section 1</p>
+                <section id="introduction">
+                    <blockquote class="quote">
+                        "Light should have no threshold" - with inclusive design, let every pair of eyes embrace the clear world equally.
+                    </blockquote>
                 </section>
 
-                <section id="section2">
-                    <h1>Section 2</h1>
-                    <p>Content for section 2</p>
+                <section id="marginalized">
+                    <h1>Marginalized Group Survey</h1>
+                    <p>When researching marginalized groups, we focus on understanding the needs of those groups with scarce medical resources or greater cultural differences, especially <strong>rural cataract patients</strong> and <strong>ethnic minority groups</strong>. To address the special needs of these groups, we have designed a research plan. The goal is to cooperate with local health centers through field surveys, organize <strong>"Bright Medical Teams"</strong> to conduct household interviews, and ensure that each village covers more than 10 households.</p>
+                    
+                    <p>In addition, to overcome language barriers, we plan to design a <strong>visual questionnaire</strong>, combining pictures and symbols to replace text, to facilitate the understanding of people who lack sufficient education. Based on this, we will develop a <strong>White Paper on Cataract Treatment Disorders in Rural Areas</strong> based on the survey results, clarifying key points such as payment ability, transportation costs, and language communication. We will also design a <strong>dialect version</strong> of the "Treatment Intention Map" to guide product pricing and service models, such as installment payments and mobile medical vehicles.</p>
+
+                    <p>To better adapt to the cultural needs of different groups, we also pay special attention to language and cultural adaptation. For ethnic minority groups, we plan to train <strong>bilingual volunteers</strong>, especially in local dialects such as Tibetan and Yi. In addition, when promoting to ethnic minority groups, we will also combine specific local environments, such as cases of high incidence of cataracts caused by strong ultraviolet rays on the plateau, to enhance resonance with local culture and ensure more accurate and effective information transmission.</p>
                 </section>
 
-                <section id="section3">
-                    <h1>Section 3</h1>
-                    <p>Content for section 3</p>
+                <section id="accessible">
+                    <h1>Accessible Design</h1>
+                    
+                    <p>In terms of accessible design, we are committed to making our container more suitable for <strong>visually impaired users</strong>. We plan to integrate voice interaction functions and maybe use <strong>Aliyun Text-to-Speech technology</strong> to support voice navigation. At the same time, we will also add Braille labels to the containers to indicate the usage steps on the lens packaging, ensuring that visually impaired users can easily understand the operation. In addition, we will invite 20 visually impaired users to conduct three rounds of prototype testing to further optimize response speed and operation logic.</p>
+
+                    <p>To reduce the technical threshold, we will also launch functions to simplify the operation, such as watching the operation animation by scanning the code, so that users can quickly master the usage method. For elderly users, we have designed a senior-friendly transformation, including a font size( ≥ 20) on the left and right eye markings on the care box, and a contrast ratio adjusted to <strong>AAA level</strong> (in line with WCAG 2.1 standard) to ensure that the elderly can see the operation information. At the same time, we have added a voice amplification function, so that the volume of the lens-wearing reminder can be adjusted to <strong>70-90 decibels</strong> to meet the needs of the elderly's hearing loss.</p>
                 </section>
 
-                <section id="section4">
-                    <h1>Section 4</h1>
-                    <p>Content for section 4</p>
+                <section id="cultural">
+                    <h1>Cross-cultural Communication</h1>
+                    
+                    <p>In terms of cross-cultural communication, we plan to provide <strong>multilingual educational content</strong>, covering multiple languages such as Chinese, English, Tibetan, Uyghur, and Mongolian, to ensure that users with different language backgrounds can obtain relevant treatment information. At the same time, we will also design religious-friendly functions based on the religious beliefs and cultural characteristics of various ethnic groups. For example, we will provide <strong>"Ramadan mode"</strong> for Muslim users, and use blue or green packaging to avoid using white, which symbolizes funerals in some cultures for Tibetan users. In addition, in the Dai area of Yunnan, we will compare the RNF114 treatment principle with the Dai doctor's theory of <strong>"clearing the liver and improving eyesight"</strong> to lower the cognitive threshold and make the technology more acceptable to local people.</p>
                 </section>
 
-                <section id="section5">
-                    <h1>Section 5</h1>
-                    <p>Content for section 5</p>
+                <section id="timeline">
+                    <h1>Pre-mid-late Stage Planning</h1>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>Early Stage (1-2 years)</h3>
+                                <div class="subtitle">Requirements integration and prototype verification</div>
+                            </div>
+                            <div class="timeline-goal">
+                                <strong>Goal:</strong> Establish stakeholder network and complete inclusive design prototype.
+                            </div>
+                            <ul class="timeline-content">
+                                <li>Convene the first clinical advisory committee to determine the direction of technical improvement</li>
+                                <li>The United Disabled Persons' Federation conducted the first round of public welfare screening (covering 500 people) to collect patient needs</li>
+                                <li>Collaborate with Ali DAMO Academy to develop a container interaction prototype</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>Mid-term (2-4 years)</h3>
+                                <div class="subtitle">Technical optimization and social validation</div>
+                            </div>
+                            <div class="timeline-goal">
+                                <strong>Goal:</strong> Incorporate multi-party feedback into product iteration and expand social responsibility practices.
+                            </div>
+                            <ul class="timeline-content">
+                                <li>Conducted clinical trials in three top hospitals, integrating physician and patient feedback</li>
+                                <li>Launch the "Bright Plan" public welfare project to provide free treatment for 1000 low-income patients</li>
+                                <li>Release the White Paper on Biomedical Ethics to enhance public trust</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>Later Stage (4-10 years)</h3>
+                                <div class="subtitle">Large-scale replication and policy advocacy</div>
+                            </div>
+                            <div class="timeline-goal">
+                                <strong>Goal:</strong> Promote technology inclusivity and influence industry policy.
+                            </div>
+                            <ul class="timeline-content">
+                                <li>Submit the "Non-Surgical Treatment of Cataract Technology Promotion Proposal" to the National Health Commission</li>
+                                <li>Joint international organizations (WHO) to develop global cataract treatment guidelines</li>
+                                <li>Replicate the public welfare screening model in "Belt and Road Initiative" countries to cover 100,000+ people</li>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
