@@ -428,20 +428,65 @@
                     <div class="swot-container">
                         <div class="swot-grid">
                             <div class="swot-item strengths">
-                                <h3 class="swot-title">Strengths</h3>
-                                <div class="swot-letter">S</div>
+                                <div class="swot-card">
+                                    <div class="swot-front">
+                                        <h3 class="swot-title">Strengths</h3>
+                                        <div class="swot-letter">S</div>
+                                    </div>
+                                    <div class="swot-back">
+                                        <ul>
+                                            <li>World's first "engineered bacteria + contact lenses" treatment platform</li>
+                                            <li>Multiple indications for expansion (dry eye, glaucoma)</li>
+                                            <li>Strong support from Zhejiang University's industry-university-research resources</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="swot-item weaknesses">
-                                <h3 class="swot-title right-title">Weaknesses</h3>
-                                <div class="swot-letter left-letter">W</div>
+                                <div class="swot-card">
+                                    <div class="swot-front">
+                                        <h3 class="swot-title right-title">Weaknesses</h3>
+                                        <div class="swot-letter left-letter">W</div>
+                                    </div>
+                                    <div class="swot-back">
+                                        <ul>
+                                            <li>Engineering bacteria stability needs optimization for single pair usage duration</li>
+                                            <li>Treatment effectiveness requires further experimental verification</li>
+                                            <li>Complex mass production process</li>
+                                            <li>Insufficient international patent layout</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="swot-item opportunities">
-                                <h3 class="swot-title">Opportunities</h3>
-                                <div class="swot-letter">O</div>
+                                <div class="swot-card">
+                                    <div class="swot-front">
+                                        <h3 class="swot-title">Opportunities</h3>
+                                        <div class="swot-letter">O</div>
+                                    </div>
+                                    <div class="swot-back">
+                                        <ul>
+                                            <li>Intensifying aging population and increasing patient numbers</li>
+                                            <li>Urgent non-surgical needs in developing countries</li>
+                                            <li>SDGs driving inclusive healthcare investment</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class="swot-item threats">
-                                <h3 class="swot-title right-title">Threats</h3>
-                                <div class="swot-letter left-letter">T</div>
+                                <div class="swot-card">
+                                    <div class="swot-front">
+                                        <h3 class="swot-title right-title">Threats</h3>
+                                        <div class="swot-letter left-letter">T</div>
+                                    </div>
+                                    <div class="swot-back">
+                                        <ul>
+                                            <li>Industry giants' monopoly on eye drops market</li>
+                                            <li>High European Union compliance costs</li>
+                                            <li>Patient skepticism about live engineering bacteria</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -461,53 +506,68 @@
                         }
 
                         .swot-item {
-                            padding: 25px;
-                            border-radius: 20px;
-                            position: relative;
+                            perspective: 1000px;
                             min-height: 200px;
-                            overflow: hidden;
                         }
 
-                        .swot-item h3 {
-                            margin-top: 0;
-                            font-size: 1.8em;
-                            font-weight: bold;
-                            margin-bottom: 1em;
+                        .swot-card {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            min-height: 200px;
+                            transition: transform 0.8s;
+                            transform-style: preserve-3d;
+                            cursor: pointer;
                         }
 
-                        .swot-letter {
+                        .swot-item:hover .swot-card {
+                            transform: rotateY(180deg);
+                        }
+
+                        .swot-front, .swot-back {
                             position: absolute;
-                            font-size: 4em;
-                            color: rgba(0, 0, 0, 0.15);
-                            font-weight: normal;
-                            bottom: 20px;  /* 统一底部位置 */
+                            width: 100%;
+                            height: 100%;
+                            backface-visibility: hidden;
+                            border-radius: 20px;
+                            padding: 25px;
                         }
 
-                        /* S的位置 */
-                        .strengths .swot-letter {
-                            right: 40px;
-                            bottom: 40px;
+                        .swot-front {
+                            background-color: inherit;
                         }
 
-                        /* W的位置 */
-                        .weaknesses .swot-letter {
-                            left: 40px;
-                            bottom: 40px;
+                        .swot-back {
+                            transform: rotateY(180deg);
+                            background-color: white;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
                         }
 
-                        /* O的位置 */
-                        .opportunities .swot-letter {
-                            right: 40px;
-                            bottom: 40px;
+                        .swot-back ul {
+                            list-style: none;
+                            padding: 0;
+                            margin: 0;
                         }
 
-                        /* T的位置 */
-                        .threats .swot-letter {
-                            left: 40px;
-                            bottom: 80px;
-                            top: 50%;
+                        .swot-back li {
+                            margin: 10px 0;
+                            padding-left: 20px;
+                            position: relative;
+                            font-size: 0.9em;
+                            line-height: 1.4;
                         }
 
+                        .swot-back li::before {
+                            content: '•';
+                            position: absolute;
+                            left: 0;
+                            color: #666;
+                        }
+
+                        /* 保持原有的样式 */
                         .swot-title {
                             margin: 0;
                             padding-left: 20px;
@@ -517,33 +577,55 @@
                             font-family: 'Comic Sans MS', cursive;
                         }
 
-                        .right-title {
-                            text-align: right;
-                            padding-right: 20px;
-                            padding-left: 0;
+                        .swot-letter {
+                            position: absolute;
+                            font-size: 4em;
+                            color: rgba(0, 0, 0, 0.15);
+                            font-weight: normal;
                         }
 
-                        .left-letter {
-                            left: 40px;
-                            right: auto;
-                            bottom: auto;
-                            top: 50%;
+                        /* 更新背景颜色应用位置 */
+                        .strengths .swot-card .swot-front { background-color: rgba(176, 224, 230, 0.3); }
+                        .weaknesses .swot-card .swot-front { background-color: rgba(255, 218, 185, 0.3); }
+                        .opportunities .swot-card .swot-front { background-color: rgba(144, 238, 144, 0.3); }
+                        .threats .swot-card .swot-front { background-color: rgba(255, 182, 193, 0.3); }
+                        
+                        /* 背面样式更新 */
+                        .swot-back {
+                            transform: rotateY(180deg);
+                            background-color: white;
+                            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                        }
+                        
+                        /* 为背面添加对应的淡化背景色 */
+                        .strengths .swot-card .swot-back { background-color: rgba(176, 224, 230, 0.1); }
+                        .weaknesses .swot-card .swot-back { background-color: rgba(255, 218, 185, 0.1); }
+                        .opportunities .swot-card .swot-back { background-color: rgba(144, 238, 144, 0.1); }
+                        .threats .swot-card .swot-back { background-color: rgba(255, 182, 193, 0.1); }
+
+                        /* 移除原有的背景色定义 */
+                        .strengths, .weaknesses, .opportunities, .threats {
+                            background-color: transparent;
+                        }
+                        
+                        /* 确保卡片占满容器 */
+                        .swot-card {
+                            position: relative;
+                            width: 100%;
+                            height: 100%;
+                            min-height: 200px;
+                            transition: transform 0.8s;
+                            transform-style: preserve-3d;
+                            cursor: pointer;
                         }
 
-                        .strengths {
-                            background-color: rgba(176, 224, 230, 0.3);  /* 浅蓝色 */
-                        }
-
-                        .weaknesses {
-                            background-color: rgba(255, 218, 185, 0.3);  /* 浅橙色 */
-                        }
-
-                        .opportunities {
-                            background-color: rgba(144, 238, 144, 0.3);  /* 浅绿色 */
-                        }
-
-                        .threats {
-                            background-color: rgba(255, 182, 193, 0.3);  /* 浅红色 */
+                        .swot-front, .swot-back {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            backface-visibility: hidden;
+                            border-radius: 20px;
+                            padding: 25px;
                         }
 
                         /* 响应式设计 */
@@ -553,63 +635,6 @@
                             }
                         }
                     </style>
-                    
-                    <div class="table-container">
-                        <table>
-                            <caption>Internal Factors Analysis</caption>
-                            <thead>
-                                <tr>
-                                    <th>Strengths</th>
-                                    <th>Disadvantages (Weaknesses)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>The world's first "engineered bacteria + contact lenses" treatment platform</td>
-                                    <td>The stability of engineering bacteria needs to be optimized, mainly in terms of the duration of use of a single pair of contact lenses</td>
-                                </tr>
-                                <tr>
-                                    <td>Multiple indications for expansion (dry eye, glaucoma)</td>
-                                    <td>Whether the treatment is effective needs further experimental verification</td>
-                                </tr>
-                                <tr>
-                                    <td>Relying on Zhejiang University's industry-university-research resources</td>
-                                    <td>Complex mass production process</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td>Insufficient international patent layout</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="table-container">
-                        <table>
-                            <caption>External Factors Analysis</caption>
-                            <thead>
-                                <tr>
-                                    <th>Opportunities</th>
-                                    <th>Threats</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Aging is intensifying, and the number of patients is increasing</td>
-                                    <td>Industry giants lay and have the monopoly on the eye drops market</td>
-                                </tr>
-                                <tr>
-                                    <td>Non-surgical needs in developing countries are urgent</td>
-                                    <td>High European Union compliance costs</td>
-                                </tr>
-                                <tr>
-                                    <td>SDGs drive inclusive healthcare investment</td>
-                                    <td>Patients' doubts about live engineering bacteria</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
 
                 <section id="cooperative">
                     <h1>Potential partners</h1>
