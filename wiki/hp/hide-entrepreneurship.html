@@ -465,11 +465,12 @@
                             <div class="swot-item weaknesses">
                                 <div class="swot-card">
                                     <div class="swot-front">
-                                        <h3 class="swot-title right-title">Weaknesses</h3>
-                                        <div class="swot-letter left-letter">W</div>
+                                        <h3 class="swot-title">Weaknesses</h3>
+                                        <div class="swot-letter">W</div>
                                     </div>
                                     <div class="swot-back">
                                         <ul>
+                                            <br>
                                             <li>Engineering bacteria stability needs optimization for single pair usage duration</li>
                                             <li>Treatment effectiveness requires further experimental verification</li>
                                             <li>Complex mass production process</li>
@@ -527,14 +528,15 @@
 
                         .swot-item {
                             perspective: 1000px;
-                            min-height: 200px;
+                            min-height: 250px; /* 匹配卡片最小高度 */
+                            margin-bottom: 20px; /* 添加底部间距 */
                         }
 
                         .swot-card {
                             position: relative;
                             width: 100%;
                             height: 100%;
-                            min-height: 200px;
+                            min-height: 250px; /* 增加最小高度 */
                             transition: transform 0.8s;
                             transform-style: preserve-3d;
                             cursor: pointer;
@@ -548,9 +550,11 @@
                             position: absolute;
                             width: 100%;
                             height: 100%;
+                            min-height: 250px; /* 匹配卡片最小高度 */
                             backface-visibility: hidden;
                             border-radius: 20px;
                             padding: 25px;
+                            overflow: auto; /* 添加滚动条以处理溢出 */
                         }
 
                         .swot-front {
@@ -570,14 +574,15 @@
                             list-style: none;
                             padding: 0;
                             margin: 0;
+                            font-size: 0.9em; /* 稍微减小字体大小 */
+                            line-height: 1.4;
                         }
 
                         .swot-back li {
                             margin: 10px 0;
-                            padding-left: 20px;
+                            padding-left: 25px;
                             position: relative;
-                            font-size: 0.9em;
-                            line-height: 1.4;
+                            word-wrap: break-word; /* 确保长文本会换行 */
                         }
 
                         .swot-back li::before {
@@ -633,7 +638,7 @@
                             position: relative;
                             width: 100%;
                             height: 100%;
-                            min-height: 200px;
+                            min-height: 250px; /* 增加最小高度 */
                             transition: transform 0.8s;
                             transform-style: preserve-3d;
                             cursor: pointer;
@@ -643,15 +648,25 @@
                             position: absolute;
                             width: 100%;
                             height: 100%;
+                            min-height: 250px; /* 匹配卡片最小高度 */
                             backface-visibility: hidden;
                             border-radius: 20px;
                             padding: 25px;
+                            overflow: auto; /* 添加滚动条以处理溢出 */
                         }
 
                         /* 响应式设计 */
-                        @media (max-width: 1000px) {
+                        @media (max-width: 768px) {
                             .swot-grid {
                                 grid-template-columns: 1fr;
+                            }
+                            
+                            .swot-card, .swot-front, .swot-back {
+                                min-height: 200px;
+                            }
+                            
+                            .swot-back ul {
+                                font-size: 0.85em;
                             }
                         }
                     </style>
