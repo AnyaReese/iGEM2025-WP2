@@ -260,12 +260,8 @@
 
                 <section id="code1">
                     <h2>Main Function Code</h2>
-                    
                     <p>The control system implements PID control for pressure regulation and temperature monitoring. Here's the main function code:</p>
 
-                    <!-- 添加 highlight.js CSS -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
-                    
                     <div class="code-container">
                         <div class="code-header">
                             <span class="file-name">eye_simulation_control.cpp</span>
@@ -274,26 +270,18 @@
                             </button>
                         </div>
                         
-                        <pre><code class="language-cpp">/*
- * Eye Simulation Chip Control System
- * Main control program for pressure and temperature regulation
- */
-
-// Include necessary libraries
-#include &lt;Wire.h&gt;
+                        <pre><code class="cpp">#include &lt;Wire.h&gt;
 #include &lt;MS5837.h&gt;
 #include &lt;AccelStepper.h&gt;
-#include &lt;LiquidCrystal_I2C.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;  // I2C LCD library
 
-//========================
-// System Constants
-//========================
-const double BASE_SPEED = 2000;    // Basic pump speed
+// Basic pump speed
+const double baseSpeed = 2000;
 
-// PID control parameters
-const double KP_PRESSURE = 2.0;    // Proportional gain
-const double KI_PRESSURE = 1.0;    // Integral gain
-const double KD_PRESSURE = 0.5;    // Derivative gain
+// PID parameters
+double Kp_Pressure = 2.0;  
+double Ki_Pressure = 1.0;  
+double Kd_Pressure = 0.5;  
 
 // Target pressure 10-21mmHg
 double targetPressure = 1500.0;  // Target pressure set to 1500 Pa
@@ -308,25 +296,28 @@ double I_Pressure = 0.0;
 double D_Pressure = 0.0;
 double output = 0.0;
 
-// Stepper motor setup
-AccelStepper pumpIn(AccelStepper::DRIVER, 8, 9);   // Pump In
-AccelStepper pumpOut(AccelStepper::DRIVER, 10, 11); // Pump Out
+// Stepper motor setup (AccelStepper configuration)
+AccelStepper pumpIn(AccelStepper::DRIVER, 8, 9);    // First pump group (In)
+AccelStepper pumpOut(AccelStepper::DRIVER, 10, 11); // Second pump group (Out)
 
 // Initialize MS5837 sensor
 MS5837 sensor;
 
-// Initialize LCD (address: 0x27, 16 cols 2 rows)
+// Initialize I2C LCD screen (address: 0x27, 16 cols 2 rows)
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 void setup() {
     // Initialize stepper motors
     pumpIn.setMaxSpeed(1000);  
     pumpIn.setAcceleration(500);  
+    
     pumpOut.setMaxSpeed(1000);  
     pumpOut.setAcceleration(500);  
     
-    // Initialize sensor and LCD
+    // Initialize sensor
     Wire.begin();
+
+    // Initialize LCD screen
     lcd.begin();
     lcd.backlight(); 
     lcd.setCursor(0, 0);
@@ -339,32 +330,35 @@ void loop() {
     currentPressure = sensor.getPressure() * 100.0;  // Convert mbar to Pa
     currentTemperature = sensor.getTemperature(CELSIUS);
 
-    // Calculate PID values
+    // Calculate error
     error_Pressure = targetPressure - currentPressure;
+    
+    // Calculate I and D terms
     I_Pressure += error_Pressure;
     D_Pressure = error_Pressure - previousError_Pressure;
     
     // Calculate output
-    output = KP_PRESSURE * error_Pressure + 
-            KI_PRESSURE * I_Pressure + 
-            KD_PRESSURE * D_Pressure;
+    output = Kp_Pressure * error_Pressure + 
+            Ki_Pressure * I_Pressure + 
+            Kd_Pressure * D_Pressure;
     
-    // Control pumps
+    // Control pumps based on output
     controlPumps(output);
     
-    // Save current error for next iteration
+    // Save current error for next derivative calculation
     previousError_Pressure = error_Pressure;
 
-    // Update LCD display
+    // Display pressure and temperature on LCD
     displayDataOnLCD(currentPressure, currentTemperature);
 
     delay(100);
 }
 
+// Pump control function
 void controlPumps(double output) {
     // Adjust pump speeds based on PID output
-    double pumpInSpeed = constrain(output + BASE_SPEED, 0, 1000); 
-    double pumpOutSpeed = constrain(-output + BASE_SPEED, -1000, 0);
+    double pumpInSpeed = constrain(output + baseSpeed, 0, 1000); 
+    double pumpOutSpeed = constrain(-output + baseSpeed, -1000, 0);
     
     // Set stepper motor speeds
     pumpIn.setSpeed(pumpInSpeed);  
@@ -377,6 +371,7 @@ void controlPumps(double output) {
     }
 }
 
+// Display pressure and temperature data on LCD screen
 void displayDataOnLCD(double pressure, double temperature) {
     lcd.clear();
     
@@ -391,8 +386,7 @@ void displayDataOnLCD(double pressure, double temperature) {
     lcd.print("T: ");
     lcd.print(temperature);
     lcd.print(" C");
-}
-</code></pre>
+}</code></pre>
                     </div>
 
                     <!-- 添加 highlight.js JavaScript -->
@@ -557,9 +551,108 @@ void displayDataOnLCD(double pressure, double temperature) {
                     
                 </section>
 
-                <section id="code2" >
+                <section id="code2">
                     <h2>Main Function Code</h2>
                     <p>The main function code is as follows:</p>
+
+                    <!-- 添加 highlight.js CSS -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
+                    
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="file-name">cell_activity_detection.cpp</span>
+                            <button class="copy-btn" onclick="copyCode()">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        
+                        <pre><code class="cpp">#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+#include &lt;BH1750.h&gt;
+
+const int bottom = 27;     // Button pin
+const int pwmPin = 5;      // PWM output to PT4115 DIM pin
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);  // I2C address 0x27, 16x2 LCD
+BH1750 lightMeter;
+
+int brightness = 128;      // Initial brightness (0-255)
+bool ledOn = false;        // LED switch state
+const int threshold = 200; // Light intensity threshold (lux)
+
+void setup() {
+    pinMode(encoderSW, INPUT_PULLUP); // Use internal pull-up resistor
+    pinMode(pwmPin, OUTPUT);
+    analogWrite(pwmPin, brightness);  // Initialize brightness
+    
+    // Initialize LCD and BH1750
+    Wire.begin();
+    lcd.begin();
+    lcd.backlight();
+    lightMeter.begin();
+    lcd.setCursor(0, 0);
+    lcd.print("Initialized successfully!");
+    delay(1000);
+    lcd.clear();
+}
+
+void loop() {
+    handleButton();     // Button controls LED and light intensity detection
+}
+
+void handleButton() {
+    if (digitalRead(bottom) == LOW) { // Detect button press
+        delay(50); // Debounce
+        lcd.clear();
+
+        ledOn = true;
+        analogWrite(pwmPin, brightness);
+        lcd.setCursor(0, 0);
+        lcd.print("LED ON: 5 sec");
+        delay(5000);
+
+        float lux = lightMeter.readLightLevel(); 
+        lcd.setCursor(0, 1);
+        lcd.print("Light: ");
+        lcd.print(lux);
+        lcd.print(" lux");
+
+        lcd.setCursor(12, 1);
+        if (lux >= threshold) {
+            lcd.print("OK");  // Reached threshold
+        } else {
+            lcd.print("LOW"); // Below threshold
+        }
+        
+        analogWrite(ledPin, 0);
+        
+        delay(2000); 
+        lcd.clear();
+    }
+}</code></pre>
+                    </div>
+
+                    <!-- 添加 highlight.js JavaScript -->
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+                    
+                    <script>
+                        // 初始化代码高亮
+                        document.addEventListener('DOMContentLoaded', (event) => {
+                            hljs.highlightAll();
+                        });
+
+                        // 复制代码功能
+                        function copyCode() {
+                            const code = document.querySelector('code').textContent;
+                            navigator.clipboard.writeText(code).then(() => {
+                                const copyBtn = document.querySelector('.copy-btn');
+                                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                                setTimeout(() => {
+                                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                                }, 2000);
+                            });
+                        }
+                    </script>
                 </section>
 
 
