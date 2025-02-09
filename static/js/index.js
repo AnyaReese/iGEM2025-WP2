@@ -79,12 +79,36 @@ const initTitleTransition = () => {
     });
 };
 
+const initVisionCompare = () => {
+    const visionCompares = document.querySelectorAll('.vision-compare');
+    
+    visionCompares.forEach(container => {
+        const clearImage = container.querySelector('.vision-clear');
+        
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            
+            clearImage.style.setProperty('--mouse-x', `${x}%`);
+            clearImage.style.setProperty('--mouse-y', `${y}%`);
+        });
+
+        // 鼠标离开时重置遮罩位置
+        // container.addEventListener('mouseleave', () => {
+        //     clearImage.style.setProperty('--mouse-x', '50%');
+        //     clearImage.style.setProperty('--mouse-y', '50%');
+        // });
+    });
+};
+
 // Initialize dual image effect
 window.addEventListener('load', () => {
     initDualImageEffect();
     initGifControl();
     initVideoSection();
     initTitleTransition();
+    initVisionCompare();
 });
 
 function playGif(element) {
