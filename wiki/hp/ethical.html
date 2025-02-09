@@ -9,6 +9,11 @@
         <link rel="stylesheet" href="../../static/css/basic.css">
         <link rel="stylesheet" href="../../static/css/load.css">
         <link rel="stylesheet" href="../../static/css/pages.css">
+        <style>
+            .quote {
+                font-size: 20px;
+            }
+        </style>
     </head>
     <body>
         <!-- scroll progress bar -->
@@ -95,19 +100,18 @@
                     </div>
                     
                     <div class="t1">
-                        <a href="#section1">Section 1</a>
+                        <a href="#ethical">6. Ethical Framework</a>
                     </div>
-                    <div class="t1">
-                        <a href="#section2">Section 2</a>
+                    <div class="t2">
+                        <a href="#guidelines">Core Guidelines</a>
+                        <div class="t3">
+                            <a href="#research">Research Ethics</a>
+                            <a href="#patient">Patient Rights</a>
+                            <a href="#social">Social Ethics</a>
+                        </div>
                     </div>
-                    <div class="t1">
-                        <a href="#section3">Section 3</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section4">Section 4</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section5">Section 5</a>
+                    <div class="t2">
+                        <a href="#review">Review Process</a>
                     </div>
                 </div>
             </div>
@@ -119,30 +123,83 @@
 
             <!-- Content area -->
             <div class="content">
+                <section id="ethical">
+                    <!-- <h1>6. Ethical Framework</h1> -->
+                    
+                    <blockquote class="quote">
+                        <p>"Safety is the bottom line of innovation" - Protect life with technology and lead the future with responsibility.</p>
+                    </blockquote>
 
-                <section id="section1">
-                    <h1>Section 1</h1>
-                    <p>Content for section 1</p>
+                    <p>The construction of an ethical framework is crucial in our projects, especially in the fields of biomedical products and patient safety. The following are the core contents and review processes we have developed at the ethical level to ensure that the project can be carried out in a responsible and compliant manner.</p>
                 </section>
 
-                <section id="section2">
-                    <h1>Section 2</h1>
-                    <p>Content for section 2</p>
+                <section id="guidelines">
+                    <h2>1. Core content of the Ethical Guidelines for Biomedical Products</h2>
+                    
+                    <div class="ethics-card" id="research">
+                        <div class="card-header">
+                            <ion-icon name="flask-outline"></ion-icon>
+                            <h3>Research Ethics</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>All clinical trials must be under the guidance set by the <strong>Ethics Committee of Zhejiang University</strong>. This ensures that all trials comply with ethical standards and protect the safety and rights of patients. In addition, in the <strong>patient's informed consent form</strong>, the "risks of live engineering bacteria application" should be clearly marked, and feasible alternative treatment options should be provided to ensure that patients make decisions fully informed.</p>
+                        </div>
+                    </div>
+
+                    <div class="ethics-card" id="patient">
+                        <div class="card-header">
+                            <ion-icon name="shield-checkmark-outline"></ion-icon>
+                            <h3>Patient Rights Protection</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>All patients' personal data, especially genetic data, will be strictly anonymized to ensure maximum protection of patient privacy. It is specifically stated that genetic data cannot be used for non-medical purposes.</p>
+                        </div>
+                    </div>
+
+                    <div class="ethics-card" id="social">
+                        <div class="card-header">
+                            <ion-icon name="people-outline"></ion-icon>
+                            <h3>Social Ethics</h3>
+                        </div>
+                        <div class="card-content">
+                            <p>It is prohibited to export products without biosafety certification to countries or regions that have not passed the certification to ensure the safety and legality of the products. At the same time, we will regularly publish biosafety reports, accept public supervision, ensure transparency, and enhance social trust in our project.</p>
+                        </div>
+                    </div>
                 </section>
 
-                <section id="section3">
-                    <h1>Section 3</h1>
-                    <p>Content for section 3</p>
-                </section>
+                <section id="review">
+                    <h2>2. Ethical Review Process</h2>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>Early Stage</h3>
+                            </div>
+                            <div class="timeline-content">
+                                <p>In the early stage of the project, we will submit a detailed technical proposal to <strong>the Ethics Committee of Zhejiang University</strong> for review, and a hearing might be held to invite patient representatives and legal experts to participate to comprehensively evaluate the technical and ethical risks.</p>
+                            </div>
+                        </div>
 
-                <section id="section4">
-                    <h1>Section 4</h1>
-                    <p>Content for section 4</p>
-                </section>
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>Mid-term</h3>
+                            </div>
+                            <div class="timeline-content">
+                                <p>Update the ethical review content before each stage of clinical trials to ensure that the research and experiments in each stage meet ethical requirements and effectively control latent risks.</p>
+                            </div>
+                        </div>
 
-                <section id="section5">
-                    <h1>Section 5</h1>
-                    <p>Content for section 5</p>
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h3>Later Stage</h3>
+                            </div>
+                            <div class="timeline-content">
+                                <p>After the product is launched, we will continue to monitor ethical compliance, submit the <strong>Ethical Practice White Paper</strong> to ensure that the project continues to meet ethical standards, and adjust and improve promptly according to social feedback.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="conclusion">This ethical framework will ensure that our products not only meet technical standards, but also respect the rights of patients, follow social ethical norms, and provide a solid guarantee for the sustainable development of the entire project.</p>
                 </section>
             </div>
         </div>
@@ -172,3 +229,108 @@
         <script src="../../static/js/components.js"></script>
     </body>
 </html>
+
+<style>
+
+.ethics-card {
+    margin: 2rem 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.ethics-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #6B7DB3 0%, #4A5B8C 100%);
+    color: white;
+}
+
+.card-header ion-icon {
+    font-size: 1.8rem;
+    margin-right: 1rem;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.timeline {
+    position: relative;
+    margin: 3rem 0;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, #6B7DB3 0%, rgba(107,125,179,0.2) 100%);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.25rem;
+    top: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #6B7DB3;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(107,125,179,0.3);
+}
+
+.timeline-header h3 {
+    color: #6B7DB3;
+    margin-bottom: 1rem;
+}
+
+.conclusion {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    background: rgba(107,125,179,0.05);
+    border-radius: 8px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .ethics-card {
+        margin: 1.5rem 0;
+    }
+    
+    .timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .timeline-item {
+        padding-left: 1rem;
+    }
+    
+    .timeline-item::before {
+        left: -1.75rem;
+    }
+}
+</style>
