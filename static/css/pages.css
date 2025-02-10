@@ -298,12 +298,12 @@
 
 /* Content area text styles */
 .content h2 {
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
     font-size: 1.5em;
     color: var(--highlight-color);
     font-family: var(--header-font);
     font-weight: bold;
-    margin-top: 1em;
-    margin-bottom: 0.5em;
 }
 
 .content h3 {
@@ -500,8 +500,8 @@
 
 /* Ensure nested sections don't increase font size */
 .content section section {
-    font-size: 1em;  /* reset font size */
-    margin: 0 0 20px 0;  /* remove left margin, cuz it's nested */
+    font-size: 1em;
+    margin: 0;
 }
 
 /* sidebar collapse button */
@@ -1434,4 +1434,120 @@ tbody tr:last-child td:last-child {
 .download-btn:active {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Section collapse styles */
+.section-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 0;
+    gap: 5px;
+}
+
+.section-collapse-btn {
+    background: rgba(131, 170, 255, 0.2);
+    border: none;
+    color: var(--highlight-color);
+    cursor: pointer;
+    padding: 8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 5px;
+}
+
+.section-collapse-btn ion-icon {
+    font-size: 20px;
+    transition: all 0.3s ease;
+    color: var(--highlight-color);
+}
+
+.section-content {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    max-height: 2000px;
+    opacity: 1;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+/* Collapsed state */
+section.collapsed .section-header {
+    border-bottom-color: transparent;
+}
+
+section.collapsed .section-content {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+section.collapsed .section-collapse-btn {
+    background: rgba(131, 170, 255, 0.1);
+}
+
+section.collapsed .section-collapse-btn ion-icon {
+    transform: rotate(180deg);
+    color: var(--gray);
+}
+
+/* Hover effects */
+.section-header:hover {
+    background: none;
+}
+
+.section-header:hover h2 {
+    color: var(--stroke-hover);
+}
+
+.section-collapse-btn:hover {
+    transform: scale(1.1);
+    background: rgba(131, 170, 255, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Active effects */
+.section-collapse-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .section-header {
+        padding: 0;
+        gap: 8px;
+    }
+    
+    .section-collapse-btn {
+        width: 20px;
+        height: 20px;
+        padding: 4px;
+    }
+    
+    .section-collapse-btn ion-icon {
+        font-size: 16px;
+    }
+    
+    .section-content {
+        padding-left: 12px;
+        margin-left: 12px;
+    }
+}
+
+/* 确保折叠时完全没有空间 */
+section.collapsed {
+    margin-bottom: 5px;
 }

@@ -401,4 +401,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // recalculate when window size changes
     window.addEventListener('resize', updateContentHeight);
+
+    // Section collapse functionality
+    const sections = document.querySelectorAll('.content section');
+    
+    sections.forEach(section => {
+        const header = section.querySelector('.section-header');
+        const collapseBtn = section.querySelector('.section-collapse-btn');
+        
+        if (header && collapseBtn) {
+            // 点击整个header都可以触发折叠
+            header.addEventListener('click', (e) => {
+                // 防止点击按钮时触发两次
+                if (!e.target.closest('.section-collapse-btn')) {
+                    toggleSection(section);
+                }
+            });
+            
+            // 单独的按钮点击事件
+            collapseBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleSection(section);
+            });
+        }
+    });
+
+    function toggleSection(section) {
+        section.classList.toggle('collapsed');
+        
+        // 保存状态到localStorage
+        const sectionId = section.id;
+        if (sectionId) {
+            localStorage.setItem(
+                `section-${sectionId}-collapsed`,
+                section.classList.contains('collapsed')
+            );
+        }
+    }
+
+    // 页面加载时恢复折叠状态
+    sections.forEach(section => {
+        const sectionId = section.id;
+        if (sectionId) {
+            const isCollapsed = localStorage.getItem(`section-${sectionId}-collapsed`) === 'true';
+            if (isCollapsed) {
+                section.classList.add('collapsed');
+            }
+        }
+    });
 });
