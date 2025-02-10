@@ -108,6 +108,20 @@
                             <a href="#references1">References</a>
                         </div>
                     </div>
+
+                    <div class="t1">
+                        <span>Production Expression Verification Module</span>
+                        <div class="t2">
+                            <a href="#2cycle1">Cycle 1: Evaluation of plasmid expression</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#2cycle2">Cycle 2: Evaluating the expression of engineered bacteria in hydrogels</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#2cycle3">Cycle 3: Evaluating drug molecule permeability in an eye model</a>
+                        </div>
+                    </div>
+
                     <div class="t1">
                         <span>Module4: Hydrogel</span>
                         <div class="t2">
@@ -123,6 +137,8 @@
                             <a href="#references4">References</a>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
@@ -328,6 +344,112 @@
                         </section>
                     </div>
                 </section>
+                <!-- Function Verification Module End -->
+
+
+                <!-- Production Expression Verification Module -->
+                <section id="production-expression" class="parent-section">
+                    <div class="section-header">
+                        <h1>Production Expression Verification Module</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <!-- <div class="introduction">
+                            <p>This module focuses on verifying the expression efficiency and stability of our engineered bacteria system in different conditions and environments.</p>
+                        </div> -->
+
+                        <section id="2cycle1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 1: Evaluation of plasmid expression</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>The expression of eukaryotic proteins in prokaryotic systems typically requires lower culture temperatures to reduce inclusion body formation and promote proper protein folding. The average surface temperature of the eye is 34.14°C ± 1.51°C at room temperature and varies with ambient temperature. Since we aim to enable the engineered bacteria to continuously express the RNF114 protein in the ocular environment, it is necessary to experimentally evaluate the expression efficiency of the recombinant plasmid in engineered bacteria under different conditions. To enhance the stability of RNF114, we have designed a scheme for the synchronous release of polyols; thus, concurrent experiments are required to adjust the expression levels of HA in the engineered bacteria and the ratio of the two proteins by testing different strengths of RBS (ribosome binding sites).</p>
+                                <p>The plasmids expressing recombinant RNF114 and HA were simultaneously introduced into the engineered bacteria. Cultures were set up at three different temperatures: 34°C, 30°C, and 26°C. The contents of HA and recombinant RNF114 in the culture medium were detected at regular intervals, and production curves were plotted.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>The recombinant plasmid pET-32a(+)-RNF114-crimson was constructed, with both the recombinant RNF114 and the fluorescent protein Crimson under the control of the T7 promoter. The plasmid pET-32a(+)-hasAB was also constructed. These plasmids were introduced into competent Shuffle T7-B Escherichia coli cells via Bacterial Transformation and then streaked on agar plates for recovery. The transformed cells were cultured in media containing ampicillin to select for positive colonies, which were then picked for further cultivation.</p>
+                                <!-- <figure>
+                                    <img src="../../static/img/engineer/construction-grid.png" alt="Construction Image 1">
+                                </figure> -->
+                                <div class="img-grid">
+                                    <img src="../../static/img/engineer/cons-left.png" alt="Construction Image 1">
+                                    <img src="../../static/img/engineer/cons-right.png" alt="Construction Image 2">
+                                </div>
+
+                                <h3>3. Test</h3>
+                                <ol>
+                                    <li><p><strong>Bacteria Cultivation:</strong> Positive colonies were picked for small-scale shake-flask cultivation in BHI (Brain Heart Infusion) broth, with an equal inoculum in each tube.  Incubate at 34°C, 30°C and 26°C for 14 days and change the medium on the 7th day. Supernatants were collected at different time points between 3 h and 14 days. Separate RNF-114 from HA using His-tag affinity chromatography.</p></li>
+                                    <li><p><strong>Detection of HA Content:</strong> After separation of HA according to the protocol, the content of HA in the range of 30-70 kDa was detected using Gel Permeation Chromatography (GPC), and a GPC curve was plotted.</p></li>
+                                    <li><p><strong>Detection of RNF-114 Content:</strong> The concentration of RNF-114 was determined by measuring the absorbance at 280 nm using UV spectrophotometry, and a curve representing the content of secreted protein was plotted.</p></li>
+                                </ol>
+
+                                <h3>4. Learn</h3>
+                                <p>To address the potential issue of insufficient RNF114 expression, we aim to introduce molecular chaperone proteins as a solution. After searching protein interaction databases, we identified that RNF114 interacts with heat shock protein HSP90AA1 and HSP70 member 5. One of the key functions of the HSP family is to act as molecular chaperones, facilitating the proper folding of proteins. Therefore, we hypothesize that HSP90 and HSP70 could serve as molecular chaperones for RNF114.</p>
+                                <p>Due to the lack of experimental data on RNF114 expression in prokaryotic systems, the expression efficiency of RNF114 in E. coli at around 34°C is unknown. Moreover, to maximize the expression efficiency of the target protein RNF114, we prefer to minimize the expression of exogenous proteins in the engineered bacteria. Thus, we decided to prioritize genetic modifications without co-expressing chaperone proteins in our experiments. If RNF114 is expressed correctly and in sufficient quantities without chaperones, we will not introduce additional plasmids for co-expression. However, if the expression is suboptimal, we will introduce plasmids to co-express the molecular chaperones HSP90 or HSP70.</p>
+
+                            </div>
+                        </section>
+
+                        <section id="2cycle2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 2: Evaluating the expression of engineered bacteria in hydrogels</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We plan to use hydrogel as a vector for engineered bacteria, so after confirming the effect of plasmid expression, we need to confirm the expression of engineered bacteria in hydrogel.</p>
+
+                                <h3>2. Construction</h3>
+                                <ol>
+                                    <li><p><strong>Option1:</strong> A square frame 5% w/v PVA-VS/PVA 95:5 hydrogel containing engineered bacteria was moulded, with a side length of 8mm, and a thickness of 1mm. Next, the square frame was embedded in a square 10% w/v PVA-VS hydrogel. The hydrogel's sides measured 12mm in length and 1.5mm in thickness.</p></li>
+                                    <li><p><strong>Option2:</strong> A pHEMA/β-CD-crHA hydrogel with MA substitution of 20% and m(20)HA-β-CD content of 8% was constructed, and contact lenses containing biofactories were sequentially fabricated.</p></li>
+                                </ol>
+
+                                <h3>3. Test</h3>
+                                <ol>
+                                    <li><p><strong>Bacteria Cultivation:</strong> After picking the positive bacteria for small-scale shake-flask culture, incubate them in BHI medium and inoculate each tube with the same amount of bacteria. Incubate at 34°C, 30°C and 26°C for 14 days and change the medium on the 7th day. Supernatants were collected at different time points between 3 h and 14 days. Separate RNF-114 from HA using His-tag affinity chromatography.</p></li>
+                                    <li><p><strong>Determination of HA content:</strong> After the separation of HA according to the protocol, the HA content of 30-70 kDa was detected by Gel Permeation Chromatography (GPC), and the GPC curve was plotted.</p></li>
+                                    <li><p><strong>Detection of RNF-114 content:</strong> The absorbance at 280 nm was measured by UV spectrophotometry, the protein concentration was calculated, and the secretory protein content curve was plotted.</p></li>
+                                </ol>
+
+                                <h3>4. Learn</h3>
+                                <p>The pore size and surface modification of hydrogels can, on the one hand, fulfill the function of slow drug release, but on the other hand, they may also affect the release of fusion proteins. For example, in the PVA-VA hydrogel, we need to adjust the area of surface modification to find the optimal point of fusion protein release.</p>
+                            </div>
+                        </section>
+
+                        <section id="2cycle3" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 3: Evaluating drug molecule permeability in an eye model</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We wanted to validate the drug delivery efficiency of CLearCat in a real ocular environment, so we designed an in vitro eye simulation chip and embedded the engineered bacteria in a hydrogel, administered the drug in a contact lens mode, and tested the bioavailability of RNF-114 in the simulated eye.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>The eyeball simulation chip is described in the <a href="../drylab/hardware.html#eyeball-simulation">Hardware - Eyeball Simulation</a> section. We covered the outer tear layer with contact lenses embedded with engineered bacteria to detect the amount of drug that eventually reaches the lens site.</p>
+
+                                <h3>3. Test</h3>
+                                <p>The constructed bacterial hydrogel was covered on a running eyeball simulator and continued to be administered for 14 days, detecting the activity of the engineered bacteria every 24 hours.Drugs were collected from the bottom of the simulator at different time points between 3 h and 14 days in the following manner: at the collection time point, the circulation of aqueous humor was suspended by a controlled fluid pump, and then the aqueous humor was aspirated from one side and assayed for RNF-114 drug content using Western Blot.</p>
+
+                                <h3>4. Learn</h3>
+                                <p>The data was processed to allow a simple comparison of the drug content of Cycle1, Cycle2 and Cycle3.The tear layer, corneal layer and aqueous humor circulation can substantially limit drug delivery. And we replaced animal experiments by constructing an in vitro eye simulation to test the amount of drug that can eventually reach the lens.</p>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <!-- Production Expression Verification Module End -->
+                
 
                 <!-- Module4: Hydrogel -->
                 <section id="hydrogel-module" class="parent-section">
@@ -460,6 +582,8 @@
                         </section>
                     </div>
                 </section>
+
+
             </div>
         </div>
 
