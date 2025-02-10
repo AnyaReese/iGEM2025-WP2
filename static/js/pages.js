@@ -460,7 +460,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 页面加载时恢复折叠状态
+
+    // 页面加载时所有 section 状态恢复
+    /*
     sections.forEach(section => {
         const sectionId = section.id;
         if (sectionId) {
@@ -468,6 +470,30 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isCollapsed) {
                 section.classList.add('collapsed');
             }
+        }
+    });
+    */
+
+    // 添加新代码：确保页面加载时所有section都是展开状态
+    sections.forEach(section => {
+        const sectionId = section.id;
+        if (sectionId) {
+            // 清除localStorage中保存的折叠状态
+            localStorage.removeItem(`section-${sectionId}-collapsed`);
+        }
+        // 移除所有collapsed类
+        section.classList.remove('collapsed');
+        
+        // 确保按钮也是展开状态
+        const btn = section.querySelector('.section-collapse-btn');
+        if (btn) {
+            btn.classList.remove('collapsed');
+        }
+        
+        // 确保content也是展开状态
+        const content = section.querySelector('.section-content');
+        if (content) {
+            content.classList.remove('collapsed');
         }
     });
 
