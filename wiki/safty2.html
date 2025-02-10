@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Safety | iGem Winter Project</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="./static/img/favicon.ico">
+        <link rel="icon" type="image/png" href="../static/img/favicon.ico">
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <link rel="stylesheet" href="../static/css/basic.css">
+        <link rel="stylesheet" href="../static/css/load.css">
+        <link rel="stylesheet" href="../static/css/pages.css">
+        <link rel="stylesheet" href="../static/css/components.css">
+        <link rel="stylesheet" href="../static/css/design.css">
+        <script src="https://unpkg.com/ngl@2.0.0-dev.37/dist/ngl.js"></script>
+        <link rel="stylesheet" href="../static/css/pdbviewer.css">
+    </head>
+    <body>
+        <!-- scroll progress bar -->
+        <div class="scroll-progress"></div>
+        
+        <!-- Loading cast -->
+        <div class="loading-container">
+            <div class="loading-spinner-image">
+                <img src="../static/img/loading.svg" alt="Loading...">
+            </div>
+            <div class="loading-text">Loading...</div>
+        </div>
+
+        <div class="top_bar">
+            <div class="menu_btn">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="logo_wrap">
+                <a href="../index.html"><img id="team_logo" src="../static/img/logo-apart-text.svg" alt=""></a>
+            </div>
+            <div class="menu_wrap">
+                <div id="project" class="menu_item">
+                    <div class="title">Project<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./description.html">Description</a></li>
+                        <li><a href="./design.html">Design</a></li>
+                        <li><a href="./safety.html">Safety</a></li>
+                    </ul>
+                </div>
+                <div id="wetlab" class="menu_item">
+                    <div class="title">Wet Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./wetlab/engineering.html">Engineering</a></li>
+                        <li><a href="./wetlab/construction.html">Construction</a></li>
+                        <li><a href="./wetlab/protocol.html">Protocol</a></li>
+                        <li><a href="./wetlab/parts.html">Parts</a></li>
+                    </ul>
+                </div>
+                <div id="drylab" class="menu_item">
+                    <div class="title">Dry Lab<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./drylab/model&software.html">Model & Software</a></li>
+                        <li><a href="./drylab/hardware.html">Hardware</a></li>
+                    </ul>
+                </div>
+                <div id="human" class="menu_item">
+                    <div class="title">Human Practice<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./hp/overview.html">Overview</a></li>
+                        <li><a href="./hp/education.html">Education</a></li>
+                        <li><a href="./hp/entrepreneurship.html">Entrepreneurship</a></li>
+                        <li><a href="./hp/integrated.html">Integrated Human Practices</a></li>
+                        <li><a href="./hp/inclusivity.html">Inclusivity</a></li>
+                        <li><a href="./hp/sustain.html">Sustainable Development</a></li>
+                        <li><a href="./hp/ethical.html">Ethical Framework</a></li>
+                    </ul>
+                </div>
+                <div id="team" class="menu_item">
+                    <div class="title">Team<ion-icon name="caret-back-outline"></ion-icon></div>
+                    <ul class="choice">
+                        <li><a href="./team/attributions.html">Attributions</a></li>
+                        <li><a href="./team/member.html">Member</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Banner -->
+        <!-- <div class="banner">
+            <img src="../static/img/logo-footer.png" alt="Description Banner">
+        </div> -->
+        <!-- Page Title Background -->
+        <div class="page-title-bg">
+            <div class="bg-image" style="background-image: url('../static/img/safety/cover.png')"></div>
+            <div class="overlay"></div>
+            <div class="title-content">
+                <h1>Safety</h1>
+            </div>
+        </div>
+
+        <!-- Main content wrapper -->
+        <div class="main">
+            <!-- Sidebar wrapper -->
+            <div class="sidebarBg">
+                <div class="sidebar">
+                    <!-- sidebar collapse button -->
+                    <div class="sidebar-collapse-btn">
+                        <ion-icon name="chevron-back-outline"></ion-icon>
+                    </div>
+                
+                    <div class="t1">
+                        <span>Project safety</span>
+                        <div class="t2">
+                            <a href="shuffle">SHuffle E. coli  Biosafety</a>
+                            <a href="#alert">Safety Alert Module</a>
+                            <a href="#suicide">Suicide Switch in case of Leakage</a>
+                            <a href="#production">Production</a>
+                            <a href="#transportation">Transportation</a>
+                            <a href="#use">Use</a>
+                        </div>
+                    </div>
+
+                    <div class="t1">
+                        <span>Lab Safety</span>
+                        <div class="t2">
+                            <a href="#management">Management Regulations</a>
+                            <a href="#training">Training and Guidance</a>
+                            <a href="#compliance">Compliance and Supervision</a>
+                        </div>
+                    </div>
+
+                    <div class="t1">
+                        <a ref="#reference">References</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- sidebar expand button -->
+            <div class="sidebar-expand-btn">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </div>
+
+            <!-- Content area -->
+            <div class="content">
+
+                <!-- Project Safety -->
+                 <section id="project-safety" class="parent-section">
+                    <div class="section-header">
+                        <h1>Project Safety</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <p>Project safety is a crucial aspect of our project. We have implemented a series of safety measures to ensure the safety of our project and our team.</p>
+                        
+                        <!-- SHuffle E. coli  Biosafety -->
+                        <section id="shuffle-ecoli-biosafety" class="sub-section">
+                            <div class="section-header">
+                                <h2>SHuffle E. coli  Biosafety</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>SHuffle E. coli is a biosafety level 2 organism. We have implemented a series of safety measures to ensure the safety of our project and our team.</p>
+                            </div>
+                        </section>
+                        <!-- SHuffle E. coli  Biosafety END -->
+
+                        <!-- Safety Alert Module -->
+                        <section id="safety-alert-module" class="sub-section">
+                            <div class="section-header">
+                                <h2>Safety Alert Module</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Safety Alert Module is a module that alerts the user when the safety of the project is compromised.</p>
+                            </div>
+                        </section>
+                        <!-- Safety Alert Module END -->
+
+                        <!-- Suicide Switch in case of Leakage -->
+                        <section id="suicide-switch-in-case-of-leakage" class="sub-section">
+                            <div class="section-header">
+                                <h2>Suicide Switch in case of Leakage</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Suicide Switch in case of Leakage is a module that kills the bacteria when the safety of the project is compromised.</p>
+                            </div>
+                        </section>
+                        <!-- Suicide Switch in case of Leakage END -->
+                         
+                        <!-- Production -->
+                        <section id="production" class="sub-section">
+                            <div class="section-header">
+                                <h2>Production</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Production is a module that produces the product.</p>
+                            </div>
+                        </section>
+                        <!-- Production END -->
+
+                        <!-- Transportation -->
+                        <section id="transportation" class="sub-section">
+                            <div class="section-header">
+                                <h2>Transportation</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Transportation is a module that transports the product.</p>
+                            </div>
+                        </section>
+                        <!-- Transportation END -->
+
+                        <!-- Use -->
+                        <section id="use" class="sub-section">
+                            <div class="section-header">
+                                <h2>Use</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Use is a module that uses the product.</p>
+                            </div>
+                        </section>
+                        <!-- Use END -->
+                    </div>
+                </section>
+                <!-- Project Safety END -->
+
+                <!-- Lab Safety -->
+                <section id="lab-safety" class="parent-section">
+                    <div class="section-header">
+                        <h1>Lab Safety</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <p>Lab Safety is a crucial aspect of our project. We have implemented a series of safety measures to ensure the safety of our project and our team.</p>
+                        
+                        <!-- Management Regulations -->
+                        <section id="managemen" class="sub-section">
+                            <div class="section-header">
+                                <h2>Management Regulations</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Management Regulations is a module that ensures the safety of the project and our team.</p>
+                            </div>
+                        </section>
+                        <!-- Management Regulations END -->
+
+                        <!-- Training and Guidance -->
+                        <section id="training" class="sub-section">
+                            <div class="section-header">
+                                <h2>Training and Guidance</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Training and Guidance is a module that ensures the safety of the project and our team.</p>
+                            </div>
+                        </section>
+                        <!-- Training and Guidance END -->
+
+                        <!-- Compliance and Supervision -->
+                        <section id="compliance" class="sub-section">
+                            <div class="section-header">
+                                <h2>Compliance and Supervision</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Compliance and Supervision is a module that ensures the safety of the project and our team.</p>
+                            </div>
+                        </section>
+                        <!-- References END -->
+
+                    </div>
+                </section>
+                <!-- Lab Safety END -->
+
+                <!-- References -->
+                <section id="references" class="parent-section">
+                    <div class="section-header">
+                        <h1>References</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <div class="reference-list">
+                            <div class="reference-item">
+                                <h2>Reference 1</h2>
+                                <p>Reference 1 is a module that ensures the safety of the project and our team.</p>
+                            </div>
+                            <div class="reference-item">
+                                <h2>Reference 2</h2>
+                                <p>Reference 2 is a module that ensures the safety of the project and our team.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- References END -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="logo_wrap">
+                <img id="team_logo" src="../static/img/Logo-round-text.svg" alt="">
+            </div>
+            <div class="follow">
+                <div class="title">Follow Us</div>
+                <ul class="follow_list">
+                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="contact">
+                <div class="title">Contact Us</div>
+                <div class="email">ZJU_China@outlook.com</div>
+            </div>
+        </footer>
+        <script src="../static/js/basic.js"></script>
+        <script src="../static/js/pages.js"></script>
+        <script src="../static/js/pdbviewer.js"></script>
+        <script src="../static/js/components.js"></script>
+    </body>
+</html>
