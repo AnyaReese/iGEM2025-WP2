@@ -103,20 +103,12 @@
                     <div class="sidebar-collapse-btn">
                         <ion-icon name="chevron-back-outline"></ion-icon>
                     </div>
-                    
+                
                     <div class="t1">
-                        <span>Introduction</span>
+                        <span>Nutritional Deficiency Suicide System</span>
                         <div class="t2">
-                            <a href="#background">Background</a>
-                            <a href="#objectives">Objectives</a>
-                        </div>
-                    </div>
-                    <div class="t1">
-                        <span>Project Details</span>
-                        <div class="t2">
-                            <a href="#design">Design</a>
-                            <a href="#implementation">Implementation</a>
-                            <a href="#results">Results</a>
+                            <a href="#knockout">1. CRISPR/Cas9 knockout of genes related to trp and his synthesis</a>
+                            <a href="#overexpression">2. Design of the Trp Overexpression System</a>
                         </div>
                     </div>
                 </div>
@@ -137,9 +129,170 @@
                     </div> -->
                 </section>
 
-                <section id="objectives">
-                    <h1>Objectives</h1>
-                    <p>Your objectives content here...</p>
+                <!-- Nutritional Deficiency Suicide System Section -->
+                <h1>Nutritional Deficiency Suicide System</h1>
+                <section id="introduction">
+                    <p>In this system, we use the nutrient-deficient SHuffle T7-B strain as the engineered bacterial strain and design a metabolic complementarity-based symbiotic bacterial system, ensuring that bacteria A and B can only coexist and cannot survive independently. Bacteria A cannot synthesize tryptophan (Trp) but can provide histidine (His), while bacteria B cannot synthesize histidine (His) but can provide tryptophan (Trp). These two bacteria must provide the required amino acids for each other to maintain growth; they cannot survive independently due to the lack of essential nutrients.</p>
+                    <p>We knocked out the trpA gene in bacteria A to prevent it from synthesizing tryptophan, and knocked out the hisG gene in bacteria B to prevent it from synthesizing histidine. Meanwhile, bacteria A overexpress hisG to help provide histidine to bacteria B, and bacteria B overexpress trpA to help provide tryptophan to bacteria A. A strict metabolic symbiosis is formed between bacteria A and B; they can only grow in a coexistence state. If separated, they will lose their viability due to nutrient deficiencies.</p>
+                    <p>This system is expected to ensure that after the failure of the hydrogel's confinement of the engineered bacteria, the bacteria will die due to the lack of essential amino acids, preventing them from spreading to the eye or the natural environment.</p>
+                </section>
+
+                <section id="knockout">
+                    <h2>1. CRISPR/Cas9 knockout of genes related to trp and his synthesis</h2>
+                    <p>We used a CRISPR/Cas9-based system to knock out the trpA and hisG genes.</p>
+                    
+                    <h3>1.1 Knockout of trp synthesis-related genes in engineered strain A</h3>
+                    <h4>1.1.1 In the trp synthesis pathway, there are four types of enzymes:</h4>
+                    <ul>
+                        <li><p><strong>trpE:</strong> The first step in the catalytic synthesis of tryptophan is the generation of anthranilate.</p></li>
+                        <li><p><strong>trpD:</strong> Synthesis of trpC: Producing Indole-3-glycerol phosphate</p></li>
+                        <li><p><strong>trpB and trpA:</strong> Collaboratively generate the final product, tryptophan, completing the final step of tryptophan synthesis.</p></li>
+                    </ul>
+                    <p>We chose to knock out trpC (which encodes Indole-3-glycerol phosphate synthase). Knocking out the trpC gene is expected to prevent the production of intermediates in tryptophan synthesis, thereby leading to a deficiency of tryptophan.</p>
+
+                    <h4>1.1.2 Design of gRNA</h4>
+                    <p>We used <a href="https://www.benchling.com/">benchling.com</a> to design gRNA targeting trpC. After screening multiple possible sequences, we selected:</p>
+                    
+                    <blockquote class="quote">
+                        TCGTCGCAGACAAGGCGATT
+                    </blockquote>
+
+                    <p>As our gRNA, its On-Target Score is 63.0, and Off-Target Score is 99.9, indicating good targeting efficiency and low off-target risk.</p>
+                    <p>Next, we designed two primers to amplify the gRNA targeting trpC, adding Bsal restriction sites at both ends.</p>
+
+                    <figure>
+                        <img src="../static/img/safety/trpC_primer.png" alt="trpC primer">
+                        <figcaption>trpC primer</figcaption>
+                    </figure>
+
+                    <h4>1.1.3 Construction of pdCas9-trpCgRNA plasmid</h4>
+                    <p>We chose pdCas9 as the vector, which has the dCas9 (dead Cas9) gene. After digestion with Bsal enzyme and ligation using T4 ligase, we obtained the pdCas9-trpCgRNA plasmid.</p>
+
+                    <figure>
+                        <img src="../static/img/safety/pdCas9-trpCgRNA.png" alt="pdCas9-trpCgRNA" style="width: 60%;">
+                        <figcaption>pdCas9-trpCgRNA</figcaption>
+                    </figure>
+
+                    <a href="../static/img/safety/pdCas9-trpCgRNA.dna" target="_blank" download="pdCas9-trpCgRNA.dna">
+                        <button class="download-btn">Download pdCas9-trpCgRNA.dna</button>
+                    </a>
+
+                    <h3>1.2 Knockout of His Synthesis Related Genes in Engineering Strain B</h3>
+                    <h4>1.2.1 In the His synthesis pathway, there are five types of enzymes:</h4>
+                    <ul>
+                        <li><strong>hisG:</strong> Catalyze Imidazoleglycerol-phosphate dehydratase to produce Imidazoleglycerol.</li>
+                        <li><strong>hisD:</strong> Synthesize Imidazoleacetol.</li>
+                        <li><strong>hisB:</strong> Synthesize Histidinol.</li>
+                        <li><strong>hisA:</strong> Synthesize Histidinaldehyde.</li>
+                        <li><strong>hisC:</strong> Synthesize Histidine (final product).</li>
+                    </ul>
+                    <p>We chose to knock out the hisA gene, which encodes Phosphoribosyl-ATP synthase. In the histidine synthesis pathway, hisA is a key enzyme responsible for generating Phosphoribosyl-ATP. By knocking out the hisA gene, we can block a critical step in histidine synthesis, thereby preventing the synthesis of histidine.</p>
+
+                    <h4>1.2.2 Design of gRNA</h4>
+                    <p>We used benchling.com to design gRNA targeting hisA. After screening multiple possible sequences, we selected:</p>
+                    <pre>TCGTCGCAGACAAGGCGATT</pre>
+                    <p>As our gRNA, its On-Target Score is 72.0, and Off-Target Score is 99.8, indicating good targeting efficiency and low off-target risk.</p>
+                    <p>Next, we designed two primers to amplify the gRNA targeting hisA, adding Bsal restriction sites at both ends.</p>
+
+                    <figure>
+                        <img src="../static/img/safety/hisA_primer.png" alt="hisA primer">
+                        <figcaption>hisA primer</figcaption>
+                    </figure>
+
+                    <h4>1.2.3 Construction of pdCas9-hisAgRNA plasmid</h4>
+                    <p>We selected pdCas9 as the vector, which has the dCas9 (dead Cas9) gene. After digestion with Bsal enzyme and ligation using T4 ligase, we obtained the pdCas9-hisAgRNA plasmid.</p>
+
+                    <figure>
+                        <img src="../static/img/safety/pdCas9-hisAgRNA.png" alt="pdCas9-hisAgRNA" style="width: 60%;">
+                        <figcaption>pdCas9-hisAgRNA</figcaption>
+                    </figure>
+                    
+                    <a href="../static/img/safety/pdCas9-hisAgRNA.dna" target="_blank" download="pdCas9-hisAgRNA.dna">
+                        <button class="download-btn">Download pdCas9-hisAgRNA.dna</button>
+                    </a>
+                    
+                </section>
+
+                <section id="overexpression">
+                    <h2>2. Design of the Trp Overexpression System</h2>
+                    
+                    <h3>2.1 aroG</h3>
+                    <p>The aroG gene encodes 3-deamino-D-aromatic amino acid transaminase (DAHP synthase). This enzyme is a key enzyme in the aromatic amino acid synthesis pathway, involved in the synthesis of aromatic amino acids (such as tryptophan and phenylalanine). In normal metabolic processes, the activity of DAHP synthase is subject to feedback inhibition by its product (tryptophan). In other words, when the concentration of tryptophan is too high, it inhibits the activity of the enzyme encoded by aroG, thereby reducing the synthesis of aromatic amino acids.</p>
+                    
+                    <p>We modified the aroG gene by mutating the aspartic acid (Asp) at position 146 to asparagine (Asn) (i.e., D146N mutation). This removed the feedback inhibition of tryptophan on the enzyme. The enzyme's activity is no longer inhibited by high concentrations of tryptophan, so even if there is a high concentration of tryptophan in the cells, DAHP synthase can still continue to catalyze the synthesis of aromatic amino acids, avoiding metabolic pathway blockage due to feedback inhibition.</p>
+                    
+                    <p>We added an RBS to the front of its CDS sequence to facilitate the formation of a polycistronic transcript with the enzymes related to Trp synthesis, allowing for simultaneous expression. We also added SalI and NotI restriction enzyme recognition sites at both ends to facilitate insertion into a subvector.</p>
+
+                    <figure>
+                        <img src="../static/img/safety/aroG.png" alt="aroG">
+                        <figcaption>aroG</figcaption>
+                    </figure>
+                    
+                    <a href="../static/img/safety/aroG.dna" target="_blank" download="aroG.dna">
+                        <button class="download-btn">Download aroG.dna</button>
+                    </a>
+
+                    <h3>2.2 Construction of the Trp Synthesis Pathway</h3>
+                    <p>In this design, we selected the trpEDCBA gene locus in the tryptophan operon to construct a synthetic pathway capable of synthesizing tryptophan (Trp). These genes were manipulated through a tandem expression strategy, allowing the tryptophan synthesis pathway to operate efficiently.</p>
+                    
+                    <p>We also added BamHI and EcoRI restriction enzyme recognition sites at both ends to facilitate insertion into the vector.</p>
+
+                    <figure>
+                        <img src="../static/img/safety/trpEDCBA.png" alt="trpEDCBA">
+                        <figcaption>trpEDCBA</figcaption>
+                    </figure>
+
+                    <a href="../static/img/safety/trpEDCBA.dna" target="_blank" download="trpEDCBA.dna">
+                        <button class="download-btn">Download trpEDCBA.dna</button>
+                    </a>
+
+                    <p>We chose pET-32a(+) as the vector, whose T7 promoter can ensure the high expression of Trp. We used BamHI and EcoRI to digest TrpEDCBA and pET-32a(+) respectively, allowing TrpEDCBA to be inserted into the MCS region of pET-32a(+). We used SalI and NotI to digest aroG and pET-32a(+) respectively, allowing aroG to be inserted into the MCS region of pET-32a(+). Thus, we obtained the recombinant pET-32a(+)-trpEDCBA-aroG plasmid.</p>
+                    <figure>
+                        <img src="../static/img/safety/pET-32a(+)-trpEDCBA-aroG.png" alt="pET-32a(+)-trpEDCBA-aroG">
+                    </figure>
+
+                    <a href="../static/img/safety/pET-32a(+)-trpEDCBA-aroG.dna" target="_blank" download="pET-32a(+)-trpEDCBA-aroG.dna">
+                        <button class="download-btn">Download pET-32a(+)-trpEDCBA-aroG.dna</button>
+                    </a>
+                
+                </section>
+
+                <section id="his-expression">
+                    <h2>3. His Excessive Expression System Design</h2>
+                    
+                    <h3>3.1 His Synthesis Pathway Construction</h3>
+                    <p>In this design, we obtained all the genes related to the His synthesis pathway from Escherichia coli and constructed a polycistronic structure capable of synthesizing histidine driven by the T7 promoter. These genes were manipulated using a tandem expression strategy, allowing the histidine synthesis pathway to operate efficiently.</p>
+                    
+                    <h4>The relevant enzymes are as follows:</h4>
+                    <ul>
+                        <li><strong>hisL</strong></li>
+                        <li><strong>hisG:</strong> Synthesis of the histidine precursor PRPP.</li>
+                        <li><strong>hisD:</strong> Participate in the synthesis of dihydroquinoline acid, providing intermediates for histidine synthesis.</li>
+                        <li><strong>hisC:</strong> Participate in the synthesis of precursor substances.</li>
+                        <li><strong>hisB:</strong> Participate in the cyclization reaction of precursor molecules.</li>
+                        <li><strong>hisH:</strong> Participate in the cyclization process to help generate cyclic structures.</li>
+                        <li><strong>hisA:</strong> Precursor substances for the synthesis of histidine.</li>
+                        <li><strong>hisF:</strong> Catalytic cyclization of histidine precursor molecules.</li>
+                        <li><strong>hisI:</strong> Participate in ATP-related high-energy molecular conversion to provide energy for synthesis.</li>
+                    </ul>
+
+                    <figure>
+                        <img src="../static/img/safety/HisGene.png" alt="HisGene">
+                    </figure>
+
+                    <a href="../static/img/safety/HisGene.dna" target="_blank" download="HisGene.dna">
+                        <button class="download-btn">Download HisGene.dna</button>
+                    </a>
+
+                    <p>We chose pET-32a(+) as the vector, and the T7 promoter ensures the high expression of His. We used BamHI and EcoRI to digest HisGene and pET-32a(+) respectively, allowing HisGene to be inserted into the MCS region of pET-32a(+). At this point, we obtained the recombinant pET-32a(+)-HisGene plasmid.</p>
+                
+                    <figure>
+                        <img src="../static/img/safety/pET-32a(+)-HisGene.png" alt="pET-32a(+)-HisGene" style="width: 60%;">
+                    </figure>
+
+                    <a href="../static/img/safety/pET-32a(+)-HisGene.dna" target="_blank" download="pET-32a(+)-HisGene.dna">
+                        
+                    </a>
                 </section>
 
                 <section id="references">

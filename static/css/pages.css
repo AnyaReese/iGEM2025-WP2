@@ -1388,3 +1388,50 @@ tbody tr:last-child td:last-child {
         padding: 1em 1.5em;
     }
 }
+
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #7ca3c2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+    text-decoration: none !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.download-btn::before {
+    content: "📄";
+    margin-right: 8px;
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #6673ac;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    /* text-decoration: none !important; */
+}
+
+.download-btn,
+.download-btn:hover,
+.download-btn:focus,
+.download-btn:active {
+    text-decoration: none !important;
+}
+
+.download-btn:hover::before {
+    transform: translateY(2px);
+}
+
+.download-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
