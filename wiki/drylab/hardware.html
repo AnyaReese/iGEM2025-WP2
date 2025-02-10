@@ -131,152 +131,184 @@
 
             <!-- Content area -->
             <div class="content">
-
-                <section id="introduction">
-                    <h1>Introduction</h1>
-                    <p>This project aims to provide breakthrough treatment solutions for eye diseases such as cataracts, with a focus on a long-acting drug delivery platform based on hydrogel contact lenses. The platform utilizes bioengineered miniature bioreactors to continuously secrete therapeutic components, such as RNF114. By adhering to the surface of the eye, the contact lenses overcome the issues of low drug absorption rates and short retention times associated with traditional eye drops, fundamentally improving the effectiveness of drug treatment while reducing systemic toxicity and the burden of frequent administration.</p>
-                    <p>To test the therapeutic effect of the developed contact lenses, it is necessary to conduct biological experiments to verify the sustained release of RNF114 and the final amount of drug delivered to the lens. Since animal experiments are not within the scope of iGEM, we utilize microfluidic technology by stacking multilayer chips to simulate the drug delivery path in the human eye. This approach enables convenient, fast, and reproducible experiments, while also providing an iterative solution for the evaluation of ocular drug delivery.</p>
-                    <p>At the same time, to alert users to replace the contact lenses in time when the microbial activity declines, ensuring that the microbes remain highly active and continue to effectively secrete RNF114 while avoiding contamination of the eye from the microbial lysate, we have designed a user-friendly contact lens case. This case integrates a fluorescence detection device, which detects the active fluorescent signal emitted by the embedded bioreactors in the contact lenses. This helps users quickly determine whether the contact lenses are still active and safe for continued use.</p>
-                    
-                    <p><strong>Here are the two devices we designed:</strong></p>
-                    <ol>
-                        <li><strong>Eye Simulation Chip</strong></li>
-                        <li><strong>Cell Activity Detection Contact Lens Case</strong></li>
-                    </ol>
-                </section>
-
-                <h1>Eye Simulation Chip</h1>
-                <section id="appearance1">
-                    <h2>Appearance</h2>
-                    <p>To detect the drug content that reaches the lens, we will simulate the drug delivery method using contact lenses on the eye. At predetermined time points, we will pause the aqueous humor reflux, collect the instantaneous aqueous humor, and then reinject the aqueous humor to continue circulation, in order to measure the drug concentration within it. The specific process can be found in Wet Lab-Engineering-Production Expression Verification Module-Cycle3.</p>
-                    <p>We need to simulate the process of the drug moving from the contact lens, through the tear film layer, across the cornea, and finally reaching the aqueous humor reflux.</p>
-
-                    <p>The eye simulation chip we designed consists of three parts, as shown in the diagram from top to bottom (the main material of the chip is PDMS):</p>
-
-                    <ul>
-                        <li>Tear layer</li>
-                        <li>Cornea layer</li>
-                        <li>Aqueous humor drainage layer</li>
-                    </ul>
-
-                    <h3>Tear layer</h3>
-                    <p>Driven by a micro stepper pump, it simulates the flow of the tear film and the flushing effect caused by intermittent blinking.</p>
-
-                    <!-- TODO: add tear layer image -->
-                    <figure>
-                        <img src="../../static/img/hardware/workflow.svg" alt="Eye Simulation Chip Tear Layer">
-                        <figcaption>Eye Simulation Chip Tear Layer</figcaption>
-                    </figure>
-
-                    <h3>Cornea layer</h3>
-                    <p>We proceeded with the corneal layer construction as follows:</p>
-
-                    <figure>
-                        <img src="../../static/img/hardware/vitreous.png" alt="Eye Simulation Chip Cornea Layer">
-                        <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
-                    </figure>
-
-                    <ol>
-                        <li>Production of cell culture scaffolds: We use compression molded polystyrene cell culture media (Alvetex®, Reprocell). The 3D printed molds were used to compress and heated at 100°C for 15 min to induce permanent deformation, resulting in a corneal layer medium that conformed to the radius of curvature, which was set at 7 mm.</li>
-
-                        <figure>
-                            <img src="../../static/img/hardware/printed.png" alt="Eye Simulation Chip Cornea Layer" style="width: 50%;">
-                            <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
-                        </figure>
-                        <li>Corneal stromal</li>
-                        <ol>
-                        <li>Corneal stromal formation: Primary human keratocytes were trypsinized and suspended in a solution prepared by mixing rat tail type 1 collagen (2 mg/ml) with deionized  water, 10X PBS, and 1N NaOH. The final concentration of suspended cells was 1 million cells/ml. In the next step, 25 µl of this cell-containing collagen precursor solution was dispended on the scaffold surface and then gently suctioned through a channel in the aqueous layer into the hole in the stent. Gelation of collagen was achieved by  incubating the seeded device in a humidified cell culture incubator (37 ºC, 5% CO2) for 30  minutes.</li>
-
-                            <figure>
-                                <img src="../../static/img/hardware/form.png" alt="Eye Simulation Chip Cornea Layer" style="width: 80%;">
-                                <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
-                            </figure>
-
-                            <li>Corneal cell inoculation: controlled cell suspension adherence to a gelatinized stromal surface</li>
-
-                            <figure>
-                                <img src="../../static/img/hardware/seeded.png" alt="Eye Simulation Chip Cornea Layer" style="width: 50%;">
-                                <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
-                            </figure>
-                        </ol>
-
-                        <li>Corneal layer assembly</li>
-                        <ol>
-                            <li>Corneal layer plate material: PDMS</li>
-                            <li>The shaped medium was bonded to the PDMS plate by polymerization reaction, and the substrate construction and cell inoculation were carried out sequentially</li>
-                            <li>A layer of PDMS was attached to the bottom layer to simulate the iris.</li>
-                        </ol>
-                    </ol>
-
-
-                    <p>The design considerations include:</p>
-                    <ul>
-                        <li>Symmetrical fluid flow paths to ensure uniform distribution</li>
-                        <li>Precise pressure control through PID feedback system</li>
-                        <li>Temperature regulation to maintain physiological conditions</li>
-                        <li>Biomimetic outflow resistance using PDMS membrane</li>
-                    </ul>
-
-                    <figure>
-                        <img src="../../static/img/hardware/aqueous.png" alt="Aqueous Humor Drainage Layer Design">
-                        <figcaption>Aqueous Humor Drainage Layer Design</figcaption>
-                    </figure>
-
-                </section>
-
-                <section id="design1">
-                    <h2>Circuit Design</h2>
-                    
-                    <figure>
-                        <img src="../../static/img/hardware/workflow.svg" alt="Eye Simulation Chip Process Flowchart">
-                        <figcaption>Eye Simulation Chip Process Flowchart</figcaption>
-                    </figure>
-
-                    <p>The circuit design consists of four main components:</p>
-                    
-                    <div class="component-list">
-
-                        <ol>
-                            <li><strong>Microcontroller Unit (MCU)</strong></li>
-                            <p>The control core of the system. The eye simulation chip will use an Arduino Mega as the main control chip. It has a large number of pins, which makes it easier to expand the system in the future. Additionally, it has strong data processing capabilities, enabling more precise control and simulation of the eye's physicochemical properties.</p>
-                           
-
-
-
-                            <li><strong>MS5837 Sensor</strong></li>
-                            <p>An integrated temperature and pressure sensor, with a pressure accuracy of 0.2 kPa. It meets the requirements for controlling intraocular pressure and can also measure temperature, providing feedback to simulate the eye's temperature.</p>
-
-                            <li><strong>Stepper Motor Peristaltic Pump</strong></li>
-                            <p>By controlling the rotational speed of the stepper motor, the flow rate of the peristaltic pump can be adjusted to simulate the tear fluid flushing and aqueous humor reflux. Additionally, by controlling the inflow and outflow of the aqueous humor, the system can regulate intraocular pressure.</p>
-                        
-                            <li><strong>Heating Module</strong></li>
-                            <p>The heating module is controlled based on feedback from the temperature sensor, adjusting the heating speed to stabilize the temperature within the aqueous humor, simulating the eye's natural thermal conditions.</p>
-                        </ol>
-                        
+                <section id="introduction" class="parent-section">
+                    <div class="section-header">
+                        <h1>Introduction</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
                     </div>
-
-                    <p>The complete circuit schematics and PCB design files are available in the <a href="../../static/img/hardware/眼球模拟芯片原理图.pdf" download="眼球模拟芯片原理图.pdf">supplementary materials</a>.</p>
-                    
-                    <figure>
-                        <img src="../../static/img/hardware/EyeSimuChip.png" alt="Eye Simulation Chip Circuit Diagram">
-                        <figcaption>Eye Simulation Chip Circuit Diagram</figcaption>
-                    </figure>
-                
+                    <div class="section-content">
+                        <p>This project aims to provide breakthrough treatment solutions for eye diseases such as cataracts, with a focus on a long-acting drug delivery platform based on hydrogel contact lenses. The platform utilizes bioengineered miniature bioreactors to continuously secrete therapeutic components, such as RNF114. By adhering to the surface of the eye, the contact lenses overcome the issues of low drug absorption rates and short retention times associated with traditional eye drops, fundamentally improving the effectiveness of drug treatment while reducing systemic toxicity and the burden of frequent administration.</p>
+                        <p>To test the therapeutic effect of the developed contact lenses, it is necessary to conduct biological experiments to verify the sustained release of RNF114 and the final amount of drug delivered to the lens. Since animal experiments are not within the scope of iGEM, we utilize microfluidic technology by stacking multilayer chips to simulate the drug delivery path in the human eye. This approach enables convenient, fast, and reproducible experiments, while also providing an iterative solution for the evaluation of ocular drug delivery.</p>
+                        <p>At the same time, to alert users to replace the contact lenses in time when the microbial activity declines, ensuring that the microbes remain highly active and continue to effectively secrete RNF114 while avoiding contamination of the eye from the microbial lysate, we have designed a user-friendly contact lens case. This case integrates a fluorescence detection device, which detects the active fluorescent signal emitted by the embedded bioreactors in the contact lenses. This helps users quickly determine whether the contact lenses are still active and safe for continued use.</p>
+                        
+                        <p><strong>Here are the two devices we designed:</strong></p>
+                        <ol>
+                            <li><strong>Eye Simulation Chip</strong></li>
+                            <li><strong>Cell Activity Detection Contact Lens Case</strong></li>
+                        </ol>
+                    </div>
                 </section>
 
-                <section id="code1">
-                    <h2>Main Function Code</h2>
-                    <p>The control system implements PID control for pressure regulation and temperature monitoring. Here's the main function code:</p>
+                <section id="eye-simulation" class="parent-section">
+                    <div class="section-header">
+                        <h1>Eye Simulation Chip</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <section id="appearance1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Appearance</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
 
-                    <div class="code-container">
-                        <div class="code-header">
-                            <span class="file-name">eye_simulation_control.cpp</span>
-                            <button class="copy-btn" onclick="copyCode()">
-                                <i class="fas fa-copy"></i> Copy
-                            </button>
-                        </div>
-                        
-                        <pre><code class="cpp">#include &lt;Wire.h&gt;
+                            <div class="section-content">
+                                <p>To detect the drug content that reaches the lens, we will simulate the drug delivery method using contact lenses on the eye. At predetermined time points, we will pause the aqueous humor reflux, collect the instantaneous aqueous humor, and then reinject the aqueous humor to continue circulation, in order to measure the drug concentration within it. The specific process can be found in Wet Lab-Engineering-Production Expression Verification Module-Cycle3.</p>
+                                <p>We need to simulate the process of the drug moving from the contact lens, through the tear film layer, across the cornea, and finally reaching the aqueous humor reflux.</p>
+
+                                <p>The eye simulation chip we designed consists of three parts, as shown in the diagram from top to bottom (the main material of the chip is PDMS):</p>
+
+                                <ul>
+                                    <li>Tear layer</li>
+                                    <li>Cornea layer</li>
+                                    <li>Aqueous humor drainage layer</li>
+                                </ul>
+
+                                <h3>Tear layer</h3>
+                                <p>Driven by a micro stepper pump, it simulates the flow of the tear film and the flushing effect caused by intermittent blinking.</p>
+
+                                <!-- TODO: add tear layer image -->
+                                <figure>
+                                    <img src="../../static/img/hardware/workflow.svg" alt="Eye Simulation Chip Tear Layer">
+                                    <figcaption>Eye Simulation Chip Tear Layer</figcaption>
+                                </figure>
+
+                                <h3>Cornea layer</h3>
+                                <p>We proceeded with the corneal layer construction as follows:</p>
+
+                                <figure>
+                                    <img src="../../static/img/hardware/vitreous.png" alt="Eye Simulation Chip Cornea Layer">
+                                    <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                                </figure>
+
+                                <ol>
+                                    <li>Production of cell culture scaffolds: We use compression molded polystyrene cell culture media (Alvetex®, Reprocell). The 3D printed molds were used to compress and heated at 100°C for 15 min to induce permanent deformation, resulting in a corneal layer medium that conformed to the radius of curvature, which was set at 7 mm.</li>
+
+                                    <figure>
+                                        <img src="../../static/img/hardware/printed.png" alt="Eye Simulation Chip Cornea Layer" style="width: 50%;">
+                                        <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                                    </figure>
+                                    <li>Corneal stromal</li>
+                                    <ol>
+                                    <li>Corneal stromal formation: Primary human keratocytes were trypsinized and suspended in a solution prepared by mixing rat tail type 1 collagen (2 mg/ml) with deionized  water, 10X PBS, and 1N NaOH. The final concentration of suspended cells was 1 million cells/ml. In the next step, 25 µl of this cell-containing collagen precursor solution was dispended on the scaffold surface and then gently suctioned through a channel in the aqueous layer into the hole in the stent. Gelation of collagen was achieved by  incubating the seeded device in a humidified cell culture incubator (37 ºC, 5% CO2) for 30  minutes.</li>
+
+                                        <figure>
+                                            <img src="../../static/img/hardware/form.png" alt="Eye Simulation Chip Cornea Layer" style="width: 80%;">
+                                            <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                                        </figure>
+
+                                        <li>Corneal cell inoculation: controlled cell suspension adherence to a gelatinized stromal surface</li>
+
+                                        <figure>
+                                            <img src="../../static/img/hardware/seeded.png" alt="Eye Simulation Chip Cornea Layer" style="width: 50%;">
+                                            <figcaption>Eye Simulation Chip Cornea Layer</figcaption>
+                                        </figure>
+                                    </ol>
+
+                                    <li>Corneal layer assembly</li>
+                                    <ol>
+                                        <li>Corneal layer plate material: PDMS</li>
+                                        <li>The shaped medium was bonded to the PDMS plate by polymerization reaction, and the substrate construction and cell inoculation were carried out sequentially</li>
+                                        <li>A layer of PDMS was attached to the bottom layer to simulate the iris.</li>
+                                    </ol>
+                                </ol>
+
+
+                                <p>The design considerations include:</p>
+                                <ul>
+                                    <li>Symmetrical fluid flow paths to ensure uniform distribution</li>
+                                    <li>Precise pressure control through PID feedback system</li>
+                                    <li>Temperature regulation to maintain physiological conditions</li>
+                                    <li>Biomimetic outflow resistance using PDMS membrane</li>
+                                </ul>
+
+                                <figure>
+                                    <img src="../../static/img/hardware/aqueous.png" alt="Aqueous Humor Drainage Layer Design">
+                                    <figcaption>Aqueous Humor Drainage Layer Design</figcaption>
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section id="design1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Circuit Design</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                            
+                            <figure>
+                                <img src="../../static/img/hardware/workflow.svg" alt="Eye Simulation Chip Process Flowchart">
+                                <figcaption>Eye Simulation Chip Process Flowchart</figcaption>
+                            </figure>
+
+                            <p>The circuit design consists of four main components:</p>
+                            
+                            <div class="component-list">
+
+                                <ol>
+                                    <li><strong>Microcontroller Unit (MCU)</strong></li>
+                                    <p>The control core of the system. The eye simulation chip will use an Arduino Mega as the main control chip. It has a large number of pins, which makes it easier to expand the system in the future. Additionally, it has strong data processing capabilities, enabling more precise control and simulation of the eye's physicochemical properties.</p>
+                                   
+
+
+
+                                    <li><strong>MS5837 Sensor</strong></li>
+                                    <p>An integrated temperature and pressure sensor, with a pressure accuracy of 0.2 kPa. It meets the requirements for controlling intraocular pressure and can also measure temperature, providing feedback to simulate the eye's temperature.</p>
+
+                                    <li><strong>Stepper Motor Peristaltic Pump</strong></li>
+                                    <p>By controlling the rotational speed of the stepper motor, the flow rate of the peristaltic pump can be adjusted to simulate the tear fluid flushing and aqueous humor reflux. Additionally, by controlling the inflow and outflow of the aqueous humor, the system can regulate intraocular pressure.</p>
+                                
+                                    <li><strong>Heating Module</strong></li>
+                                    <p>The heating module is controlled based on feedback from the temperature sensor, adjusting the heating speed to stabilize the temperature within the aqueous humor, simulating the eye's natural thermal conditions.</p>
+                                </ol>
+                                
+                            </div>
+
+                            <p>The complete circuit schematics and PCB design files are available in the <a href="../../static/img/hardware/眼球模拟芯片原理图.pdf" download="眼球模拟芯片原理图.pdf">supplementary materials</a>.</p>
+                            
+                            <figure>
+                                <img src="../../static/img/hardware/EyeSimuChip.png" alt="Eye Simulation Chip Circuit Diagram">
+                                <figcaption>Eye Simulation Chip Circuit Diagram</figcaption>
+                            </figure>
+                            </div>
+                        </section>
+
+                        <section id="code1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Main Function Code</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>The control system implements PID control for pressure regulation and temperature monitoring. Here's the main function code:</p>
+
+                                <div class="code-container">
+                                    <div class="code-header">
+                                        <span class="file-name">eye_simulation_control.cpp</span>
+                                        <button class="copy-btn" onclick="copyCode()">
+                                            <i class="fas fa-copy"></i> Copy
+                                        </button>
+                                    </div>
+                                    
+                                    <pre><code class="cpp">#include &lt;Wire.h&gt;
 #include &lt;MS5837.h&gt;
 #include &lt;AccelStepper.h&gt;
 #include &lt;LiquidCrystal_I2C.h&gt;  // I2C LCD library
@@ -393,194 +425,220 @@ void displayDataOnLCD(double pressure, double temperature) {
     lcd.print(temperature);
     lcd.print(" C");
 }</code></pre>
+                            </div>
+
+                            <!-- 添加 highlight.js JavaScript -->
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
+                            
+                            <style>
+                                .code-container {
+                                    background: #ffffff;
+                                    border-radius: 8px;
+                                    margin: 20px 0;
+                                    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                                    border: 1px solid #e0e0e0;
+                                    font-family: 'JetBrains Mono', monospace;
+                                }
+
+                                .code-header {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    padding: 12px 20px;
+                                    background: #f5f5f5;
+                                    border-bottom: 1px solid #e0e0e0;
+                                    border-top-left-radius: 8px;
+                                    border-top-right-radius: 8px;
+                                }
+
+                                .file-name {
+                                    color: #333333;
+                                    font-size: 14px;
+                                }
+
+                                .copy-btn {
+                                    background: #ffffff;
+                                    border: 1px solid #e0e0e0;
+                                    border-radius: 4px;
+                                    padding: 6px 12px;
+                                    cursor: pointer;
+                                    font-size: 12px;
+                                    transition: all 0.2s;
+                                }
+
+                                .copy-btn:hover {
+                                    background: #f0f0f0;
+                                }
+
+                                pre {
+                                    margin: 0;
+                                    padding: 20px;
+                                    overflow-x: auto;
+                                }
+
+                                code {
+                                    font-family: 'JetBrains Mono', monospace !important;
+                                    font-size: 14px;
+                                    line-height: 1.5;
+                                }
+                            </style>
+
+                            <script>
+                                // 初始化代码高亮
+                                document.addEventListener('DOMContentLoaded', (event) => {
+                                    hljs.highlightAll();
+                                });
+
+                                // 复制代码功能
+                                function copyCode() {
+                                    const code = document.querySelector('code').textContent;
+                                    navigator.clipboard.writeText(code).then(() => {
+                                        const copyBtn = document.querySelector('.copy-btn');
+                                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                                        setTimeout(() => {
+                                            copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                                        }, 2000);
+                                    });
+                                }
+                            </script>
+                        </section>
                     </div>
-
-                    <!-- 添加 highlight.js JavaScript -->
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
-                    
-                    <style>
-                        .code-container {
-                            background: #ffffff;
-                            border-radius: 8px;
-                            margin: 20px 0;
-                            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-                            border: 1px solid #e0e0e0;
-                            font-family: 'JetBrains Mono', monospace;
-                        }
-
-                        .code-header {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            padding: 12px 20px;
-                            background: #f5f5f5;
-                            border-bottom: 1px solid #e0e0e0;
-                            border-top-left-radius: 8px;
-                            border-top-right-radius: 8px;
-                        }
-
-                        .file-name {
-                            color: #333333;
-                            font-size: 14px;
-                        }
-
-                        .copy-btn {
-                            background: #ffffff;
-                            border: 1px solid #e0e0e0;
-                            border-radius: 4px;
-                            padding: 6px 12px;
-                            cursor: pointer;
-                            font-size: 12px;
-                            transition: all 0.2s;
-                        }
-
-                        .copy-btn:hover {
-                            background: #f0f0f0;
-                        }
-
-                        pre {
-                            margin: 0;
-                            padding: 20px;
-                            overflow-x: auto;
-                        }
-
-                        code {
-                            font-family: 'JetBrains Mono', monospace !important;
-                            font-size: 14px;
-                            line-height: 1.5;
-                        }
-                    </style>
-
-                    <script>
-                        // 初始化代码高亮
-                        document.addEventListener('DOMContentLoaded', (event) => {
-                            hljs.highlightAll();
-                        });
-
-                        // 复制代码功能
-                        function copyCode() {
-                            const code = document.querySelector('code').textContent;
-                            navigator.clipboard.writeText(code).then(() => {
-                                const copyBtn = document.querySelector('.copy-btn');
-                                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                                setTimeout(() => {
-                                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
-                                }, 2000);
-                            });
-                        }
-                    </script>
                 </section>
 
-                <h1>Cell Activity Detection Contact Lens Case</h1>
-
-                <section id="appearance2">
-                    <h2>Appearance</h2>
-                    
-                    <p>To facilitate daily detection of cell activity in the contact lenses, we have designed a user-friendly cell activity detection device that integrates a laser emission system and light intensity detection system while storing the contact lenses. The fluorescent protein Crimson has an excitation/emission peak wavelength of 588/617 nm[4]. After exciting the fluorescent protein with a laser, the BH1750 sensor is used to detect the emitted light intensity from the engineered bacterial cells.</p>
-
-                    <p>In the wet lab portion, under simulated eye conditions, we track and monitor the engineered bacterial cell density and corresponding fluorescence signal intensity. By analyzing the fluorescence signal data of the engineered bacteria from the growth phase, plateau phase, to apoptosis phase, we identified three safety levels—"Safe", "Replace Recommended", and "Not Usable"—each corresponding to a specific fluorescence signal intensity. We then compare the light intensity values detected by the BH1750 sensor with the experimental threshold values for each safety level. The real-time safety level of the cells is displayed on an LCD screen, allowing users to easily determine whether the contact lenses can still be used safely.</p>
-
-                    <figure>
-                        <img src="../../static/img/hardware/cell-appearance.png" alt="Cell Activity Detection Contact Lens Case" style="width: 50%;">
-                    </figure>
-                    <h3>Components</h3>
-                    <p>The eye simulation chip we designed consists of several parts, as shown in the diagram:</p>
-
-                    <figure class="exploded-view">
-                        <img src="../../static/img/hardware/xxx" alt="Exploded view of the contact lens case">
-                        <figcaption>Exploded view of the contact lens case components</figcaption>
-                    </figure>
-
-                    <div class="component-list">
-                        <ol>
-                            <li><strong>Contact Lens Case Shell</strong></li>
-                            <li><strong>Laser Emission Device</strong>
-                                <ol>
-                                    <li>590-595 nm LED</li>
-                                    <li>LED driver chip</li>
-                                    <li>590 nm filter</li>
-                                </ol>
-                            </li>
-                            <li><strong>Light Intensity Detection Device</strong>
-                                <ol>
-                                    <li>620 nm filter</li>
-                                    <li>BH1750 light intensity sensor</li>
-                                </ol>
-                            </li>
-                            <li><strong>LCD Display</strong></li>
-                        </ol>
+                <section id="cell-detection" class="parent-section">
+                    <div class="section-header">
+                        <h1>Cell Activity Detection Contact Lens Case</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
                     </div>
+                    <div class="section-content">
+                        <section id="appearance2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Appearance</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>To facilitate daily detection of cell activity in the contact lenses, we have designed a user-friendly cell activity detection device that integrates a laser emission system and light intensity detection system while storing the contact lenses. The fluorescent protein Crimson has an excitation/emission peak wavelength of 588/617 nm[4]. After exciting the fluorescent protein with a laser, the BH1750 sensor is used to detect the emitted light intensity from the engineered bacterial cells.</p>
 
-                    <div class="cad-models">
-                        <h3>CAD Models</h3>
-                        <p>Here are the SolidWorks 3D modeling exploded view, part drawings, and assembly files, showcasing the specific structure and assembly method of the contact lens case.</p>
+                                <p>In the wet lab portion, under simulated eye conditions, we track and monitor the engineered bacterial cell density and corresponding fluorescence signal intensity. By analyzing the fluorescence signal data of the engineered bacteria from the growth phase, plateau phase, to apoptosis phase, we identified three safety levels—"Safe", "Replace Recommended", and "Not Usable"—each corresponding to a specific fluorescence signal intensity. We then compare the light intensity values detected by the BH1750 sensor with the experimental threshold values for each safety level. The real-time safety level of the cells is displayed on an LCD screen, allowing users to easily determine whether the contact lenses can still be used safely.</p>
+
+                                <figure>
+                                    <img src="../../static/img/hardware/cell-appearance.png" alt="Cell Activity Detection Contact Lens Case" style="width: 50%;">
+                                </figure>
+                                <h3>Components</h3>
+                                <p>The eye simulation chip we designed consists of several parts, as shown in the diagram:</p>
+
+                                <figure class="exploded-view">
+                                    <img src="../../static/img/hardware/xxx" alt="Exploded view of the contact lens case">
+                                    <figcaption>Exploded view of the contact lens case components</figcaption>
+                                </figure>
+
+                                <div class="component-list">
+                                    <ol>
+                                        <li><strong>Contact Lens Case Shell</strong></li>
+                                        <li><strong>Laser Emission Device</strong>
+                                            <ol>
+                                                <li>590-595 nm LED</li>
+                                                <li>LED driver chip</li>
+                                                <li>590 nm filter</li>
+                                            </ol>
+                                        </li>
+                                        <li><strong>Light Intensity Detection Device</strong>
+                                            <ol>
+                                                <li>620 nm filter</li>
+                                                <li>BH1750 light intensity sensor</li>
+                                            </ol>
+                                        </li>
+                                        <li><strong>LCD Display</strong></li>
+                                    </ol>
+                                </div>
+
+                                <div class="cad-models">
+                                    <h3>CAD Models</h3>
+                                    <p>Here are the SolidWorks 3D modeling exploded view, part drawings, and assembly files, showcasing the specific structure and assembly method of the contact lens case.</p>
+                                    
+                                    <div class="model-gallery">
+                                        <!-- Add your CAD model images here -->
+                                        <figure>
+                                            <img src="../../static/img/hardware/assembly.png" alt="Assembly view">
+                                            <figcaption>Assembly View</figcaption>
+                                        </figure>
+                                        <figure>
+                                            <img src="../../static/img/hardware/parts.png" alt="Part drawings">
+                                            <figcaption>Part Drawings</figcaption>
+                                        </figure>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="design2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Circuit Design</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <figure>
+                                    <img src="../../static/img/hardware/workflow2.svg" alt="Exploded view of the contact lens case">
+                                    <figcaption>Cell Activity Detection System Process Flowchart</figcaption>
+                                </figure>
+                                
+                                <div class="component-list">
+                                    <ol>
+                                        <li><strong>Microcontroller Unit (MCU)</strong>
+                                            <p>We selected the Arduino Nano, as the main control chip is small and convenient for placement inside the contact lens case.</p>
+                                        </li>
+                                        
+                                        <li><strong>Laser Emission Device</strong>
+                                            <p>Driven by the PT4115 LED driver, it uses constant current control to ensure the LED brightness remains stable and unaffected by power supply voltage fluctuations, ensuring the stability of cell activity detection. Based on data from the reference [4], we chose a 565 nm/30 nm LED, with a 568/20 nm excitation filter.</p>
+                                        </li>
+                                        
+                                        <li><strong>Light Intensity Detection Device</strong>
+                                            <p>The fluorescence emitted by the cells passes through a 620/60 nm emission filter and is detected by the BH1750. The BH1750 offers a high detection accuracy of up to 0.5 lx, enabling precise measurement of fluorescence intensity to determine cell activity.</p>
+                                        </li>
+                                        
+                                        <li><strong>Button & Display</strong>
+                                            <p>The button, when pressed, activates the light intensity detection system, and the results are displayed on the LCD screen, providing a user-friendly detection system.</p>
+                                        </li>
+                                    </ol>
+                                </div>
+
+                                <figure> 
+                                    <img src="../../static/img/hardware/cell.png" alt="Circuit diagram of the contact lens case">
+                                    <figcaption>Circuit diagram of the cell activity detection system</figcaption>
+                                </figure>
+                                
+                            </div>
+                        </section>
+
+                <section id="code2" class="sub-section">
+                    <div class="section-header">
+                        <h2>Main Function Code</h2>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <p>The main function code is as follows:</p>
+
+                        <!-- 添加 highlight.js CSS -->
+                        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
                         
-                        <div class="model-gallery">
-                            <!-- Add your CAD model images here -->
-                            <figure>
-                                <img src="../../static/img/hardware/assembly.png" alt="Assembly view">
-                                <figcaption>Assembly View</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="../../static/img/hardware/parts.png" alt="Part drawings">
-                                <figcaption>Part Drawings</figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </section>
-
-                <section id="design2">
-                    <h2>Circuit Design</h2>
-
-                    <figure>
-                        <img src="../../static/img/hardware/workflow2.svg" alt="Exploded view of the contact lens case">
-                        <figcaption>Cell Activity Detection System Process Flowchart</figcaption>
-                    </figure>
-                    
-                    <div class="component-list">
-                        <ol>
-                            <li><strong>Microcontroller Unit (MCU)</strong>
-                                <p>We selected the Arduino Nano, as the main control chip is small and convenient for placement inside the contact lens case.</p>
-                            </li>
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span class="file-name">cell_activity_detection.cpp</span>
+                                <button class="copy-btn" onclick="copyCode()">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
                             
-                            <li><strong>Laser Emission Device</strong>
-                                <p>Driven by the PT4115 LED driver, it uses constant current control to ensure the LED brightness remains stable and unaffected by power supply voltage fluctuations, ensuring the stability of cell activity detection. Based on data from the reference [4], we chose a 565 nm/30 nm LED, with a 568/20 nm excitation filter.</p>
-                            </li>
-                            
-                            <li><strong>Light Intensity Detection Device</strong>
-                                <p>The fluorescence emitted by the cells passes through a 620/60 nm emission filter and is detected by the BH1750. The BH1750 offers a high detection accuracy of up to 0.5 lx, enabling precise measurement of fluorescence intensity to determine cell activity.</p>
-                            </li>
-                            
-                            <li><strong>Button & Display</strong>
-                                <p>The button, when pressed, activates the light intensity detection system, and the results are displayed on the LCD screen, providing a user-friendly detection system.</p>
-                            </li>
-                        </ol>
-                    </div>
-
-                    <figure> 
-                        <img src="../../static/img/hardware/cell.png" alt="Circuit diagram of the contact lens case">
-                        <figcaption>Circuit diagram of the cell activity detection system</figcaption>
-                    </figure>
-                    
-                </section>
-
-                <section id="code2">
-                    <h2>Main Function Code</h2>
-                    <p>The main function code is as follows:</p>
-
-                    <!-- 添加 highlight.js CSS -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css">
-                    
-                    <div class="code-container">
-                        <div class="code-header">
-                            <span class="file-name">cell_activity_detection.cpp</span>
-                            <button class="copy-btn" onclick="copyCode()">
-                                <i class="fas fa-copy"></i> Copy
-                            </button>
-                        </div>
-                        
-                        <pre><code class="cpp">#include &lt;Wire.h&gt;
+                            <pre><code class="cpp">#include &lt;Wire.h&gt;
 #include &lt;LiquidCrystal_I2C.h&gt;
 #include &lt;BH1750.h&gt;
 
@@ -668,62 +726,69 @@ void handleButton() {
                         }
                     </script>
                 </section>
+            </div>
+        </section>
 
-
-                <section id="reference">
-                    <h1>Reference</h1>
-                    <div class="reference-list">
-                        <div class="reference-item" id="ref1">
-                            <span class="ref-number">[1]</span>
-                            <span class="ref-content">Bennet D, Estlack Z, Reid T, et al. A microengineered human corneal epithelium-on-a-chip for eye drops mass transport evaluation. <em>Lab on a Chip</em>, 2018, 18(11): 1539-1551.</span>
-                            <a href="https://pubs.rsc.org/en/content/articlelanding/2018/lc/c8lc00158h" class="ref-link" target="_blank">DOI: 10.1039/C8LC00158H</a>
-                        </div>
-
-                        <div class="reference-item" id="ref2">
-                            <span class="ref-number">[2]</span>
-                            <span class="ref-content">Seo J, Byun W Y, Alisafaei F, et al. Multiscale reverse engineering of the human ocular surface. <em>Nature Medicine</em>, 2019, 25(8): 1310-1318.</span>
-                            <a href="https://www.nature.com/articles/s41591-019-0531-2" class="ref-link" target="_blank">DOI: 10.1038/s41591-019-0531-2</a>
-                        </div>
-
-                        <div class="reference-item" id="ref3">
-                            <span class="ref-number">[3]</span>
-                            <span class="ref-content">Estlack Z, Bennet D, Reid T, et al. Microengineered biomimetic ocular models for ophthalmological drug development. <em>Lab on a Chip</em>, 2017, 17(9): 1539-1551.</span>
-                            <a href="https://pubs.rsc.org/en/content/articlelanding/2017/lc/c7lc00112f" class="ref-link" target="_blank">DOI: 10.1039/C7LC00112F</a>
-                        </div>
-
-                        <div class="reference-item" id="ref4">
-                            <span class="ref-number">[4]</span>
-                            <span class="ref-content">Ning L, Yang G, Lovett-Barron M, et al. A bright, nontoxic, and non-aggregating red fluorescent protein for long-term labeling of fine structures in neurons. <em>Frontiers in Cell and Developmental Biology</em>, 2022, 10: 893468.</span>
-                            <a href="https://doi.org/10.3389/fcell.2022.893468" class="ref-link" target="_blank">DOI: 10.3389/fcell.2022.893468</a>
-                        </div>
+        <section id="reference" class="parent-section">
+            <div class="section-header">
+                <h1>Reference</h1>
+                <button class="section-collapse-btn">
+                    <ion-icon name="chevron-up-outline"></ion-icon>
+                </button>
+            </div>
+            <div class="section-content">
+                <div class="reference-list">
+                    <div class="reference-item" id="ref1">
+                        <span class="ref-number">[1]</span>
+                        <span class="ref-content">Bennet D, Estlack Z, Reid T, et al. A microengineered human corneal epithelium-on-a-chip for eye drops mass transport evaluation. <em>Lab on a Chip</em>, 2018, 18(11): 1539-1551.</span>
+                        <a href="https://pubs.rsc.org/en/content/articlelanding/2018/lc/c8lc00158h" class="ref-link" target="_blank">DOI: 10.1039/C8LC00158H</a>
                     </div>
-                </section>
-                
-            </div>
-        </div>
 
-        <!-- Footer -->
-        <footer id="footer">
-            <div class="logo_wrap">
-                <img id="team_logo" src="../../static/img/Logo-round-text.svg" alt="">
-            </div>
-            <div class="follow">
-                <div class="title">Follow Us</div>
-                <ul class="follow_list">
-                    <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
-                    <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
-                    <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
-                </ul>
-            </div>
-            <div class="contact">
-                <div class="title">Contact Us</div>
-                <div class="email">ZJU_China@outlook.com</div>
-            </div>
-        </footer>
+                    <div class="reference-item" id="ref2">
+                        <span class="ref-number">[2]</span>
+                        <span class="ref-content">Seo J, Byun W Y, Alisafaei F, et al. Multiscale reverse engineering of the human ocular surface. <em>Nature Medicine</em>, 2019, 25(8): 1310-1318.</span>
+                        <a href="https://www.nature.com/articles/s41591-019-0531-2" class="ref-link" target="_blank">DOI: 10.1038/s41591-019-0531-2</a>
+                    </div>
 
-        <script src="../../static/js/basic.js"></script>
-        <script src="../../static/js/pages.js"></script>
-        <script src="../../static/js/pdbviewer.js"></script>
-        <script src="../../static/js/components.js"></script>
-    </body>
+                    <div class="reference-item" id="ref3">
+                        <span class="ref-number">[3]</span>
+                        <span class="ref-content">Estlack Z, Bennet D, Reid T, et al. Microengineered biomimetic ocular models for ophthalmological drug development. <em>Lab on a Chip</em>, 2017, 17(9): 1539-1551.</span>
+                        <a href="https://pubs.rsc.org/en/content/articlelanding/2017/lc/c7lc00112f" class="ref-link" target="_blank">DOI: 10.1039/C7LC00112F</a>
+                    </div>
+
+                    <div class="reference-item" id="ref4">
+                        <span class="ref-number">[4]</span>
+                        <span class="ref-content">Ning L, Yang G, Lovett-Barron M, et al. A bright, nontoxic, and non-aggregating red fluorescent protein for long-term labeling of fine structures in neurons. <em>Frontiers in Cell and Developmental Biology</em>, 2022, 10: 893468.</span>
+                        <a href="https://doi.org/10.3389/fcell.2022.893468" class="ref-link" target="_blank">DOI: 10.3389/fcell.2022.893468</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="logo_wrap">
+        <img id="team_logo" src="../../static/img/Logo-round-text.svg" alt="">
+    </div>
+    <div class="follow">
+        <div class="title">Follow Us</div>
+        <ul class="follow_list">
+            <li><a href="https://space.bilibili.com/700401359?spm_id_from=333.337.search-card.all.click" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-bilibili.png" alt=""></a></li>
+            <li><a href="https://twitter.com/ZjuChina" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-twitter.png" alt=""></a></li>
+            <li><a href="https://mp.weixin.qq.com/s/yTMIiH4AQ2skqP-7cXr7Ig" target="_blank"><img src="https://static.igem.wiki/teams/4202/wiki/t-zju-china-wechat.png" alt=""></a></li>
+        </ul>
+    </div>
+    <div class="contact">
+        <div class="title">Contact Us</div>
+        <div class="email">ZJU_China@outlook.com</div>
+    </div>
+</footer>
+
+<script src="../../static/js/basic.js"></script>
+<script src="../../static/js/pages.js"></script>
+<script src="../../static/js/pdbviewer.js"></script>
+<script src="../../static/js/components.js"></script>
+</body>
 </html>
