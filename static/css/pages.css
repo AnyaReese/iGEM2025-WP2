@@ -1446,6 +1446,7 @@ tbody tr:last-child td:last-child {
     transition: all 0.3s ease;
     margin: 0;
     gap: 5px;
+    position: relative; /* 保持相对定位 */
 }
 
 .section-collapse-btn {
@@ -1547,4 +1548,34 @@ section.collapsed .section-collapse-btn ion-icon {
 /* 确保折叠时完全没有空间 */
 section.collapsed {
     margin-bottom: 5px;
+}
+
+/* 修改折叠状态下的省略号效果 */
+section.collapsed .section-header h1::after,
+section.collapsed .section-header h2::after {
+    content: "......";  /* 增加省略号数量 */
+    margin-left: 10px;  /* 与标题保持间距 */
+    color: var(--gray);
+    font-size: 24px;    /* 增大字体大小 */
+    line-height: 1;
+    opacity: 0.8;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;         /* 微调垂直位置 */
+}
+
+/* 在移动端调整省略号 */
+@media (max-width: 768px) {
+    section.collapsed .section-header h1::after,
+    section.collapsed .section-header h2::after {
+        font-size: 20px;
+        margin-left: 8px;
+    }
+}
+
+/* 悬停时省略号效果 */
+section.collapsed .section-header:hover h1::after,
+section.collapsed .section-header:hover h2::after {
+    color: var(--stroke-hover);
 }
