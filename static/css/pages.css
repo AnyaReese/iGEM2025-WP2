@@ -1471,13 +1471,10 @@ tbody tr:last-child td:last-child {
 }
 
 .section-content {
+    transition: all 0.3s ease-out;
     overflow: hidden;
-    transition: all 0.3s ease;
-    max-height: 2000px;
     opacity: 1;
-    padding-left: 10px;
-    margin-left: 10px;
-    margin-bottom: 0px;
+    height: auto;
 }
 
 /* Collapsed state */

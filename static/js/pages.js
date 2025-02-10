@@ -451,4 +451,34 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // 处理所有section的折叠
+    const sectionHeaders = document.querySelectorAll('.section-header');
+    
+    sectionHeaders.forEach(header => {
+        header.addEventListener('click', function(e) {
+            // 阻止事件冒泡，避免触发父section的折叠
+            e.stopPropagation();
+            
+            const content = this.nextElementSibling;
+            const btn = this.querySelector('.section-collapse-btn');
+            
+            content.classList.toggle('collapsed');
+            btn.classList.toggle('collapsed');
+        });
+    });
+
+    // 特别处理父section的折叠
+    const parentSection = document.querySelector('.parent-section');
+    if (parentSection) {
+        const parentHeader = parentSection.querySelector('.section-header');
+        parentHeader.addEventListener('click', function() {
+            const content = this.nextElementSibling;
+            const btn = this.querySelector('.section-collapse-btn');
+            
+            // 折叠父section时同时影响所有子section
+            content.classList.toggle('collapsed');
+            btn.classList.toggle('collapsed');
+        });
+    }
 });
