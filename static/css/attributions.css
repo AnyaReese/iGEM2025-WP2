@@ -56,7 +56,7 @@
     box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     overflow: hidden;
     transition: all 0.25s ease;
-    height: 100%;
+    height: 450px;
     position: relative;
     border: 1px solid rgba(var(--primary-rgb), 0.1);
 }
@@ -101,6 +101,26 @@
         rgba(255, 255, 255, 0.9),
         rgba(255, 255, 255, 0.95)
     );
+    height: 100%;
+    overflow-y: auto;
+}
+
+.member-info::-webkit-scrollbar {
+    width: 8px;
+}
+
+.member-info::-webkit-scrollbar-track {
+    background: rgba(var(--primary-rgb), 0.05);
+    border-radius: 4px;
+}
+
+.member-info::-webkit-scrollbar-thumb {
+    background: rgba(var(--primary-rgb), 0.2);
+    border-radius: 4px;
+}
+
+.member-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--primary-rgb), 0.3);
 }
 
 .member-main {
@@ -363,6 +383,10 @@
         border-top: 1px solid #eee;
         padding-top: 1.2rem;
         margin-top: 1.2rem;
+    }
+
+    .member-card {
+        height: 400px;
     }
 }
 

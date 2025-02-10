@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
 /* dual-image-container */
 .dual-image-container {
     position: relative;
@@ -604,6 +606,34 @@
     gap: 1.5rem;
     justify-content: center;
     padding: 0 1rem;
+    position: relative;  /* 为装饰元素添加定位上下文 */
+}
+
+/* 添加装饰元素 */
+.card-grid::before,
+.card-grid::after {
+    content: '✦';  /* 使用装饰性Unicode字符 */
+    position: absolute;
+    font-size: 2.5rem;
+    color: rgba(0, 137, 123, 0.2);
+    animation: floatDecor 3s ease-in-out infinite;
+}
+
+.card-grid::before {
+    left: 2rem;
+    top: -2rem;
+}
+
+.card-grid::after {
+    right: 2rem;
+    bottom: -2rem;
+    transform: rotate(180deg);
+}
+
+/* 装饰元素的动画 */
+@keyframes floatDecor {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(15deg); }
 }
 
 .card {
@@ -614,7 +644,7 @@
     text-decoration: none;
     position: relative;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 4px 15px rgba(0, 137, 123, 0.1);
+    box-shadow: 0 4px 15px rgba(60, 66, 77, 0.1);
     overflow: hidden;
 }
 
@@ -625,7 +655,7 @@
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg, #00897B, #4DB6AC, #00897B);  /* 主题渐变色 */
+    background: linear-gradient(90deg, #ff80db, #fffbe4, #7fb3e3);  /* 主题渐变色 */
     background-size: 200% 100%;
     animation: gradientMove 3s linear infinite;
     transform: scaleX(0);
@@ -644,7 +674,7 @@
 
 .card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0, 137, 123, 0.15);
+    box-shadow: 0 8px 20px rgba(34, 36, 74, 0.446);
 }
 
 .card-content {
@@ -672,7 +702,9 @@
 }
 
 .card h3 {
-    font-size: 1rem;
+    font-family: 'Cherry Bomb One', cursive;
+    font-weight: 500;
+    font-size: 30px;
     color: #242838;  /* 深色主题色用于文字 */
     margin: 0;
     font-weight: 500;
@@ -716,7 +748,7 @@
     }
     
     .card h3 {
-        font-size: 0.9rem;
+        font-size: 20px;
     }
 }
 
