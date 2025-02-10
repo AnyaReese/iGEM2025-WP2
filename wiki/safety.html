@@ -113,6 +113,15 @@
                         </div>
                     </div>
 
+                    <div class="t1">
+                        <span>Phosphate Killing Switch</span>
+                        <div class="t2">
+                            <a href="#suicide">1. Suicide Switch Design</a>
+                            <a href="#construct">2. pET-32a(+)-PHO5-mazF Plasmid Construction</a>
+                            <a href="#suistain">3. Hydrogel Sustained Release Design</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -135,7 +144,7 @@
                     </div>
                 </section> -->
 
-                <!-- Parent section with nested subsections -->
+                <!-- Nutritional Deficiency Suicide System -->
                 <section id="nutritional-system" class="parent-section">
                     <div class="section-header">
                         <h1>Nutritional Deficiency Suicide System</h1>
@@ -328,6 +337,73 @@
                         </section>
                     </div>
                 </section>
+                <!-- Nutritional Deficiency Suicide System END -->
+
+                <!-- Phosphate Killing Switch -->
+                <section id="phosphate-killing" class="parent-section">
+                    <div class="section-header">
+                        <h1>Phosphate Killing Switch</h1>
+                    </div>
+                    <div class="section-content">
+                        <!-- Killing switch design -->
+                        <p>If nutrient deficiency suicide systems significantly affect the expression of fusion proteins, we plan to adopt a killing switch strategy. We use SHuffle T7-B as the engineered strain and have designed a bacterial suicide system based on phosphate concentration to ensure that the bacteria can only survive within the hydrogel encapsulated environment and cannot survive independently.</p>
+                        <section id="suicide" class="sub-section">
+                            <div class="section-header">
+                                <h2>1. Suicide Switch Design</h2>
+                            </div>
+                            <div class="section-content">
+                                <p>The eyes are very sensitive organs, and inappropriate molecules can cause irritation to the eye tissue, leading to burning sensations, tingling, itching, the feeling of foreign bodies, or tearing. It can even cause severe consequences such as corneal damage. Therefore, traditional operons such as arabinose and glucose are not suitable for this system's Killing Switch design.</p>
+                                <p>Phosphate is commonly used in emergency eyewash solutions to help neutralize chemical damage to the eyes and regulate the osmotic pressure of the rinse solution. Thus, it is an ideal suicide switch.</p>
+                                <p>We have drawn inspiration from the <a href="https://2021.igem.org/Team:SZU-China">2021-SZU-China</a> team, who designed a phosphate suicide switch. Unlike their project, we use the phosphate-sensitive promoter pPHO5. The expression of the suicide gene is inhibited at normal phosphate concentrations and promoted at low phosphate concentrations. When the PHO5 promoter is activated, transcription occurs, and the suicide gene is expressed. If the engineered bacteria accidentally leak or leave the hydrogel environment, they will be killed.</p>
+                                <figure>
+                                    <img src="../static/img/safety/PHO5.png" alt="pPHO5">
+                                    <figcaption>Figure 1: Schematic diagram of the PHO5 promoter region in repressed (+P(i)) and induced (-P(i)) states.</figcaption>
+                                </figure>
+
+                                <figure>
+                                    <img src="../static/img/safety/PHO5diagram.png" alt="pPHO5">
+                                    <figcaption>Figure 2: Schematic diagram of the phosphate killing switch gene pathway.</figcaption>
+                                </figure>
+                            </div>
+                        </section>
+
+                        <!-- pET-32a(+)-PHO5-mazF plasmid construction -->
+                        <section id="construct" class="sub-section">
+                            <div class="section-header">
+                                <h2>2. pET-32a(+)-PHO5-mazF Plasmid Construction</h2>
+                            </div>
+                            <div class="section-content">
+                                <p>We selected the pET-32a(+) plasmid as a vector, and through PCR, we connected the recognition sequences for the restriction enzymes SgrAI and XbaI at both ends of the phosphate-sensitive promoter PHO5. Similarly, we connected the recognition sequences for BamHI and HindIII at both ends of the suicide gene mazF. After double restriction enzyme digestion, the fragments were inserted into pET-32a(+).</p>
+                                <figure>
+                                    <img src="../static/img/safety/phodna.png" alt="pET-32a(+)-PHO5-mazF" style="width: 60%;">
+                                    <figcaption>pET-32a(+)-PHO5-mazF</figcaption>
+                                </figure>
+
+                                <a href="../static/img/safety/pET-32a(+)-PHO5-mazF.dna" target="_blank" download="pET-32a(+)-PHO5-mazF.dna">
+                                    <button class="download-btn">Download pET-32a(+)-PHO5-mazF.dna</button>
+                                </a>
+                            </div>
+                        </section>
+
+                        <!-- Hydrogel Sustained Release Design -->
+                        <section id="suistain" class="sub-section">
+                            <div class="section-header">
+                                <h2>3. Hydrogel Sustained Release Design</h2>
+                            </div>
+                            <div class="section-content">
+                                <p>To maintain a high phosphate concentration around the engineered bacteria, we chose Poly(2-hydroxyethyl methacrylate - methacrylate copolymer - hyaluronic acid - β-cyclodextrin) hydrogel for loading. Since phosphate carries a negative charge in the hydrogel environment, the long-chain hyaluronic acid (HA), which also has a negative charge, can strongly restrict its diffusion. Additionally, the β-cyclodextrin in the hydrogel composition has a hydrophobic cavity and a hydrophilic outer surface, making it an effective storage material for phosphate.</p>
+                                <p>As for the phosphate concentration in the hydrogel, data shows that the phosphate concentration in the eye is typically similar to that in physiological fluids, around 0.8–1.5 mmol/L. Phosphate concentrations in soil vary widely, typically ranging from 0.001–0.1 mmol/L. In natural water bodies, phosphate concentrations are generally low, around 1.05 × 10⁻⁷ - 5.25 × 10⁻⁷ mol/L (corresponding to 0.01–0.05 mg/L P). In eutrophic water sources, the phosphate concentration is roughly between 8.34 × 10⁻⁷ mol/L and 8.34 × 10⁻⁶ mol/L.</p>
+                                <p>We aim to load the hydrogel with a phosphate concentration higher than all the concentrations mentioned above, while ensuring it does not irritate the eye, even considering the dilution effect of tears.</p>
+                                <p>Using the follwoing formula, we designed the phosphate concentration in the hydrogel to be 1.82mmol/L:</p>
+
+                                <div class="math-block">
+                                    $$C_1 = \frac{C_2\times(V_1+V_2)}{V_1}$$
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <!-- Phosphate Killing Switch END -->
 
                 <!-- <section id="references">
                     <h1>References</h1>
@@ -344,7 +420,7 @@
                         </div>
                     </div>
                 </section> -->
-                
+
             </div>
         </div>
 
