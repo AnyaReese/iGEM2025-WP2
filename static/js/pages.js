@@ -175,11 +175,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // update sidebar highlight
     function updateSidebarHighlight(section) {
-        if (!section) return;
+        if (!section) {
+            // 当没有找到当前section时，保持第一个t1展开
+            const firstT1 = document.querySelector('.sidebar .t1');
+            if (firstT1) {
+                firstT1.classList.add('active');
+                firstT1.classList.remove('inactive');
+            }
+            return;
+        }
 
         const id = section.id;
         const activeLink = document.querySelector(`.sidebar .t2 a[href="#${id}"]`);
         const activeT1Link = document.querySelector(`.sidebar .t1 > a[href="#${id}"]`);
+        
+        // 获取当前section所属的t1元素
+        const currentT1 = activeLink ? 
+            activeLink.closest('.t1') : 
+            (activeT1Link ? activeT1Link.closest('.t1') : document.querySelector('.sidebar .t1'));
 
         // clear all highlights and add inactive
         menuLinks.forEach(link => {
@@ -187,27 +200,33 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('inactive');
         });
         menuItems.forEach(item => {
-            item.classList.remove('active');
-            item.classList.add('inactive');
+            if (item !== currentT1) {
+                item.classList.remove('active');
+                item.classList.add('inactive');
+            }
         });
 
         if (activeLink) {
             // if t2
             activeLink.classList.add('active');
             activeLink.classList.remove('inactive');
-            const parentItem = activeLink.closest('.t1');
-            if (parentItem) {
-                parentItem.classList.add('active');
-                parentItem.classList.remove('inactive');
+            if (currentT1) {
+                currentT1.classList.add('active');
+                currentT1.classList.remove('inactive');
             }
         } else if (activeT1Link) {
             // if t1
             activeT1Link.classList.add('active');
             activeT1Link.classList.remove('inactive');
-            const parentItem = activeT1Link.closest('.t1');
-            if (parentItem) {
-                parentItem.classList.add('active');
-                parentItem.classList.remove('inactive');
+            if (currentT1) {
+                currentT1.classList.add('active');
+                currentT1.classList.remove('inactive');
+            }
+        } else {
+            // 如果既不是t2也不是t1，保持第一个t1展开
+            if (currentT1) {
+                currentT1.classList.add('active');
+                currentT1.classList.remove('inactive');
             }
         }
     }
