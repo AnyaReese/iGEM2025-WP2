@@ -1,3 +1,7 @@
+* {
+    --primary-rgb: 164, 148, 255;
+}
+
 .content {
     width: 100%;
     min-height: calc(100vh - 60px); /* 减去顶部导航栏的高度 */
@@ -12,20 +16,20 @@
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 .category-section {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .category-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--primary-color);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     position: relative;
-    padding-bottom: 1rem;
+    padding-bottom: 0.8rem;
 }
 
 .category-title::after {
@@ -34,103 +38,168 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
-    height: 3px;
+    width: 80px;
+    height: 2px;
     background-color: var(--primary-color);
 }
 
 .attribution-grid {
     display: grid;
-    grid-template-columns: repeat(3, 350px);
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
     justify-content: center;
 }
 
 .member-card {
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.25s ease;
     height: 100%;
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
 }
 
-.member-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+/* 添加装饰性背景图案 */
+.member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at top right,
+        rgba(var(--primary-rgb), 0.1) 0%,
+        rgba(var(--primary-rgb), 0.05) 30%,
+        transparent 70%);
+    border-radius: 0 12px 0 100%;
+}
+
+/* 添加装饰性几何图形 */
+.member-card::after {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg,
+        transparent 48%,
+        rgba(var(--primary-rgb), 0.1) 50%,
+        transparent 52%);
+    transform: rotate(15deg);
+    opacity: 0.6;
 }
 
 .member-info {
-    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    padding: 1.8rem;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.95)
+    );
+}
+
+.member-main {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    min-width: 300px;
+}
+
+.member-details {
+    flex: 2;
+    min-width: 300px;
 }
 
 .member-name {
-    font-size: 2rem;
+    position: relative;
+    display: inline-block;
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #333;
+    margin-bottom: 0.6rem;
+    color: #2a2a2a;
+    padding-bottom: 0.4rem;
+}
+
+/* 添加名字下划线装饰 */
+.member-name::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        rgba(var(--primary-rgb), 0.8),
+        rgba(var(--primary-rgb), 0.2)
+    );
+    border-radius: 2px;
 }
 
 .member-role {
-    color: #666;
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+    display: inline-block;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 1.4rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.member-tasks {
-    margin-top: 1.5rem;
-}
-
-.member-tasks h3 {
-    font-size: 1.3rem;
-    color: #333;
-    margin-bottom: 0.8rem;
+    letter-spacing: 0.5px;
+    padding: 0.3rem 1rem;
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 20px;
     font-weight: 500;
 }
 
-.member-tasks p {
-    color: #666;
-    line-height: 1.8;
-    font-size: 1.1rem;
+.member-tasks, .specific-tasks {
+    margin-top: 0;
+}
+
+/* 添加标题装饰 */
+.member-tasks h3, .specific-tasks h3 {
+    position: relative;
+    font-size: 1.2rem;
+    color: #2a2a2a;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    padding-left: 1rem;
+}
+
+.member-tasks h3::before, .specific-tasks h3::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 1em;
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+.member-tasks p, .specific-tasks p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
 .specific-tasks {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #eee;
+    border-top: none;
+    padding-top: 0;
 }
 
-.specific-tasks h3 {
-    font-size: 1.3rem;
-    color: #333;
-    margin-bottom: 0.8rem;
-    font-weight: 500;
-}
-
-.specific-tasks p {
-    color: #666;
-    line-height: 1.8;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
 /* Timeline Styles */
 .timeline-section {
-    margin-top: 4rem;
-    padding: 2rem 0;
+    margin-top: 3rem;
+    padding: 1.5rem 0;
 }
 
 .timeline {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
 }
 
 .timeline::before {
@@ -138,24 +207,26 @@
     position: absolute;
     top: 0;
     left: 50%;
-    width: 4px;
+    width: 3px;
     height: 100%;
     background: linear-gradient(180deg, 
-        rgba(var(--primary-rgb), 0.2),
-        rgba(var(--primary-rgb), 1),
-        rgba(var(--primary-rgb), 0.2));
+        rgba(var(--primary-rgb), 0) 0%,
+        rgba(var(--primary-rgb), 1) 15%,
+        rgba(var(--primary-rgb), 1) 85%,
+        rgba(var(--primary-rgb), 0) 100%);
     transform: translateX(-50%);
-    border-radius: 2px;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.2);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     width: 50%;
-    padding: 0 3rem;
+    padding: 0 2.5rem;
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .timeline-item.visible {
@@ -163,14 +234,14 @@
     transform: translateY(0);
 }
 
-.timeline-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
+.timeline-item:nth-child(odd) { 
+    left: 0; 
+    text-align: right; 
 }
 
-.timeline-item:nth-child(even) {
-    left: 50%;
-    text-align: left;
+.timeline-item:nth-child(even) { 
+    left: 50%; 
+    text-align: left; 
 }
 
 .timeline-item::before {
@@ -182,87 +253,79 @@
     border-radius: 50%;
     top: 0;
     transition: all 0.3s ease;
+    box-shadow: 0 0 0 4px rgba(var(--primary-rgb), 0.2);
 }
 
 .timeline-item:hover::before {
     transform: scale(1.3);
-    box-shadow: 0 0 15px rgba(var(--primary-rgb), 0.6);
+    box-shadow: 0 0 0 6px rgba(var(--primary-rgb), 0.2),
+                0 0 20px rgba(var(--primary-rgb), 0.4);
 }
 
-.timeline-item:nth-child(odd)::before {
-    right: -10px;
-}
-
-.timeline-item:nth-child(even)::before {
-    left: -10px;
-}
+.timeline-item:nth-child(odd)::before { right: -10px; }
+.timeline-item:nth-child(even)::before { left: -10px; }
 
 .timeline-date {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    opacity: 0.8;
-    transition: all 0.3s ease;
+    margin-bottom: 0.8rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .timeline-content {
     background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 1.8rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     position: relative;
-}
-
-.timeline-content::before {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 12px solid transparent;
-    top: 10px;
-}
-
-.timeline-item:nth-child(odd) .timeline-content::before {
-    border-left-color: white;
-    right: -24px;
-}
-
-.timeline-item:nth-child(even) .timeline-content::before {
-    border-right-color: white;
-    left: -24px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
 }
 
 .timeline-content:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
 }
 
 .timeline-content h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: #2a2a2a;
     font-weight: 600;
 }
 
 .timeline-content p {
-    color: #666;
-    line-height: 1.8;
+    color: #555;
+    line-height: 1.7;
     font-size: 1.1rem;
 }
 
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .timeline::before {
-        left: 30px;
-    }
+/* 添加卡片悬停效果 */
+.member-card:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
 
+.member-card:hover::before {
+    transform: scale(1.1);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .timeline::before { 
+        left: 25px; 
+    }
+    
     .timeline-item {
         width: 100%;
-        padding-left: 70px;
+        padding-left: 60px;
         padding-right: 1rem;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
     }
 
     .timeline-item:nth-child(odd),
@@ -273,26 +336,39 @@
 
     .timeline-item:nth-child(odd)::before,
     .timeline-item:nth-child(even)::before {
-        left: 20px;
+        left: 17px;
     }
 
-    .timeline-item:nth-child(odd) .timeline-content::before {
-        border-right-color: white;
-        border-left-color: transparent;
-        left: -24px;
-        right: auto;
+    .attribution-grid {
+        grid-template-columns: 1fr;
     }
-}
 
-/* 响应式调整 */
-@media (max-width: 1200px) {
-    .attribution-container {
+    .member-info {
         padding: 1.5rem;
     }
     
-    .category-title {
-        font-size: 2rem;
+    .member-card::before {
+        width: 100px;
+        height: 100px;
     }
+    
+    .member-card::after {
+        width: 40px;
+        height: 40px;
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .specific-tasks {
+        border-top: 1px solid #eee;
+        padding-top: 1.2rem;
+        margin-top: 1.2rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .attribution-container { padding: 1.2rem; }
+    .category-title { font-size: 2rem; }
 }
 
 @media (max-width: 768px) {
