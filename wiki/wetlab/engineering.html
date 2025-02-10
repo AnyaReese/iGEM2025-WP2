@@ -154,6 +154,19 @@
                         </div>
                     </div>
 
+                    <div class="t1">
+                        <span>Killing Switch</span>
+                        <div class="t2">
+                            <a href="#5cycle1">Cycle 1: Phosphate Load and Release Testing</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#5cycle2">Cycle 2: Co-culture of engineered bacteria with phosphate to test suicide switch effectiveness</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#5references">References</a>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -720,9 +733,127 @@
                                 </div>
                             </div>
                         </section>
+
                     </div>
                 </section>
 
+                <section id="KillingSwitch" class="parent-section">
+                    <div class="section-header">
+                        <h1>Killing Switch</h1>
+                    </div>
+                    <div class="section-content">
+                        <section id="5cycle1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 1: Phosphate Load and Release Testing</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We first examined the phosphate loading of poly (2-hydroxyethyl methacrylate-methacrylate copolymer-hyaluronic acid-β-cyclodextrin) hydrogels and examined their phosphate limitation.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>A pHEMA/β-CD-crHA hydrogel with MA substitution of 20% and m(20)HA-β-CD content of 11% was constructed. A certain mass (m) of dry gel (1 cm × 1 cm × 1 mm) was immersed in 2 mL (V<sub>0</sub>) of phosphate solution (1 mg/mL in deionized water, C<sub>0</sub>) and incubated in an incubator (100 rpm) at 37 °C for 48 hours protected from light.</p>
+                                <p>After wiping off the free phosphate solution from the surface, the loaded hydrogel was placed in 6 mL of deionized water and incubated in an incubator (100 rpm) at 37 °C for 48 hours protected from light. At designed intervals, 3 mL of release medium was collected and refreshed with 3mL of deionized water.</p>
+
+                                <h3>3. Test</h3>
+                                <ol>
+                                    <li>
+                                        <p><strong>Load detection:</strong> After removing the loaded hydrogel, the volume and concentration of residual phosphate solution were recorded as V<sub>t</sub> and C<sub>t</sub>. The absorbance of residual phosphate solution was measured at 880 nm in a spectrophotometer using ammonium molybdate spectrophotometry. The loading capacity (DLC) was evaluated using the following equation:</p>
+                                        <div class="math-block">
+                                            $$DLC = \frac{V_0\times C_0-V_t\times C_t}{m}$$
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p><strong>Release detection:</strong> Measurement of the absorbance of the collected solution by spectrophotometry. The percentage of phosphate release is calculated from the ratio of the released phosphate to the total amount loaded in the hydrogel.</p>
+                                    </li>
+                                </ol>
+
+                                <h3>4. Learn</h3>
+                                <p>We would like to see a phosphate-loaded zone with an inner diameter of 9 mm, an outer diameter of 11 mm, and a thickness of 1 mm form in the contact lens-type hydrogel, with an initial concentration of 1.82 mmol/L. If the hydrogel can be maximally loaded beyond this concentration and still maintain a high concentration of phosphate over a period of time, it could support the design of a suicide switch. Similarly, we can change the design concentration of phosphate by adjusting the size of the phosphate loading zone.</p>
+                            </div>
+                        </section>
+
+                        <section id="5cycle2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 2: Co-culture of engineered bacteria with phosphate to test suicide switch effectiveness</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We have verified the effective loading of the hydrogel to phosphate, and subsequently, we wish to test the effectiveness of this suicide system by detecting the initiation threshold of the suicide switch PHO5 promoter.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>The <strong>pЕТ-32a(+)-PHO5-mazF recombinant plasmid</strong> was constructed and the suicide gene mazF was placed under the control of the phosphate-sensitive promoter PHO5. The plasmid was introduced by heat-excited transformation into receptorized SHuffle T7-B E. coli that had been introduced with pET-32a(+)-RNF114-crimso, and recovery was carried out by streak culture. The positive bacteria were cultured in medium containing ampicillin (Ampicillin), picked and transferred to liquid medium at 33°C.</p>
+                                
+                                <div class="img-grid-with-caption">
+                                    <div class="img-grid">
+                                        <img src="../../static/img/engineer/7577left.png" alt="Construction Image 1">
+                                        <img src="../../static/img/engineer/7577right.png" alt="Construction Image 2">
+                                    </div>
+                                    <!-- <figcaption></figcaption> -->
+                                </div>
+
+                                <h3>3. Test</h3>
+                                <p>After picking the positive bacteria for small scale shake flask culture, they were incubated in phosphate gradient medium and incubated at 33°C for 14 days and the medium was changed on the 7th day. Bacterial fluids were collected at different time points between 3 h and 14 days, placed under a fluorescence microscope, and red fluorescent bacteria were counted under 588 nm light excitation.</p>
+
+                                <table class="data-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Simulated environment</th>
+                                            <th>Phosphate concentration</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hydrogel</td>
+                                            <td>1.82×10<sup>-3</sup> mol/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Eyeball</td>
+                                            <td>10<sup>-3</sup> mol/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Soil</td>
+                                            <td>10<sup>-5</sup> mol/L</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Water</td>
+                                            <td>8×10<sup>-7</sup> mol/L</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h3>4. Learn</h3>
+                                <p>The suicide switch is effective if the bacteria are able to survive (emit red fluorescence) in a considerable concentration of phosphate medium and do not survive on a low concentration of phosphate medium.</p>
+                            </div>
+                        </section>
+
+                        <section id="5references" class="sub-section">
+                            <div class="section-header">
+                                <h2>References</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <div class="reference-list">
+                                    <div class="reference-item" id="5ref1">
+                                        <span class="ref-number">[1]</span>
+                                        <span class="ref-content">Deng H, Zhang X, Su S, et al. Poly(2-hydroxyethyl methacrylate-co-methacrylated hyaluronan-β-cyclodextrin) hydrogel: A potential contact lens material with high hydrophilicity, good mechanical properties and sustained drug delivery.[J]. International journal of biological macromolecules, 2024, 283(Pt 1): 137579.</span>
+                                        <a href="https://doi.org/10.1016/j.ijbiomac.2024.137579" class="ref-link" target="_blank">DOI: 10.1016/j.ijbiomac.2024.137579</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                    </div>
+                </section>
+
+                
 
             </div>
         </div>
