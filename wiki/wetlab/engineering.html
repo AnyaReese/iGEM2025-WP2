@@ -123,6 +123,22 @@
                     </div>
 
                     <div class="t1">
+                        <span>Safety Alert Module</span>
+                        <div class="t2">
+                            <a href="#3cycle1">Cycle 1: Validation of Co-expression of Crimson and RNF114</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#3cycle2">Cycle 2: Adjusting RBS to Regulate Expression Levels</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#3cycle3">Cycle 3: Correlation between Fluorescence and Safety Grades</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#references3">References</a>
+                        </div>
+                    </div>
+
+                    <div class="t1">
                         <span>Module4: Hydrogel</span>
                         <div class="t2">
                             <a href="#4cycle1">Cycle 1: PVA-VS/PVA Accommodates Biofactory Testing</a>
@@ -346,7 +362,6 @@
                 </section>
                 <!-- Function Verification Module End -->
 
-
                 <!-- Production Expression Verification Module -->
                 <section id="production-expression" class="parent-section">
                     <div class="section-header">
@@ -449,7 +464,132 @@
                     </div>
                 </section>
                 <!-- Production Expression Verification Module End -->
-                
+
+                <!-- Safety Alert Module Start -->
+                <section id="safety-alert" class="parent-section">
+                    <div class="section-header">
+                        <h1>Safety Alert Module</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <section id="3cycle1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 1: Validation of Co-expression of Crimson and RNF114</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We aim to utilize the naturally occurring polycistronicmRNA structure in prokaryotes to achieve synchronous expression of RNF114 and the fluorescent protein Crimson. Both coding genes share a single promoter. After transcription, the two coding genes are located on the same mRNA, thereby enabling synchronous expression of the two genes.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>A recombinant plasmid pET-32a(+)-RNF114-GFP-Crimson was constructed, with both the recombinant RNF114 and the fluorescent protein Crimson placed under the control of the T7 promoter. The plasmid was introduced into competent Shuffle T7-B Escherichia coli cells via heat-shock transformation and then streaked for recovery. The transformed cells were cultured on a medium containing ampicillin (Ampicillin). Positive colonies were selected and transferred to liquid culture at 33°C.</p>
+                                <figure>
+                                    <img src="../../static/img/engineer/alert-cons.png" alt="Construction Image">
+                                </figure>
+
+                                <h3>3. Test</h3>
+                                <p><strong>Sampling Schedule:</strong> Bacterial cultures were sampled every 24 hours for protein expression detection after the start of cultivation.For each sample, a fixed volume of bacterial culture was taken. The supernatant was collected to detect RNF114, while the pellet was collected to detect Crimson.</p>
+                                <p><strong>Protein Expression Detection:</strong></p>
+                                <ul>
+                                    <li><p><strong>Fluorescent Protein Expression Detection:</strong> Fluorescence emission of green fluorescent protein (GFP) and red fluorescent protein Crimson was measured using a fluorescence spectrophotometer. The excitation wavelength for Crimson was 588 nm with an emission wavelength of 617 nm, while the excitation wavelength for GFP was 488 nm with an emission wavelength of 507 nm. The experimental results were analyzed based on the fluorescence intensity values (Fluorescence intensity = Fluorescence value / OD600).</p></li>
+                                    <li><p><strong>RNF114 Expression Detection and Relative Expression Levels:</strong> Protein expression was analyzed by SDS-PAGE, followed by Coomassie Brilliant Blue staining of the gel. The expression levels of RNF114 and Crimson were compared to confirm synchronous expression of the two proteins. The molecular weight of Crimson is 27 kDa, while the modified RNF114 has a molecular weight of approximately 35 kDa.By measuring the OD600 value, the same amount of bacterial culture is ensured for each detection.</p></li>
+                                </ul>
+
+                                <h3>4. Learn</h3>
+                                <p>Our experiments successfully validated the synchronous expression of Crimson and RNF114. We learned that in a polycistronic structure, the ribosome binding site (RBS) affects the reading of the open reading frame (ORF) through its complementarity to the ribosome and its distance from the start codon. Therefore, we plan to adjust the RBS sequences upstream of the two coding genes. By using RBS sequences of varying strengths, we aim to maximize the expression of RNF114 while ensuring that fluorescence signals meet the measurement requirements.</p>
+                            </div>
+                        </section>
+
+                        <section id="3cycle2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 2: Adjusting RBS to Regulate the Relative Expression Levels</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We designed ribosome binding sites (RBS) of varying strengths for the two coding genes to achieve higher expression levels of RNF114, thereby directing translational resources primarily towards the expression of the target therapeutic molecule. The RBS sequences were sourced from the <a href="https://parts.igem.org/Ribosome_Binding_Sites/Prokaryotic/Constitutive/Anderson" target="_blank">Anderson RBS family database</a>. This database provides 40 available RBS sequences for Escherichia coli and includes strength information for some of the RBS sequences. Based on experimental results, we will test different combinations of RBS to identify the optimal one that maximizes RNF114 expression while ensuring that the fluorescence signals meet the measurement requirements.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>We constructed a plasmid based on the pET-32a(+)-RNF114-GFP-Crimson recombinant plasmid. The RBS upstream of the Crimson coding sequence was BBa_J61107, which has moderate expression strength, while the RBS upstream of the RNF114 coding sequence was RBS1, which has a stronger expression strength. The same plasmid transformation and positive colony cultivation procedures were followed. Additionally, engineered bacteria were encapsulated in hydrogels and cultured in a simulated tear fluid environment, with samples taken every 48 hours for protein detection.</p>
+
+                                <h3>3. Test</h3>
+                                <p><strong>Sampling Schedule:</strong> Bacterial cultures were sampled every 24 hours for protein expression detection after the start of cultivation.For each sample, a fixed volume of bacterial culture was taken. The supernatant was collected to detect RNF114, while the pellet was collected to detect Crimson.</p>
+                                <ul>
+                                    <li><p><strong>Fluorescent Protein Expression Detection:</strong> Fluorescence emission of green fluorescent protein (GFP) and red fluorescent protein Crimson was measured using a fluorescence spectrophotometer. The excitation wavelength for Crimson was 588 nm with an emission wavelength of 617 nm, while the excitation wavelength for GFP was 488 nm with an emission wavelength of 507 nm. Experimental results were analyzed based on fluorescence intensity values (Fluorescence intensity = Fluorescence value / OD600).</p></li>
+                                    <li><p><strong>RNF114 Expression Detection and Relative Expression Levels:</strong>Protein expression was analyzed by SDS-PAGE, followed by Coomassie Brilliant Blue staining of the gel. The expression levels of RNF114 and Crimson were compared to determine their relative expression levels.By measuring the OD600 value, the same amount of bacterial culture is ensured for each detection.</p></li>
+                                    <li><p><strong>Encapsulated Engineered Bacteria in Hydrogels:</strong> The primary focus was to verify whether the fluorescence signals from the engineered bacteria encapsulated in hydrogels could meet the detection requirements.</p></li>
+                                    <li><p><strong>Cell Viability Detection:</strong>A cell viability detection device was used to measure the fluorescence signals from the engineered bacteria encapsulated in hydrogels(Learn more at <a href="../drylab/hardware.html">Hardware - Cell Viability Detection</a>). Upon pressing the button, an Arduino drives the PT4115 to emit light of a specific wavelength from an LED. The light intensity is controlled by a rotary encoder, passes through a filter to reach the fluorescent protein, and is then detected by a BH1750 sensor, with the light intensity displayed on an LCD screen.</p></li>
+                                </ul>
+
+                                <h3>4. Learn</h3>
+                                <p>Under the premise of ensuring sufficient RNF114 expression, the fluorescence detection device enabled real-time monitoring of the engineered bacteria's ability to produce RNF114. Considering that the viability of the engineered bacteria in practical applications may be affected by various factors, including storage conditions and duration before use, temperature and nutritional conditions in the ocular microenvironment during use, and frequency of use, the duration of therapeutic efficacy may vary among different users. Additionally, the death and lysis of engineered bacteria after viability loss may have adverse effects on the user's eyes. Therefore, we aim to establish a unified safety standard for users to guide them in timely replacing ineffective contact lenses.</p>
+                            </div>
+                        </section>
+
+                        <section id="3cycle3" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 3: Determination of the Correlation between Fluorescence and Safety Grades</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>We aim to generate a warning signal when the cell viability decreases to a certain level and the production of RNF114 is significantly reduced. Therefore, it is necessary to establish a quantifiable correlation between cell viability and fluorescence signal intensity. We monitored the live cell density of engineered bacteria and the corresponding fluorescence signal intensity in a simulated ocular environment. By analyzing the fluorescence data of engineered bacteria from the logarithmic phase, stationary phase, to the apoptotic phase, we determined the fluorescence intensity thresholds corresponding to three safety grades: "Safe," "Recommended for Replacement," and "Not Usable."</p>
+
+                                <h3>2. Construction</h3>
+                                <p>The pET-32a(+)-RNF114-Crimson recombinant plasmid and pET-32a(+)-hasAB recombinant plasmid, which were optimized in Cycle 2, were transformed into the engineered bacteria. The engineered bacteria were encapsulated in hydrogels and cultured in BHI broth, with the medium being replaced every 7 days.</p>
+
+                                <h3>3. Test</h3>
+                                <p>Every 24 hours, a fixed-size sample from the bacterial encapsulation area was taken for fluorescence intensity detection. Simultaneously, an equally sized sample was taken for live cell volume fraction detection.</p>
+                                <ul>
+                                    <li><p><strong>Fluorescence Intensity Detection:</strong>The fluorescence signal of Crimson was detected using the detection device in the contact lens care box.</p></li>
+                                    <li><p><strong>Live Cell Volume Fraction Detection:</strong>ATP Quantification Assay (CellTiter-Glo 3D Cell Viability Assay). The ATP content of the encapsulated bacteria in the hydrogel was measured using the CellTiter-Glo 3D Cell Viability Assay Kit (Promega, USA). At each time point, the culture medium on top of the hydrogel was removed, and CellTiter-Glo 3D reagent was added to the samples according to the manufacturer's instructions. The samples were incubated with shaking in the dark at room temperature for 30 minutes, and then the fluorescence signal of the samples was measured using a multi-functional plate reader. The luminescence intensity was converted to ATP content through a standard curve, thereby quantitatively analyzing the ATP content in the samples. The ATP content of the samples reflects cell viability.</p></li>
+                                </ul>
+
+                                <h3>4. Learn</h3>
+                                <p>By synchronously monitoring the Crimson fluorescence signal and cell viability, we established the relationship between fluorescence intensity and cell viability when a fixed amount of engineered bacteria was inoculated. The fluorescence intensity value when the cell viability of engineered bacteria was ≥80% of the maximum was set as the threshold for the "Safe" grade. The fluorescence intensity value when the cell viability was ≤80% but ≥50% of the maximum was set as the boundary value for the "Recommended for Replacement" grade. The fluorescence intensity value when the cell viability was ≤50% of the maximum was set as the threshold for the "Not Usable" grade.</p>
+                            </div>
+                        </section>
+
+                        <section id="references3" class="sub-section">
+                            <div class="section-header">
+                                <h2>References</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <div class="reference-list">
+                                    <div class="reference-item" id="3ref1">
+                                        <span class="ref-number">[1]</span>
+                                        <span class="ref-content">Ning L, Geng Y, Lovett-Barron M, et al. A Bright, Nontoxic, and Non-aggregating red Fluorescent Protein for Long-Term Labeling of Fine Structures in Neurons. <em>Front Cell Dev Biol</em>, 2022, 10: 893468.</span>
+                                        <a href="https://doi.org/10.3389/fcell.2022.893468" class="ref-link" target="_blank">DOI: 10.3389/fcell.2022.893468</a>
+                                    </div>
+
+                                    <div class="reference-item" id="3ref2">
+                                        <span class="ref-number">[2]</span>
+                                        <span class="ref-content">Puertas-Bartolomé M, Gutiérrez-Urrutia I, Teruel-Enrico L L, et al. Self-Lubricating, Living Contact Lenses. <em>Advanced Materials</em>, 2024, 36(27): 2313848.</span>
+                                        <a href="https://doi.org/10.1002/adma.202313848" class="ref-link" target="_blank">DOI: 10.1002/adma.202313848</a>
+                                    </div>
+
+                                    <div class="reference-item" id="3ref3">
+                                        <span class="ref-number">[3]</span>
+                                        <span class="ref-content">宋立娜. 大肠杆菌双顺反子表达载体中各基因表达水平的研究[D]. 天津:天津大学, 2007.</span>
+                                        <a href="https://d.wanfangdata.com.cn/thesis/Y1359970" class="ref-link" target="_blank">DOI: 10.7666/d.Y1359970</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+                <!-- Safety Alert Module End -->
 
                 <!-- Module4: Hydrogel -->
                 <section id="hydrogel-module" class="parent-section">
