@@ -91,6 +91,7 @@
             <!-- Sidebar wrapper -->
             <div class="sidebarBg">
                 <div class="sidebar">
+                    <!-- sidebar collapse button -->
                     <div class="sidebar-collapse-btn">
                         <ion-icon name="chevron-back-outline"></ion-icon>
                     </div>
@@ -116,7 +117,7 @@
                             <a href="#4cycle2">Cycle 2: PVA-VS/PVA Surface Modification</a>
                         </div>
                         <div class="t2">
-                            <a href="#cycle3">Cycle 3: pHEMA/β-CD-crHA Functional Test</a>
+                            <a href="#4cycle3">Cycle 3: pHEMA/β-CD-crHA Functional Test</a>
                         </div>
                         <div class="t2">
                             <a href="#references4">References</a>
@@ -132,271 +133,335 @@
 
             <!-- Content area -->
             <div class="content">
-                <!-- Modulule1  -->
-                    <h1>Function Verification Module</h1>
-                    <p>In this module, we systematically verify the functionality of our designed components through two main cycles of experiments and analyses.</p>
-                    
-                    <section id="cycle1">
-                        <h2>Cycle 1: Functional Verification of Each Tag</h2>
-                        <h3>Design1</h3>
-                        <p>We have found three functional peptides, Tat peptide, Gala3, and pelB, which promote cell permeability, endosomal escape, and exocytosis, and obtained a target peptide that specifically targets the Aquaporin 0 on lens cell through modeling software and AI-assisted design. In this cycle, we need to first fuse each tag with RNF114 through a linker to verify the effectiveness of each tag.</p>
-                        <h3>Construction1</h3>
-                        <p>In order to characterize the role of each part, we decided to construct the following gene pathways by chemical synthesis:</p>
-
-                        <figure>
-                            <img src="../../static/img/engineer/synthesis.png" alt="Construction1">
-                            <!-- <figcaption>
-                                Fig.1 | Construction1
-                            </figcaption> -->
-                        </figure>
-                    
-                        <h3>Test1</h3>
-                        <p><strong>0. Verification the success of plasmid introduction</strong></p>
-                        <p>Sanger sequencing; extraction of plasmid DNA (alkaline SDS separation); determination of DNA size and concentration by gel electrophoresis and Nanodrop.</p>
-
-                        <p><strong>1. pelB tag</strong><sup><a href="#ref1">[1]</a></sup></p>
-                        <ul>
-                            <li>A. Construction of plasmids, group 1: pelB-linker-RNF114-GPF; group 2: linker-RNF114-GPF; group 3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
-                            <li>B. Use a mild induction regimen (0.05 mM IPTG, 30℃, 2hrs)to express and secrete proteins. Centrifuge and take the supernatant.</li>
-                            <li>C. Determine the relative molecular weight of the protein using 12% SDS-PAGE and perform quantitative analysis using ImageJ.</li>
-                        </ul>
-
-                        <p><strong>2. Tat peptide tag</strong><sup><a href="#ref2">[2]</a></sup></p>
-                        <ul>
-                            <li>A. Construction of plasmids, group1: TAT-linker-RNF114-GPF; group2: linker-RNF114-GPF; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
-                            <li>B. Cultivate strains, extract and purify secretory proteins.</li>
-                            <li>C. Culture lens epithelial cells and co-incubate with the target protein for 1 h. Centrifuge at 1 000 x g for 10 min, collect cells from each well, wash three times with PBS, collect cells using FASCaliber flow cytometer, and analyze cell penetration using CellQuest software.</li>
-                        </ul>
-
-                        <p><strong>3. GALA3 tag</strong><sup><a href="#ref3">[3]</a></sup></p>
-                        <ul>
-                            <li>A. Construction of plasmids, group1: GALA-linker-RNF114-GPF; group2: linker-RNF114-GPF; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
-                            <li>B. Cultivate strains, extract and purify secretory proteins.</li>
-                            <li>C. Lens epithelial cells were incubated with different concentrations (0.125, 0.25, and 1 μM) of the protein for 12 h, co-stained with DAPI and observed by fluorescence microscopy, and the fluorescence intensity was quantified by flow cytometry.</li>
-                        </ul>
-
-                        <!-- <h5>Flow cytometry(FC)</h5>
-                        <p>Cells were seeded in 6-well plates (Corning, NY, USA) at a density of 1 × 10<sup>6</sup> cells per well and cultured overnight. The culture medium was replaced with fresh culture medium containing recombinant proteins at the indicated concentrations. Following incubation, the cells were treated with trypsin, washed twice with PBS, collected, and finally resuspended in PBS. The fluorescence intensity was assessed using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA). Data was analyzed using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p> -->
-
-                        <!-- <h5>Fluorescence microscopy observation</h5>
-                        <p>Cells (1.0 × 10<sup style="color: var(--black);">4</sup> cells per well) were seeded in 24-well plates (Corning, NY, USA) and incubated at 37 °C overnight until 30% confluency. The cells were treated with recombinant proteins at the indicated concentrations. After incubation for 12 h, the cells were washed three times with precooled PBS (2.7 mM KCl, 137 mM NaCl, 10 mM Na2HPO4, and 2 mM KH2PO4), fixed with paraformaldehyde (PFA, 4%) (Sangon, Shanghai, China), and stained with 4,6-diamidino-2-phenylindole (DAPI) (Beyotime, Haimen, China) in the dark. The intracellular fluorescence distribution of recombinant proteins was imaged by confocal laser scanning microscopy (CLSM) (Nikon, Tokyo, Japan) and fluorescence microscopy (Nikon, Tokyo, Japan), and the data were analyzed using NLS software.</p> -->
-
-                        <p><strong>4. Target peptide</strong><sup><a href="#ref4">[4]</a></sup></p>
-                        <ul>
-                            <li>A. Construction of plasmids, group1: Targetpeptide-linker-RNF114-GPF; group2: Targetpeptide-linker-RNF114; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain</li>
-                            <li>B. Cultivate strains, extract and purify secretory proteins</li>
-                            <li>C. Fluorescence polarization immunoassay to detect affinity: Add a certain amount of GFP-labeled fusion protein and AQP0 to the reaction system. Add different concentrations of unlabeled fusion protein to compete with GFP-labeled fusion protein for binding to AQP0, and fit the competition binding curve.</li>
-                        </ul>
-
-                        <h4>Learn1</h4>
-                        <p>If all tags can play their corresponding functions, it means that the general idea of protein fusion is fine and the next step of overall fusion can be carried out. If the results do not meet expectations, redesign or search for alternative solutions and feedback, optimize the experimental methods before re-verify.</p>
-                    </section>
-
-                    <section id="cycle2">
-                        <h2>Cycle 2: Functional Verification of the Fusion Protein</h2>
-                        <h3>Design2</h3>
-                        <p>Since our ultimate goal is to obtain a fusion protein with the functions of all the above tags, we decided to construct a gene pathway containing all peptide modifications in the second cycle and verify the functions of each part again. In order to optimize its spatial structure without affecting the domain (Ring-Finger structure) of the original protein, we continuously optimized the modification position and the length of the connecting peptide, and finally obtained the best and most qualified predicted protein structure and corresponding gene pathway.</p>
-
-                        <h3>Construction2</h3>
-                        <p>Through the elements that have been successfully constructed and verified in cycle 1, we can construct the gene of the complete fusion protein by PCR. The gene and hyaluronic acid synthesis gene pathway are as follows:</p>
-                        <figure>
-                            <img src="../../static/img/engineer/cons2.png" alt="Fusion Protein Construction">
-                        </figure>
-
-                        <h3>Test2</h3>
-
-                        <p><strong>0. Verification of successful plasmid introduction</strong>: DNA sanger sequencing, size and concentration detection</p>
-                        
-                        <p><strong>1. Expression of fusion protein</strong></p>
-
-                        <p><strong>2. Extraction and purification of fusion protein</strong></p>
-
-                        <p><strong>3. Verify the stability of fusion protein:</strong></p>
-                        <p>Stability improvement plan: [Preferred plan (1), if the effect does not meet expectations, continue to further verify the plan (2)]</p>
-                        <ol>
-                            <li>Hyaluronic acid encapsulation</li>
-                            <li>Rare amino acid replacement</li>
-                        </ol>
-
-                        <p><strong>Verification method:</strong></p>
-                        <p>Hyaluronic acid and fusion protein (containing GFP tag) are added to the culture medium containing hydrolase in proportion (the specific concentration needs to be determined in advance), and bleached by a short light pulse. Bleaching causes the labeled protein to be divided into two subgroups - fluorescent protein and non-fluorescent protein. The fluorescence recovery rate after bleaching is related to the degradation rate. The fluorescence intensity is quantified by flow cytometry at intervals.<sup><a href="#ref5">[5]</a></sup></p>
-
-                        <p><strong>Type and content of enzyme added:</strong><sup><a href="#ref6">[6]</sup></a><sup><a href="#ref7">[7]</a></sup></p>
-                        <ul>
-                            <li>MMP1, 2, 9, 13</li>
-                            <li>Cathepsin A (in aqueous humor); Cathepsin V, K, B, S. Compared with Cathepsin S, Cathepsin V has the highest expression (about 200 times), followed by Cathepsin L and Cathepsin B (about 10 times and 5 times, respectively)</li>
-                        </ul>
-
-                        <p><strong>4. Verify the therapeutic function of the fusion protein</strong><sup><a href="#ref8">[8]</a></sup></p>
-                        <ul>
-                            <li>A. Rat lens epithelial cells were placed in culture medium and incubated at 4°C for 24 hours to induce cataracts. 100 μM fusion protein was added to the culture medium in the last 30 minutes of low temperature treatment in the experimental group, but not in the control group. The lenses were transferred to a 37°C environment for 30 minutes.</li>
-                            <li>B. After rewarming, the rat lens of the control group was placed in a dish containing extracellular solution and placed above the bottom light source of a Nikon SMZ18 microscope, and image A was taken. Subsequently, the light source was turned off and image B was taken to correct for ambient light interference. Then, the rat lens of the experimental group was placed above the bottom light source and image C was taken.</li>
-                            <li>C. Analyze the grayscale value of the lens area by ImageJ (NIH) and calculate the transmittance according to the following formula:</li>
-                        </ul>
-                        
-                        <div class="math-block">
-                            Lens transmittance = \(\frac{C - B}{A - B} \times 100\%\)
+                <!-- Function Verification Module -->
+                <section id="function-verification" class="parent-section">
+                    <div class="section-header">
+                        <h1>Function Verification Module</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <div class="introduction">
+                            <p>In this module, we systematically verify the functionality of our designed components through two main cycles of experiments and analyses.</p>
                         </div>
-                        
 
-                        <h3>Learn2</h3>
-                        <p>If the fusion protein is stable and its therapeutic function can be performed normally, it can be combined with hydrogel and hardware structure for the next cycle.</p>
-                    </section>
-
-                    <!-- References section -->
-                    <section id="references1">
-                        <h2>References</h2>
-                        <div class="reference-list">
-                            <div class="reference-item" id="ref1">
-                                <span class="ref-number">[1]</span>
-                                <span class="ref-content">Mirzadeh, K., Shilling, P.J., Elfageih, R., Cumming, A.J., Cui, H.L., Rennig, M., Nørholm, M.H.H., Daley, D.O. (2020). Increased production of periplasmic proteins in Escherichia coli by directed evolution of the translation initiation region. <em>Microb Cell Fact</em>, 19(1):85.</span>
-                                <a href="https://doi.org/10.1186/s12934-020-01339-8" class="ref-link" target="_blank">DOI: 10.1186/s12934-020-01339-8</a>
+                        <section id="cycle1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 1: Functional Verification of Each Tag</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
                             </div>
+                            <div class="section-content">
+                                <h3>Design1</h3>
+                                <p>We have found three functional peptides, Tat peptide, Gala3, and pelB, which promote cell permeability, endosomal escape, and exocytosis, and obtained a target peptide that specifically targets the Aquaporin 0 on lens cell through modeling software and AI-assisted design. In this cycle, we need to first fuse each tag with RNF114 through a linker to verify the effectiveness of each tag.</p>
+                                <h3>Construction1</h3>
+                                <p>In order to characterize the role of each part, we decided to construct the following gene pathways by chemical synthesis:</p>
 
-                            <div class="reference-item" id="ref2">
-                                <span class="ref-number">[2]</span>
-                                <span class="ref-content">许逊，蔺昕，田雨香，招倩倩，季宝菊，刘静，夏圣，王胜军，许化溪，邵启祥. (2008). 两种方式制备的原核表达含TAT蛋白转导域融合蛋白穿膜能力比较. <em>江苏大学学报（医学版）</em>, 18(6):466.</span>
+                                <figure>
+                                    <img src="../../static/img/engineer/synthesis.png" alt="Construction1">
+                                    <!-- <figcaption>
+                                        Fig.1 | Construction1
+                                    </figcaption> -->
+                                </figure>
+                            
+                                <h3>Test1</h3>
+                                <p><strong>0. Verification the success of plasmid introduction</strong></p>
+                                <p>Sanger sequencing; extraction of plasmid DNA (alkaline SDS separation); determination of DNA size and concentration by gel electrophoresis and Nanodrop.</p>
+
+                                <p><strong>1. pelB tag</strong><sup><a href="#ref1">[1]</a></sup></p>
+                                <ul>
+                                    <li>A. Construction of plasmids, group 1: pelB-linker-RNF114-GPF; group 2: linker-RNF114-GPF; group 3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
+                                    <li>B. Use a mild induction regimen (0.05 mM IPTG, 30℃, 2hrs)to express and secrete proteins. Centrifuge and take the supernatant.</li>
+                                    <li>C. Determine the relative molecular weight of the protein using 12% SDS-PAGE and perform quantitative analysis using ImageJ.</li>
+                                </ul>
+
+                                <p><strong>2. Tat peptide tag</strong><sup><a href="#ref2">[2]</a></sup></p>
+                                <ul>
+                                    <li>A. Construction of plasmids, group1: TAT-linker-RNF114-GPF; group2: linker-RNF114-GPF; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
+                                    <li>B. Cultivate strains, extract and purify secretory proteins.</li>
+                                    <li>C. Culture lens epithelial cells and co-incubate with the target protein for 1 h. Centrifuge at 1 000 x g for 10 min, collect cells from each well, wash three times with PBS, collect cells using FASCaliber flow cytometer, and analyze cell penetration using CellQuest software.</li>
+                                </ul>
+
+                                <p><strong>3. GALA3 tag</strong><sup><a href="#ref3">[3]</a></sup></p>
+                                <ul>
+                                    <li>A. Construction of plasmids, group1: GALA-linker-RNF114-GPF; group2: linker-RNF114-GPF; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain.</li>
+                                    <li>B. Cultivate strains, extract and purify secretory proteins.</li>
+                                    <li>C. Lens epithelial cells were incubated with different concentrations (0.125, 0.25, and 1 μM) of the protein for 12 h, co-stained with DAPI and observed by fluorescence microscopy, and the fluorescence intensity was quantified by flow cytometry.</li>
+                                </ul>
+
+                                <!-- <h5>Flow cytometry(FC)</h5>
+                                <p>Cells were seeded in 6-well plates (Corning, NY, USA) at a density of 1 × 10<sup>6</sup> cells per well and cultured overnight. The culture medium was replaced with fresh culture medium containing recombinant proteins at the indicated concentrations. Following incubation, the cells were treated with trypsin, washed twice with PBS, collected, and finally resuspended in PBS. The fluorescence intensity was assessed using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA). Data was analyzed using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p> -->
+
+                                <!-- <h5>Fluorescence microscopy observation</h5>
+                                <p>Cells (1.0 × 10<sup style="color: var(--black);">4</sup> cells per well) were seeded in 24-well plates (Corning, NY, USA) and incubated at 37 °C overnight until 30% confluency. The cells were treated with recombinant proteins at the indicated concentrations. After incubation for 12 h, the cells were washed three times with precooled PBS (2.7 mM KCl, 137 mM NaCl, 10 mM Na2HPO4, and 2 mM KH2PO4), fixed with paraformaldehyde (PFA, 4%) (Sangon, Shanghai, China), and stained with 4,6-diamidino-2-phenylindole (DAPI) (Beyotime, Haimen, China) in the dark. The intracellular fluorescence distribution of recombinant proteins was imaged by confocal laser scanning microscopy (CLSM) (Nikon, Tokyo, Japan) and fluorescence microscopy (Nikon, Tokyo, Japan), and the data were analyzed using NLS software.</p> -->
+
+                                <p><strong>4. Target peptide</strong><sup><a href="#ref4">[4]</a></sup></p>
+                                <ul>
+                                    <li>A. Construction of plasmids, group1: Targetpeptide-linker-RNF114-GPF; group2: Targetpeptide-linker-RNF114; group3: vector linearization and reconnection to obtain an empty vector, and then transformed into the target strain</li>
+                                    <li>B. Cultivate strains, extract and purify secretory proteins</li>
+                                    <li>C. Fluorescence polarization immunoassay to detect affinity: Add a certain amount of GFP-labeled fusion protein and AQP0 to the reaction system. Add different concentrations of unlabeled fusion protein to compete with GFP-labeled fusion protein for binding to AQP0, and fit the competition binding curve.</li>
+                                </ul>
+
+                                <h4>Learn1</h4>
+                                <p>If all tags can play their corresponding functions, it means that the general idea of protein fusion is fine and the next step of overall fusion can be carried out. If the results do not meet expectations, redesign or search for alternative solutions and feedback, optimize the experimental methods before re-verify.</p>
                             </div>
+                        </section>
 
-                            <div class="reference-item" id="ref3">
-                                <span class="ref-number">[3]</span>
-                                <span class="ref-content">Li, C., Cao, X.W., Zhao, J., et al. (2020). Effective Therapeutic Drug Delivery by GALA3, an Endosomal Escape Peptide with Reduced Hydrophobicity. <em>J Membrane Biol</em>, 253:139-152.</span>
-                                <a href="https://doi.org/10.1007/s00232-020-00109-2" class="ref-link" target="_blank">DOI: 10.1007/s00232-020-00109-2</a>
+                        <section id="cycle2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 2: Functional Verification of the Fusion Protein</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
                             </div>
+                            <div class="section-content">
+                                <h3>Design2</h3>
+                                <p>Since our ultimate goal is to obtain a fusion protein with the functions of all the above tags, we decided to construct a gene pathway containing all peptide modifications in the second cycle and verify the functions of each part again. In order to optimize its spatial structure without affecting the domain (Ring-Finger structure) of the original protein, we continuously optimized the modification position and the length of the connecting peptide, and finally obtained the best and most qualified predicted protein structure and corresponding gene pathway.</p>
 
-                            <div class="reference-item" id="ref4">
-                                <span class="ref-number">[4]</span>
-                                <span class="ref-content">王强，王旭峰，张英侠，等. (2024). 荧光偏振免疫法测定水产品中的丁香酚. <em>分析试验室</em>, 43(03):307-313.</span>
-                                <a href="https://doi.org/10.13595/j.cnki.issn1000-0720.2022.111602" class="ref-link" target="_blank">DOI: 10.13595/j.cnki.issn1000-0720.2022.111602</a>
+                                <h3>Construction2</h3>
+                                <p>Through the elements that have been successfully constructed and verified in cycle 1, we can construct the gene of the complete fusion protein by PCR. The gene and hyaluronic acid synthesis gene pathway are as follows:</p>
+                                <figure>
+                                    <img src="../../static/img/engineer/cons2.png" alt="Fusion Protein Construction">
+                                </figure>
+
+                                <h3>Test2</h3>
+
+                                <p><strong>0. Verification of successful plasmid introduction</strong>: DNA sanger sequencing, size and concentration detection</p>
+                                
+                                <p><strong>1. Expression of fusion protein</strong></p>
+
+                                <p><strong>2. Extraction and purification of fusion protein</strong></p>
+
+                                <p><strong>3. Verify the stability of fusion protein:</strong></p>
+                                <p>Stability improvement plan: [Preferred plan (1), if the effect does not meet expectations, continue to further verify the plan (2)]</p>
+                                <ol>
+                                    <li>Hyaluronic acid encapsulation</li>
+                                    <li>Rare amino acid replacement</li>
+                                </ol>
+
+                                <p><strong>Verification method:</strong></p>
+                                <p>Hyaluronic acid and fusion protein (containing GFP tag) are added to the culture medium containing hydrolase in proportion (the specific concentration needs to be determined in advance), and bleached by a short light pulse. Bleaching causes the labeled protein to be divided into two subgroups - fluorescent protein and non-fluorescent protein. The fluorescence recovery rate after bleaching is related to the degradation rate. The fluorescence intensity is quantified by flow cytometry at intervals.<sup><a href="#ref5">[5]</a></sup></p>
+
+                                <p><strong>Type and content of enzyme added:</strong><sup><a href="#ref6">[6]</sup></a><sup><a href="#ref7">[7]</a></sup></p>
+                                <ul>
+                                    <li>MMP1, 2, 9, 13</li>
+                                    <li>Cathepsin A (in aqueous humor); Cathepsin V, K, B, S. Compared with Cathepsin S, Cathepsin V has the highest expression (about 200 times), followed by Cathepsin L and Cathepsin B (about 10 times and 5 times, respectively)</li>
+                                </ul>
+
+                                <p><strong>4. Verify the therapeutic function of the fusion protein</strong><sup><a href="#ref8">[8]</a></sup></p>
+                                <ul>
+                                    <li>A. Rat lens epithelial cells were placed in culture medium and incubated at 4°C for 24 hours to induce cataracts. 100 μM fusion protein was added to the culture medium in the last 30 minutes of low temperature treatment in the experimental group, but not in the control group. The lenses were transferred to a 37°C environment for 30 minutes.</li>
+                                    <li>B. After rewarming, the rat lens of the control group was placed in a dish containing extracellular solution and placed above the bottom light source of a Nikon SMZ18 microscope, and image A was taken. Subsequently, the light source was turned off and image B was taken to correct for ambient light interference. Then, the rat lens of the experimental group was placed above the bottom light source and image C was taken.</li>
+                                    <li>C. Analyze the grayscale value of the lens area by ImageJ (NIH) and calculate the transmittance according to the following formula:</li>
+                                </ul>
+                                
+                                <div class="math-block">
+                                    Lens transmittance = \(\frac{C - B}{A - B} \times 100\%\)
+                                </div>
+                                
+
+                                <h3>Learn2</h3>
+                                <p>If the fusion protein is stable and its therapeutic function can be performed normally, it can be combined with hydrogel and hardware structure for the next cycle.</p>
                             </div>
+                        </section>
 
-                            <div class="reference-item" id="ref5">
-                                <span class="ref-number">[5]</span>
-                                <span class="ref-content">Geva-Zatorsky, N., Issaeva, I., Mayo, A., Cohen, A., Dekel, E., Danon, T., Cohen, L., Liron, Y., Alon, U., & Eden, E. (2012). Using bleach-chase to measure protein half-lives in living cells. <em>Nature protocols</em>, 7(4):801-811.</span>
-                                <a href="https://doi.org/10.1038/nprot.2012.028" class="ref-link" target="_blank">DOI: 10.1038/nprot.2012.028</a>
+                        <!-- References section -->
+                        <section id="references1" class="sub-section">
+                            <div class="section-header">
+                                <h2>References</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
                             </div>
+                            <div class="section-content">
+                                <div class="reference-list">
+                                    <div class="reference-item" id="ref1">
+                                        <span class="ref-number">[1]</span>
+                                        <span class="ref-content">Mirzadeh, K., Shilling, P.J., Elfageih, R., Cumming, A.J., Cui, H.L., Rennig, M., Nørholm, M.H.H., Daley, D.O. (2020). Increased production of periplasmic proteins in Escherichia coli by directed evolution of the translation initiation region. <em>Microb Cell Fact</em>, 19(1):85.</span>
+                                        <a href="https://doi.org/10.1186/s12934-020-01339-8" class="ref-link" target="_blank">DOI: 10.1186/s12934-020-01339-8</a>
+                                    </div>
 
-                            <div class="reference-item" id="ref6">
-                                <span class="ref-number">[6]</span>
-                                <span class="ref-content">Sivak, J.M., & Fini, M.E. (2002). MMPs in the eye: emerging roles for matrix metalloproteinases in ocular physiology. <em>Prog Retin Eye Res</em>, 21(1):1-14.</span>
-                                <a href="https://doi.org/10.1016/s1350-9462(01)00015-5" class="ref-link" target="_blank">DOI: 10.1016/s1350-9462(01)00015-5</a>
+                                    <div class="reference-item" id="ref2">
+                                        <span class="ref-number">[2]</span>
+                                        <span class="ref-content">许逊，蔺昕，田雨香，招倩倩，季宝菊，刘静，夏圣，王胜军，许化溪，邵启祥. (2008). 两种方式制备的原核表达含TAT蛋白转导域融合蛋白穿膜能力比较. <em>江苏大学学报（医学版）</em>, 18(6):466.</span>
+                                    </div>
+
+                                    <div class="reference-item" id="ref3">
+                                        <span class="ref-number">[3]</span>
+                                        <span class="ref-content">Li, C., Cao, X.W., Zhao, J., et al. (2020). Effective Therapeutic Drug Delivery by GALA3, an Endosomal Escape Peptide with Reduced Hydrophobicity. <em>J Membrane Biol</em>, 253:139-152.</span>
+                                        <a href="https://doi.org/10.1007/s00232-020-00109-2" class="ref-link" target="_blank">DOI: 10.1007/s00232-020-00109-2</a>
+                                    </div>
+
+                                    <div class="reference-item" id="ref4">
+                                        <span class="ref-number">[4]</span>
+                                        <span class="ref-content">王强，王旭峰，张英侠，等. (2024). 荧光偏振免疫法测定水产品中的丁香酚. <em>分析试验室</em>, 43(03):307-313.</span>
+                                        <a href="https://doi.org/10.13595/j.cnki.issn1000-0720.2022.111602" class="ref-link" target="_blank">DOI: 10.13595/j.cnki.issn1000-0720.2022.111602</a>
+                                    </div>
+
+                                    <div class="reference-item" id="ref5">
+                                        <span class="ref-number">[5]</span>
+                                        <span class="ref-content">Geva-Zatorsky, N., Issaeva, I., Mayo, A., Cohen, A., Dekel, E., Danon, T., Cohen, L., Liron, Y., Alon, U., & Eden, E. (2012). Using bleach-chase to measure protein half-lives in living cells. <em>Nature protocols</em>, 7(4):801-811.</span>
+                                        <a href="https://doi.org/10.1038/nprot.2012.028" class="ref-link" target="_blank">DOI: 10.1038/nprot.2012.028</a>
+                                    </div>
+
+                                    <div class="reference-item" id="ref6">
+                                        <span class="ref-number">[6]</span>
+                                        <span class="ref-content">Sivak, J.M., & Fini, M.E. (2002). MMPs in the eye: emerging roles for matrix metalloproteinases in ocular physiology. <em>Prog Retin Eye Res</em>, 21(1):1-14.</span>
+                                        <a href="https://doi.org/10.1016/s1350-9462(01)00015-5" class="ref-link" target="_blank">DOI: 10.1016/s1350-9462(01)00015-5</a>
+                                    </div>
+
+                                    <div class="reference-item" id="ref7">
+                                        <span class="ref-number">[7]</span>
+                                        <span class="ref-content">Coppini, L.P., Visniauskas, B., Costa, E.F., Filho, M.N., Rodrigues, E.B., Chagas, J.R., Farah, M.E., Barros, N.M., Carmona, A.K. (2015). Corneal angiogenesis modulation by cysteine cathepsins: In vitro and in vivo studies. <em>Exp Eye Res</em>, 134:39-46.</span>
+                                        <a href="https://doi.org/10.1016/j.exer.2015.03.012" class="ref-link" target="_blank">DOI: 10.1016/j.exer.2015.03.012</a>
+                                    </div>
+
+                                    <div class="reference-item" id="ref8">
+                                        <span class="ref-number">[8]</span>
+                                        <span class="ref-content">Yang, H., Ping, X., Zhou, J., Ailifeire, H., Wu, J., Nadal-Nicolás, F.M., Miyagishima, K.J., Bao, J., Huang, Y., Cui, Y., Xing, X., Wang, S., Yao, K., Li, W., Shentu, X. (2024). Reversible cold-induced lens opacity in a hibernator reveals a molecular target for treating cataracts. <em>J Clin Invest</em>, 134(18):e169666.</span>
+                                        <a href="https://doi.org/10.1172/JCI169666" class="ref-link" target="_blank">DOI: 10.1172/JCI169666</a>
+                                    </div>
+                                </div>
                             </div>
+                        </section>
+                    </div>
+                </section>
 
-                            <div class="reference-item" id="ref7">
-                                <span class="ref-number">[7]</span>
-                                <span class="ref-content">Coppini, L.P., Visniauskas, B., Costa, E.F., Filho, M.N., Rodrigues, E.B., Chagas, J.R., Farah, M.E., Barros, N.M., Carmona, A.K. (2015). Corneal angiogenesis modulation by cysteine cathepsins: In vitro and in vivo studies. <em>Exp Eye Res</em>, 134:39-46.</span>
-                                <a href="https://doi.org/10.1016/j.exer.2015.03.012" class="ref-link" target="_blank">DOI: 10.1016/j.exer.2015.03.012</a>
+                <!-- Module4: Hydrogel -->
+                <section id="hydrogel-module" class="parent-section">
+                    <div class="section-header">
+                        <h1>Module4: Hydrogel</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <section id="4cycle1" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 1: PVA-VS/PVA Accommodates Biofactory Testing</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
                             </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>The objective was to explore the most effective synthesis scheme for hydrogel-based contact lenses. Initially, we developed contact lens 1.0 in accordance with the existing literature to facilitate the operation of engineered bacteria in non-visual areas and ensure the functionality of biological factories.<sup><a href="#4ref1">[1]</a></sup></p>
 
-                            <div class="reference-item" id="ref8">
-                                <span class="ref-number">[8]</span>
-                                <span class="ref-content">Yang, H., Ping, X., Zhou, J., Ailifeire, H., Wu, J., Nadal-Nicolás, F.M., Miyagishima, K.J., Bao, J., Huang, Y., Cui, Y., Xing, X., Wang, S., Yao, K., Li, W., Shentu, X. (2024). Reversible cold-induced lens opacity in a hibernator reveals a molecular target for treating cataracts. <em>J Clin Invest</em>, 134(18):e169666.</span>
-                                <a href="https://doi.org/10.1172/JCI169666" class="ref-link" target="_blank">DOI: 10.1172/JCI169666</a>
+                                <h3>2. Construction</h3>
+                                <p>A square frame 5% w/v PVA-VS/PVA 95:5 hydrogel containing engineered bacteria was moulded, with a side length of 8mm, and a thickness of 1mm. Next, the square frame was embedded in a square 10% w/v PVA-VS hydrogel. The hydrogel's sides measured 12mm in length and 1.5mm in thickness.</p>
+
+                                <h3>3. Test</h3>
+                                <p>The hydrogel containing the engineered bacteria was placed into BHI medium and cultured for 24, 48, and 72 hours, respectively. The culture medium was enriched with simulated tears and lysozyme. Imaging was performed using a LIVE/DEAD BacLight bacterial viability assay kit (Thermo Fisher Scientific L7012) with a confocal microscope.</p>
+
+                                <ul>
+                                    <li><p><strong>Measuring the activity of the engineered bacteria:</strong> a significant decrease in bacterial activity is expected.</p></li>
+                                    <li><p><strong>The restriction of the hydrogel to the engineered bacteria</strong> is also evident, with no engineered bacteria expected to grow outside the restricted area and clear boundaries visible in the hydrogel.</p></li>
+                                    <li><p><strong>The release of fusion protein</strong> will be detected using the following methods: the medium will be collected in fractions and subjected to SDS-PAGE and scanning grey scale analysis. Expectation: The release of the fusion protein should be continuous and visible in the collected fraction.</p></li>
+                                    <li><p><strong>Test for cytocompatibility:</strong> a gradual decrease in cell activity is expected.</p></li>
+                                </ul>
+
+                                <h3>4. Learn</h3>
+                                <p>Although contact lens 1.0 can effectively limit the biofactory, it is difficult to block the exchange of lysozyme and bacterial metabolites. We have discovered that the physical and chemical properties of hydrogels can be modified by surface modification to achieve the desired result.<sup><a href="#4ref3">[3]</a></sup><sup><a href="#4ref4">[4]</a></sup></p>
                             </div>
-                        </div>
-                    </section>
+                        </section>
 
-                    <!-- Module 4 -->
-                <section id="module4">
-                    <h1>Module4: Hydrogel</h1>
-
-                    <section id="4cycle1">
-                        <h2>Cycle 1: PVA-VS/PVA Accommodates Biofactory Testing</h2>
-                        
-                        <h3>1. Design</h3>
-                        <p>The objective was to explore the most effective synthesis scheme for hydrogel-based contact lenses. Initially, we developed contact lens 1.0 in accordance with the existing literature to facilitate the operation of engineered bacteria in non-visual areas and ensure the functionality of biological factories.<sup><a href="#4ref1">[1]</a></sup></p>
-
-                        <h3>2. Construction</h3>
-                        <p>A square frame 5% w/v PVA-VS/PVA 95:5 hydrogel containing engineered bacteria was moulded, with a side length of 8mm, and a thickness of 1mm. Next, the square frame was embedded in a square 10% w/v PVA-VS hydrogel. The hydrogel's sides measured 12mm in length and 1.5mm in thickness.</p>
-
-                        <h3>3. Test</h3>
-                        <p>The hydrogel containing the engineered bacteria was placed into BHI medium and cultured for 24, 48, and 72 hours, respectively. The culture medium was enriched with simulated tears and lysozyme. Imaging was performed using a LIVE/DEAD BacLight bacterial viability assay kit (Thermo Fisher Scientific L7012) with a confocal microscope.</p>
-
-                        <ul>
-                            <li><p><strong>Measuring the activity of the engineered bacteria:</strong> a significant decrease in bacterial activity is expected.</p></li>
-                            <li><p><strong>The restriction of the hydrogel to the engineered bacteria</strong> is also evident, with no engineered bacteria expected to grow outside the restricted area and clear boundaries visible in the hydrogel.</p></li>
-                            <li><p><strong>The release of fusion protein</strong> will be detected using the following methods: the medium will be collected in fractions and subjected to SDS-PAGE and scanning grey scale analysis. Expectation: The release of the fusion protein should be continuous and visible in the collected fraction.</p></li>
-                            <li><p><strong>Test for cytocompatibility:</strong> a gradual decrease in cell activity is expected.</p></li>
-                        </ul>
-
-                        <h3>4. Learn</h3>
-                        <p>Although contact lens 1.0 can effectively limit the biofactory, it is difficult to block the exchange of lysozyme and bacterial metabolites. We have discovered that the physical and chemical properties of hydrogels can be modified by surface modification to achieve the desired result.<sup><a href="#4ref3">[3]</a></sup><sup><a href="#4ref4">[4]</a></sup></p>
-                    </section>
-
-                    <section id="4cycle2">
-                        <h2>Cycle 2: PVA-VS/PVA Surface Modification</h2>
-                        
-                        <h3>1. Design</h3>
-                        <p>Based on contact lens 1.0, we made some surface modifications to the hydrogel to block the exchange of substances other than fusion proteins and constructed contact lens 2.0.</p>
-
-                        <h3>2. Construction</h3>
-                        <p>The PVA hydrogel was modified with surface polyethylene glycol (PEG) molecules and negatively charged acrylic acid (AA) monomers to create a hydrophilic surface and reduce protein adhesion.</p>
-
-                        <h3>3. Test</h3>
-                        <ul>
-                            <li><p><strong>Measurement of engineered bacterial activity:</strong> No significant decrease in bacterial activity is expected and a significant improvement over Cycle 1.</p></li>
-                            <li><p><strong>Measurement of fusion protein release ability:</strong> Collect supernatant in batches and perform SDS-PAGE followed by grey scale scanning analysis. Expectation: Sustained release of fusion protein should be detectable in the supernatant. There may be a slight decrease compared to Cycle 1.</p></li>
-                            <li><p><strong>Detection of cytocompatibility:</strong> A slight decrease in cellular activity and a significant improvement over Cycle 1 are expected.</p></li>
-                        </ul>
-
-                        <h3>4. Learn</h3>
-                        <p>Subsequently, it is necessary to find a balance between hydrogel surface modification and fusion protein release and adjust the coverage area of the surface modification to reduce the impact on fusion protein release. Considering that CLearCat is a material used in the eye, we must ensure that the visual area is transparent and oxygen permeable to ensure the comfort of contact lens wear.</p>
-                    </section>
-
-                    <section id="4cycle3">
-                        <h2>Cycle 3: pHEMA/β-CD-crHA Functional Test</h2>
-                        
-                        <h3>1. Design</h3>
-                        <p>Given the good antimicrobial and anti-protein adsorption properties of pHEMA/β-CD-crHA material, we constructed contact lenses using a single material.</p>
-
-                        <h3>2. Construction</h3>
-                        <p>A pHEMA/β-CD-crHA hydrogel with MA substitution of 20% and m(20)HA-β-CD content of 8% was constructed, and contact lenses containing biofactories were sequentially fabricated.<sup><a href="#4ref2">[2]</a></sup></p>
-
-                        <h3>3. Test</h3>
-                        <p>The hydrogels containing engineered bacteria were placed in BHI medium and incubated for 24, 48, and 72 h. Artificial simulated tears containing lysozyme were added to the medium. Bacterial viability was measured using the LIVE/DEAD BacLight Bacterial Viability Assay Kit (Thermo Fisher Scientific L7012) with confocal microscope imaging.</p>
-
-                        <ul>
-                            <li><p><strong>Measurement of engineered bacterial activity:</strong> A light decrease in bacterial activity is expected.</p></li>
-                            <li><p><strong>Measurement of restriction of engineered bacteria by hydrogel:</strong> No growth of engineered bacteria is expected except in restricted areas with clear boundaries visible in the hydrogel.</p></li>
-                            <li><p><strong>Detect ability to release fusion protein:</strong> Collect supernatant in batches and perform SDS-PAGE followed by scanning grey scale analysis. Expectation: Continuous release of fusion protein can be detected in the supernatant.</p></li>
-                            <li><p><strong>Detection of cytocompatibility:</strong> A slight decrease in cell activity is expected.</p></li>
-                        </ul>
-
-                        <h3>4. Learn</h3>
-                        <p>In this cycle, we have verified that pHEMA/β-CD-crHA can indeed be used as a manufacturing material for contact lenses but may affect the release of fusion proteins. Therefore, the assigned concentration of the constituent materials must be continuously adjusted.</p>
-                    </section>
-
-                    <!-- Add references to existing references section -->
-                    <section id="references4">
-                        <h2>References</h2>
-                        <div class="reference-list">
-                            <div class="reference-item" id="4ref1">
-                                <span class="ref-number">[1]</span>
-                                <span class="ref-content">Puertas-Bartolomé M, Gutiérrez-Urrutia I, Teruel-Enrico L L, et al. Self-Lubricating, Living Contact Lenses.[J]. Advanced materials (Deerfield Beach, Fla.), 2024, 36(27): e2313848.</span>
-                                <a href="https://doi.org/10.1002/adma.202313848" class="ref-link" target="_blank">DOI: 10.1002/adma.202313848</a>
+                        <section id="4cycle2" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 2: PVA-VS/PVA Surface Modification</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
                             </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>Based on contact lens 1.0, we made some surface modifications to the hydrogel to block the exchange of substances other than fusion proteins and constructed contact lens 2.0.</p>
 
-                            <div class="reference-item" id="4ref2">
-                                <span class="ref-number">[2]</span>
-                                <span class="ref-content">Deng H, Zhang X, Su S, et al. Poly(2-hydroxyethyl methacrylate-co-methacrylated hyaluronan-β-cyclodextrin) hydrogel: A potential contact lens material with high hydrophilicity, good mechanical properties and sustained drug delivery.[J]. International journal of biological macromolecules, 2024, 283(Pt 1): 137579.</span>
-                                <a href="https://doi.org/10.1016/j.ijbiomac.2024.137579" class="ref-link" target="_blank">DOI: 10.1016/j.ijbiomac.2024.137579</a>
-                            </div>
+                                <h3>2. Construction</h3>
+                                <p>The PVA hydrogel was modified with surface polyethylene glycol (PEG) molecules and negatively charged acrylic acid (AA) monomers to create a hydrophilic surface and reduce protein adhesion.</p>
 
-                            <div class="reference-item" id="4ref3">
-                                <span class="ref-number">[3]</span>
-                                <span class="ref-content">Rao L, Liu Y, Zhou H. Significantly improved cell affinity of polydimethylsiloxane enabled by a surface-modified strategy with chemical coupling.[J]. Journal of materials science. Materials in medicine, 2022, 33(10): 66.</span>
-                                <a href="https://doi.org/10.1007/s10856-022-06690-3" class="ref-link" target="_blank">DOI: 10.1007/s10856-022-06690-3</a>
-                            </div>
+                                <h3>3. Test</h3>
+                                <ul>
+                                    <li><p><strong>Measurement of engineered bacterial activity:</strong> No significant decrease in bacterial activity is expected and a significant improvement over Cycle 1.</p></li>
+                                    <li><p><strong>Measurement of fusion protein release ability:</strong> Collect supernatant in batches and perform SDS-PAGE followed by grey scale scanning analysis. Expectation: Sustained release of fusion protein should be detectable in the supernatant. There may be a slight decrease compared to Cycle 1.</p></li>
+                                    <li><p><strong>Detection of cytocompatibility:</strong> A slight decrease in cellular activity and a significant improvement over Cycle 1 are expected.</p></li>
+                                </ul>
 
-                            <div class="reference-item" id="4ref4">
-                                <span class="ref-number">[4]</span>
-                                <span class="ref-content">Drozdova M G, Zaytseva-Zotova D S, Akasov R A, et al. Macroporous modified poly (vinyl alcohol) hydrogels with charged groups for tissue engineering: Preparation and in vitro evaluation.[J]. Materials science & engineering. C, Materials for biological applications, 2017, 75: 1075-1082.</span>
-                                <a href="https://doi.org/10.1016/j.msec.2017.03.017" class="ref-link" target="_blank">DOI: 10.1016/j.msec.2017.03.017</a>
+                                <h3>4. Learn</h3>
+                                <p>Subsequently, it is necessary to find a balance between hydrogel surface modification and fusion protein release and adjust the coverage area of the surface modification to reduce the impact on fusion protein release. Considering that CLearCat is a material used in the eye, we must ensure that the visual area is transparent and oxygen permeable to ensure the comfort of contact lens wear.</p>
                             </div>
-                        </div>
-                    </section>
-                </div>
+                        </section>
+
+                        <section id="4cycle3" class="sub-section">
+                            <div class="section-header">
+                                <h2>Cycle 3: pHEMA/β-CD-crHA Functional Test</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Design</h3>
+                                <p>Given the good antimicrobial and anti-protein adsorption properties of pHEMA/β-CD-crHA material, we constructed contact lenses using a single material.</p>
+
+                                <h3>2. Construction</h3>
+                                <p>A pHEMA/β-CD-crHA hydrogel with MA substitution of 20% and m(20)HA-β-CD content of 8% was constructed, and contact lenses containing biofactories were sequentially fabricated.<sup><a href="#4ref2">[2]</a></sup></p>
+
+                                <h3>3. Test</h3>
+                                <p>The hydrogels containing engineered bacteria were placed in BHI medium and incubated for 24, 48, and 72 h. Artificial simulated tears containing lysozyme were added to the medium. Bacterial viability was measured using the LIVE/DEAD BacLight Bacterial Viability Assay Kit (Thermo Fisher Scientific L7012) with confocal microscope imaging.</p>
+
+                                <ul>
+                                    <li><p><strong>Measurement of engineered bacterial activity:</strong> A light decrease in bacterial activity is expected.</p></li>
+                                    <li><p><strong>Measurement of restriction of engineered bacteria by hydrogel:</strong> No growth of engineered bacteria is expected except in restricted areas with clear boundaries visible in the hydrogel.</p></li>
+                                    <li><p><strong>Detect ability to release fusion protein:</strong> Collect supernatant in batches and perform SDS-PAGE followed by scanning grey scale analysis. Expectation: Continuous release of fusion protein can be detected in the supernatant.</p></li>
+                                    <li><p><strong>Detection of cytocompatibility:</strong> A slight decrease in cell activity is expected.</p></li>
+                                </ul>
+
+                                <h3>4. Learn</h3>
+                                <p>In this cycle, we have verified that pHEMA/β-CD-crHA can indeed be used as a manufacturing material for contact lenses but may affect the release of fusion proteins. Therefore, the assigned concentration of the constituent materials must be continuously adjusted.</p>
+                            </div>
+                        </section>
+
+                        <!-- Add references to existing references section -->
+                        <section id="references4" class="sub-section">
+                            <div class="section-header">
+                                <h2>References</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <div class="reference-list">
+                                    <div class="reference-item" id="4ref1">
+                                        <span class="ref-number">[1]</span>
+                                        <span class="ref-content">Puertas-Bartolomé M, Gutiérrez-Urrutia I, Teruel-Enrico L L, et al. Self-Lubricating, Living Contact Lenses.[J]. Advanced materials (Deerfield Beach, Fla.), 2024, 36(27): e2313848.</span>
+                                        <a href="https://doi.org/10.1002/adma.202313848" class="ref-link" target="_blank">DOI: 10.1002/adma.202313848</a>
+                                    </div>
+
+                                    <div class="reference-item" id="4ref2">
+                                        <span class="ref-number">[2]</span>
+                                        <span class="ref-content">Deng H, Zhang X, Su S, et al. Poly(2-hydroxyethyl methacrylate-co-methacrylated hyaluronan-β-cyclodextrin) hydrogel: A potential contact lens material with high hydrophilicity, good mechanical properties and sustained drug delivery.[J]. International journal of biological macromolecules, 2024, 283(Pt 1): 137579.</span>
+                                        <a href="https://doi.org/10.1016/j.ijbiomac.2024.137579" class="ref-link" target="_blank">DOI: 10.1016/j.ijbiomac.2024.137579</a>
+                                    </div>
+
+                                    <div class="reference-item" id="4ref3">
+                                        <span class="ref-number">[3]</span>
+                                        <span class="ref-content">Rao L, Liu Y, Zhou H. Significantly improved cell affinity of polydimethylsiloxane enabled by a surface-modified strategy with chemical coupling.[J]. Journal of materials science. Materials in medicine, 2022, 33(10): 66.</span>
+                                        <a href="https://doi.org/10.1007/s10856-022-06690-3" class="ref-link" target="_blank">DOI: 10.1007/s10856-022-06690-3</a>
+                                    </div>
+
+                                    <div class="reference-item" id="4ref4">
+                                        <span class="ref-number">[4]</span>
+                                        <span class="ref-content">Drozdova M G, Zaytseva-Zotova D S, Akasov R A, et al. Macroporous modified poly (vinyl alcohol) hydrogels with charged groups for tissue engineering: Preparation and in vitro evaluation.[J]. Materials science & engineering. C, Materials for biological applications, 2017, 75: 1075-1082.</span>
+                                        <a href="https://doi.org/10.1016/j.msec.2017.03.017" class="ref-link" target="_blank">DOI: 10.1016/j.msec.2017.03.017</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </section>
             </div>
+        </div>
 
         <!-- Footer -->
         <footer id="footer">
