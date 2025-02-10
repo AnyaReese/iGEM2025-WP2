@@ -108,11 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetId = this.getAttribute('href').substring(1);
                 const targetSection = document.getElementById(targetId);
                 if (targetSection) {
-                    const offset = 80;
-                    const targetPosition = targetSection.offsetTop - offset;
+                    const viewportHeight = window.innerHeight;
+                    const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
+                    const scrollToPosition = targetPosition - (viewportHeight * 0.15); // 定位到视窗15%的位置
                     
                     window.scrollTo({
-                        top: targetPosition,
+                        top: scrollToPosition,
                         behavior: 'smooth'
                     });
                 }
@@ -128,11 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetId = this.getAttribute('href').substring(1);
             const targetRef = document.getElementById(targetId);
             if (targetRef) {
-                const offset = 80; // use the same offset as the menu links
-                const targetPosition = targetRef.offsetTop - offset;
+                const viewportHeight = window.innerHeight;
+                const targetPosition = targetRef.getBoundingClientRect().top + window.scrollY;
+                const scrollToPosition = targetPosition - (viewportHeight * 0.15); // 保持一致的定位比例
                 
                 window.scrollTo({
-                    top: targetPosition,
+                    top: scrollToPosition,
                     behavior: 'smooth'
                 });
             }
