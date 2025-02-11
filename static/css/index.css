@@ -883,6 +883,7 @@ section {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(8px);
+    z-index: -1;
 }
 
 .icon-wrapper.left {
@@ -1101,18 +1102,40 @@ section {
     width: 100%;
 }
 
-/* 响应式调整 */
+/* 响应式布局调整 */
 @media screen and (max-width: 968px) {
-    .statement-header h3 {
-        font-size: 2.2rem;
+    .idea-content {
+        grid-template-columns: 1fr;  /* 改为单列布局 */
+        gap: 3rem;
     }
-    
-    .statement-subtitle {
-        font-size: 1.6rem;
+
+    .idea-details, .idea-promise {
+        width: 100%;          /* 确保宽度填满 */
+        max-width: 600px;     /* 限制最大宽度 */
+        margin: 0 auto;       /* 居中显示 */
     }
-    
-    .idea-details p,
+
+    .idea-details {
+        margin-bottom: 2rem;  /* 添加底部间距 */
+        transform: rotate(-2deg);  /* 保持旋转效果 */
+    }
+
+    .idea-promise {
+        transform: rotate(2deg);  /* 保持旋转效果 */
+    }
+
     .idea-promise p {
-        font-size: 1.2rem;
+        font-size: 1.2rem;    /* 稍微减小字体 */
+    }
+}
+
+/* 更小屏幕的额外调整 */
+@media screen and (max-width: 480px) {
+    .idea-content {
+        gap: 2rem;
+    }
+
+    .idea-details, .idea-promise {
+        padding: 2rem;        /* 减小内边距 */
     }
 }
