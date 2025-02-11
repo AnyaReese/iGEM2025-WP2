@@ -546,9 +546,46 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
                                 <h3>1. Materials</h3>
+                                <ul>
+                                    <li>Nanodrop spectrophotometer</li>
+                                    <li>Deionized water</li>
+                                    <li>Clean, lint-free lab wipes</li>
+                                    <li>Calibrated pipettor (0.5-2 μL)</li>
+                                    <li>Sample buffer</li>
+                                    <li>Protein/DNA samples</li>
+                                </ul>
 
+                                <h3>2. Procedure</h3>
+                                <ol>
+                                    <li>
+                                        <p>Clean the optical surfaces by pipetting 2-3 μL deionized water onto the lower optical surface.</p>
+                                    </li>
+                                    <li>
+                                        <p>Close lever arm to contact upper pedestal with water. Lift arm and wipe both surfaces with clean lab wipe.</p>
+                                    </li>
+                                    <li>
+                                        <p>Open NanoDrop software and select Nucleic Acid application. Perform blank measurement with 1 μL buffer.</p>
+                                    </li>
+                                    <li>
+                                        <p>Clean optical surfaces after blank measurement.</p>
+                                    </li>
+                                    <li>
+                                        <p>Select appropriate constant for sample measurement.</p>
+                                    </li>
+                                    <li>
+                                        <p>Dispense 1 μL sample onto lower optical pedestal and close lever arm.</p>
+                                    </li>
+                                    <li>
+                                        <p>Select "Measure" in software. Review calculated concentration and purity ratios.</p>
+                                    </li>
+                                    <li>
+                                        <p>Review spectral output to assess sample quality.</p>
+                                    </li>
+                                    <li>
+                                        <p>Verify characteristic nucleic acid profile.</p>
+                                    </li>
+                                </ol>
                             </div>
                          </section> 
 
@@ -560,9 +597,54 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
                                 <h3>1. Materials</h3>
+                                <ul>
+                                    <li>SDS-PAGE equipment</li>
+                                    <li>Coomassie Brilliant Blue G (0.05%)</li>
+                                    <li>Methanol solutions (50% and 10%)</li>
+                                    <li>Microcentrifuge tubes</li>
+                                    <li>SpeedVac centrifugal concentrator</li>
+                                    <li>Achromobacter protease</li>
+                                    <li>Tris-HCl buffer (0.1 mol/L, pH 9.0)</li>
+                                    <li>Tween-20</li>
+                                    <li>Ultrafree MC filter (22-μm)</li>
+                                    <li>HPLC system with C18 column</li>
+                                </ul>
 
+                                <h3>2. Procedure</h3>
+                                <ol>
+                                    <li>
+                                        <p>Separate target protein via SDS-PAGE. Stain with 0.05% Coomassie Blue G (15-30 min). Destain with 10% methanol/5% acetic acid solution.</p>
+                                    </li>
+                                    <li>
+                                        <p>Cut protein bands and transfer to microcentrifuge tubes. Include control gel section.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 1 mL 50% methanol, incubate 20 min at room temperature, discard supernatant.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 1 mL 10% methanol, incubate 20 min at room temperature, discard supernatant.</p>
+                                    </li>
+                                    <li>
+                                        <p>Dry gel pieces in SpeedVac (2 min).</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 10 μL Achromobacter protease and minimum Tris-HCl buffer with 0.1% Tween-20.</p>
+                                    </li>
+                                    <li>
+                                        <p>Incubate at 30°C for 24 hours.</p>
+                                    </li>
+                                    <li>
+                                        <p>Centrifuge and filter through 22-μm Ultrafree MC filter at 12,000 rpm (2 min).</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 50% acetonitrile/0.1% TFA solution to gel fragments, incubate at 4°C (30 min).</p>
+                                    </li>
+                                    <li>
+                                        <p>Concentrate the sample in a SpeedVac centrifugal concentrator to a volume of less than 100 μl. Add an appropriate amount of HPLC equilibration buffer to prepare the sample for HPLC analysis. Use reverse-phase HPLC with a C18 column to separate the peptides from the digest. Elute the peptides using a gradient of acetonitrile/2-propanol (3:1) containing 0.09% TFA. Detect the peptide UV absorption at 214 nm (for peptide bonds) and 295 nm (for tryptophan).</p>
+                                    </li>
+                                </ol>
+                                
                             </div>
                          </section> 
 
@@ -574,9 +656,28 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
-                                <h3>1. Materials</h3>
 
+                                <!-- pdf -->
+                                <div class="pdf-container">
+                                    <iframe class="pdf-viewer" src="../../static/img/protocol/P021-单页-V23.1.pdf"></iframe>
+                                </div>
+                                <!-- Materials section -->
+                                <h3>1. reaction system</h3>
+                                <figure>    
+                                    <img src="../../static/img/protocol/colony-reaction.png" alt="Colony PCR" style="width: 50%;">
+                                </figure>
+
+                                <h3>2. reaction procedure</h3>
+                                <figure>    
+                                    <img src="../../static/img/protocol/colony-procedure.png" alt="Colony PCR" style="width: 50%;">
+                                </figure>
+
+                                <p>Notes:</p>
+                                <ul>
+                                    <li>This initial denaturation condition is suitable for the majority of amplification reactions and can be adjusted based on the complexity of the template structure. If the template structure is complex, the initial denaturation time can be extended to 5 - 10 minutes to improve the denaturation effect. </li>
+                                    <li>TThe annealing temperature needs to be adjusted according to the Tm value of the primers, generally set to 3 - 5°C lower than the primer Tm value; for complex templates, it is necessary to adjust the annealing temperature and extend the extension time to achieve efficient amplification.</li>
+                                </ul>
+                                
                             </div>
                          </section> 
 
@@ -588,8 +689,43 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
-                                <h3>1. Materials</h3>
+                                <ol>
+                                    <li>
+                                        <p>Refer to the table below to prepare the reaction system, and add an appropriate amount of this product to a final concentration of 0.5 - 1×.</p>
+                                        <figure>
+                                            <img src="../../static/img/protocol/dna-aga.png" alt="DNA Gel Electrophoresis" style="width: 60%;">
+                                        </figure>
+                                    </li>
+                                    <li>2. Gently mix, briefly centrifuge to collect at the bottom of the tube, and take an appropriate amount for agarose gel electrophoresis or non-denaturing polyacrylamide gel electrophoresis.</li>
+                                </ol>
+
+                                <ol>
+                                    <li><p>Gel Preparation</p>
+                                        <ul>
+                                            <li>Measurel g agarose powder and mix it with 100 mL lxTAE buffer in a Schott fask to useas an agarose gel stock. The amount and concentration can be adjusted, e.g. make 2gagarose in 100 mL 1xTAE a 2% gel.</li>
+                                            <li>Microwave the mixture for 1 to 3 min until the agarose is dissolved completely. To not over-boil the solution, it can help to microwave in pulses and swirl the flask occasionally.</li>
+                                            <li>Let the mixture cool down to about 50°C(about 5 min)</li>
+                                            <li>Fill the amount of agarose solution needed for the gel size in a 50 mL falcon tube and addROTI®GelStain in a ratio of 1 pL gel stain to 10 mL agarose solution. Mix well.</li>
+                                            <li>Set up the agarose gel tray with a gel comb of vour choice) in place and pour the mixturein.</li>
+                                            <li>  6. Place the poured gel for 10 to 15 min at 4'℃ or let it sit at room temperature for 30 minuntil it has solidifed.</li>
+                                        </ul>
+                                    </li>
+                                    <li><p>Sample Preperation</p>
+                                        <ul>
+                                            <li>Prepare the samples by adding 5 μL 6x loading dye to 25 pLof the sample in microcen-trifuge tubes.</li>
+                                            <li>Mix well by pipetting up and down.</li>
+                                        </ul>
+                                    </li>
+                                    <li><p>Running the Gel</p>
+                                        <ul>
+                                            <li>Place the solidifed agarose gel with the comb at the negative electrode (black)on thetray in the electrophoresis system.</li>
+                                            <li>Fill the system with lxTAE buffer until the gel is completely covered.</li>
+                                            <li>Carefully remove the gel comb.</li>
+                                            <li>Connect the electrodes to the power pack and run the gel for 40 min at 100V5.</li>
+                                            <li>Turn off the power and disconnect the electrodes when the dye line is approximately 75to 80% down the gel.</li>
+                                            <li>Take the gel out of the system and carefully remove it from the agarose gel tray. The gel is ready for analysis with UV-light and gel extraction.</li>
+                                        </ul>
+                                </ol>
 
                             </div>
                          </section> 
@@ -602,9 +738,67 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
-                                <h3>1. Materials</h3>
+                                <!-- pdf -->
+                                <div class="pdf-container">
+                                    <iframe class="pdf-viewer" src="../../static/img/protocol/DC301说明书-V22.1.pdf"></iframe>
+                                </div>
+                                <h3>1. Gel Recovery Protocol</h3>
+                                <ol>
+                                    <li>
+                                        <p>After DNA electrophoresis completion, quickly cut out the gel containing target DNA fragments under UV lamp. It is recommended to use paper towel to absorb surface liquid, cut into small pieces, and remove excess gel. Weigh the gel (excluding empty tube weight); 100 mg gel equals 100 μl volume as gel volume unit.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add equal volume of Buffer GDP. Incubate in 50-55°C water bath for 7-10 minutes, adjusting time based on gel size to ensure complete dissolution. Invert and mix twice during water bath to accelerate dissolution.</p>
+                                        <ul>
+                                            <li>Adding 1-3x volume Buffer GDP doesn't affect DNA recovery. For DNA fragments ≤100 bp, add 3x Buffer GDP, dissolve in water bath, then add equal volume isopropanol, mix, proceed to step 3.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Briefly centrifuge to collect wall droplets. Place FastPure DNA Mini Columns-G into 2 ml Collection Tubes, transfer up to 700 μl dissolved gel solution, centrifuge at 12,000 rpm (13,800 × g) for 30-60 seconds. For volumes >700 μl, repeat process with remaining solution.</p>
+                                    </li>
+                                    <li>
+                                        <p>Discard filtrate, return column to collection tube. Add 300 μl Buffer GDP to column. Stand 1 minute. Centrifuge at 12,000 rpm (13,800 × g) for 30-60 seconds.</p>
+                                    </li>
+                                    <li>
+                                        <p>Discard filtrate, return column to collection tube. Add 700 μl Buffer GW (with anhydrous ethanol). Centrifuge at 12,000 rpm (13,800 × g) for 30-60 seconds.</p>
+                                        <ul>
+                                            <li>Add Buffer GW along column wall or invert/mix 2-3 times to wash off adhered salt.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Repeat step 5.</p>
+                                        <ul>
+                                            <li>Two Buffer GW washes ensure complete salt removal for subsequent experiments.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Discard filtrate, return column to collection tube. Centrifuge at 12,000 rpm (13,800 × g) for 2 minutes.</p>
+                                    </li>
+                                    <li>
+                                        <p>Place column in 1.5 ml sterile tube, add 20-30 μl Elution Buffer to column center, stand 2 minutes. Centrifuge at 12,000 rpm (13,800 × g) for 1 minute. Discard column, store DNA at -20°C.</p>
+                                        <ul>
+                                            <li>For maximum yield, re-adsorb solution onto column and repeat step 8. For >3 kb fragments, preheat Elution Buffer to 55°C for better recovery.</li>
+                                        </ul>
+                                    </li>
+                                </ol>
 
+                                <h3>2. PCR Reaction Solution Recovery Protocol</h3>
+                                <p>Suitable for recovering/purifying DNA from PCR products, enzymatic reactions, or crude DNA. Removes contaminants like nucleotides, primers, primer dimers, salt ions, and enzymes.</p>
+                                
+                                <ol>
+                                    <li>
+                                        <p>Briefly centrifuge PCR/enzymatic reaction/crude DNA products. Measure volume, transfer to sterile 1.5/2 ml tube. For volumes <100 μl, add sterile water to 100 μl. Dilute high-concentration genomic DNA to 300 μl for better recovery.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 5x volume Buffer GDP, mix by inverting/vortexing. For DNA fragments <100 bp, add 1.5x volume (sample + Buffer GDP) anhydrous ethanol.</p>
+                                    </li>
+                                    <li>
+                                        <p>Place column in collection tube. Transfer up to 700 μl solution, centrifuge at 12,000 rpm (13,800 × g) for 30-60 seconds. For volumes >700 μl, repeat with remaining solution.</p>
+                                    </li>
+                                    <li>
+                                        <p>Continue with steps 5-8 from Gel Recovery Protocol.</p>
+                                    </li>
+                                </ol>
                             </div>
                          </section> 
 
@@ -616,9 +810,86 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
-                                <h3>1. Materials</h3>
-
+                                <h3>1. Basic Protocol</h3>
+                                <ol>
+                                    <li>
+                                        <p>Seeding Cells:</p>
+                                        <ul>
+                                            <li>Seed cells into a 96-well plate with a final volume of 100 μl.</li>
+                                            <li>If there is no drug treatment, you can skip directly to step 5 after step 1.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Pre-incubation:</p>
+                                        <ul>
+                                            <li>Pre-incubate in a culture incubator (time is determined based on specific experimental requirements, with a recommended time of 18 - 24 hours).</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Adding Drugs:</p>
+                                        <ul>
+                                            <li>Add the corresponding drugs to the wells.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Cultivation:</p>
+                                        <ul>
+                                            <li>Cultivate in a cell culture incubator at 37°C.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Adding CCK-8 Solution:</p>
+                                        <ul>
+                                            <li>Add 10 μl of CCK-8 Solution to the 96-well plate (if it's not a 96-well plate, ensure that the amount of CCK-8 Solution added is 10% of the volume of the culture medium in each well).</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Incubation:</p>
+                                        <ul>
+                                            <li>Incubate in the incubator for 1 - 4 hours (the time can be adjusted).</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Measurement:</p>
+                                        <ul>
+                                            <li>Measure the absorbance at 450 nm using a microplate reader.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Creating a Standard Curve</p>
+                                        <ol type="a">
+                                            <li>Collect cells that can be passaged, determine cell density, and then seed the cells.</li>
+                                            <li>Dilute the cells in a stepwise manner using culture medium at a ratio (e.g.1:2) to create a gradient of cell concentrations, typically with 5-7 gradients and 3-6 replicates per group. Seed into a 96-well plate with 100 μl of cell suspension per well.</li>
+                                            <li>Add 10 μl of CCK-8 Solution to each well, gently mix, and incubate in a 37°C incubator for a certain period (depending on the type of cells, usually 1-4 hours). Measure the absorbance at 450 nm using a microplate reader, plot the standard curve with cell count as the x-axis and absorbance as the y-axis. This standard curve can be used to determine the cell count of unknown samples, provided that the experimental conditions are consistent with those used to create the curve.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <p>Cell Viability Assay</p>
+                                        <ol type="a">
+                                            <li>Seed cells into a 96-well plate (100 μl/well, avoiding bubble formation) and pre-incubate for 24 hours, while setting up a blank and control groups.</li>
+                                            <li>Add 10 μl of CCK-8 Solution to each well (it is recommended to add along the wall of the well plate, gently shake to avoid bubble formation).</li>
+                                            <li>Incubate in a cell culture incubator for a certain period.</li>
+                                            <li>Measure the absorbance at 450 nm using a microplate reader.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <p>Cell Proliferation and Toxicity Assay</p>
+                                        <ol type="a">
+                                            <li>Seed cells into a 96-well plate (100 μl/well, avoiding bubble formation) and pre-incubate for 24 hours, while setting up a blank and control groups.</li>
+                                            <li>Add different concentrations of the test compound to each well and incubate in the incubator for a period (determined by the test compound).</li>
+                                            <li>Add 10 μl of CCK-8 Solution to each well (it is recommended to add along the wall of the well plate, gently shake to avoid bubble formation) and incubate in the incubator for a certain period.</li>
+                                            <li>Measure the absorbance at 450 nm using a microplate reader.</li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <p>Calculation Formula</p>
+                                        <p>Cell viability percentage = [(A-C)/(B-C)] × 100%</p>
+                                        <p>Inhibition percentage = [(B-A)/(B-C)] × 100%</p>
+                                        <p>A: Absorbance of the experimental group (including culture medium, cells, test compound, and CCK-8 Solution)</p>
+                                        <p>B: Absorbance of the control group (including culture medium, cells, and CCK-8 Solution)</p>
+                                        <p>C: Absorbance of the blank group (including culture medium and CCK-8 Solution)</p>
+                                    </li>
+                                </ol>
                             </div>
                          </section> 
 
@@ -630,9 +901,27 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
-                                <h3>1. Materials</h3>
-
+                                <!-- pdf -->
+                                <div class="pdf-container">
+                                    <iframe class="pdf-viewer" src="../../static/img/protocol/Fast-T1化学感受态细胞-V21.1.pdf"></iframe>
+                                </div>
+                                <ol>
+                                    <li>
+                                        <p>Take the Fast-T1 competent cells out from -70°C, quickly place them on ice to thaw, add the target DNA (plasmid or ligation product), gently tap the wall of the tube to mix (avoid using a pipette to draw up), and let it stand on ice for 30 minutes.</p>
+                                    </li>
+                                    <li>
+                                        <p>After a 30-second heat shock at 42°C, quickly place the tube back on ice for 2 minutes, do not shake the centrifuge tube.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 900μl of LB or SOC liquid medium (without antibiotics) to the centrifuge tube, mix well, and then incubate at 37°C with shaking at 200 rpm for 1 hour.</p>
+                                    </li>
+                                    <li>
+                                        <p>Depending on the experimental requirements (plasmid or ligation product transformation): if it is a plasmid, you can mix by inverting the tube and directly take 100μl to spread on an LB agar plate containing the appropriate antibiotics; if it is a ligation product, it is recommended to centrifuge at 5,000 rpm (2,400 × g) for 3 minutes, discard the 900μl supernatant, resuspend the bacteria with the remaining medium, and then evenly spread on an LB agar plate containing the appropriate antibiotics.</p>
+                                    </li>
+                                    <li>
+                                        <p>Place the plate upright in a 37°C incubator for 10 minutes, after the bacterial solution has been completely absorbed, invert the plate for overnight culture.</p>
+                                    </li>
+                                </ol>
                             </div>
                          </section> 
 
@@ -644,9 +933,34 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <!-- Materials section -->
-                                <h3>1. Materials</h3>
+                                <h3>For Solid Medium</h3>
+                                <ol>
+                                    <li>
+                                        <p>To cultivate cells on agar plates, incubate overnight at 37°C.</p>
+                                    </li>
+                                    <li>
+                                        <p>For genetically modified bacteria, use agar plates containing the antibiotic which the bacteria carry a resistance for; for non-resistant bacteria, use plates without ampicillin.</p>
+                                    </li>
+                                </ol>
 
+                                <h3>For Liquid Medium</h3>
+                                <ol>
+                                    <li>
+                                        <p>To cultivate cells in liquid media, incubate at 37°C by shaking at 250 rpm.</p>
+                                    </li>
+                                    <li>
+                                        <p>When inducing protein expression via an inducable promotor, it is generally best to reduce cultivation temperature at the point of induction. Reduce to 18°C.</p>
+                                    </li>
+                                    <li>
+                                        <p>When inoculating the liquid culture from a cryostock, take a small amount of the frozen culture (using a pipette tip) and transfer it to 4 mL of liquid medium.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 4 µL of ampicillin stock (100mg/mL) to the culture if antibiotic selection is required (for pre-culture).</p>
+                                    </li>
+                                    <li>
+                                        <p>From the pre-culture, proceed to prepare the main culture as needed.</p>
+                                    </li>
+                                </ol>
                             </div>
                          </section> 
 
