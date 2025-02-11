@@ -120,7 +120,7 @@
                         <div class="t2">
                             <a href="#flow-cytometry">Flow Cytometry</a>
                             <a href="#confocal">Confocal and Fluorescence Microscopy</a>
-                            <a href="#molecular-cloning">Molecular Cloning (Restriction Digestion)</a>
+                            <a href="#molecular-cloning">Molecular Cloning (Restriction Digestion and Ligation)</a>
                             <a href="#sanger">Sanger sequencing</a>
                             <a href="#image-j">Image-J</a>
                             <a href="#bleach-chase">Bleach-chase</a>
@@ -969,23 +969,229 @@
                 <!-- ... similar structure for other modules ... -->
 
                 <!-- Module 2 start -->
-                <section id="module2" class="module">
-                    <div class="module-header">
-                        <h2>Module 2</h2>
+                <section id="module2" class="parent-section">
+                    <div class="section-header">
+                        <h1>Module 2: Fusion Protein Module</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
                     </div>
-                    <div class="module-content">
-                        <h2>Module 2: Fusion Protein Module</h2>
-                        <section id="module2-section1" class="sub-section">
+                    <div class="section-content">
+                        <section id="flow-cytometry" class="sub-section">
                             <div class="section-header">
-                                <h2>Section 1</h2>
+                                <h2>Flow Cytometry</h2>
                                 <button class="section-collapse-btn">
                                     <ion-icon name="chevron-up-outline"></ion-icon>
                                 </button>
                             </div>
                             <div class="section-content">
-                                
+                                <ol>
+                                    <li>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</li>
+                                    <li>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</li>
+                                    <li>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</li>
+                                    <li>Resuspend the collected cells in PBS.</li>
+                                    <li>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</li>
+                                    <li>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</li>
+                                </ol>
                             </div>
                         </section>
+
+                        <section id="microscopy" class="sub-section">
+                            <div class="section-header">
+                                <h2>Confocal and Fluorescence Microscopy</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>Seed cells (1.0 × 10^4 cells per well) in 24-well plates (Corning, NY, USA) and incubate at 37 °C overnight until 30% confluency.</li>
+                                    <li>Treat the cells with recombinant proteins at the indicated concentrations.</li>
+                                    <li>After incubation for 12 hours, wash the cells three times with precooled PBS (2.7 mM KCl, 137 mM NaCl, 10 mM Na2HPO4, and 2 mM KH2PO4).</li>
+                                    <li>Fix the cells with paraformaldehyde (PFA, 4%) (Sangon, Shanghai, China).</li>
+                                    <li>Stain the cells with 4,6-diamidino-2-phenylindole (DAPI) (Beyotime, Haimen, China) in the dark.</li>
+                                    <li>Image the intracellular fluorescence distribution of recombinant proteins using confocal laser scanning microscopy (CLSM) (Nikon, Tokyo, Japan) and fluorescence microscopy (Nikon, Tokyo, Japan).Analyze the data using NLS software.</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="molecular-cloning" class="sub-section">
+                            <div class="section-header">
+                                <h2>Molecular Cloning (Restriction Digestion and Ligation)</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>Restriction Site Selection: Choose a restriction endonuclease whose recognition sequence is unique in the target vector and absent in the target fragment. For double digestion, consider the effect of buffer compatibility, and perform sequential digestion if necessary. For single digestion, cohesive ends, or blunt ends, dephosphorylate the vector using alkaline phosphatase.</li>
+                                    <li>Primer Design and PCR Amplification: Introduce the corresponding restriction site and protective bases at the 5' end of the primer. Use a high-fidelity DNA polymerase for amplification and optimize the reaction conditions.</li>
+                                    <li>Purification and Recovery of PCR Products: Perform gel electrophoresis to verify the PCR product, excise the gel fragment within 3 minutes, and use NanoDrop to measure DNA concentration. Then, proceed with restriction digestion of the purified product.</li>
+                                    <li>Ligation Reaction: Catalyze ligation using T4 DNA ligase, maintaining a vector-to-insert molar ratio of 1:1 to 1:10 (optimal at 1:3). For blunt-ended vectors, dephosphorylation is required before ligation.</li>
+                                    <li>Transformation and Plating: Use competent cells suitable for cloning. Mix the recombinant DNA with competent cells at a volume ratio of 1:10 and perform heat shock according to the protocol. Centrifuge the treated cell suspension at 2500×g for 3 minutes, remove excess LB medium using a pipette, resuspend the pellet in 100 µL of remaining medium, and spread on an agar plate.</li>
+                                    <li>Screening and Identification of Single Colonies: Pick well-grown single colonies and suspend them in a 1.5 mL or 2 mL EP tube containing 10 µL of ddH₂O. Mix thoroughly and use 1–2 µL of the suspension as a template for colony PCR (10/20 µL reaction system) to confirm successful cloning.</li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="sanger" class="sub-section">
+                            <div class="section-header">
+                                <h2>Sanger sequencing</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>Purify the plasmid with a plasmid miniprep kit (see protocol for plasmid isolation)</li>
+                                    <li>Measure the concentration of the plasmid with the NanoDrop the amount of DNA usedfor sequencing should be approximately 30-100 ng/μl
+                                        <ol>
+                                            <li>See NanoDrop Protocol.</li>
+                                            <li>If the concentration is too high, dilute the sample with nuclease free water. The ideal concentration is around 80 ng uL-1</li>
+                                        </ol>
+                                    </li>
+                                    <li>Mix 6 ul of the DNA with 6 ul of a forward sequencing primer in one sequencing tube.
+                                        <ol>
+                                            <li>If you want to sequence both strands of your DNA sample, mix 6 ul of DNA with 6ul of a reverse sequencing primer in another sequencing tube.</li>
+                                            <li>Do not add forward and reverse primers in the same tube!</li>
+                                        </ol>
+                                    </li>
+                                    <li>Label the prepared sequencing samples with the barcodes and write down which sequencing ID corresponds to which sample in your lab book.</li>
+                                    <li>Send your samples to the sequencing company where you have the barcodes from. (Oursamples were sequenced by eurofins）</li>
+                                    <li>The sequencing ID from the barcode can be used to view the results of the sequencing onthe company's website.</li>
+                                    <li>After receiving the sequencing results, review them and compare them to the expectedsequence. To do so, it is easiest to do a sequence alignment.
+                                        <ol>
+                                            <li>Normally you will receive a data file containing the signal strengths. Reviewing thisdata you can get a glimpse of the sequencing quality and the purity of the isolatedplasimd.</li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="image-j" class="sub-section">
+                            <div class="section-header">
+                                <h2>Image-J</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>
+                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    </li>
+                                    <li>
+                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    </li>
+                                    <li>
+                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
+                                    </li>
+                                    <li>
+                                        <p>Resuspend the collected cells in PBS.</p>
+                                    </li>
+                                    <li>
+                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
+                                    </li>
+                                    <li>
+                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="bleach-chase" class="sub-section">
+                            <div class="section-header">
+                                <h2>Bleach-chase</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>
+                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    </li>
+                                    <li>
+                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    </li>
+                                    <li>
+                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
+                                    </li>
+                                    <li>
+                                        <p>Resuspend the collected cells in PBS.</p>
+                                    </li>
+                                    <li>
+                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
+                                    </li>
+                                    <li>
+                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="his-tag" class="sub-section">
+                            <div class="section-header">
+                                <h2>His tag affinity purification</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>
+                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    </li>
+                                    <li>
+                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    </li>
+                                    <li>
+                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
+                                    </li>
+                                    <li>
+                                        <p>Resuspend the collected cells in PBS.</p>
+                                    </li>
+                                    <li>
+                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
+                                    </li>
+                                    <li>
+                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="uv-vis" class="sub-section">
+                            <div class="section-header">
+                                <h2>UV-Vis (to measure protein absorption)</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>
+                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    </li>
+                                    <li>
+                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    </li>
+                                    <li>
+                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
+                                    </li>
+                                    <li>
+                                        <p>Resuspend the collected cells in PBS.</p>
+                                    </li>
+                                    <li>
+                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
+                                    </li>
+                                    <li>
+                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+                        
                     </div>
                 </section>
 
