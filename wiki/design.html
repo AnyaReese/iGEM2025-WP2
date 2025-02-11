@@ -113,6 +113,28 @@
                     </div>
 
                     <div class="t1">
+                        <span>Genetic Pathway Design</span>
+                        <div class="t2">
+                            <a href="#production">Production of the Therapeutic Molecule RNF114</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#permeability">Enhancing Permeability</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#stability">Enhancing Stability</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#modification">Modifications to Enhance Protein Targeting</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#fusion">The design of fusion protein</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#preferences">References</a>
+                        </div>
+                    </div>
+
+                    <div class="t1">
                         <span>Hydrogel</span>
                         <div class="t2">
                             <a href="#overview">Overview</a>
@@ -186,7 +208,449 @@
                             </div>
                         </section>
                     </div>
+                </section>
 
+                <section id="genetic-pathway" class="parent-section">
+                    <div class="section-header">
+                        <h1>Genetic Pathway Design</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <!-- Production section -->
+                        <section id="production" class="sub-section">
+                            <div class="section-header">
+                                <h2>Production of the Therapeutic Molecule RNF114</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>We have decided to use a non-invasive biological factory loaded onto contact lenses to continuously release therapeutic drugs for the treatment of cataracts. We have chosen RNF114 as the main component of our therapeutic drug and selected the SHuffle E. coli expression system as our chassis. Therefore, we decided to express RNF114 in SHuffle by introducing exogenous genes.</p>
+                                
+                                <p>We obtained the human RNF114 sequence from NCBI. Since prokaryotic cells lack the splicing mechanisms present in eukaryotic cells, we aim to extract and connect its CDS sequence using PCR to obtain a gene sequence without introns, thus overcoming the lack of splicing modifications.</p>
+                                
+                                <p>However, ocular drug delivery is not as straightforward as we anticipated. The intraocular efficiency of non-invasive drug delivery systems is still severely hindered by the eye's defense barriers—the antimicrobial clearance mechanism of the tear film, the multiple barriers to transcorneal drug delivery, and the dilution and washout by aqueous humor all significantly interfere with and impede our drug delivery effectiveness.<sup><a href="#pref1">[1]</a></sup> Existing methods like liposome encapsulation are also challenging in terms of loading and achieving sustained release within bioengineering applications. Therefore, we intend to resolve the drug delivery issues through protein modification techniques by enhancing permeability, stability, and targeting.</p>
+                            </div>
+                        </section>
+
+                        <!-- Permeability section -->
+                        <section id="permeability" class="sub-section">
+                            <div class="section-header">
+                                <h2>Enhancing Permeability</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+
+                                <p>The target protein synthesized by the engineered bacteria needs to be guided by a signal peptide to be released extracellularly through the cell membrane. We selected pelB as the signal peptide for the target protein. The PelB signal peptide is derived from the amino-terminal leader sequence of PelB of Erwinia carotovora. It is a heterologous signal peptide currently widely used in the Escherichia coli expression system and has a wide range of applications in the secretion and expression of human recombinant therapeutic proteins.<sup><a href="#pref2">[2]</a></sup></p>
+
+
+                                <p>The TAT peptide can enhance membrane permeability through different mechanisms and has significant potential in promoting the delivery of drug molecules to target cells.<sup><a href="#pref3">[3]</a></sup> TAT-(47–58) is a cell-penetrating peptide derived from the HIV-1 regulatory protein TAT and can be used in multiple systems, including eyes. Studies have shown that conjugating TAT peptides with RNF114 for drug delivery significantly improves the opacity in cataract models.<sup><a href="#pref4">[4]</a></sup></p>
+                                
+                                <p>We plan to use gene fusion technology to modify the RNF114 protein with the TAT peptide sequence, increasing its transmembrane capability. At the same time, flexible linker peptides will be used to avoid affecting the drug's three-dimensional structure, allowing it to smoothly cross the corneal barrier and exert its effect.</p>
+
+                                <p>Although cell-penetrating peptides (CPPs) effectively promote the endocytosis of cell membrane-impermeable molecules, leading to significant progress in the application of bioactive macromolecules, most endocytosed proteins remain trapped in endosomes and are eventually degraded in lysosomes. Therefore, the endosomal escape mechanism of drugs is also a crucial consideration in drug design.</p>
+                                
+                                <p>To enhance drug permeability and endosomal escape, we identified the GALA peptide. GALA is a synthetic amphiphilic peptide derived from a mutated sequence of HA2, and its application in delivering drugs or nucleic acids with cationic liposomes and nanocarriers has shown significant membrane-disruptive properties. Moreover, studies have found that a newly engineered peptide, GALA3, significantly improves the endosomal escape efficiency of BLF1 fusion proteins.<sup><a href="#pref5">[5]</a></sup> Therefore, we plan to attach it to the drug molecule to achieve endosomal escape functionality.</p>
+                            </div>
+                        </section>
+
+                        <!-- Stability section -->
+                        <section id="stability" class="sub-section">
+                            <div class="section-header">
+                                <h2>Enhancing Stability</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Due to the antimicrobial clearance mechanism of the tear film, RNF114 protein is prone to degradation. To address this issue, we first used the ExPASy tool to predict the protein's degradation-prone sites, aiming to enhance its stability through modifications. Initially, PEGylation was considered to protect vulnerable sites. However, PEGylation and glycosylation typically require chemical conjugation methods performed in vitro, making it difficult to integrate with our gene pathway approach.</p>
+                                
+                                <p>Directed evolution of proteins might be a good method and has been frequently used in past projects (such as <a href="https://2022.igem.wiki/tu-dresden/description" target="_blank">TU Dresden iGEM 2022</a>). However, since we couldn't find a way to link mutations in the RNF114 protein to cell survival, this approach isn't feasible. The use of protease inhibitors was also rejected due to potential impacts on normal cellular activities.</p>
+                                <p>Ultimately, we focused on the modification with rare amino acids and the simultaneous release of polyols.</p>
+
+                                <h3>Simultaneous Release of Polyols</h3>
+                                <p>Polyols stabilize the native folded conformation of proteins by preferential exclusion and enhanced hydration. In their native conformation, certain cleavage sites may be concealed or partially shielded by the internal structure of protein molecules, making it difficult for enzymes to access and bind to them.</p>
+                                
+                                <p>Polyols form a hydration layer around proteins (a result of the preferential exclusion effect). This hydration layer acts as a "protective shield" on the protein surface, spatially hindering direct contact between proteases and the protein surface. Enzyme molecules need to penetrate this hydration layer to approach the protein surface and bind to cleavage sites. This steric hindrance effect reduces the effective collision frequency between enzymes and proteins, thereby decreasing the rate of enzymatic degradation.<sup><a href="#pref6">[6]</a></sup></p>
+
+                                <p>Protein aggregates typically have a larger surface area, and their structure may be more loose and unstable, making cleavage sites more exposed. Therefore, protein aggregates are generally more susceptible to protease degradation than monomeric proteins. Polyols effectively inhibit protein aggregation, maintaining proteins in monomeric or correctly folded oligomeric forms. This reduces the number of protein aggregates that are prone to enzymatic degradation, thereby indirectly lowering the overall rate of enzymatic degradation.</p>
+
+                                <p>Thus, studies have shown that hydroxyl-containing organic compounds (sugars or polyols) can enhance protein stability.</p>
+
+                                <p>Coincidentally, we found that the hyaluronic acid (HA) secretion module, retained to alleviate dry eye symptoms during contact lens wear, has unexpected functions. Besides moisturizing the eye surface and relieving dry eye, HA, as a polysaccharide, is also a promising excipient for ocular drug delivery. HA has high biocompatibility, biodegradability, and low immunogenicity, which can improve drug bioavailability. Existing studies include using hyaluronic acid for drug delivery to the cornea, conjunctiva, and anterior segment of the eye. For instance, pilocarpine's local ocular adjuvant acts on the sphincter pupillae.<sup><a href="#pref7">[7]</a></sup></p>
+
+                                <figure>
+                                    <img src="../static/img/design/ha-delivery.png" alt="Hyaluronic acid-assisted drug delivery">
+                                </figure>
+
+                                <p>Based on this, we speculate that this drug can maintain its stability from the ocular surface to the aqueous humor. Therefore, the simultaneous release of HA can ensure the stability of the drug molecules.</p>
+
+                                <h3>Rare Amino Acid Modification</h3>
+                                <p>The inspiration for this approach comes from a paper on "treating diabetes by eating cookies." The team introduced an aminoacyl-tRNA synthetase-tRNA pair into mammalian cells, which can recognize stop codons and incorporate special amino acids at these sites, allowing insulin mRNA containing stop codons to complete translation only in the presence of these special amino acids.<sup><a href="#pref8">[8]</a></sup></p>
+                                
+                                <p>We used ExPASy PeptideCutter to predict the sensitive sites of RNF114 for protease degradation. Statistics showed that phenylalanine at positions 151, 191, 27, 99, and 206 could be cleaved five times by enzymes, so we selected these five sites for replacement, modifying their codons to UAG.</p>
+                                <p>The plasmid constructed after RNF114 protein mutation is as follows:</p>
+
+                                <figure>
+                                    <img src="../static/img/design/plasmid-construction.png" alt="Plasmid construction after RNF114 mutation" style="width: 60%;">
+                                    <!-- <figcaption>Plasmid construction after RNF114 protein mutation</figcaption> -->
+                                </figure>
+
+                                <p>The pEVOL-pAzf plasmid can produce a tRNA synthetase/tRNA pair that recognizes UAG and carries p-azidophenylalanine:</p>
+
+                                <figure>
+                                    <img src="../static/img/design/trna-pair.png" alt="tRNA synthetase/tRNA pair mechanism" style="width: 60%;">
+                                    <!-- <figcaption>The pEVOL-pAzf plasmid producing tRNA synthetase/tRNA pair</figcaption> -->
+                                </figure>
+
+                                <p>By introducing both plasmids into the target strain, phenylalanine at the target sites in the RNF114 protein can be replaced with p-azidophenylalanine. The structures of the two amino acids are similar, so the replacement will not significantly affect the activity of RNF114, and the azido group can interfere with protease recognition, reducing the probability of cleavage.</p>
+
+                                <p>To address the issue of the rare amino acid source in contact lenses, we chose to embed it directly in hydrogel. We selected pHEMA/β-CD-CrHA (poly(2-hydroxyethyl methacrylate-methacrylic acid copolymer-hyaluronic acid-β-cyclodextrin) hydrogel). The β-CD cavity is hydrophobic, the outer surface is hydrophilic, and HA provides strong hydrophilic groups. As an amphiphilic amino acid, p-azidophenylalanine will have a strong interaction with this hydrogel, allowing it to be released slowly.</p>
+                            </div>
+                        </section>
+
+                        <!-- Targeting section -->
+                        <section id="modification" class="sub-section">
+                            <div class="section-header">
+                                <h2>Modifications to Enhance Protein Targeting</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>In order to achieve precise drug delivery and prevent harm caused by excessively high concentrations of drugs in tears and aqueous humor, the targeting specificity of the drug is crucial. Therefore, to ensure that the RNF114 protein can accurately reach the lens, we have chosen the aquaporin AQP0 on the membrane of lens fiber cells as the targeting marker, and designed short peptides that can specifically bind to it for precise delivery.</p>
+
+                                <h3>Why Choose AQP0?</h3>
+                                <ul>
+                                    <li>High conservation (90.8% similarity between humans and sheep)</li>
+                                    <li>Almost exclusive expression in lens fiber cells (about 50% of membrane proteins)</li>
+                                    <li>Minimal expression in other tissues</li>
+                                </ul>
+
+                                <h3>Brief introduction of AQP0</h3>
+                                <!-- pdb viewer -->
+                                <!-- <div class="protein-structure">
+                                    <div class="pdb-viewer-container">
+                                        <div id="viewport-3" data-structures='[
+                                            {
+                                                "path": "../static/img/design/1ymg.pdb",
+                                                "color": "#7CB9E8",
+                                                "name": "AQP0"
+                                            }
+                                        ]'></div>
+                                    </div>
+                                </div> -->
+                                <p>Aquaporin 0 (AQP0) , a protein in the eye lens, exists in two forms: junctional AQP0, which has low water permeability and aids in cell adhesion, and non-junctional AQP0, which has high water permeability and maintains osmotic balance.<sup><a href="#pref9">[9]</a></sup></p>
+                                <p>Non-junctional AQP0 converts to junctional AQP0 when its C-terminus is cleaved, causing structural changes that close the water channel. AQP0 interacts with many proteins through its C-terminus, such as：connexins, γ-crystallins, intermediate filaments, and Ezrin.<sup><a href="#pref10">[10]</a></sup></p>
+                                    
+                                <h3>Method of target peptide designing</h3>
+                                <ol>
+                                    <li>
+                                        <p><strong>ProEpiphary Development:</strong> A bioinformatics and AI-driven software for homolog screening, protein surface analysis, epitope identification and affinity prediction.</p>
+                                    </li>
+                                    <li>
+                                        <p><strong>AI-Assisted Design:</strong> Direct AI generation of binding peptides with subsequent AutoDock validation.</p>
+                                    </li>
+                                    <li>
+                                        <p><strong>Structural Biology Approach:</strong> Using RFdiffusion, ProteinMPNN, and AlphaFold2 for peptide design<sup><a href="#pref11">[11]</a></sup><sup><a href="#pref12">[12]</a></sup></p>
+                                    </li>
+                                </ol>
+
+                                <section id="peptide-design" class="sub-section">
+                                    <div class="section-header">
+                                        <h2>Method of Target Peptide Design</h2>
+                                        <button class="section-collapse-btn">
+                                            <ion-icon name="chevron-up-outline"></ion-icon>
+                                        </button>
+                                    </div>
+                                    <div class="section-content">
+                                        <h3>Method 1: ProEpiphary Development</h3>
+                                        <p>To address inefficiencies in targeted peptide design, we developed ProEpiphary, a bioinformatics and AI-driven software for homolog screening, protein surface analysis, epitope identification and affinity prediction to assist target peptide discovery.</p>
+
+                                        <h3>Method 2: AI-Assisted Direct Design</h3>
+                                        <p>We directly informed AI that we needed to design short peptide sequences that bind to the AQP0 protein, providing it with the regions that should be avoided, and then obtained several short peptide sequences. We used AutoDock for docking, performed affinity scoring, and selected the sequence with the highest score: LVFFARKVLLK. However, the reliability of this result is relatively low, and it was designed merely to facilitate the design of fusion proteins and plasmids.</p>
+                                        <figure>
+                                            <img src="../static/img/design/terminal.png" alt="AQP0 structure and key residues" style="width: 60%;">
+                                        </figure>
+                                        
+                                        <h3>Method 3: Structural Biology Approach</h3>
+                                        <p>Combining structural biology and computational design, we used tools such as RFdiffusion, ProteinMPNN, and AlphaFold2 to design short peptides targeting AQP0.<sup><a href="#pref11">[11]</a></sup><sup><a href="#2ref12">[12]</a></sup></p>
+
+                                        <h4>1. Identification of Key Residues</h4>
+                                        <p>Referring to the structural information of AQP0 (PDB ID: 1YMG, UniProt ID: P06624), we identified the amino acid residues in its key functional regions. We avoided these key residues in our design to ensure that the binding of the targeted peptide segment does not affect the basic functions of AQP0.</p>
+
+                                        <figure>
+                                            <img src="../static/img/design/aqp0-structure.png" alt="AQP0 structure and key residues">
+                                        </figure>
+
+                                        <h4>2. Structure Generation and Peptide Design</h4>
+                                        <p><strong>RFdiffusion:generate the structure of peptides</strong></p>
+                                        <p>As shown in Figure 2, RFdiffusion is a protein structure generation method based on the diffusion model. It can achieve unconstrained protein structure generation without conditional information.<sup><a href="#pref11">[11]</a></sup></p>
+
+                                        <figure>
+                                            <img src="../static/img/design/rfdiffusion.png" alt="RFdiffusion workflow">
+                                            <!-- <figcaption>Figure 2: RFdiffusion protein structure generation workflow</figcaption> -->
+                                        </figure>
+
+                                        <p>We truncated the functional amino acid residues in the red region, then set the peptide length to 10. Using RFdiffusion, we generated a total of 10 peptides and selected the optimal peptide, inputing it into ProteinMPNN to generate the sequence.</p>
+                                        <p>The sequence of AQP0:</p>
+                                        <p>SASFWRAICAEFFASLFYVFFGLGASLRWAGPLHVLQVALAFGLALATLVQAVGHISGAHVNPAVTFAFLVGSQMSLLRAICYMVAQLLGAVAGAAVLYSVTPPAVRGNLALNTLHPGVSVGQATIVEIFLTLQFVLCIFATYDERRNGRLGSVALAVGFSLTLGHLFGMYYTGAGMNPARSFAPAILTRNFTNHWVYWVGPVIGAGLGSLLYDFLLFPRLKSVSERLSILKG</p>
+                                        <p>The backbone coordinates of the generated short peptide:</p>
+                                        <div class="table-container">
+                                            <table class="coordinate-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Atom</th>
+                                                        <th>Amino acid</th>
+                                                        <th>index</th>
+                                                        <th>x</th>
+                                                        <th>y</th>
+                                                        <th>z</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr><td>N</td><td>GLY</td><td>1</td><td>-6.718</td><td>14.831</td><td>-2.556</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>1</td><td>-7.472</td><td>14.078</td><td>-3.551</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>1</td><td>-8.49</td><td>14.963</td><td>-4.257</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>1</td><td>-8.72</td><td>14.825</td><td>-5.459</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>2</td><td>-9.007</td><td>15.796</td><td>-3.546</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>2</td><td>-10.005</td><td>16.693</td><td>-4.115</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>2</td><td>-9.392</td><td>17.598</td><td>-5.176</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>2</td><td>-9.979</td><td>17.815</td><td>-6.235</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>3</td><td>-8.251</td><td>18.092</td><td>-4.917</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>3</td><td>-7.632</td><td>18.985</td><td>-5.888</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>3</td><td>-7.254</td><td>18.239</td><td>-7.161</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>3</td><td>-7.433</td><td>18.749</td><td>-8.268</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>4</td><td>-6.856</td><td>17.042</td><td>-7.023</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>4</td><td>-6.479</td><td>16.263</td><td>-8.196</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>4</td><td>-7.699</td><td>15.9</td><td>-9.033</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>4</td><td>-7.667</td><td>15.978</td><td>-10.261</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>5</td><td>-8.733</td><td>15.494</td><td>-8.37</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>5</td><td>-9.953</td><td>15.154</td><td>-9.092</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>5</td><td>-10.506</td><td>16.362</td><td>-9.838</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>5</td><td>-10.946</td><td>16.249</td><td>-10.982</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>6</td><td>-10.405</td><td>17.485</td><td>-9.256</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>6</td><td>-10.865</td><td>18.698</td><td>-9.923</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>6</td><td>-10.034</td><td>18.991</td><td>-11.165</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>6</td><td>-10.573</td><td>19.337</td><td>-12.217</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>7</td><td>-8.774</td><td>18.784</td><td>-11.042</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>7</td><td>-7.899</td><td>19.014</td><td>-12.186</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>7</td><td>-8.163</td><td>18.002</td><td>-13.294</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>7</td><td>-8.183</td><td>18.351</td><td>-14.474</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>8</td><td>-8.462</td><td>16.827</td><td>-12.904</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>8</td><td>-8.754</td><td>15.798</td><td>-13.895</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>8</td><td>-10.092</td><td>16.055</td><td>-14.577</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>8</td><td>-10.233</td><td>15.855</td><td>-15.783</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>9</td><td>-11.006</td><td>16.463</td><td>-13.831</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>9</td><td>-12.322</td><td>16.712</td><td>-14.407</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>9</td><td>-12.315</td><td>17.962</td><td>-15.278</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>9</td><td>-12.98</td><td>18.013</td><td>-16.313</td></tr>
+                                                    <tr><td>N</td><td>GLY</td><td>10</td><td>-11.481</td><td>18.853</td><td>-14.95</td></tr>
+                                                    <tr><td>CA</td><td>GLY</td><td>10</td><td>-11.389</td><td>20.06</td><td>-15.763</td></tr>
+                                                    <tr><td>C</td><td>GLY</td><td>10</td><td>-10.681</td><td>19.783</td><td>-17.083</td></tr>
+                                                    <tr><td>O</td><td>GLY</td><td>10</td><td>-11.121</td><td>20.232</td><td>-18.141</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <style>
+                                        .table-container {
+                                            max-height: 400px;
+                                            overflow-y: auto;
+                                            margin: 20px 0;
+                                        }
+
+                                        .coordinate-table {
+                                            width: 100%;
+                                            border-collapse: collapse;
+                                        }
+
+                                        .coordinate-table th,
+                                        .coordinate-table td {
+                                            border: 1px solid #ddd;
+                                            padding: 8px;
+                                            text-align: center;
+                                        }
+
+                                        .coordinate-table th {
+                                            background-color: #f5f5f5;
+                                            position: sticky;
+                                            top: 0;
+                                        }
+
+                                        .coordinate-table tr:nth-child(even) {
+                                            background-color: #f9f9f9;
+                                        }
+                                        </style>
+
+                                        <p><strong>3. ProteinMPNN:design suitable peptide sequences</strong></p>
+                                        <p>As shown in Figure 3, ProteinMPNN can generate amino acid sequences that can fold into the given backbone structure.We select three candidates with the strongest binding affinity from 100 generated peptide sequences.<sup><a href="#pref12">[12]</a></sup></p>
+                                        <figure>
+                                            <img src="../static/img/design/proteinmpnn.png" alt="ProteinMPNN workflow">
+                                        </figure>
+                                        <p>Select three sequences with the optimal glob scores:</p>
+                                        <figure>
+                                            <img src="../static/img/design/sequencetable.png" alt="glob scores">
+                                        </figure>
+
+                                        <p><strong>4. AlphaFold2:predict the structure of the candidate peptides</strong></p>
+                                        <p>AlphaFold2 can predict three-dimensional structures based on amino acid sequences and provide folding confidence (pLDDT) and similarity scores (PTM). We predict the structures of the peptide-AQP0 complexes using AlphaFold2 and select the most stable and functional peptides based on the pLDDT and PTM values.</p>
+                                        <p>Peptide sequence 1:LAAILALCAA</p>
+                                        <figure>
+                                            <img src="../static/img/design/pepseq.png" alt="AlphaFold2 structure prediction">
+                                            <!-- <figcaption>Figure 3: AlphaFold2 prediction results for the selected peptide sequence</figcaption> -->
+                                        </figure>
+                                        <p>In the JSON file of rank_1, pTM is 0.82. Select the PDB file of rank_1 and view the folding results：</p>
+                                        <figure></figure>
+                                            <img src="../static/img/design/fold.png" alt="AlphaFold2 structure prediction" style="width: 50%;">
+                                            <figcaption>The short red helix on the far right is the short peptide we designed, and on the left is the structure of AQP0. The amino acid residues at their binding site are specifically marked in to visualize their binding.</figcaption>
+                                        </figure>
+
+                                        <p>Peptide sequence 2: LAAILALVAA</p>
+                                        <figure>
+                                            <img src="../static/img/design/pepseq2.png" alt="AlphaFold2 structure prediction">
+                                            <!-- <figcaption>Figure 3: AlphaFold2 prediction results for the selected peptide sequence</figcaption> -->
+                                        </figure>
+                                        <p>In the JSON file of rank_1, pTM is 0.85. Select the PDB file of rank_1 and view the folding results：</p>
+                                        <figure>
+                                            <img src="../static/img/design/fold2.png" alt="AlphaFold2 structure prediction" style="width: 50%;">
+                                            <!-- <figcaption>The short red helix on the far right is the short peptide we designed, and on the left is the structure of AQP0. The amino acid residues at their binding site are specifically marked in to visualize their binding.</figcaption> -->
+                                        </figure>
+
+                                        <p>Peptide sequence 3: LAAILALVAS</p>
+                                        <figure>
+                                            <img src="../static/img/design/pepseq3.png" alt="AlphaFold2 structure prediction">
+                                            <!-- <figcaption>Figure 3: AlphaFold2 prediction results for the selected peptide sequence</figcaption> -->
+                                        </figure>
+                                        <p>In the JSON file of rank_1, pTM is 0.86. Select the PDB file of rank_1 and view the folding results：</p>
+                                        <figure>
+                                            <img src="../static/img/design/fold3.png" alt="AlphaFold2 structure prediction" style="width: 50%;">
+                                            <!-- <figcaption>The short red helix on the far right is the short peptide we designed, and on the left is the structure of AQP0. The amino acid residues at their binding site are specifically marked in to visualize their binding.</figcaption> -->
+                                        </figure>
+                                        
+                                        
+                                    </div>
+                                </section>
+
+                                <!-- Continue with structural analysis results... -->
+                            </div>
+                        </section>
+
+                        <!-- Fusion Protein Design section -->
+                        <section id="fusion" class="sub-section">
+                            <div class="section-header">
+                                <h2>The Design of Fusion Protein</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>Structural Analysis</h3>
+                                <p>By examining the 3D structure of RNF114 we identified potential functional sites, specifically the zinc finger regions, located at amino acids 29-68 and 91-110. We found that the N-terminal sequence of RNF114 is not part of the zinc finger, has a lower degree of folding, and is less conserved, making it a suitable modification site. Therefore, we choose to add the additional structures to the N-terminus of RNF114.</p>
+
+                                <p>The pelB signal peptide functions within engineered bacteria; the TAT peptide facilitates the dru's penetration through the corneal barrier and entry into target cells; the target peptide binds to the water channel protein AQP0 of the target cells, aiding in drug localization; the GALA3 peptide changes its structure in response to pH changes, assisting in endosomal escape within target cells, allowing the drug to exert its effects effectively.</p>
+                                <P>Considering that the pelB signal peptide is cleaved during protein release, we constructed the pelB peptide at the N-terminus of the target protein.</P>
+                                <p>Since the GALA3 peptide needs to change its structure to function, we considered using rigid linkers at both ends of the GALA3 peptide to ensure that its structural changes do not affect the function of other structures.</p>
+                                <p>Based on the functional sequence of the additional structures, we designed the following protein fusion scheme.</p>
+                                <p>We predicted the RMSD between the overall protein's 3D structure and human RNF114 protein after structural changes in the GALA peptide for different lengths of linkers (GS3, GS5, GS9) and flexible/rigid linkers. We also attempted placing the GALA peptide at the C-terminus to test whether it could reduce the impact of GALA peptide structural changes on the protein. Finally, we found that the protein fusion method shown in the figure below had the least impact on the drug structure.</p>
+                                
+                                <a href="../static/img/design/fold_gs5_hard1_model_0 (1).cif" target="_blank" download="pdCas9-hisAgRNA.dna">
+                                    <button class="download-btn">Download RNF114</button>
+                                </a>
+                                <a href="../static/img/design/AF-Q9Y508-F1-model_v4 (2).pdb" target="_blank" download="pdCas9-hisAgRNA.dna">
+                                    <button class="download-btn">Download Recombinant protein(without GFP)</button>
+                                </a>
+                            </div>
+                        </section>
+
+                        <!-- References section -->
+                        <section id="preferences" class="sub-section">
+                            <div class="section-header">
+                                <h2>References</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <div class="reference-list">
+                                    <div class="reference-item" id="pref1">
+                                        <span class="ref-number">[1]</span>
+                                        <span class="ref-content">Wu, B., Li, M., Li, K., Hong, W., Lv, Q., Li, Y., Xie, S., Han, J., & Tian, B. (2021). Cell penetrating peptide TAT-functionalized liposomes for efficient ophthalmic delivery of flurbiprofen: Penetration and its underlying mechanism, retention, anti-inflammation and biocompatibility. <em>International journal of pharmaceutics</em>, 598, 120405.</span>
+                                        <a href="https://doi.org/10.1016/j.ijpharm.2021.120405" class="ref-link" target="_blank">DOI: 10.1016/j.ijpharm.2021.120405</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref2">
+                                        <span class="ref-number">[2]</span>
+                                        <span class="ref-content">Rizzuti, M., Nizzardo, M., Zanetta, C., Ramirez, A., & Corti, S. (2015). Therapeutic applications of the cell-penetrating HIV-1 Tat peptide. <em>Drug discovery today</em>, 20(1), 76–85.</span>
+                                        <a href="https://doi.org/10.1016/j.drudis.2014.09.017" class="ref-link" target="_blank">DOI: 10.1016/j.drudis.2014.09.017</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref3">
+                                        <span class="ref-number">[3]</span>
+                                        <span class="ref-content">何若昱, 林福玉, 高向东, & 刘金毅. (2021). 信号肽在大肠杆菌分泌系统中的研究与应用进展. <em>中国生物工程杂志</em>, 41(5), 7.</span>
+                                    </div>
+
+                                    <div class="reference-item" id="pref4">
+                                        <span class="ref-number">[4]</span>
+                                        <span class="ref-content">Yang H, Ping X, Zhou J, et al. Reversible cold-induced lens opacity in a hibernator reveals a molecular target for treating cataracts. <em>J Clin Invest</em>. 2024;134(18):e169666.</span>
+                                        <a href="https://doi.org/10.1172/JCI169666" class="ref-link" target="_blank">DOI: 10.1172/JCI169666</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref5">
+                                        <span class="ref-number">[5]</span>
+                                        <span class="ref-content">Li, C., Cao, XW., Zhao, J. et al. Effective Therapeutic Drug Delivery by GALA3, an Endosomal Escape Peptide with Reduced Hydrophobicity. <em>J Membrane Biol</em> 253, 139–152 (2020).</span>
+                                        <a href="https://doi.org/10.1007/s00232-020-00109-2" class="ref-link" target="_blank">DOI: 10.1007/s00232-020-00109-2</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref6">
+                                        <span class="ref-number">[6]</span>
+                                        <span class="ref-content">Nicoud, L., Cohrs, N., Arosio, P., Norrant, E., & Morbidelli, M. (2015). Effect of polyol sugars on the stabilization of monoclonal antibodies. <em>Biophysical chemistry</em>, 197, 40–46.</span>
+                                        <a href="https://doi.org/10.1016/j.bpc.2014.12.003" class="ref-link" target="_blank">DOI: 10.1016/j.bpc.2014.12.003</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref7">
+                                        <span class="ref-number">[7]</span>
+                                        <span class="ref-content">Guter, M., & Breunig, M. (2017). Hyaluronan as a promising excipient for ocular drug delivery. <em>European journal of pharmaceutics and biopharmaceutics</em>, 113, 34–49.</span>
+                                        <a href="https://doi.org/10.1016/j.ejpb.2016.11.035" class="ref-link" target="_blank">DOI: 10.1016/j.ejpb.2016.11.035</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref8">
+                                        <span class="ref-number">[8]</span>
+                                        <span class="ref-content">Chen, C., Yu, G., Huang, Y. et al. Genetic-code-expanded cell-based therapy for treating diabetes in mice. <em>Nat Chem Biol</em> 18, 47–55 (2022).</span>
+                                        <a href="https://doi.org/10.1038/s41589-021-00899-z" class="ref-link" target="_blank">DOI: 10.1038/s41589-021-00899-z</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref9">
+                                        <span class="ref-number">[9]</span>
+                                        <span class="ref-content">Gonen, T., Cheng, Y., Sliz, P. et al. Lipid–protein interactions in double-layered two-dimensional AQP0 crystals. <em>Nature</em> 438, 633–638 (2005).</span>
+                                        <a href="https://doi.org/10.1038/nature04321" class="ref-link" target="_blank">DOI: 10.1038/nature04321</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref10">
+                                        <span class="ref-number">[10]</span>
+                                        <span class="ref-content">Sjöhamn J, Hedfalk K. Unraveling aquaporin interaction partners. <em>Biochim Biophys Acta</em>. 2014 May;1840(5):1614-23.</span>
+                                        <a href="https://doi.org/10.1016/j.bbagen.2013.11.012" class="ref-link" target="_blank">DOI: 10.1016/j.bbagen.2013.11.012</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref11">
+                                        <span class="ref-number">[11]</span>
+                                        <span class="ref-content">Watson JL, Juergens D, Bennett NR, et al. De novo design of protein structure and function with RFdiffusion. <em>Nature</em>. 2023 Aug;620(7976):1089-1100.</span>
+                                        <a href="https://doi.org/10.1038/s41586-023-06415-8" class="ref-link" target="_blank">DOI: 10.1038/s41586-023-06415-8</a>
+                                    </div>
+
+                                    <div class="reference-item" id="pref12">
+                                        <span class="ref-number">[12]</span>
+                                        <span class="ref-content">Ma B, Liu D, Wang Z, et al. A Top-Down Design Approach for Generating a Peptide PROTAC Drug Targeting Androgen Receptor for Androgenetic Alopecia Therapy. <em>J Med Chem</em>. 2024 Jun 27;67(12):10336-10349.</span>
+                                        <a href="https://doi.org/10.1021/acs.jmedchem.4c00828" class="ref-link" target="_blank">DOI: 10.1021/acs.jmedchem.4c00828</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </section>
 
                 <!-- Parent section with nested subsections -->
