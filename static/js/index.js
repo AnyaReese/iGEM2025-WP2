@@ -102,6 +102,25 @@ const initVisionCompare = () => {
     });
 };
 
+const initIdeaSection = () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    const ideaText = document.querySelector('.idea-text');
+    if (ideaText) {
+        observer.observe(ideaText);
+    }
+};
+
 // Initialize dual image effect
 window.addEventListener('load', () => {
     initDualImageEffect();
@@ -109,6 +128,7 @@ window.addEventListener('load', () => {
     initVideoSection();
     initTitleTransition();
     initVisionCompare();
+    initIdeaSection();
 });
 
 function playGif(element) {
