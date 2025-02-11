@@ -1125,6 +1125,12 @@
                                     <li>After bleaching, the nonfluorescent proteins are no longer produced and therefore decay at a rate that depends solely on protein removal (decay of gray proteins in experiment 1), in a manner analogous to the decay of radiolabeled tagged proteins in the pulse-chase experiment. However, the nonfluorescent proteins are invisible by fluorescence microscopy and cannot be measured directly.</li>
                                     <li>Repeat the same experiment without bleaching (experiment 2) and subtract the visible fluorescent signal of the two experiments</li>
                                 </ol>
+
+                                <figure>
+                                    <img src="../../static/img/protocol/bleach.png">
+                                    <figcaption></figcaption>
+                                </figure>
+
                                 <p>Methods:</p>
                                 <ol>
                                     <li>Thawing cells
@@ -1209,55 +1215,84 @@
                                 </button>
                             </div>
                             <div class="section-content">
+                                <p>Soluble protein fragmentation</p>
                                 <ol>
-                                    <li>
-                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    <li>Collect the culture fermentation broth, centrifuge at 20℃, 5000rpm for 8 minutes, transfer the precipitate to a centrifuge tube, centrifuge at 10℃, 13000rpm for 1 minute, collect the precipitated bacteria (if not broken immediately, you can freeze it at -20 degrees.)</li>
+                                    <li>Take 8-10 grams of bacteria and add 40-50ml of fragmentation buffer (for example: 20mM Tris, pH8.0, 0.15M NaCl, 1% Triton X-100, pH8.0). Add Leupeptin and Pepstantin to a final concentration of 1ug/ml, and add TCEP to a final concentration of 1mM/ml.</li>
+                                    <li>Use an ultrasonic probe to fragment the mixed bacteria in ice water, ultrasonicate for 3S, and interval for 8S. Ultrasonicate for 15-20Min. (Ultrasound can be used to determine whether there are lumps in the solution and the viscosity of the solution)</li>
+                                    <li>Centrifuge the broken liquid at 4℃13000rpm for 10 minutes, take the supernatant, centrifuge it again at 4'C13000rpm for 10 minutes, and then keep the supernatant and precipitate separately. Purify the supernatant first. If only the target protein is in the precipitate, extract it under denaturing conditions.</li>
+                                    <li>Take the purified Ni column, clean the column, add 3-4ml nickel agarose gel, wash the column 5 times with a washing bottle, and then balance the column twice with the balance solution (PS: The balance solution is the broken solution, but does not contain Triton X-100.)</li>
+                                    <li>Combine the column and the supernatant fully, place it on a four-dimensional rotating mixer and incubate it for 1-2 hours, then take it out for purification,</li>
+                                </ol>
+                                <p>Purification of soluble proteins</p>
+                                <ol>
+                                    <li>Equilibrium buffer: 50mM Tris buffer at pH 8.0 containing 0.15M NaCl and 20mM imidazole.</li>
+                                    <li>Elution buffer:
+                                        <ol>
+                                            <li>50mM Tris buffer at pH 8.0 containing 0.15M NaCl and 50mM imidazole.</li>
+                                            <li>50mM Tris buffer at pH 8.0 containing 0.15M NaCl and 100mM imidazole.</li>
+                                            <li>50mM Tris buffer at pH 8.0 containing 0.15M NaCl and 300mM imidazole.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
-                                    </li>
-                                    <li>
-                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
-                                    </li>
-                                    <li>
-                                        <p>Resuspend the collected cells in PBS.</p>
-                                    </li>
-                                    <li>
-                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
-                                    </li>
-                                    <li>
-                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
-                                    </li>
+                                    <li>Pass through the column, flow out FT, sample FT.</li>
+                                    <li>Wash away the unadsorbed sample with 20 times column volume of equilibrium buffer at a flow rate of 1-2ml/min until the effluent spot G250 shows no blue, which is the beginning of elution of the protein adsorbed on the column.</li>
+                                    <li>Use 50mM, 100mM, and 300mM imidazole concentrations to elute the column in stages, eluting about 5-10 column volumes (PS: if the protein adsorption is large, use more elution solution.), flow rate 1-2ml/min, 4m// tube collection. (Determination of the starting point of protein collection: the UV spectrophotometer reading rises rapidly, and the Coomassie Brilliant Blue G250 spot turns blue; determination of the end point of protein collection: Coomassie Brilliant Blue G250 spot has no obvious blue color, and the UV spectrophotometer reading decreases steadily.)</li>
+                                    <li>Take samples of the collected proteins eluted from each concentration gradient and run SDS-Page.</li>
+                                    <li>According to the SDS-Page electrophoresis diagram, if there is protein, collect the protein for dialysis. If there is no protein in the electrophoresis result, but there is protein in the precipitate, wash the precipitate under denaturing conditions and purify the precipitate.</li>
+                                    <figure>
+                                        <img src="../../static/img/protocol/his.png" alt="his-tag">
+                                    </figure>
                                 </ol>
                             </div>
                         </section>
 
                         <section id="uv-vis" class="sub-section">
                             <div class="section-header">
-                                <h2>UV-Vis (to measure protein absorption)</h2>
+                                <h2>UV-Vis (to measure protein absorbance at 280 nm)</h2>
                                 <button class="section-collapse-btn">
                                     <ion-icon name="chevron-up-outline"></ion-icon>
                                 </button>
                             </div>
                             <div class="section-content">
                                 <ol>
-                                    <li>
-                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    <li>Instrument preparation
+                                        <ol>
+                                            <li>Preheating: Turn on the UV spectrophotometer and preheat for 15-30 minutes.</li>
+                                            <li>Set wavelength: Adjust to 280 nm.</li>
+                                            <li>Blank calibration: Use the same buffer as the sample solvent (such as PBS) to inject into the quartz cuvette and adjust to zero.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    <li>Sample preparation
+                                        <ol>
+                                            <li>Dilute the sample: Make sure the absorbance is within the range of 0.1~1.0 (exceeding requires dilution).</li>
+                                            <li>Avoid interference: Check the buffer composition (such as avoiding interferences such as SDS, nucleic acids).</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
+                                    <li>Measure absorbance
+                                        <ol>
+                                            <li>Sample loading: Inject the sample into the quartz cuvette (no bubbles, fingerprints).</li>
+                                            <li>Measurement: Put it into the sample pool, read the A280 value, repeat 3 times and take the average.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Resuspend the collected cells in PBS.</p>
+                                    <li>Calculate concentration
+                                        <ol>
+                                            <li>Extinction coefficient method:
+                                                <ol>
+                                                    <li>Concentration (mg/ml)=A280/(ε*l)</li>
+                                                    <li>(ε is the extinction coefficient, l is the optical path, usually 1 cm)</li>
+                                                </ol>
+                                            </li>
+                                            <li>Standard curve method:
+                                                <ol>
+                                                    <li>Use standard proteins such as BSA to make an A280-concentration curve and fit the linear equation.</li>
+                                                </ol>
+                                            </li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
-                                    </li>
-                                    <li>
-                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    <li>Correction for nucleic acid interference (if)
+                                        <ol>
+                                            <li>Measure A260 and use the Warburg-Christian formula:Protein concentration (mg/ml)=1.55*A280−0.76*A260</li>
+                                        </ol>
                                     </li>
                                 </ol>
                             </div>
