@@ -99,10 +99,10 @@
                         <a href="#existing">Existing Parts</a>
                     </div>
                     <div class="t1">
-                        <a href="#new">New Basic Parts</a>
+                        <a href="#basic">New Basic Parts</a>
                     </div>
                     <div class="t1">
-                        <a href="#new">New Composite Parts</a>
+                        <a href="#composite">New Composite Parts</a>
                     </div>
                     <div class="t1">
                         <a href="#references">References</a>
@@ -240,7 +240,7 @@
                     </div>
                 </section>
 
-                <section id="new" class="sub-section">
+                <section id="basic" class="sub-section">
                     <div class="section-header">
                         <h1>New Basic Parts</h1>
                         <button class="section-collapse-btn">
@@ -260,14 +260,139 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-    
+                                    <tr>
+                                        <td>Target peptide</td>
+                                        <td>Coding</td>
+                                        <td>-</td>
+                                        <td>This is a short peptide designed through computer software modeling to specifically bind to the AQP0 protein. We use this sequence in our project for precise drug delivery targeting lens fiber cells.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>pET-32a(+) - RBS(MCS)</td>
+                                        <td>RBS</td>
+                                        <td>pET-32a(+)</td>
+                                        <td>This is a high-intensity promoter derived from pET-32a(+).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GALA3</td>
+                                        <td>Coding</td>
+                                        <td>-</td>
+                                        <td>GALA3 effectively promotes the escape of fusion proteins from endosomes into the cytoplasm in a pH-dependent manner. This peptide significantly improves the cytoplasmic distribution of fusion proteins, allowing protein drugs to enter cells through clathrin/caveolin-dependent endocytosis. ([3])</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hasB</td>
+                                        <td>Coding</td>
+                                        <td>Streptococcus pyogenes</td>
+                                        <td>HasB encodes UDP-glucose dehydrogenase, a protein with a predicted M(r) of 45.5 kDa that catalyzes the oxidation of UDP-glucose to UDP-glucuronic acid ([4]).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Crimson</td>
+                                        <td>Reporter</td>
+                                        <td>Synthetic construct</td>
+                                        <td>Red fluorescent protein is a fluorescent protein cloned from coral that is homologous to green fluorescent protein (GFP) and emits red fluorescence under ultraviolet light exposure.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>GS-Flexible linker</td>
+                                        <td>Coding</td>
+                                        <td>-</td>
+                                        <td>Flexible linkers are mainly composed of Gly and Ser residues (the "GS" linker) segments. By adjusting the copy number "n," the length of the GS linker can be optimized to achieve appropriate separation of functional domains while maintaining the necessary interdomain interactions.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>(EAAAK) - Rigid linker</td>
+                                        <td>Coding</td>
+                                        <td>-</td>
+                                        <td>Alpha helix-forming linkers with the sequence (EAAAK)(n) have been applied in the construction of many recombinant fusion proteins. The α-helix structure is rigidly stabilized, with hydrogen bonds within the chain and a tightly packed backbone. This is more effective than flexible linkers for separating functional domains. ([5])</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hasA</td>
+                                        <td>Coding</td>
+                                        <td>Lachnellula hyalina</td>
+                                        <td>HasA gene encodes hyaluronic acid synthase (HAS), which is 419 amino acids in length. HasA gene is part of the hyaluronic acid synthesis operon in S.zooepidemicus genome by simulataneously catalyzing gluconuronic acid and acetaminoglucose transfer reaction. In vivo, the synthesis of hyaluronic acid is achieved by the alternating aggregation of monosaccharides uridine 5 '- 2 - glucose phosphate aldehyde (uridine 5' - diphosphate - GlcUA, UDP - GlcUA) and uridine 5 '- diphosphate - acetylglucosamine (uridine 5' - diphosphate - GlcNAc, UDP - GlcNAc) into HA long polysaccharide chain.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>anti-trpC sRNA</td>
+                                        <td>RNA</td>
+                                        <td>-</td>
+                                        <td>By using TrpCgRNA, the CRISPR/Cas9 system can be precisely guided to knock out the trpC gene.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>anti-HisA sRNA</td>
+                                        <td>RNA</td>
+                                        <td>-</td>
+                                        <td>By using anti-HisA sRNA, the CRISPR/Cas9 system can be precisely guided to knock out the trpC gene.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>aroG</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>aroG encoding 3-deamino-D-aromatic amino acid transaminase (DAHP synthase)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TrpD</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>anthranilate synthase subunit TrpD</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisL</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>his operon leader peptide</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisG</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>ATP phosphoribosyltransferase</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisD</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>histidinal/histidinol dehydrogenase</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisC</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>histidinol-phosphate aminotransferase</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisB</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>imidazoleglycerol-phosphate dehydratase/histidinol-phosphatase</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisH</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>imidazole glycerol phosphate synthase subunit</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisA</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>1-(5-phosphoribosyl)-5-[(5-phosphoribosylamino)methylideneamino]imidazole-4-carboxamide isomerase</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisF</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>imidazole glycerol phosphate synthase subunit HisF</td>
+                                    </tr>
+                                    <tr>
+                                        <td>hisI</td>
+                                        <td>Coding</td>
+                                        <td>Escherichia coli str. K-12 substr. MG1655</td>
+                                        <td>putative bifunctional phosphoribosyl-AMP cyclohydrolase/phosphoribosyl-ATP pyrophosphatase</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </section>
 
-                <section id="new" class="sub-section">
+                <section id="composite" class="sub-section">
                     <div class="section-header">
                         <h1>New Composite Parts</h1>
                         <button class="section-collapse-btn">
