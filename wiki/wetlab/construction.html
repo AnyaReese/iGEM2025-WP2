@@ -269,6 +269,9 @@
                         </button>
                     </div>
                     <div class="section-content">
+                        <p>We have designed two suicide systems as strategies to prevent the leakage of engineered bacteria.</p>
+                        <p>In the mutualistic bacterial system, we designed two complementary nutrient-deficient SHuffle T7-B strains, where strain A cannot synthesize tryptophan, and strain B cannot synthesize histidine. They rely on metabolic complementarity and overexpression mechanisms to mutually supply the required amino acids, ensuring growth when coexisting, but they cannot survive independently due to the lack of essential nutrients. This mechanism utilizes CRISPR/Cas9 technology to knock out the trpA gene in strain A and the hisG gene in strain B, while overexpressing genes related to amino acid synthesis, ensuring a strict metabolic symbiosis between them. Specifically, strain A overexpresses hisG to help strain B provide histidine, while strain B overexpresses trpA to help strain A provide tryptophan. They must coexist to maintain growth and cannot survive alone.</p>
+                        <p>In the phosphate-sensitive promoter killing switch, we utilize the phosphate-sensitive P_PhoB promoter to control the expression of the suicide gene (mazF), while using hydrogel to slowly release phosphate into the bacterial environment. This ensures that the suicide mechanism is triggered in the absence of phosphate, leading to bacterial death. We designed a pET-32a(+) plasmid vector, and through PCR, connected the recognition sequences of the phosphate-sensitive P_PhoB promoter with the suicide gene mazF. This plasmid is used in the hydrogel to respond to environmental changes.</p>
                         <section id="auxo" class="sub-section">
                             <div class="section-header">
                                 <h2>Auxotrophic Mutual Assistance System</h2>
@@ -277,7 +280,67 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <p>Content for Auxotrophic Mutual Assistance System</p>
+                                <h3>1. Knockout of TrpC using the CRISPR/Cas9 system</h3>
+                                <h4>1.1 trpCgRNA</h4>
+                                <p>TCGTCGCAGACAAGGCGATT</p>
+                                <figure>
+                                    <img src="../../static/img/construction/1.png">
+                                </figure>
+                                <h4>1.2 pdCas9-trpCgRNA Plasmid</h4>
+                                <figure>
+                                    <img src="../../static/img/construction/2.png" style="width: 60%;">
+                                </figure>
+                                <a href="../../static/img/construction/pdCas9-TrpcgRNA.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                    <button class="download-btn">DownloadpdCas9-TrpcgRNA.dna</button>
+                                </a>
+                                <h3>2. Knockout of HisA using the CRISPR/Cas9 system</h3>
+                                <h4>2.1 HisAgRNA</h4>
+                                <p>TCGTCGCAGACAAGGCGATT</p>
+                                <figure>
+                                    <img src="../../static/img/construction/1.png">
+                                </figure>
+                                <h4>2.2 pdCas9-HisAgRNA Plasmid</h4>
+                                <figure>
+                                    <img src="../../static/img/construction/3.png" style="width: 60%;">
+                                </figure>
+                                <a href="../../static/img/construction/pdCas9-HisAgRNA.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                    <button class="download-btn">DownloadpdCas9-HisAgRNA.dna</button>
+                                </a>
+                                <h3>3. Trp Overexpression System</h3>
+                                <h4>3.1 146 mutant aroG</h4>
+                                <figure>
+                                    <img src="../../static/img/construction/5.png">
+                                </figure>
+                                <a href="../../static/img/construction/146位突变aroG.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                    <button class="download-btn">Download 146 mutant aroG.dna</button>
+                                </a>
+                                <h4>3.2 Trp Synthesis Pathway and Plasmid Construction</h4>
+                                <figure>
+                                    <img src="../../static/img/construction/4.png">
+                                </figure>
+                                <a href="../../static/img/construction/（酶切）大肠杆菌TrpEDCBA.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                    <button class="download-btn">Download TrpEDCBA.dna</button>
+                                </a>
+                                <p>We selected pET-32a(+) as the vector, whose T7 promoter can ensure the high expression of Trp.</p>
+                                <p>We used BamHI and EcoRI to digest TrpEDCBA and pET-32a(+) respectively, allowing TrpEDCBA to be inserted into the MCS region of pET-32a(+).</p>
+                                <p>We used SalI and NotI to digest aroG and pET-32a(+) respectively, allowing aroG to be inserted into the MCS region of pET-32a(+).</p>
+                                <p>At this point, we obtained the recombinant pET-32a(+)-trpEDCBA-aroG plasmid.</p>
+                                <figure>
+                                    <img src="../../static/img/construction/7.png" style="width: 60%;">
+                                </figure>
+                                <a href="../../static/img/construction/重组pET-32a(+)-trpEDCBA-aroG.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                    <button class="download-btn">Download pET-32a(+)-trpEDCBA-aroG.dna</button>
+                                </a>
+                                <h3>4. His excessive expression system</h3>
+                                <h4>4.1 Trp Synthesis Pathway and Plasmid Construction</h4>
+                                <p>We obtained all the genes related to the His synthesis pathway from Escherichia coli and constructed a polycistronic structure capable of synthesizing tryptophan (Trp) using a T7 promoter for driving.</p>
+                                <figure>
+                                    <img src="../../static/img/construction/6.png">
+                                </figure>
+                                <a href="../../static/img/construction/pET-32a(+)-HisGene.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                    <button class="download-btn">Download pET-32a(+)-HisGene.dna</button>
+                                </a>
+
                             </div>
                         </section>
 
