@@ -171,21 +171,23 @@
                                 <p>To detect the drug content that reaches the lens, we will simulate the drug delivery method using contact lenses on the eye. At predetermined time points, we will pause the aqueous humor reflux, collect the instantaneous aqueous humor, and then reinject the aqueous humor to continue circulation, in order to measure the drug concentration within it. The specific process can be found in Wet Lab-Engineering-Production Expression Verification Module-Cycle3.</p>
                                 <p>We need to simulate the process of the drug moving from the contact lens, through the tear film layer, across the cornea, and finally reaching the aqueous humor reflux.</p>
 
-                                <p>The eye simulation chip we designed consists of three parts, as shown in the diagram from top to bottom (the main material of the chip is PDMS):</p>
+                                <p>The eye simulation chip we designed consists of three parts, as shown in the diagram from top to bottom (the main material of the chip is PDMS,and the pipeline interfaces above the tear film layer chip is connected to the liquid pumps.):</p>
 
-                                <ul>
-                                    <li>Tear layer</li>
-                                    <li>Cornea layer</li>
-                                    <li>Aqueous humor drainage layer</li>
-                                </ul>
+                                <figure>
+                                    <img src="../../static/img/hardware/layers.png" alt="Eye Simulation Chip Layers">
+                                </figure>
 
                                 <h3>Tear layer</h3>
-                                <p>Driven by a micro stepper pump, it simulates the flow of the tear film and the flushing effect caused by intermittent blinking.</p>
+                                <p>We use periodic pulses to drive the peristaltic pump, simulating the flow of the tear film and the flushing effect caused by intermittent blinking.</p>
 
                                 <!-- TODO: add tear layer image -->
-                                <figure>
+                                <!-- <figure>
                                     <img src="../../static/img/hardware/workflow.svg" alt="Eye Simulation Chip Tear Layer">
                                     <figcaption>Eye Simulation Chip Tear Layer</figcaption>
+                                </figure> -->
+                                <figure>
+                                    <img src="../../static/img/hardware/pulse.png" alt="Eye Simulation Chip Tear Layer">
+                                    <figcaption>Eye Simulation Chip pulse</figcaption>
                                 </figure>
 
                                 <h3>Cornea layer</h3>
@@ -244,10 +246,16 @@
                                     <li>Biomimetic outflow resistance using PDMS membrane</li>
                                 </ul>
 
-                                <!-- <figure>
-                                    <img src="../../static/img/hardware/aqueous.png" alt="Aqueous Humor Drainage Layer Design">
-                                    <figcaption>Aqueous Humor Drainage Layer Design</figcaption>
-                                </figure> -->
+                                <h3>Aqueous humor drainage layer</h3>
+                                <p>Based on the aqueous humor reflux pathway, we designed a symmetric liquid flow direction and pump drive system. Specifically, we placed an MS5837 sensor below the waterproof layer to detect the hydraulic pressure and temperature of the aqueous humor. Through PID control, we adjust the flow rate difference of the aqueous humor being pumped in and out to stabilize the internal hydraulic pressure. Additionally, a small heating module is integrated to control the temperature of the aqueous humor. At the outlet, a simple PDMS membrane is used to simulate the trabecular meshwork and Schlemm's canal.</p>
+                                <p>ere are the SolidWorks 3D modeling exploded view, part drawings, and assembly files, showcasing the specific structure and assembly method of each layer of the chip.</p>
+                                <figure>
+                                    <img src="../../static/img/hardware/assembly.png" alt="Assembly view">
+                                    <figcaption>Assembly View</figcaption>
+                                </figure>
+                                <a href="../../static/img/hardware/Eye Simulation Chip.zip" target="_blank" download="Eye Simulation Chip.zip">
+                                    <button class="download-btn">Download Eye Simulation Chip.zip</button>
+                                </a>
                             </div>
                         </section>
 
@@ -315,10 +323,11 @@
                                         </button>
                                     </div>
                                     
-                                    <pre><code class="cpp">#include &lt;Wire.h&gt;
-#include &lt;MS5837.h&gt;
-#include &lt;AccelStepper.h&gt;
-#include &lt;LiquidCrystal_I2C.h&gt;  // I2C LCD library
+                                    <pre><code class="cpp">
+#include <Wire.h> 
+#include <MS5837.h>
+#include <AccelStepper.h>
+#include <LiquidCrystal_I2C.h>  // I2C LCD library
 
 // Basic pump speed
 const double baseSpeed = 2000;
@@ -342,14 +351,25 @@ double D_Pressure = 0.0;
 double output = 0.0;
 
 // Stepper motor setup (AccelStepper configuration)
-AccelStepper pumpIn(AccelStepper::DRIVER, 8, 9);    // First pump group (In)
-AccelStepper pumpOut(AccelStepper::DRIVER, 10, 11); // Second pump group (Out)
+AccelStepper pumpIn(AccelStepper::DRIVER, 3, 4);    // First pump group (In)
+AccelStepper pumpOut(AccelStepper::DRIVER, 7, 8); // Second pump group (Out)
+AccelStepper pumpIn_tear(AccelStepper::DRIVER, 11, 12);    // First tear pump group (In)
+AccelStepper pumpOut_tear(AccelStepper::DRIVER, 25, 27); // Second tear pump group (Out)
 
 // Initialize MS5837 sensor
 MS5837 sensor;
 
 // Initialize I2C LCD screen (address: 0x27, 16 cols 2 rows)
 LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// Variables for time-based pulse speed increase
+unsigned long lastPulseTime = 0;  // Last time a pulse was added
+const unsigned long pulseInterval = 5000;  // 5 seconds interval for increasing speed
+const unsigned long pulseDuration = 1000;  // Duration to hold increased speed (1 second)
+int pulseIncrement = 100;  // Amount to increase speed by each pulse
+double tearSpeedIncrement = 0;  // Tear pump speed increment
+
+unsigned long pulseEndTime = 0;  // Time when the high-speed duration ends
 
 void setup() {
     // Initialize stepper motors
@@ -358,6 +378,12 @@ void setup() {
     
     pumpOut.setMaxSpeed(1000);  
     pumpOut.setAcceleration(500);  
+    
+    pumpIn_tear.setMaxSpeed(1000);  
+    pumpIn_tear.setAcceleration(500);  
+    
+    pumpOut_tear.setMaxSpeed(1000);  
+    pumpOut_tear.setAcceleration(500);  
     
     // Initialize sensor
     Wire.begin();
@@ -390,6 +416,9 @@ void loop() {
     // Control pumps based on output
     controlPumps(output);
     
+    // Sync tear pumps and increase speed every 5 seconds
+    syncTearPumpsAndIncreaseSpeed();
+
     // Save current error for next derivative calculation
     previousError_Pressure = error_Pressure;
 
@@ -413,6 +442,34 @@ void controlPumps(double output) {
     for(int i = 0; i < 10; i++) {
         pumpIn.runSpeed();
         pumpOut.runSpeed();
+        pumpIn_tear.runSpeed();
+        pumpOut_tear.runSpeed();
+    }
+}
+
+// Function to sync tear pumps and increase speed every 5 seconds
+void syncTearPumpsAndIncreaseSpeed() {
+    unsigned long currentMillis = millis();
+    
+    // Check if it's time to increase speed
+    if (currentMillis - lastPulseTime >= pulseInterval) {
+        // Increase speed for tear pumps
+        tearSpeedIncrement += pulseIncrement;
+        
+        // Set the new speed for both tear pumps
+        pumpIn_tear.setSpeed(tearSpeedIncrement);
+        pumpOut_tear.setSpeed(tearSpeedIncrement);
+        
+        // Update the last pulse time and set the pulse end time
+        lastPulseTime = currentMillis;
+        pulseEndTime = currentMillis + pulseDuration;  // Set the end time for the high-speed phase
+    }
+
+    // Check if it's time to restore the speed to base speed
+    if (currentMillis >= pulseEndTime) {
+        // Restore speed to original value
+        pumpIn_tear.setSpeed(tearSpeedIncrement - pulseIncrement);
+        pumpOut_tear.setSpeed(tearSpeedIncrement - pulseIncrement);
     }
 }
 
@@ -533,15 +590,11 @@ void displayDataOnLCD(double pressure, double temperature) {
 
                                 <p>In the wet lab portion, under simulated eye conditions, we track and monitor the engineered bacterial cell density and corresponding fluorescence signal intensity. By analyzing the fluorescence signal data of the engineered bacteria from the growth phase, plateau phase, to apoptosis phase, we identified three safety levels—"Safe", "Replace Recommended", and "Not Usable"—each corresponding to a specific fluorescence signal intensity. We then compare the light intensity values detected by the BH1750 sensor with the experimental threshold values for each safety level. The real-time safety level of the cells is displayed on an LCD screen, allowing users to easily determine whether the contact lenses can still be used safely.</p>
 
-                                <figure>
-                                    <img src="../../static/img/hardware/cell-appearance.png" alt="Cell Activity Detection Contact Lens Case" style="width: 50%;">
-                                </figure>
                                 <h3>Components</h3>
                                 <p>The eye simulation chip we designed consists of several parts, as shown in the diagram:</p>
 
-                                <figure class="exploded-view">
-                                    <img src="../../static/img/hardware/xxx" alt="Exploded view of the contact lens case">
-                                    <figcaption>Exploded view of the contact lens case components</figcaption>
+                                <figure>
+                                    <img src="../../static/img/hardware/cell-appearance.png" alt="Cell Activity Detection Contact Lens Case" style="width: 50%;">
                                 </figure>
 
                                 <div class="component-list">
@@ -571,13 +624,12 @@ void displayDataOnLCD(double pressure, double temperature) {
                                     <div class="model-gallery">
                                         <!-- Add your CAD model images here -->
                                         <figure>
-                                            <img src="../../static/img/hardware/assembly.png" alt="Assembly view">
-                                            <figcaption>Assembly View</figcaption>
-                                        </figure>
-                                        <figure>
                                             <img src="../../static/img/hardware/parts.png" alt="Part drawings">
                                             <figcaption>Part Drawings</figcaption>
                                         </figure>
+                                        <a href="../../static/img/hardware/Cell Activity Detection Contact Lens Case.zip" target="_blank" download="Cell Activity Detection Contact Lens Case.zip">
+                                            <button class="download-btn">Download Cell Activity Detection Contact Lens Case.zip</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -640,17 +692,23 @@ void displayDataOnLCD(double pressure, double temperature) {
                         <div class="code-container">
                             <div class="code-header">
                                 <span class="file-name">cell_activity_detection.cpp</span>
-                                <button class="copy-btn" onclick="copyCode()">
+                                <button class="copy-btn" onclick="copyCodeBlock(this)">
                                     <i class="fas fa-copy"></i> Copy
                                 </button>
                             </div>
                             
-                            <pre><code class="cpp">#include &lt;Wire.h&gt;
-#include &lt;LiquidCrystal_I2C.h&gt;
-#include &lt;BH1750.h&gt;
+                            <pre><code class="cpp">
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+#include <BH1750.h>
 
 const int bottom = 27;     // Button pin
 const int pwmPin = 5;      // PWM output to PT4115 DIM pin
+
+//threshold
+const double Safe_threshold = 200;
+const double Replace_Recommended_threshold = 100;
+const double Not_Usable_threshold = 50;
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);  // I2C address 0x27, 16x2 LCD
 BH1750 lightMeter;
@@ -697,10 +755,12 @@ void handleButton() {
         lcd.print(" lux");
 
         lcd.setCursor(12, 1);
-        if (lux >= threshold) {
-            lcd.print("OK");  // Reached threshold
+        if (lux >= Safe_threshold) {
+            lcd.print("Safe");  
+        } else if (lux >= Replace_Recommended_threshold){
+            lcd.print("Replace_Recommended"); 
         } else {
-            lcd.print("LOW"); // Below threshold
+            lcd.print("Not_Usable"); 
         }
         
         analogWrite(ledPin, 0);
@@ -720,14 +780,14 @@ void handleButton() {
                             hljs.highlightAll();
                         });
 
-                        // 复制代码功能
-                        function copyCode() {
-                            const code = document.querySelector('code').textContent;
+                        // 更新后的复制代码功能
+                        function copyCodeBlock(button) {
+                            const codeContainer = button.closest('.code-container');
+                            const code = codeContainer.querySelector('code').textContent;
                             navigator.clipboard.writeText(code).then(() => {
-                                const copyBtn = document.querySelector('.copy-btn');
-                                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
                                 setTimeout(() => {
-                                    copyBtn.innerHTML = '<i class="fas fa-copy"></i> Copy';
+                                    button.innerHTML = '<i class="fas fa-copy"></i> Copy';
                                 }, 2000);
                             });
                         }
