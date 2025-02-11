@@ -375,7 +375,7 @@
     counter-reset: item;  /* reset counter */
 }
 
-.content ol li {
+.content ol > li {  /* 只针对直接子元素 */
     position: relative;
     margin-bottom: 0.5em;
     padding-left: 2em;
@@ -388,19 +388,25 @@
     gap: 0.5em;
 }
 
-.content ol li::before {
-    content: counter(item) ".";  /* add number and dot */
-    counter-increment: item;  /* increment counter */
+.content ol > li::before {  /* 只针对直接子元素 */
+    content: counter(item) ".";
+    counter-increment: item;
     position: absolute;
     left: 0;
-    color: var(--highlight-color);  /* use theme color */
+    color: var(--highlight-color);
     font-weight: bold;
 }
 
-.content ol li p {
+.content ol > li p {
     margin: 0;
     font-size: 1em;
     text-indent: 0;
+}
+
+/* 嵌套列表样式 */
+.content ol > li ul {
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }
 
 .content ul li {
@@ -418,18 +424,18 @@
     content: "";
     position: absolute;
     left: 0;
-    top: 0.3em;  /* adjust icon position */
+    top: 0.3em;
     width: 1.5em;
     height: 1.5em;
     background-image: url("../img/paw.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    flex-shrink: 0;  /* prevent icon from shrinking */
+    flex-shrink: 0;
 }
 
 .content ul li p {
-    margin: 0;  /* remove default margin */
-    text-indent: 0;  /* ensure no indent */
+    margin: 0;
+    text-indent: 0;
 }
 
 /* Base bold style for plain text */
@@ -1588,4 +1594,147 @@ section.collapsed .section-header h2::after {
 section.collapsed .section-header:hover h1::after,
 section.collapsed .section-header:hover h2::after {
     color: var(--stroke-hover);
+}
+
+/* PDF viewer container */
+.pdf-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 2em auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* PDF viewer header */
+.pdf-header {
+    padding: 1em;
+    background: rgba(131, 170, 255, 0.1);
+    border-bottom: 1px solid rgba(131, 170, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pdf-title {
+    font-size: 1em;
+    color: var(--highlight-color);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* PDF iframe container */
+.pdf-viewer {
+    width: 100%;
+    height: 800px;
+    border: none;
+    display: block;
+}
+
+/* PDF controls */
+.pdf-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.pdf-control-btn {
+    padding: 5px 10px;
+    background: var(--highlight-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.pdf-control-btn:hover {
+    background: var(--stroke-hover);
+    transform: translateY(-1px);
+}
+
+.pdf-control-btn ion-icon {
+    font-size: 1.2em;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .pdf-container {
+        margin: 1em -20px;
+        width: calc(100% + 40px);
+        border-radius: 0;
+    }
+    
+    .pdf-viewer {
+        height: 500px;
+    }
+    
+    .pdf-header {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    
+    .pdf-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* PDF loading state */
+.pdf-loading {
+    width: 80%;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.pdf-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(131, 170, 255, 0.1);
+    border-left-color: var(--highlight-color);
+    border-radius: 50%;
+    animation: pdf-spin 1s linear infinite;
+}
+
+@keyframes pdf-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* PDF error state */
+.pdf-error {
+    width: 100%;
+    padding: 2em;
+    text-align: center;
+    color: #ff6b6b;
+}
+
+.pdf-error ion-icon {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+/* PDF fullscreen mode */
+.pdf-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    margin: 0;
+    z-index: 1000;
+    border-radius: 0;
+}
+
+.pdf-container.fullscreen .pdf-viewer {
+    height: calc(100vh - 60px);
 }

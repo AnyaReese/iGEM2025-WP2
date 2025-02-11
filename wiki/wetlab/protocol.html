@@ -78,7 +78,7 @@
         
         <!-- Page Title Background -->
         <div class="page-title-bg">
-            <div class="bg-image" style="background-image: url('../../static/img/cons/cons.png')"></div>
+            <div class="bg-image" style="background-image: url('../../static/img/protocol/cover.png')"></div>
             <div class="overlay"></div>
             <div class="title-content">
                 <h1>Protocol</h1>
@@ -197,13 +197,170 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <p>Content for bacterial transformation protocol</p>
+                                <!-- Materials section -->
+                                <h3>1. Materials</h3>
+                                
+                                <!-- PDF viewer -->
+                                <div class="pdf-container">
+                                    <div class="pdf-header">
+                                        <div class="pdf-controls">
+                                        </div>
+                                    </div>
+                                    <iframe class="pdf-viewer" src="../../static/img/protocol/DC221 单页版说明书 V24.1.pdf"></iframe>
+                                </div>
+
+                                <!-- Procedure section -->
+                                <h3>2. Experiment Procedure</h3>
+                                <ol>
+                                    <li>
+                                        <p>Take the competent cells out from -70°C and quickly place them on ice to thaw.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add the DNA to be transformed into 100 μl of competent cells, gently tap the wall of the tube to mix (avoid using a pipette to aspirate), and let it stand on ice for 30 minutes.</p>
+                                    </li>
+                                    <li>
+                                        <p>After a 45-second heat shock at 42°C, quickly place the tube on ice for 2 minutes without shaking the centrifuge tube.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 900 μl of LB or SOC liquid medium (without antibiotics) to the centrifuge tube, mix well, and then incubate at 37°C with shaking at 200 rpm for 1 hour.</p>
+                                    </li>
+                                    <li>
+                                        <p>Centrifuge at 5,000 rpm (2,500 × g) for 3 minutes, discard the 900 μl of supernatant, resuspend the bacteria with the remaining medium, and then evenly spread on an LB agar plate containing the appropriate antibiotics.</p>
+                                    </li>
+                                    <li>
+                                        <p>Place the plate upright in a 37°C incubator for 10 minutes, after the bacterial solution has been completely absorbed, invert the plate for overnight culture.</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+                        <!-- Plasmid Extraction section -->
+                        <section id="plasmid-extraction" class="sub-section">
+                            <div class="section-header">
+                                <h2>Plasmid Extraction</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <!-- Materials section -->
+                                <h3>1. Materials</h3>
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Component</th>
+                                                <th>DC221-01 (150 rxns)</th>
+                                                <th>DC221-02 (300 rxns)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>RNase A Solution</td>
+                                                <td>112.5 μl</td>
+                                                <td>225 μl</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Buffer P1</td>
+                                                <td>22.5 ml</td>
+                                                <td>45 ml</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Buffer P2</td>
+                                                <td>22.5 ml</td>
+                                                <td>45 ml</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Buffer NP3</td>
+                                                <td>52.5 ml</td>
+                                                <td>105 ml</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Buffer PW</td>
+                                                <td>24 ml</td>
+                                                <td>48 ml</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Elution Buffer</td>
+                                                <td>15 ml</td>
+                                                <td>30 ml</td>
+                                            </tr>
+                                            <tr>
+                                                <td>FastPure DNA Mini Columns IV</td>
+                                                <td>150</td>
+                                                <td>2 × 150</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2 ml Collection Tubes</td>
+                                                <td>150</td>
+                                                <td>2 × 150</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Procedure section -->
+                                <h3>2. Experimental Procedure</h3>
+                                <ol>
+                                    <li>
+                                        <p>Take 1 - 4 ml (2 - 8 OD) of overnight cultured bacterial solution, centrifuge at 12,000 rpm (13,400 × g) for 1 minute to collect the bacterial pellet, and discard the supernatant as much as possible.</p>
+                                        <ul>
+                                            <li>Recommended ratio of bacterial pellet volume to lysis buffer volume: <em>This content is only supported in a Feishu Docs</em></li>
+                                            <li>Residual culture medium will reduce the effectiveness of the lysis solution, so it should be discarded as much as possible.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Add 150 μl of Buffer P1 (please check whether RNase A Solution has been added), use a pipette or vortex mixer to mix until the bacterial pellet is fully resuspended. The resuspended solution should appear as a homogeneous dispersed state without obvious bacterial clumps or aggregates.</p>
+                                        <ul>
+                                            <li>After the bacterial pellet is fully resuspended, proceed immediately with the next step to avoid bacterial clumping, incomplete lysis, and to affect the extraction efficiency.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Immediately add 150 μl of Buffer P2, gently invert the tube 15 - 18 times, the bacterial solution should appear as a blue and clear viscous state.</p>
+                                        <ul>
+                                            <li>This step should be mixed gently, avoid vigorous shaking to prevent genomic DNA contamination. The bacterial solution should become clear and viscous, and the operation time should not exceed 3 minutes to avoid breaking the plasmid DNA.</li>
+                                            <li>Ensure that all bacterial pellets are mixed with the lysis solution!</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Add 350 μl of Buffer NP3, immediately invert the tube quickly 15 - 25 times until the blue color completely disappears, at this point, white and evenly distributed flocculent precipitate should appear, centrifuge at 12,000 rpm (13,400 × g) for 2 minutes.</p>
+                                        <ul>
+                                            <li>The solution turns from blue to colorless, indicating complete neutralization, avoid the appearance of large clumps of precipitate, which will affect the extraction yield and subsequent liquid handling operations.</li>
+                                            <li>The supernatant after centrifugation should be clear, if there are small white precipitates floating on the surface of the supernatant, it will not affect the subsequent operations.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Carefully transfer the supernatant after centrifugation to the FastPure DNA Mini Columns IV adsorption column (place into a 2 ml Collection Tubes), centrifuge at 12,000 rpm (13,400 × g) for 30 seconds, discard the filtrate.</p>
+                                    </li>
+                                    <li>
+                                        <p>Add 700 μl of Buffer PW (please check whether anhydrous ethanol has been added) to the adsorption column, centrifuge at 12,000 rpm (13,400 × g) for 30 seconds, discard the filtrate.</p>
+                                    </li>
+                                    <li>
+                                        <p>Place the adsorption column back into the collection tube, centrifuge at 12,000 rpm (13,400 × g) for 1 minute, discard the collection tube.</p>
+                                        <ul>
+                                            <li>If there is residual ethanol in the adsorption column, it will affect downstream experiments, you can briefly open the cap and dry for 1 minute.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Place the adsorption column in a new 1.5 ml sterile centrifuge tube (self-prepared), add 30 - 100 μl of Elution Buffer to the center of the adsorption column membrane, centrifuge at 12,000 rpm (13,400 × g) for 30 seconds - 1 minute, discard the adsorption column.</p>
+                                        <ul>
+                                            <li>It is recommended that the elution volume should not be less than 30 μl, a smaller volume will reduce the elution efficiency.</li>
+                                            <li>If using ddH2O for elution, ensure that the pH of ddH2O is between 7.0 - 8.5, a pH lower than 7.0 will reduce the elution efficiency.</li>
+                                            <li>Preheat the elution solution at 65°C or perform a second elution to improve the elution efficiency of the plasmid. To increase the elution yield, you can perform a second elution with the centrifuged liquid.</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <p>Store the extracted plasmid DNA at -30 ~ -15°C.</p>
+                                    </li>
+                                </ol>
                             </div>
                         </section>
                         <!-- ... other Module 1 sections ... -->
                     </div>
                 </section>
                 <!-- ... similar structure for other modules ... -->
+
+                
+
             </div>
         </div>
 
