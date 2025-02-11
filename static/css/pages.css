@@ -333,6 +333,16 @@
     margin-bottom: 0.5em;
 }
 
+.content h6 {
+    font-size: 20px;
+    color: #2a2e41;
+    font-family: var(--content-font);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+
 /* References styles */
 .references {
     font-size: 0.9em;
