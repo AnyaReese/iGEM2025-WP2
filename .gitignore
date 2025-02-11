@@ -100,7 +100,7 @@ eggs/
 .eggs/
 lib/
 lib64/
-parts/
+# parts/
 sdist/
 var/
 wheels/
