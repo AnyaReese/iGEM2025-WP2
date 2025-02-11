@@ -150,23 +150,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // find the nearest header
     function findNearestHeader() {
         const scrollPosition = window.scrollY + window.innerHeight * 0.3;
-        const sections = Array.from(document.querySelectorAll('.content section[id]'));
         
-        // sort by position in the document
+        // 获取所有在sidebar中有对应链接的section id
+        const sidebarLinks = document.querySelectorAll('.sidebar .t1 > a, .sidebar .t2 a');
+        const validSectionIds = new Set(Array.from(sidebarLinks).map(link => 
+            link.getAttribute('href').substring(1)
+        ));
+        
+        // 只选择有对应sidebar链接的section
+        const sections = Array.from(document.querySelectorAll('.content section[id]'))
+            .filter(section => validSectionIds.has(section.id));
+        
+        // 按照位置排序
         sections.sort((a, b) => {
             const posA = a.getBoundingClientRect().top + window.scrollY;
             const posB = b.getBoundingClientRect().top + window.scrollY;
             return posA - posB;
         });
 
-        // find the first section before the current scroll position
+        // 找到第一个在当前滚动位置之前的section
         let currentSection = null;
         for (let section of sections) {
             const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-            if (sectionTop <= scrollPosition) {
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            // 如果section在可视区域内或刚好在可视区域上方
+            if (sectionTop <= scrollPosition && sectionBottom >= scrollPosition) {
                 currentSection = section;
-            } else {
                 break;
+            } else if (sectionTop <= scrollPosition) {
+                currentSection = section;
             }
         }
 
