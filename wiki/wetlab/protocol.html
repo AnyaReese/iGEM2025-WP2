@@ -1076,24 +1076,37 @@
                                 </button>
                             </div>
                             <div class="section-content">
+                                <h3>Materia (additional to SDS-Page):</h3>
+                                <p>BSA Protein (solid), ddH₂O</p>
+                                <h3>Methods:</h3>
                                 <ol>
-                                    <li>
-                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    <li>Solute BSA in water.</li>
+                                    <li>Create multiple standards with known concentrations using serial dilutions)</li>
+                                    <li>Load the standards on the same gel as your samples (important!) and run the gel
+                                        <ol type="a">
+                                            <li>Refer to the SDS Page protocol for a step by step instruction.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    <li>After staining the gel and transferring it to transparent plastic foils, scan the gel. Retrievethe image fle and store it on a Computer that has the ImageJ software installed</li>
+                                    <li>Open the ImageJ software and open the image file of your gel by clicking 'File' and 'Open...' or pressing Ctrl+O.</li>
+                                    <li>After opening the image file, select the 'Rectangle' and mark your first lane on the gel. Make sure the marked lane includes white space on the left and right.
+                                        <ol>
+                                            <li>Hint: The next lanes you mark will have the same rectangle in height, so make sure the first is long enough</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
-                                    </li>
-                                    <li>
-                                        <p>Resuspend the collected cells in PBS.</p>
-                                    </li>
-                                    <li>
-                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
-                                    </li>
-                                    <li>
-                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    <li>Go to Analyze , Gels , Select first lane or press ctrl+1.</li>
+                                    <li>Grab the rectangle and drag it to the second lane.</li>
+                                    <li>Go to Analyze→Gels→Select next lane or press Ctrl+2. Repeat this step (still using Ctrl+2) until all lanes are marked</li>
+                                    <li>After all lanes are defined, click Analyze→Gels→Plot lanes or use Ctrl+3.</li>
+                                    <li>A window showing a histogram for each lane opens up. Select the line tool and mark the bottoms of the peaks in the histograms. Compare the number of peaks to the number ofbands in each lane(this should match)</li>
+                                    <li>After all peaks are correctly defned, use the 'wand (tracing)' tool and click on the area of the first peak.</li>
+                                    <li>After clicking on all peaks, you can now save the data as a . CSV data file and transfer it to graphic analytic software like Excel.</li>
+                                    <li>For the standards plot, the known concentrations and the peak areas. You should receive a linear plot.</li>
+                                    <li>Do a linear regression fit. Make sure that the intercept with the Y axis is not too far from Zero.</li>
+                                    <li>After having the linear equation calculated (y=m*x+b) you can solve the unknown concentrations X, of your proteins, using the peak area of ImageJ. y is the peak area respectively.
+                                        <ol>
+                                            <li>Xi=(yi-b)/m</li>
+                                        </ol>
                                     </li>
                                 </ol>
                             </div>
@@ -1108,23 +1121,81 @@
                             </div>
                             <div class="section-content">
                                 <ol>
-                                    <li>
-                                        <p>Seed cells in 6-well plates (Corning, NY, USA) at a density of 1 × 10^6 cells per well and culture overnight.</p>
+                                    <li>The fluorophore of a tagged protein is bleached using a brief pulse of light, irreversibly causing it to become nonfluorescent (experiment 1). This generates two subpopulations of the tagged protein: fluorescent and nonfluorescent (yellow and gray, respectively).</li>
+                                    <li>After bleaching, the nonfluorescent proteins are no longer produced and therefore decay at a rate that depends solely on protein removal (decay of gray proteins in experiment 1), in a manner analogous to the decay of radiolabeled tagged proteins in the pulse-chase experiment. However, the nonfluorescent proteins are invisible by fluorescence microscopy and cannot be measured directly.</li>
+                                    <li>Repeat the same experiment without bleaching (experiment 2) and subtract the visible fluorescent signal of the two experiments</li>
+                                </ol>
+                                <p>Methods:</p>
+                                <ol>
+                                    <li>Thawing cells
+                                        <ol>
+                                            <li>Thaw the vial of frozen cells by adding warm (37 °C) growth medium (up to 1 ml) to the vial.</li>
+                                            <li>Transfer the thawed cells to a sterile 15-ml or 50-ml tissue culture tube with 10 ml of warm growth medium (repeat Steps 1 and 2 until all cells are thawed).</li>
+                                            <li>Centrifuge the cells for 2 min at ∼300g at room temperature (20–25 °C).</li>
+                                            <li>Discard the supernatant.</li>
+                                            <li>Resuspend the cell pellet with 10 ml of fresh, warm growth medium.</li>
+                                            <li>Transfer the resuspended cells to a sterile 10-cm tissue culture dish.</li>
+                                            <li>Leave in the tissue culture incubator overnight.</li>
+                                            <li>Repeat Steps 1–7 for all cell clones to be used in the experiment (each clone expresses a different fluorescently tagged protein).</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Replace the culture medium with fresh medium containing recombinant proteins at the indicated concentrations.</p>
+                                    <li>Plating cells for a time-lapse microscopy experiment
+                                        <ol>
+                                            <li>To plate cells on a 12-well optical plate, first apply 300 μl of fibronectin solution (see REAGENT SETUP) to each well in the plate.</li>
+                                            <li>Incubate the plate for 45–60 min in the tissue culture incubator.</li>
+                                            <li>Wash the plate twice with warm (37 °C) sterile PBS.</li>
+                                            <li>Trypsinize, with 2 ml of trypsin, the cells from the 10-cm dish (those thawed the day before). Repeat Steps 3–5 and count with a hemocytometer.</li>
+                                            <li>Plate the cells on the fibronectin-coated 12-well plate (seed about 8 × 10(6) cells in 2 ml of growth medium per well). Each clone should be seeded in two wells (one well for bleaching and the other for unbleached control).</li>
+                                            <li>Incubate the cells in tissue culture incubator overnight.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>After incubation, treat the cells with trypsin, wash them twice with PBS, and collect the cells.</p>
+                                    <li>Calibrating the fluorescent lamp
+                                        <ol>
+                                            <li>Open a folder on the computer named 'current.movie'.</li>
+                                            <li>Open the YuvControl program.</li>
+                                            <li>Place an optical 12-well plate with 2 ml of red RPMI 1640 media on empty wells with no cells. Either change the objective to a ×5 objective or lower the objective apparatus.</li>
+                                            <li>Insert the plate into the microscope.</li>
+                                            <li>Switch back to the ×20 objective.</li>
+                                            <li>Find the bottom focus of the well and elevate the focus plane by 50 μm.</li>
+                                            <li>Run the calibration macro program.</li>
+                                            <li>Run calibration on the YFP filter and on the red mCherry filter.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Resuspend the collected cells in PBS.</p>
+                                    <li>Bleaching
+                                        <ol>
+                                            <li>Replace the growth medium in each well of the 12-well plate, previously seeded with the fluorescent cells, with 2 ml of complete transparent RPMI 1640 medium. Change to a ×5 objective or lower the objective apparatus.</li>
+                                            <li>Insert the plate into the microscope.</li>
+                                            <li>Switch back to the ×20 objective.</li>
+                                            <li>Determine the appropriate bleaching exposure duration required for each protein. For convenience, this procedure may be performed on the same plate that is used for the time-lapse experiment. However, to prevent unwanted bleaching of the selected FOV, we highly recommend taking the snapshots on a distal area of the plate (at least 700 μm away from the nearest FOV).</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Assess fluorescence intensity using flow cytometry (Becton Dickinson, Franklin Lakes, NJ, USA).</p>
+                                    <li>Acquiring a time-lapse movie
+                                        <ol>
+                                            <li>Open the YuvControl program: press 'macro' and choose YuvControl. In the opened YuvControl window, you can control your time-lapse movie workflow by choosing the FOVs, the exposure times, the time-lapse interval, the duration of the movie and so on.</li>
+                                            <li>Open the video microscope camera by pressing 'start preview' on the camera window.</li>
+                                            <li>Open the transmitted light shutter and focus on the cells.</li>
+                                            <li>Select FOVs (e.g., choose four FOVs in each well of a 12-well plate) and save the list of FOVs.</li>
+                                            <li>For each clone, insert the appropriate bleaching exposure time and the nonbleaching exposure time (as determined in previous steps).</li>
+                                            <li>Insert the appropriate fluorescent-shutter exposure times (for the bleached and unbleached FOVs in the YFP channel, as well as for the mCherry color). Each time you choose an FOV, the exposure times will be added to the information of the FOV. Each FOV is associated with x,y coordinates, a z-plane focus distance and the YFP and cherry exposure times.</li>
+                                            <li>Insert the exposure time of the phase images and the AF plane images.</li>
+                                            <li>Insert the desired interval time of the time-lapse movie in the window 'delay(sec)', on the YuvControl window.</li>
+                                            <li>Determine the number of loops in the 'timeloops' field.</li>
+                                            <li>Traverse over all FOVs and adjust the focus if necessary.</li>
+                                            <li>Save the list of points.</li>
+                                            <li>Press 'Run' to start the movie recording. Run the time-lapse movie for at least one round.</li>
+                                            <li>Pause the movie.</li>
+                                            <li>Adjust the bleaching exposure times for the wells that should be bleached.</li>
+                                            <li>Run the movie for one round of bleaching. The movie loop with the bleaching exposure times can last for about 2–3 h.</li>
+                                            <li>After one round, change exposure times back to normal (nonbleaching) exposure times.</li>
+                                            <li>Run the movie for the desired amount of time.</li>
+                                        </ol>
                                     </li>
-                                    <li>
-                                        <p>Analyze the data using FlowJo 7.6 software (TreeStar, Ashland, Oregon, USA).</p>
+                                    <li>Image analysis and protein half-life measurement
+                                        <ol>
+                                            <li>Apply image analysis software, such as PhenoTrack, to the time-lapse movies to extract individual cell traces</li>
+                                            <li>Compute the protein fluorescence average dynamics over the individual cells in the bleached and unbleached populations</li>
+                                            <li>Compute the protein removal, α, by obtaining the slope of the difference between the bleached and unbleached protein fluorescence on a semilogarithmic plot using a linear regression. Regression can be performed using Excel, MATLAB or any other parameter-estimation software. When the removal rate, α, is constant, the protein half-life is T(1/2) = ln(2)/α.</li>
+                                        </ol>
                                     </li>
                                 </ol>
                             </div>
