@@ -160,7 +160,15 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <p>SHuffle E. coli is a biosafety level 2 organism. We have implemented a series of safety measures to ensure the safety of our project and our team.</p>
+
+                                <p>We have selected the SHuffle T7-B strain as the chassis organism. The commercial SHuffle T7-B strain is derived from Escherichia coli BL21. According to the guidelines of the National Institutes of Health (NIH), the risk level of E. coli B strain is classified as Risk Group 1 (RG-1). This indicates that the B strain typically does not cause disease in healthy adults and is considered a microorganism with low individual and environmental risk.</p>
+                                <p>The SHuffle strain originates from the non-pathogenic E. coli BL21 and lacks common virulence factors. Additionally, the primary pathogenic substance of E. coli, lipopolysaccharide (LPS, also known as endotoxin), cannot penetrate the intact cornea. LPS can only diffuse into the stromal layer when the cornea is damaged, and this process is mainly mediated by polymorphonuclear neutrophils (PMNs) that migrate to the damaged tissue. Therefore, no additional modification of LPS is required in this project.<sup><a href="#ref2">[2]</a></sup><sup><a href="#ref3">[3]</a></sup> Moreover, the eye is an immune-privileged site, which further reduces the risk of severe infection.</p>
+                                <p>Regarding the risk of horizontal gene transfer (HGT), although engineered bacteria carrying plasmids could theoretically transfer resistance genes through conjugation, this requires specific conditions and is extremely unlikely in our application scenario.</p>
+
+                                <figure>
+                                    <img src="../static/img/safety/cell.png" alt="cell" style="width: 50%;">
+                                    <figcaption>Cell Activity Detection Contact Lens Case</figcaption>
+                                </figure>
                             </div>
                         </section>
                         <!-- SHuffle E. coli  Biosafety END -->
@@ -174,7 +182,18 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <p>Safety Alert Module is a module that alerts the user when the safety of the project is compromised.</p>
+                                <p>Encapsulated in Hydrogels, the Engineered Bacteria Rely on Nutrients in Tears to Survive, and Their Viability and Reproduction Rate are Influenced by Factors such as the Ocular Microenvironment Temperature and Nutrient Elements. When the Bacterial Viability Declines and the Risk of Lysis Occurs, We Need to Promptly Generate a Reporting Signal to Alert Users to Replace the Contact Lenses. To This End, We Have Designed a Biosafety Reporting Module.</p>
+                                <p>This module utilizes the fluorescent protein Crimson as the reporting signal and implements fluorescence signal detection by incorporating a light source device into the contact lens care box. The fluorescence signal intensity is proportional to the expression intensity of RNF114, and we will determine the safety grade corresponding to the fluorescence signal intensity through experiments.</p>
+                                <p>The Crimson fluorescent protein is characterized by its high brightness, low toxicity, non-aggregating properties, and excellent photostability. Studies have shown that the expression of Crimson in neurons not only exhibits higher brightness than other common red fluorescent proteins (such as mCherry and mKate2), but also demonstrates significantly lower cytotoxicity during long-term expression. Moreover, Crimson does not aggregate within cells, which further reduces the potential interference with cellular functions.</p>
+                                <p>By leveraging the naturally occurring polycistronic structure in prokaryotes, we achieve synchronous expression of RNF114 and the fluorescent protein Crimson. The two coding genes share a single promoter, and after translation, the two coding genes are located on the same mRNA, thereby enabling synchronous expression of the two genes.</p>
+
+                                <figure>
+                                    <img src="../static/img/safety/safetypath.png" alt="Safety Alert Module">
+                                    <figcaption>Safety alert module gene pathway map</figcaption>
+                                </figure>
+
+                                <p>In the polycistronic structure, the ribosome binding site (RBS) affects the reading of the open reading frame (ORF) through its complementarity to the ribosome and its distance from the start codon. We have designed RBS of varying strengths for the two coding genes to achieve relatively higher expression levels of RNF114, thereby directing translational resources primarily towards the expression of the target therapeutic molecule.</p>
+                                <p>We have integrated the fluorescence signal detection device into a black contact lens care box. Upon pressing the button, the light source excites the fluorescent protein Crimson, and the fluorescence intensity emitted by the protein is detected by the BH1750 sensor. The safety grade warning is determined based on the preset threshold and displayed on the LCD screen. (See detail in <a href="./drylab/hardware.html">Hardware Part</a>)</p>
                             </div>
                         </section>
                         <!-- Safety Alert Module END -->
@@ -305,13 +324,20 @@
                     </div>
                     <div class="section-content">
                         <div class="reference-list">
-                            <div class="reference-item">
-                                <h2>Reference 1</h2>
-                                <p>Reference 1 is a module that ensures the safety of the project and our team.</p>
+                            <div class="reference-item" id="ref1">
+                                <span class="ref-number">[1]</span>
+                                <span class="ref-content">Ning L, Geng Y, Lovett-Barron M, et al. A Bright, Nontoxic, and Non-aggregating red Fluorescent Protein for Long-Term Labeling of Fine Structures in Neurons. <em>Front Cell Dev Biol</em>, 2022, 10: 893468.</span>
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/35846353/" class="ref-link" target="_blank">DOI: 10.3389/fcell.2022.893468</a>
                             </div>
-                            <div class="reference-item">
-                                <h2>Reference 2</h2>
-                                <p>Reference 2 is a module that ensures the safety of the project and our team.</p>
+                            <div class="reference-item" id="ref2">
+                                <span class="ref-number">[2]</span>
+                                <span class="ref-content">Mamat U, Wilke K, Bramhill D, et al. Detoxifying Escherichia coli for endotoxin-free production of recombinant proteins. <em>Microb Cell Fact</em>. 2015 Apr 16;14:57.</span>
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/25890161/" class="ref-link" target="_blank">DOI: 10.1186/s12934-015-0241-5</a>
+                            </div>
+                            <div class="reference-item" id="ref3">
+                                <span class="ref-number">[3]</span>
+                                <span class="ref-content">Schultz CL, Buret AG, Olson ME, et al. Lipopolysaccharide entry in the damaged cornea and specific uptake by polymorphonuclear neutrophils. <em>Infect Immun</em>. 2000 Mar;68(3):1731-4.</span>
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/10678999/" class="ref-link" target="_blank">DOI: 10.1128/IAI.68.3.1731-1734.2000</a>
                             </div>
                         </div>
                     </div>
