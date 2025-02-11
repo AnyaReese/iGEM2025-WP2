@@ -128,6 +128,16 @@
                         </div>
                     </div>
 
+                    <div class="t1">
+                        <span>Biosafety module</span>
+                        <div class="t2">
+                            <a href="#alert">safety Alert Module-Design</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#suicide">Suicide Switch in case of Leakage</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -271,6 +281,66 @@
                         </section>
                     </div>
                 </section>
+
+                <!-- suicide -->
+                <section id="biosafety-module" class="parent-section">
+                    <div class="section-header">
+                        <h1>Biosafety Module</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <section id="alert" class="sub-section">
+                            <div class="section-header">
+                                <h2>Safety Alert Module Design</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Encapsulated engineered bacteria in hydrogels depend on tear nutrients for survival, with viability and reproduction affected by ocular temperature and nutrient availability. To ensure safety, we designed a biosafety module using Crimson fluorescent protein as a signal, detected by a light source in the contact lens care box. Fluorescence intensity, proportional to RNF114 expression, determines the safety grade based on experimentally defined thresholds.</p>
+                                
+                                <p>Crimson was chosen for its high brightness, low toxicity, non-aggregating properties, and excellent photostability, outperforming other red fluorescent proteins. A polycistronic structure enables synchronous expression of RNF114 and Crimson, optimized for RNF114 production through ribosome binding sites (RBS). The detection device in the care box measures fluorescence with a BH1750 sensor and displays the safety grade on an LCD screen to alert users to replace lenses.</p>
+
+                                <figure>
+                                    <img src="../static/img/design/safety-alert-module.png" alt="Safety alert module gene pathway map">
+                                    <figcaption>Safety alert module gene pathway map</figcaption>
+                                </figure>
+                            </div>
+                        </section>
+
+                        <section id="suicide" class="sub-section">
+                            <div class="section-header">
+                                <h2>Suicide Switch in case of Leakage</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <h3>1. Auxotrophic Bacterial System</h3>
+                                <figure>
+                                    <img src="../static/img/design/auxotrophic-system.png" alt="Auxotrophic bacterial system">
+                                </figure>
+                                <p>In this system, we use the auxotrophic SHuffle T7-B strain as our engineered bacteria and have designed a metabolic complementation mechanism where bacteria A and B can only survive together, not independently. Bacteria A cannot synthesize tryptophan (Trp) but can provide histidine (His), while bacteria B cannot synthesize histidine (His) but can provide tryptophan (Trp). These two bacteria must provide each other with the required amino acids to maintain growth, and they cannot survive alone due to the lack of essential nutrients.</p>
+                                
+                                <p>We knocked out the trpA gene in bacteria A, making it unable to synthesize tryptophan, and knocked out the hisG gene in bacteria B, making it unable to synthesize histidine. Meanwhile, A overexpresses hisG to help provide histidine for B, and B overexpresses trpA to help provide tryptophan for A. Bacteria A and B form a strict metabolic symbiotic relationship where they can only grow in coexistence. Once separated, they will lose their survival ability due to nutritional deficiencies.</p>
+                                
+                                <p>This system is expected to ensure that if the hydrogel's containment of the engineered bacteria fails, the bacteria will die due to the lack of essential amino acids, preventing their spread to the eyeball and natural environment.</p>
+
+                                <h3>2. Phosphate Killing Switch</h3>
+                                <p>In addition to the mutualistic bacterial system, we are also considering a system based on SHuffle T7-B engineered bacteria, using a phosphate-sensitive promoter system to control the expression of a suicide gene, thereby regulating bacterial survival and death. In the hydrogel, phosphate is gradually released into the surrounding environment through a sustained-release mechanism, inhibiting the P_PhoB promoter from activating the suicide gene expression (mazF), ensuring bacterial survival within the hydrogel.</p>
+
+                                <figure>
+                                    <img src="../static/img/design/phosphate-switch.png" alt="Phosphate killing switch mechanism">
+                                </figure>
+                                
+                                <p>When phosphate is deficient, the P_PhoB promoter is activated, leading to the expression of the suicide gene (mazF) and subsequent bacterial death. This system allows the SHuffle T7-B strain to survive within the hydrogel, while triggering the suicide mechanism in an external phosphate-lacking environment, ensuring selective bacterial survival or death.</p>
+                            </div>
+                        </section>
+                    </div>
+                </section>
+
             </div>
         </div>
 
