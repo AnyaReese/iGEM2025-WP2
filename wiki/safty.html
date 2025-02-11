@@ -207,7 +207,206 @@
                                 </button>
                             </div>
                             <div class="section-content">
-                                <p>Suicide Switch in case of Leakage is a module that kills the bacteria when the safety of the project is compromised.</p>
+                                <!-- Nutritional Deficiency Suicide System -->
+                                <section id="nutritional-system" class="sub-section">
+                                    <div class="section-header">
+                                        <h3>Nutritional Deficiency Suicide System</h3>
+                                        <button class="section-collapse-btn">
+                                            <ion-icon name="chevron-up-outline"></ion-icon>
+                                        </button>
+                                    </div>
+                                    <div class="section-content">
+                                        <!-- Introduction content -->
+                                        <div class="introduction">
+                                            <p>In this system, we use the nutrient-deficient SHuffle T7-B strain as the engineered bacterial strain and design a metabolic complementarity-based symbiotic bacterial system, ensuring that bacteria A and B can only coexist and cannot survive independently. Bacteria A cannot synthesize tryptophan (Trp) but can provide histidine (His), while bacteria B cannot synthesize histidine (His) but can provide tryptophan (Trp). These two bacteria must provide the required amino acids for each other to maintain growth; they cannot survive independently due to the lack of essential nutrients.</p>
+                                            <p>We knocked out the trpA gene in bacteria A to prevent it from synthesizing tryptophan, and knocked out the hisG gene in bacteria B to prevent it from synthesizing histidine. Meanwhile, bacteria A overexpress hisG to help provide histidine to bacteria B, and bacteria B overexpress trpA to help provide tryptophan to bacteria A. A strict metabolic symbiosis is formed between bacteria A and B; they can only grow in a coexistence state. If separated, they will lose their viability due to nutrient deficiencies.</p>
+                                            <p>This system is expected to ensure that after the failure of the hydrogel's confinement of the engineered bacteria, the bacteria will die due to the lack of essential amino acids, preventing them from spreading to the eye or the natural environment.</p>
+                                        </div>
+
+                                        <!-- Nested subsections -->
+                                        <section id="knockout" class="sub-section">
+                                            <div class="section-header">
+                                                <h4>1. CRISPR/Cas9 knockout of genes related to trp and his synthesis</h4>
+                                                <button class="section-collapse-btn">
+                                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                                </button>
+                                            </div>
+                                            <div class="section-content">
+                                                <h5>1.1 Knockout of trp synthesis-related genes in engineered strain A</h5>
+                                                <h6>1.1.1 In the trp synthesis pathway, there are four types of enzymes:</h6>
+                                                <ul>
+                                                    <li><p><strong>trpE:</strong> The first step in the catalytic synthesis of tryptophan is the generation of anthranilate.</p></li>
+                                                    <li><p><strong>trpD:</strong> Synthesis of trpC: Producing Indole-3-glycerol phosphate</p></li>
+                                                    <li><p><strong>trpB and trpA:</strong> Collaboratively generate the final product, tryptophan, completing the final step of tryptophan synthesis.</p></li>
+                                                </ul>
+                                                <p>We chose to knock out trpC (which encodes Indole-3-glycerol phosphate synthase). Knocking out the trpC gene is expected to prevent the production of intermediates in tryptophan synthesis, thereby leading to a deficiency of tryptophan.</p>
+
+                                                <h6>1.1.2 Design of gRNA</h6>
+                                                <p>We used <a href="https://www.benchling.com/">benchling.com</a> to design gRNA targeting trpC. After screening multiple possible sequences, we selected:</p>
+                                                
+                                                <blockquote class="quote">
+                                                    TCGTCGCAGACAAGGCGATT
+                                                </blockquote>
+
+                                                <p>As our gRNA, its On-Target Score is 63.0, and Off-Target Score is 99.9, indicating good targeting efficiency and low off-target risk.</p>
+                                                <p>Next, we designed two primers to amplify the gRNA targeting trpC, adding Bsal restriction sites at both ends.</p>
+
+                                                <figure>
+                                                    <img src="../static/img/safety/trpC_primer.png" alt="trpC primer">
+                                                    <figcaption>trpC primer</figcaption>
+                                                </figure>
+
+                                                <h6>1.1.3 Construction of pdCas9-trpCgRNA plasmid</h6>
+                                                <p>We chose pdCas9 as the vector, which has the dCas9 (dead Cas9) gene. After digestion with Bsal enzyme and ligation using T4 ligase, we obtained the pdCas9-trpCgRNA plasmid.</p>
+
+                                                <figure>
+                                                    <img src="../static/img/safety/pdCas9-trpCgRNA.png" alt="pdCas9-trpCgRNA" style="width: 60%;">
+                                                    <figcaption>pdCas9-trpCgRNA</figcaption>
+                                                </figure>
+
+                                                <a href="../static/img/safety/pdCas9-trpCgRNA.dna" target="_blank" download="pdCas9-trpCgRNA.dna">
+                                                    <button class="download-btn">Download pdCas9-trpCgRNA.dna</button>
+                                                </a>
+                                            </div>
+                                        </section>
+
+                                        <section id="overexpression" class="sub-section">
+                                            <div class="section-header">
+                                                <h4>2. Design of the Trp Overexpression System</h4>
+                                                <button class="section-collapse-btn">
+                                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                                </button>
+                                            </div>
+                                            <div class="section-content">
+                                                <h5>2.1 aroG</h5>
+                                                <p>The aroG gene encodes 3-deamino-D-aromatic amino acid transaminase (DAHP synthase). This enzyme is a key enzyme in the aromatic amino acid synthesis pathway, involved in the synthesis of aromatic amino acids (such as tryptophan and phenylalanine). In normal metabolic processes, the activity of DAHP synthase is subject to feedback inhibition by its product (tryptophan). In other words, when the concentration of tryptophan is too high, it inhibits the activity of the enzyme encoded by aroG, thereby reducing the synthesis of aromatic amino acids.</p>
+                                                
+                                                <p>We modified the aroG gene by mutating the aspartic acid (Asp) at position 146 to asparagine (Asn) (i.e., D146N mutation). This removed the feedback inhibition of tryptophan on the enzyme. The enzyme's activity is no longer inhibited by high concentrations of tryptophan, so even if there is a high concentration of tryptophan in the cells, DAHP synthase can still continue to catalyze the synthesis of aromatic amino acids, avoiding metabolic pathway blockage due to feedback inhibition.</p>
+                                                
+                                                <p>We added an RBS to the front of its CDS sequence to facilitate the formation of a polycistronic transcript with the enzymes related to Trp synthesis, allowing for simultaneous expression. We also added SalI and NotI restriction enzyme recognition sites at both ends to facilitate insertion into a subvector.</p>
+
+                                                <figure>
+                                                    <img src="../static/img/safety/aroG.png" alt="aroG">
+                                                    <figcaption>aroG</figcaption>
+                                                </figure>
+                                                
+                                                <a href="../static/img/safety/aroG.dna" target="_blank" download="aroG.dna">
+                                                    <button class="download-btn">Download aroG.dna</button>
+                                                </a>
+                                            </div>
+                                        </section>
+
+                                        <h5>1.2 Knockout of His Synthesis Related Genes in Engineering Strain B</h5>
+                                        <h6>1.2.1 In the His synthesis pathway, there are five types of enzymes:</h6>
+                                        <ul>
+                                            <li><strong>hisG:</strong> Catalyze Imidazoleglycerol-phosphate dehydratase to produce Imidazoleglycerol.</li>
+                                            <li><strong>hisD:</strong> Synthesize Imidazoleacetol.</li>
+                                            <li><strong>hisB:</strong> Synthesize Histidinol.</li>
+                                            <li><strong>hisA:</strong> Synthesize Histidinaldehyde.</li>
+                                            <li><strong>hisC:</strong> Synthesize Histidine (final product).</li>
+                                        </ul>
+                                        <p>We chose to knock out the hisA gene, which encodes Phosphoribosyl-ATP synthase. In the histidine synthesis pathway, hisA is a key enzyme responsible for generating Phosphoribosyl-ATP. By knocking out the hisA gene, we can block a critical step in histidine synthesis, thereby preventing the synthesis of histidine.</p>
+
+                                        <h6>1.2.2 Design of gRNA</h6>
+                                        <p>We used benchling.com to design gRNA targeting hisA. After screening multiple possible sequences, we selected:</p>
+                                        <pre>TCGTCGCAGACAAGGCGATT</pre>
+                                        <p>As our gRNA, its On-Target Score is 72.0, and Off-Target Score is 99.8, indicating good targeting efficiency and low off-target risk.</p>
+                                        <p>Next, we designed two primers to amplify the gRNA targeting hisA, adding Bsal restriction sites at both ends.</p>
+
+                                        <figure>
+                                            <img src="../static/img/safety/hisA_primer.png" alt="hisA primer">
+                                            <figcaption>hisA primer</figcaption>
+                                        </figure>
+
+                                        <h6>1.2.3 Construction of pdCas9-hisAgRNA plasmid</h6>
+                                        <p>We selected pdCas9 as the vector, which has the dCas9 (dead Cas9) gene. After digestion with Bsal enzyme and ligation using T4 ligase, we obtained the pdCas9-hisAgRNA plasmid.</p>
+
+                                        <figure>
+                                            <img src="../static/img/safety/pdCas9-hisAgRNA.png" alt="pdCas9-hisAgRNA" style="width: 60%;">
+                                            <figcaption>pdCas9-hisAgRNA</figcaption>
+                                        </figure>
+                                        
+                                        <a href="../static/img/safety/pdCas9-hisAgRNA.dna" target="_blank" download="pdCas9-hisAgRNA.dna">
+                                            <button class="download-btn">Download pdCas9-hisAgRNA.dna</button>
+                                        </a>
+                                    </div>
+                                </section>
+
+                                <!-- Phosphate Killing Switch -->
+                                <section id="phosphate-killing" class="sub-section">
+                                    <div class="section-header">
+                                        <h3>Phosphate Killing Switch</h3>
+                                        <button class="section-collapse-btn">
+                                            <ion-icon name="chevron-up-outline"></ion-icon>
+                                        </button>
+                                    </div>
+                                    <div class="section-content">
+                                        <p>If nutrient deficiency suicide systems significantly affect the expression of fusion proteins, we plan to adopt a killing switch strategy. We use SHuffle T7-B as the engineered strain and have designed a bacterial suicide system based on phosphate concentration to ensure that the bacteria can only survive within the hydrogel encapsulated environment and cannot survive independently.</p>
+                                        
+                                        <section id="suicide" class="sub-section">
+                                            <div class="section-header">
+                                                <h4>1. Suicide Switch Design</h4>
+                                                <button class="section-collapse-btn">
+                                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                                </button>
+                                            </div>
+                                            <div class="section-content">
+                                                <p>The eyes are very sensitive organs, and inappropriate molecules can cause irritation to the eye tissue, leading to burning sensations, tingling, itching, the feeling of foreign bodies, or tearing. It can even cause severe consequences such as corneal damage. Therefore, traditional operons such as arabinose and glucose are not suitable for this system's Killing Switch design.</p>
+                                                <p>Phosphate is commonly used in emergency eyewash solutions to help neutralize chemical damage to the eyes and regulate the osmotic pressure of the rinse solution. Thus, it is an ideal suicide switch.</p>
+                                                <p>We have drawn inspiration from the <a href="https://2021.igem.org/Team:SZU-China">2021-SZU-China</a> team, who designed a phosphate suicide switch. Unlike their project, we use the phosphate-sensitive promoter pPHO5. The expression of the suicide gene is inhibited at normal phosphate concentrations and promoted at low phosphate concentrations. When the PHO5 promoter is activated, transcription occurs, and the suicide gene is expressed. If the engineered bacteria accidentally leak or leave the hydrogel environment, they will be killed.</p>
+                                                <figure>
+                                                    <img src="../static/img/safety/PHO5.png" alt="pPHO5">
+                                                    <figcaption>Figure 1: Schematic diagram of the PHO5 promoter region in repressed (+P(i)) and induced (-P(i)) states.</figcaption>
+                                                </figure>
+
+                                                <figure>
+                                                    <img src="../static/img/safety/PHO5diagram.png" alt="pPHO5">
+                                                    <figcaption>Figure 2: Schematic diagram of the phosphate killing switch gene pathway.</figcaption>
+                                                </figure>
+                                            </div>
+                                        </section>
+
+                                        <section id="construct" class="sub-section">
+                                            <div class="section-header">
+                                                <h4>2. pET-32a(+)-PHO5-mazF Plasmid Construction</h4>
+                                                <button class="section-collapse-btn">
+                                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                                </button>
+                                            </div>
+                                            <div class="section-content">
+                                                <p>We selected the pET-32a(+) plasmid as a vector, and through PCR, we connected the recognition sequences for the restriction enzymes SgrAI and XbaI at both ends of the phosphate-sensitive promoter PHO5. Similarly, we connected the recognition sequences for BamHI and HindIII at both ends of the suicide gene mazF. After double restriction enzyme digestion, the fragments were inserted into pET-32a(+).</p>
+                                                <figure>
+                                                    <img src="../static/img/safety/phodna.png" alt="pET-32a(+)-PHO5-mazF" style="width: 60%;">
+                                                    <figcaption>pET-32a(+)-PHO5-mazF</figcaption>
+                                                </figure>
+
+                                                <a href="../static/img/safety/pET-32a(+)-PHO5-mazF.dna" target="_blank" download="pET-32a(+)-PHO5-mazF.dna">
+                                                    <button class="download-btn">Download pET-32a(+)-PHO5-mazF.dna</button>
+                                                </a>
+                                            </div>
+                                        </section>
+
+                                        <section id="suistain" class="sub-section">
+                                            <div class="section-header">
+                                                <h4>3. Hydrogel Sustained Release Design</h4>
+                                                <button class="section-collapse-btn">
+                                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                                </button>
+                                            </div>
+                                            <div class="section-content">
+                                                <p>To maintain a high phosphate concentration around the engineered bacteria, we chose Poly(2-hydroxyethyl methacrylate - methacrylate copolymer - hyaluronic acid - β-cyclodextrin) hydrogel for loading. Since phosphate carries a negative charge in the hydrogel environment, the long-chain hyaluronic acid (HA), which also has a negative charge, can strongly restrict its diffusion. Additionally, the β-cyclodextrin in the hydrogel composition has a hydrophobic cavity and a hydrophilic outer surface, making it an effective storage material for phosphate.</p>
+                                                <p>As for the phosphate concentration in the hydrogel, data shows that the phosphate concentration in the eye is typically similar to that in physiological fluids, around 0.8–1.5 mmol/L. Phosphate concentrations in soil vary widely, typically ranging from 0.001–0.1 mmol/L. In natural water bodies, phosphate concentrations are generally low, around 1.05 × 10⁻⁷ - 5.25 × 10⁻⁷ mol/L (corresponding to 0.01–0.05 mg/L P). In eutrophic water sources, the phosphate concentration is roughly between 8.34 × 10⁻⁷ mol/L and 8.34 × 10⁻⁶ mol/L.</p>
+                                                <p>We aim to load the hydrogel with a phosphate concentration higher than all the concentrations mentioned above, while ensuring it does not irritate the eye, even considering the dilution effect of tears.</p>
+
+                                                <div class="math-block">
+                                                    $$C_1 = \frac{C_2\times(V_1+V_2)}{V_1}$$
+                                                </div>
+
+                                                <p>Using the above formula, we designed the phosphate concentration in the hydrogel to be 1.82mmol/L</p>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
                             </div>
                         </section>
                         <!-- Suicide Switch in case of Leakage END -->
