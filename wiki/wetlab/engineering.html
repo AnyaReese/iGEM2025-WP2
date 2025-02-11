@@ -167,6 +167,16 @@
                         </div>
                     </div>
 
+                    <div class="t1">
+                        <span>Auxotrophic Mutual Assistance System</span>
+                        <div class="t2">
+                            <a href="#6cycle1">cycle1:Survival of strain A and strain B in the absence of relevant amino acids.</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#6cycle2">cycle2:Co-cultivation of strain A and strain B (at different dilution concentrations)</a>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
@@ -787,7 +797,7 @@
                                 <p>We have verified the effective loading of the hydrogel to phosphate, and subsequently, we wish to test the effectiveness of this suicide system by detecting the initiation threshold of the suicide switch PHO5 promoter.</p>
 
                                 <h3>2. Construction</h3>
-                                <p>The <strong>pЕТ-32a(+)-PHO5-mazF recombinant plasmid</strong> was constructed and the suicide gene mazF was placed under the control of the phosphate-sensitive promoter PHO5. The plasmid was introduced by heat-excited transformation into receptorized SHuffle T7-B E. coli that had been introduced with pET-32a(+)-RNF114-crimso, and recovery was carried out by streak culture. The positive bacteria were cultured in medium containing ampicillin (Ampicillin), picked and transferred to liquid medium at 33°C.</p>
+                                <p>The <strong>pET-32a(+)-p_PhoB-mazF recombinant plasmid</strong> was constructed and the suicide gene mazF was placed under the control of the phosphate-sensitive promoter PHO5. The plasmid was introduced by heat-excited transformation into receptorized SHuffle T7-B E. coli that had been introduced with pET-32a(+)-RNF114-crimso, and recovery was carried out by streak culture. The positive bacteria were cultured in medium containing ampicillin (Ampicillin), picked and transferred to liquid medium at 33°C.</p>
                                 
                                 <div class="img-grid-with-caption">
                                     <div class="img-grid">
@@ -850,6 +860,147 @@
                             </div>
                         </section>
                         
+                    </div>
+                </section>
+
+                <section id="6cycle1" class="sub-section">
+                    <div class="section-header">
+                        <h2>Cycle 1: Survival of strain A and strain B in the absence of relevant amino acids</h2>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <h3>1. Design</h3>
+                        <p>We first tested the survival of E. coli strain A and E. coli strain B in the absence of their respective amino acids (Trp or His).</p>
+                        <ul>
+                            <li>group A: Cultivate strain A of Escherichia coli in a medium lacking tryptophan (Trp) to observe whether it can grow.</li>
+                            <li>B group: Cultivate B. coli in a medium lacking histidine (His) and observe whether it can grow.</li>
+                            <li>Control group: Bacteria A and B are cultured in media containing their respective required amino acids, serving as positive controls.</li>
+                        </ul>
+
+                        <h3>2. Construction</h3>
+                        <p>Construct pdCas9-HisAgRNA recombinant plasmid and pdCas9-trpCgRNA recombinant plasmid. pET-32a(+)-trpEDCBA-aroG recombinant plasmid and pET-32a(+)-HisGene recombinant plasmid.</p>
+                        
+                        <div class="img-grid-with-caption">
+                            <div class="img-grid">
+                                <img src="../../static/img/engineer/auxo1.png" alt="Construction Image 1">
+                                <img src="../../static/img/engineer/auxo2.png" alt="Construction Image 2">
+                            </div>
+                            <div class="img-grid">
+                                <img src="../../static/img/engineer/auxo3.png" alt="Construction Image 3">
+                                <img src="../../static/img/engineer/auxo4.png" alt="Construction Image 4">
+                            </div>
+                        </div>
+
+                        <p>The pdCas9-HisAgRNA recombinant plasmid and the pET-32a(+)-trpEDCBA-aroG recombinant plasmid were co-transformed into the competent SHuffle T7-B E. coli A strain that had already been transformed with pET-32a(+)-RNF114-crimso using heat shock, followed by streaking for revival. They were cultured on media containing ampicillin, and positive colonies were selected and transferred to liquid media for cultivation at 33°C.</p>
+                        
+                        <p>The pdCas9-trpCgRNA recombinant plasmid and the pET-32a(+)-HisGene recombinant plasmid were co-transformed into the competent SHuffle T7-B E. coli A strain that had already been transformed with pET-32a(+)-RNF114-crimso using heat shock, followed by streaking for revival. They were cultured on media containing ampicillin, and positive colonies were selected and transferred to liquid media for cultivation at 33°C.</p>
+
+                        <h3>3. Test</h3>
+                        <p>Select strain A and strain B, and culture them separately in liquid media lacking tryptophan or histidine at a temperature of 33°C for a period of 72 hours.</p>
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>group</th>
+                                    <th>tryptophan/histidine concentration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2.00×10<sup>-4</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>1.43×10<sup>-4</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>1.03×10<sup>-4</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>7.40×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>5.30×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>3.80×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>2.70×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>1.90×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>1.40×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>1.00×10<sup>-5</sup> mol/L</td>
+                                </tr>
+                                <tr>
+                                    <td>eyeball environment</td>
+                                    <td>2.00×10<sup>-7</sup> mol/L</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>Samples were taken at different time points (0 hours, 24 hours, 48 hours, 72 hours) and colony counts or optical density (OD) measurements were conducted to observe whether bacteria could grow.</p>
+
+                        <h3>4. Learn</h3>
+                        <p>Strain A cannot grow in a medium without Trp, and strain B cannot grow in a medium without His, proving that they cannot survive independently and must rely on the amino acids provided by each other. The control groups of strains A and B can grow normally under conditions where the corresponding amino acids are supplemented. This indicates that the nutritional deficiency type E. coli AB has been successfully constructed.</p>
+                    </div>
+                </section>
+
+                <section id="6cycle2" class="sub-section">
+                    <div class="section-header">
+                        <h2>Cycle 2: Co-cultivation of strain A and strain B (at different dilution concentrations)</h2>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <h3>1. Goal</h3>
+                        <p>The test examines whether bacteria A and B can form a mutualistic system through metabolic complementation at different cell densities (dilution concentrations), or if they cannot survive due to excessive distance between the bacteria.</p>
+
+                        <h3>2. Design</h3>
+                        <p>In the co-culture system, strain A provides histidine (His), and strain B provides tryptophan (Trp).</p>
+                        <ol>
+                            <li>Set different bacterial dilution concentrations to adjust the average distance between bacteria:
+                                <ul>
+                                    <li><p>High concentration group (original bacterial solution): Bacteria A and B are mixed and cultured directly without dilution.</p></li>
+                                    <li><p>Medium concentration group (10 times dilution): Bacteria A and B are diluted 10 times respectively and then mixed for cultivation.</p></li>
+                                    <li><p>Low concentration group (100 times dilution): Bacteria A and B are diluted 100 times respectively and then mixed for cultivation.</p></li>
+                                    <li><p>Ultra-low concentration group (1000 times dilution): Bacteria A and B are diluted 1000 times respectively and then mixed for cultivation.</p></li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                        <h3>3. Test</h3>
+                        <ol>
+                            <li>Select strain A and strain B, and perform gradient dilution co-culture in a liquid medium containing minimal Trp and His (only to maintain initial growth).</li>
+                            <li>Cultured at 33°C for 72 hours, samples were taken at different time points (0 h, 24 h, 48 h, 72 h) and subjected to:
+                                <ul>
+                                    <li>Colony count (CFU/ml), observed under a fluorescence microscope, counting red fluorescent bacteria under 588 nm light excitation.</li>
+                                    <li>OD600 measurement (growth curve)</li>
+                                    <li>Observed under a fluorescence microscope, examining the distribution of bacteria under 588 nm light excitation.</li>
+                                </ul>
+                            </li>
+                            <li>Record the growth of the microbial bodies and analyze the mutual growth conditions of strain A and strain B at different dilution concentrations.</li>
+                        </ol>
+
+                        <h3>4. Learn</h3>
+                        <p>Cycle 2 determined the survival status of bacteria A and bacteria B at different dilution concentrations, allowing for the plotting of a curve of dilution concentration versus survival rate (failure rate of the nutrient mutualism system), thereby analyzing whether leakage in the eye or other environments could cause the nutrient mutualism system to fail.</p>
                     </div>
                 </section>
 
