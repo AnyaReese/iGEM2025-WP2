@@ -78,7 +78,7 @@
         
         <!-- Page Title Background -->
         <div class="page-title-bg">
-            <div class="bg-image" style="background-image: url('../../static/img/cons/cons.png')"></div>
+            <div class="bg-image" style="background-image: url('../../static/img/construction/cover.png')"></div>
             <div class="overlay"></div>
             <div class="title-content">
                 <h1>Construction</h1>
@@ -95,20 +95,25 @@
                     </div>
                     
                     <div class="t1">
-                        <a href="#section1">Section 1</a>
+                        <span>Drug Design</span>
+                        <div class="t2">
+                            <a href="#rf114">RF114</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#ha">HA</a>
+                        </div>
                     </div>
+                    
                     <div class="t1">
-                        <a href="#section2">Section 2</a>
+                        <span>Biosafety</span>
+                        <div class="t2">
+                            <a href="#auxo">Auxotrophic Mutual Assistance System</a>
+                        </div>
+                        <div class="t2">
+                            <a href="#killing">Phosphate Killing Switch</a>
+                        </div>
                     </div>
-                    <div class="t1">
-                        <a href="#section3">Section 3</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section4">Section 4</a>
-                    </div>
-                    <div class="t1">
-                        <a href="#section5">Section 5</a>
-                    </div>
+
                 </div>
             </div>
 
@@ -119,30 +124,175 @@
 
             <!-- Content area -->
             <div class="content">
+                <section id="drug" class="parent-section">
+                    <div class="section-header">
+                        <h1>Drug Design</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <p>We used the pET-32a(+) plasmid to construct HA protein and RNF114 protein separately. The specific construction process is as follows:</p>
+                        <ol>
+                            <li>
+                                <p>Construction of RNF114 protein: To express the RNF114 protein, we constructed the following multi-promoter gene expression system:</p>
+                                <p>pelB - GS-linker*1 - TAT - GS-linker*1 - Target Peptide - GS-linker*5  - GALA3 - Rigid linker（EAAAK）*3 - GS-linker*2 - GFP - BBa_J61107 (RBS2) - Crimson - T7 terminator.</p>
+                            </li>
+                            <li>Among them, the pelB sequence is mainly used for the secretion of the RNF114 protein, the TAT sequence is used to enhance the protein's transmembrane (corneal) capability, and GALA helps to enhance its stability within the cells. Crimson, as a marker gene, is used to track the expression of the protein in experiments.</li>
+                            <li>
+                                <p>Construction of HA: In order to express HA, we constructed the following gene expression system:</p>
+                                <p>T7 promoter - lac operator - Shine-Dalgarno (RBS1) - hasA - BBa_J61107 (RBS2) - hasB - T7 terminator。</p>
+                            </li>
+                            <li>4. This construct utilizes the strong T7 promoter to ensure efficient expression of the protein in Escherichia coli.</li>
+                        </ol>
+                        
+                        <p>We used the pET-32a(+) plasmid to construct HA protein and RNF114 protein separately. This system employs the T7 promoter for strong promoter-driven expression. Shine-Dalgarno (RBS1) and BBa_J61107 (RBS2) serve as ribosome binding sites to assist RNA polymerase in recognizing and efficiently initiating transcription.</p>
 
-                <section id="section1">
-                    <h1>Section 1</h1>
-                    <p>Content for section 1</p>
+                        <section id="rf114" class="sub-section">
+                            <div class="section-header">
+                                <h2>RF114</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>
+                                        <p>Construction of RNF114 protein: In order to express RNF114 protein, we constructed the following gene expression system:</p>
+                                        <p>Gene expression system during production：T7 promoter - lac operator - Shine-Dalgarno (RBS1) - pelB - GS-linker*1 - TAT - GS-linker*1 - Target Peptide - GS-linker*5  - GALA3 - rigid linker（EAAAK）*3 - RNF114  - BBa_J61107 (RBS2) - Crimson - T7 terminator。</p>
+                                        <figure>
+                                            <img src="../../static/img/construction/image (4).png">
+                                        </figure>
+
+                                        <a href="../../static/img/construction/【restriction enzyme】recombinant RNF114-crimson.dna" target="_blank" download="pdCas9-trpCgRNA.dna">
+                                            <button class="download-btn">Download pdCas9-trpCgRNA.dna</button>
+                                        </a>
+
+                                        <p>Gene expression system for validation and testing experiments：T7 promoter - lac operator - Shine-Dalgarno (RBS1) - pelB - GS-linker*1 - TAT - GS-linker*1 - Target Peptide - GS-linker*5  - GALA3 - rigid linker（EAAAK）*3 - RNF114 - rigid linker（EAAAK）*3 - GS-linker*2 - GFP -BBa_J61107 (RBS2) - Crimson - T7 terminator.</p>
+                                        <figure>
+                                            <img src="../../static/img/construction/image (5).png">
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <p>The connection between pelB, TAT and target peptide</p>
+                                        <p>We first analyzed the structure of the RNF114 protein.</p>
+                                        <p><strong>N-terminus:</strong> There is a relatively conserved amino acid sequence in the N-terminal region, and its function may involve protein stability, subcellular localization, or interaction with other proteins.</p>
+                                        <p><strong>C-terminus:</strong> The C-terminus of RNF114 contains a RING finger domain, which is directly involved in its E3 ubiquitin ligase activity. The C-terminal RING structure is the key region for binding to the E2 ubiquitin enzyme. Through this domain, RNF114 can transfer ubiquitin molecules from the E2 ubiquitin enzyme to the target protein, thereby achieving ubiquitination tagging and regulating the degradation or functional regulation of the substrate.</p>
+                                        <ul>
+                                            <li><p>N-terminal structure: In short, the N-terminal principle is the RING finger domain. Connecting short peptides to the N-terminal can avoid affecting the spatial structure of the RING finger domain, which is the active region of RNF114. Therefore, we choose to connect as many short peptides as possible to the N-terminal. Between the short peptides (TAT, pelB, GALA), we use flexible linkers (GGGGS) with different copy numbers to connect. The specific structure is：pelB - GS-linker*1 - TAT - GS-linker*1 - dock - GS-linker*5  - GALA。Between GALA and RNF114, we use a three-segment rigid linker (EAAAK) to connect them. The structure is as follows:：GALA - rigid linker（EAAAK）3 - RNF114。In summary, the structure of the N-terminus is as follows：pelB - GS-linker*1 - TAT - GS-linker*1 - dock - GS-linker*5  - GALA - rigid linker（EAAAK）*3 - RNF114.</p></li>
+                                            <li><p>C-terminal structure: In order to quickly monitor the expression of RNF114 during the experimental stage, we connected GFP (green fluorescent protein) to the C-terminus of RNF114 protein through multiple copies of rigid linker + flexible linker. The structure is as follows: RNF114 - rigid linker（EAAAK）*3 - GS-linker*2 - GFP.</p></li>
+                                            <li><p>Verification of RNF114 protein structure:</p></li>
+                                        </ul>
+                                        <p>In order to verify the structure of the recombinant RNF114 protein, I used AlphaFold3 to predict the three-dimensional structure of the recombinant protein. Then, I used the align function in PyMOL to compare the structures of the original RNF114 protein and the recombinant RNF114 protein. The comparison results are as follows:</p>
+                                        <figure>
+                                            <img src="../../static/img/construction/sql.png" style="width: 60%;">
+                                        </figure>
+                                        <p>During the comparison process, the scoring matrix was used to score the pairing of 228 residues with 648 residues, and the alignment score was calculated to be 1250.000. After comparison, 1783 atoms were successfully aligned. Through multiple alignment cycles, the RMSD values of each round were calculated step by step. In the first cycle, 70 atoms were not aligned, and the RMSD value was 10.77; 115 atoms were rejected in the second round, and the RMSD value dropped to 5.33; 88 atoms were not aligned in the third round, and the RMSD was 3.33; 71 atoms were rejected in the fourth round, and the RMSD was 1.97; in the fifth round, 49 atoms were excluded, and the RMSD was 1.52. The final RMSD value was 1.407, indicating that the structure of the recombinant RNF114 is very similar to that of the original RNF114.</p>
+                                        <p>This analysis shows that the recombinant protein and the original RNF114 protein have a high degree of similarity in three-dimensional structure, and the differences are mainly concentrated in some local connections between functional short peptides (TAT, pelB, GALA) and GFP, and these differences will not significantly affect the folding of the overall structure of RNF114.</p>
+                                        <a href="../../static/img/construction/fold_2025_02_02_23_13_model_1.cif" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                            <button class="download-btn">Download fold_2025_02_02_23_13_model_1.cif</button>
+                                        </a>
+                                        <a href="../../static/img/construction/rnf114.pdb" target="_blank" download="pdCas9-trpCgRNA.dna">
+                                            <button class="download-btn">Download rnf114.pdb</button>
+                                        </a>
+                                        <p>The following picture shows the structure of the original RNF114 and the recombinant RNF114:</p>
+                                        <figure>
+                                            <img src="../../static/img/construction/截屏2025-02-04 下午4.17.43.png" style="width: 50%">
+                                        </figure>
+                                    </li>
+                                    <li>
+                                        <p>Selection and construction of recombinant plasmid</p>
+                                        <p>We selected the pET-32a(+) plasmid, connected the recognition sequences of BamHI and HindIII restriction endonucleases at both ends of the recombinant RNF114 by PCR, and introduced them into the MCS region of pET-32a(+) by double enzyme digestion to construct the pЕТ-32a(+)-RNF114-GFP-crimson recombinant plasmid.</p>
+                                        <a href="../../static/img/construction/pET-32a(+)-RNF114-crimson.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                            <button class="download-btn">Download pET-32a(+)-RNF114-crimson.dna</button>
+                                        </a>
+                                        <a href="../../static/img/construction/【re】pET-32a(+)-RNF114-GFP-crimson.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                            <button class="download-btn">Download pET-32a(+)-RNF114-GFP-crimson.dna</button>
+                                        </a>
+                                        <div class="img-grid-with-caption">
+                                            <div class="img-grid">
+                                                <img src="../../static/img/construction/image (6).png">
+                                                <img src="../../static/img/construction/无标题.png">
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+
+                        <section id="ha" class="sub-section">
+                            <div class="section-header">
+                                <h2>HA</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <ol>
+                                    <li>
+                                        <p>Construction of HA: In order to express HA, we constructed the following gene expression system</p>
+                                        <p><strong>T7 promoter - lac operator - Shine-Dalgarno (RBS1) - hasA - BBa_J61107 (RBS2) - hasB - T7 terminator</strong></p>
+                                        <figure>
+                                            <img src="../../static/img/construction/image (7).png">
+                                        </figure>
+                                        <a href="../../static/img/construction/hasAB Polycistronic Sticky Ends.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                            <button class="download-btn">Download hasAB Polycistronic Sticky Ends.dna</button>
+                                        </a>
+                                        <p>hasA and hasB are two enzymes encoded by Streptococcus equisimilis, namely UDP-glucose dehydrogenase and hyaluronan synthase, which work together to synthesize hyaluronic acid (HA).</p>
+                                        <ul>
+                                            <li><p><strong>hasA: </strong>Encodes UDP-glucose dehydrogenase, which catalyzes the conversion of UDP-glucose into UDP-gluconic acid, providing a precursor molecule for the synthesis of HA.</p></li>
+                                            <li><p><strong>hasB: </strong>Hyaluronan synthase is responsible for catalyzing the polymerization of UDP-glucose to form hyaluronan.</p></li>
+                                        </ul>
+                                        <p>  In this study, these two genes were co-expressed to continuously produce HA, achieving efficient production and long-term release of HA, thereby providing a long-lasting lubricating effect.</p>
+                                    </li>
+                                    <li>
+                                        <p>Construction of expression vector for HA expression</p>
+                                        <p>We selected the pET-32a(+) plasmid, connected the recognition sequences of EcoRI and BamHI restriction endonucleases at both ends of the HA protein through PCR, and introduced them into the MCS region of pET-32a(+) through double enzyme digestion to construct the pET-32a(+)-hasAB recombinant plasmid.​</p>
+                                        <figure>
+                                            <img src="../../static/img/construction/image (8).png">
+                                        </figure>
+                                        <a href="../../static/img/construction/pET-32a(+)-hasAB.dna" target="_blank" download="fold_2025_02_02_23_13_model_1.cif">
+                                            <button class="download-btn">Download pET-32a(+)-hasAB.dna</button>
+                                        </a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </section>
+                    </div>
                 </section>
 
-                <section id="section2">
-                    <h1>Section 2</h1>
-                    <p>Content for section 2</p>
-                </section>
+                <section id="biosafety" class="parent-section">
+                    <div class="section-header">
+                        <h1>Biosafety</h1>
+                        <button class="section-collapse-btn">
+                            <ion-icon name="chevron-up-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <section id="auxo" class="sub-section">
+                            <div class="section-header">
+                                <h2>Auxotrophic Mutual Assistance System</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Content for Auxotrophic Mutual Assistance System</p>
+                            </div>
+                        </section>
 
-                <section id="section3">
-                    <h1>Section 3</h1>
-                    <p>Content for section 3</p>
-                </section>
-
-                <section id="section4">
-                    <h1>Section 4</h1>
-                    <p>Content for section 4</p>
-                </section>
-
-                <section id="section5">
-                    <h1>Section 5</h1>
-                    <p>Content for section 5</p>
+                        <section id="killing" class="sub-section">
+                            <div class="section-header">
+                                <h2>Phosphate Killing Switch</h2>
+                                <button class="section-collapse-btn">
+                                    <ion-icon name="chevron-up-outline"></ion-icon>
+                                </button>
+                            </div>
+                            <div class="section-content">
+                                <p>Content for Phosphate Killing Switch</p>
+                            </div>
+                        </section>
+                    </div>
                 </section>
             </div>
         </div>
