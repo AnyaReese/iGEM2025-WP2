@@ -336,8 +336,11 @@ double Kp_Pressure = 2.0;
 double Ki_Pressure = 1.0;  
 double Kd_Pressure = 0.5;  
 
-// Target pressure 10-21mmHg
+double Kp_Temperature = 20.0;  
+
+// Target pressure 10-21mmHg,target temperature 35°C
 double targetPressure = 1500.0;  // Target pressure set to 1500 Pa
+double targetTemperature = 35;  // Target temperature set to 35°C
 
 // Current values
 double currentPressure = 0.0;    // Current pressure (Pa)
@@ -370,6 +373,8 @@ double tearSpeedIncrement = 0;  // Tear pump speed increment
 
 unsigned long pulseEndTime = 0;  // Time when the high-speed duration ends
 
+const int pwmPin = 2;
+
 void setup() {
     // Initialize stepper motors
     pumpIn.setMaxSpeed(1000);  
@@ -392,6 +397,9 @@ void setup() {
     lcd.backlight(); 
     lcd.setCursor(0, 0);
     delay(2000); 
+
+    // heating module
+    pinMode(A2, OUTPUT);
 }
 
 void loop() {
@@ -469,6 +477,12 @@ void syncTearPumpsAndIncreaseSpeed() {
         // Restore speed to original value
         pumpIn_tear.setSpeed(tearSpeedIncrement - pulseIncrement);
         pumpOut_tear.setSpeed(tearSpeedIncrement - pulseIncrement);
+    }
+    //heating
+    if(temperature < targetTemperature){
+        analogWrite(pwmPin, Kp_Temperature*(targetTemperature-temperature));
+    }else{
+        analogWrite(pwmPin, 0));
     }
 }
 
