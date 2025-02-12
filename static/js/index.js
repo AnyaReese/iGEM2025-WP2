@@ -67,17 +67,28 @@ const initVideoSection = () => {
     });
 };
 
+// ... existing code ...
+
 const initTitleTransition = () => {
     const dualImageContainer = document.querySelector('.dual-image-container');
     const titleContainer = document.querySelector('.proj-title-container');
     
     if (!dualImageContainer || !titleContainer) return;
     
-    // whole
-    dualImageContainer.addEventListener('click', () => {
-        titleContainer.classList.add('show');
-    });
+    // 页面加载完成后立即触发动画
+    titleContainer.classList.add('show');
+    
 };
+
+// Initialize dual image effect
+window.addEventListener('load', () => {
+    initDualImageEffect();
+    initGifControl();
+    initVideoSection();
+    initTitleTransition(); // 确保这个函数被调用
+    initVisionCompare();
+    initIdeaSection();
+});
 
 const initVisionCompare = () => {
     const visionCompares = document.querySelectorAll('.vision-compare');
