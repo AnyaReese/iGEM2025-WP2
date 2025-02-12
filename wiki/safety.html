@@ -293,42 +293,43 @@
                                                 <a href="../static/img/safety/aroG.dna" target="_blank" download="aroG.dna">
                                                     <button class="download-btn">Download aroG.dna</button>
                                                 </a>
+                                            
+                                        
+                                                <h5>2.2 Knockout of His Synthesis Related Genes in Engineering Strain B</h5>
+                                                <h6>2.2.1 In the His synthesis pathway, there are five types of enzymes:</h6>
+                                                <ul>
+                                                    <li><strong>hisG:</strong> Catalyze Imidazoleglycerol-phosphate dehydratase to produce Imidazoleglycerol.</li>
+                                                    <li><strong>hisD:</strong> Synthesize Imidazoleacetol.</li>
+                                                    <li><strong>hisB:</strong> Synthesize Histidinol.</li>
+                                                    <li><strong>hisA:</strong> Synthesize Histidinaldehyde.</li>
+                                                    <li><strong>hisC:</strong> Synthesize Histidine (final product).</li>
+                                                </ul>
+                                                <p>We chose to knock out the hisA gene, which encodes Phosphoribosyl-ATP synthase. In the histidine synthesis pathway, hisA is a key enzyme responsible for generating Phosphoribosyl-ATP. By knocking out the hisA gene, we can block a critical step in histidine synthesis, thereby preventing the synthesis of histidine.</p>
+
+                                                <h6>2.2.2 Design of gRNA</h6>
+                                                <p>We used benchling.com to design gRNA targeting hisA. After screening multiple possible sequences, we selected:</p>
+                                                <pre>TCGTCGCAGACAAGGCGATT</pre>
+                                                <p>As our gRNA, its On-Target Score is 72.0, and Off-Target Score is 99.8, indicating good targeting efficiency and low off-target risk.</p>
+                                                <p>Next, we designed two primers to amplify the gRNA targeting hisA, adding Bsal restriction sites at both ends.</p>
+
+                                                <figure>
+                                                    <img src="../static/img/safety/hisA_primer.png" alt="hisA primer">
+                                                    <figcaption>hisA primer</figcaption>
+                                                </figure>
+
+                                                <h6>2.2.3 Construction of pdCas9-hisAgRNA plasmid</h6>
+                                                <p>We selected pdCas9 as the vector, which has the dCas9 (dead Cas9) gene. After digestion with Bsal enzyme and ligation using T4 ligase, we obtained the pdCas9-hisAgRNA plasmid.</p>
+
+                                                <figure>
+                                                    <img src="../static/img/safety/pdCas9-hisAgRNA.png" alt="pdCas9-hisAgRNA" style="width: 60%;">
+                                                    <figcaption>pdCas9-hisAgRNA</figcaption>
+                                                </figure>
+                                                
+                                                <a href="../static/img/safety/pdCas9-hisAgRNA.dna" target="_blank" download="pdCas9-hisAgRNA.dna">
+                                                    <button class="download-btn">Download pdCas9-hisAgRNA.dna</button>
+                                                </a>
                                             </div>
                                         </section>
-
-                                        <h5>1.2 Knockout of His Synthesis Related Genes in Engineering Strain B</h5>
-                                        <h6>1.2.1 In the His synthesis pathway, there are five types of enzymes:</h6>
-                                        <ul>
-                                            <li><strong>hisG:</strong> Catalyze Imidazoleglycerol-phosphate dehydratase to produce Imidazoleglycerol.</li>
-                                            <li><strong>hisD:</strong> Synthesize Imidazoleacetol.</li>
-                                            <li><strong>hisB:</strong> Synthesize Histidinol.</li>
-                                            <li><strong>hisA:</strong> Synthesize Histidinaldehyde.</li>
-                                            <li><strong>hisC:</strong> Synthesize Histidine (final product).</li>
-                                        </ul>
-                                        <p>We chose to knock out the hisA gene, which encodes Phosphoribosyl-ATP synthase. In the histidine synthesis pathway, hisA is a key enzyme responsible for generating Phosphoribosyl-ATP. By knocking out the hisA gene, we can block a critical step in histidine synthesis, thereby preventing the synthesis of histidine.</p>
-
-                                        <h6>1.2.2 Design of gRNA</h6>
-                                        <p>We used benchling.com to design gRNA targeting hisA. After screening multiple possible sequences, we selected:</p>
-                                        <pre>TCGTCGCAGACAAGGCGATT</pre>
-                                        <p>As our gRNA, its On-Target Score is 72.0, and Off-Target Score is 99.8, indicating good targeting efficiency and low off-target risk.</p>
-                                        <p>Next, we designed two primers to amplify the gRNA targeting hisA, adding Bsal restriction sites at both ends.</p>
-
-                                        <figure>
-                                            <img src="../static/img/safety/hisA_primer.png" alt="hisA primer">
-                                            <figcaption>hisA primer</figcaption>
-                                        </figure>
-
-                                        <h6>1.2.3 Construction of pdCas9-hisAgRNA plasmid</h6>
-                                        <p>We selected pdCas9 as the vector, which has the dCas9 (dead Cas9) gene. After digestion with Bsal enzyme and ligation using T4 ligase, we obtained the pdCas9-hisAgRNA plasmid.</p>
-
-                                        <figure>
-                                            <img src="../static/img/safety/pdCas9-hisAgRNA.png" alt="pdCas9-hisAgRNA" style="width: 60%;">
-                                            <figcaption>pdCas9-hisAgRNA</figcaption>
-                                        </figure>
-                                        
-                                        <a href="../static/img/safety/pdCas9-hisAgRNA.dna" target="_blank" download="pdCas9-hisAgRNA.dna">
-                                            <button class="download-btn">Download pdCas9-hisAgRNA.dna</button>
-                                        </a>
                                     </div>
                                 </section>
 
