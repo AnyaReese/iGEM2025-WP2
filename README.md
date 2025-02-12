@@ -1,6 +1,4 @@
-# WP 2024
-
-> 怎么总是设备换着换着就显示又出问题了？:(
+# WP 2025
 
 ## TODO
 
@@ -32,7 +30,7 @@
 ## 美工 & 风格
 
 - [x] 首页图效果选择
-- [ ] homepage 大纲、相关内容确定。等 promotion video 大纲出了看看有什么能捞的。
+- [x] homepage 大纲、相关内容确定。等 promotion video 大纲出了看看有什么能捞的。
 - [x] header svg etc
 - [x] list icon 样式
 
