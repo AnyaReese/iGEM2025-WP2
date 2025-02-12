@@ -264,11 +264,11 @@
     position: absolute;
     width: 100%;
     text-align: center;
-    font-size: 3vw;
+    font-size: 50px;
     font-weight: 800;
-    font-family: "Cascadia Code";
-    color: #54507b;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: "Cascadia Code", monospace;
+    color: #ffffff;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
     top: -5vw;
     left: 50%;
     transform: translateX(-50%);
@@ -276,6 +276,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
     z-index: 2;
+    
+     /* 空心字体效果 */
+     text-shadow: 
+     -1px -1px 0 #000000,
+     1px -1px 0 #000000,
+     -1px 1px 0 #000000,
+     1px 1px 0 #000000,
+     2px 2px 0 #000000,
+     -2px -2px 0 #000000,
+     2px -2px 0 #000000,
+     -2px 2px 0 #000000;
+    -webkit-text-stroke: 1rgb(26, 37, 54);  /*  Safari  */
+
 }
 
 .video-container video {
