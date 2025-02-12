@@ -540,3 +540,110 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+class ImageViewer {
+    constructor() {
+        // 创建查看器 DOM 结构
+        this.createViewer();
+        // 初始化事件监听
+        this.initEventListeners();
+        // 存储当前图片集
+        this.images = [];
+        this.currentIndex = 0;
+    }
+
+    createViewer() {
+        // 创建查看器的 HTML 结构
+        const overlay = document.createElement('div');
+        overlay.className = 'image-viewer-overlay';
+        overlay.innerHTML = `
+            <div class="viewer-image-container">
+                <img class="viewer-image" src="" alt="Viewer Image">
+                <button class="viewer-close">×</button>
+                <button class="viewer-nav viewer-prev">‹</button>
+                <button class="viewer-nav viewer-next">›</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        // 存储常用元素引用
+        this.overlay = overlay;
+        this.container = overlay.querySelector('.viewer-image-container');
+        this.image = overlay.querySelector('.viewer-image');
+        this.closeBtn = overlay.querySelector('.viewer-close');
+        this.prevBtn = overlay.querySelector('.viewer-prev');
+        this.nextBtn = overlay.querySelector('.viewer-next');
+    }
+
+    initEventListeners() {
+        // 为所有可查看的图片添加点击事件
+        document.addEventListener('click', (e) => {
+            const target = e.target;
+            if (target.matches('.page-img, figure img, .img-grid img')) {
+                this.open(target);
+            }
+        });
+
+        // 关闭按钮事件
+        this.closeBtn.addEventListener('click', () => this.close());
+
+        // 导航按钮事件
+        this.prevBtn.addEventListener('click', () => this.prev());
+        this.nextBtn.addEventListener('click', () => this.next());
+
+        // ESC 键关闭
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') this.close();
+            if (e.key === 'ArrowLeft') this.prev();
+            if (e.key === 'ArrowRight') this.next();
+        });
+
+        // 点击背景关闭
+        this.overlay.addEventListener('click', (e) => {
+            if (e.target === this.overlay) this.close();
+        });
+    }
+
+    open(imgElement) {
+        // 收集同组图片
+        const parent = imgElement.closest('.img-grid') || document.body;
+        this.images = Array.from(parent.querySelectorAll('.page-img, figure img, .img-grid img'));
+        this.currentIndex = this.images.indexOf(imgElement);
+
+        // 显示查看器
+        this.overlay.classList.add('active');
+        this.updateImage();
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
+    }
+
+    close() {
+        this.overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    prev() {
+        if (this.images.length <= 1) return;
+        this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+        this.updateImage();
+    }
+
+    next() {
+        if (this.images.length <= 1) return;
+        this.currentIndex = (this.currentIndex + 1) % this.images.length;
+        this.updateImage();
+    }
+
+    updateImage() {
+        const img = this.images[this.currentIndex];
+        this.image.src = img.src;
+        
+        // 更新导航按钮显示状态
+        this.prevBtn.style.display = this.images.length > 1 ? '' : 'none';
+        this.nextBtn.style.display = this.images.length > 1 ? '' : 'none';
+    }
+}
+
+// 初始化查看器
+document.addEventListener('DOMContentLoaded', () => {
+    new ImageViewer();
+});
