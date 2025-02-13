@@ -164,11 +164,6 @@
                                 <p>We have selected the SHuffle T7-B strain as the chassis organism. The commercial SHuffle T7-B strain is derived from Escherichia coli BL21. According to the guidelines of the National Institutes of Health (NIH), the risk level of E. coli B strain is classified as Risk Group 1 (RG-1). This indicates that the B strain typically does not cause disease in healthy adults and is considered a microorganism with low individual and environmental risk.</p>
                                 <p>The SHuffle strain originates from the non-pathogenic E. coli BL21 and lacks common virulence factors. Additionally, the primary pathogenic substance of E. coli, lipopolysaccharide (LPS, also known as endotoxin), cannot penetrate the intact cornea. LPS can only diffuse into the stromal layer when the cornea is damaged, and this process is mainly mediated by polymorphonuclear neutrophils (PMNs) that migrate to the damaged tissue. Therefore, no additional modification of LPS is required in this project.<sup><a href="#ref2">[2]</a></sup><sup><a href="#ref3">[3]</a></sup> Moreover, the eye is an immune-privileged site, which further reduces the risk of severe infection.</p>
                                 <p>Regarding the risk of horizontal gene transfer (HGT), although engineered bacteria carrying plasmids could theoretically transfer resistance genes through conjugation, this requires specific conditions and is extremely unlikely in our application scenario.</p>
-
-                                <figure>
-                                    <img src="../static/img/safety/cell.png" alt="cell" style="width: 50%;">
-                                    <figcaption>Cell Activity Detection Contact Lens Case</figcaption>
-                                </figure>
                             </div>
                         </section>
                         <!-- SHuffle E. coli  Biosafety END -->
@@ -194,6 +189,11 @@
 
                                 <p>In the polycistronic structure, the ribosome binding site (RBS) affects the reading of the open reading frame (ORF) through its complementarity to the ribosome and its distance from the start codon. We have designed RBS of varying strengths for the two coding genes to achieve relatively higher expression levels of RNF114, thereby directing translational resources primarily towards the expression of the target therapeutic molecule.</p>
                                 <p>We have integrated the fluorescence signal detection device into a black contact lens care box. Upon pressing the button, the light source excites the fluorescent protein Crimson, and the fluorescence intensity emitted by the protein is detected by the BH1750 sensor. The safety grade warning is determined based on the preset threshold and displayed on the LCD screen. (See detail in <a href="./drylab/hardware.html">Hardware Part</a>)</p>
+
+                                <figure>
+                                    <img src="../static/img/safety/cell.png" alt="cell" style="width: 50%;">
+                                    <figcaption>Cell Activity Detection Contact Lens Case</figcaption>
+                                </figure>
                             </div>
                         </section>
                         <!-- Safety Alert Module END -->
@@ -264,7 +264,7 @@
                                                     <figcaption>pdCas9-trpCgRNA</figcaption>
                                                 </figure>
 
-                                                <a href="../static/img/safety/pdCas9-trpCgRNA.dna" target="_blank" download="pdCas9-trpCgRNA.dna">
+                                                <a href="../static/img/safety/pdCas9-TrpcgRNA.dna" target="_blank" download="pdCas9-trpCgRNA.dna">
                                                     <button class="download-btn">Download pdCas9-trpCgRNA.dna</button>
                                                 </a>
                                             </div>
@@ -325,7 +325,7 @@
                                                     <figcaption>pdCas9-hisAgRNA</figcaption>
                                                 </figure>
                                                 
-                                                <a href="../static/img/safety/pdCas9-hisAgRNA.dna" target="_blank" download="pdCas9-hisAgRNA.dna">
+                                                <a href="../static/img/safety/pdCas9-HiscgRNA.dna" target="_blank" download="pdCas9-hisAgRNA.dna">
                                                     <button class="download-btn">Download pdCas9-hisAgRNA.dna</button>
                                                 </a>
                                             </div>
@@ -354,7 +354,7 @@
                                             <div class="section-content">
                                                 <p>The eyes are very sensitive organs, and inappropriate molecules can cause irritation to the eye tissue, leading to burning sensations, tingling, itching, the feeling of foreign bodies, or tearing. It can even cause severe consequences such as corneal damage. Therefore, traditional operons such as arabinose and glucose are not suitable for this system's Killing Switch design.</p>
                                                 <p>Phosphate is commonly used in emergency eyewash solutions to help neutralize chemical damage to the eyes and regulate the osmotic pressure of the rinse solution. Thus, it is an ideal suicide switch.</p>
-                                                <p>We have drawn inspiration from the <a href="https://2021.igem.org/Team:SZU-China">2021-SZU-China</a> team, who designed a phosphate suicide switch. Unlike their project, we use the phosphate-sensitive promoter pPHO5. The expression of the suicide gene is inhibited at normal phosphate concentrations and promoted at low phosphate concentrations. When the PHO5 promoter is activated, transcription occurs, and the suicide gene is expressed. If the engineered bacteria accidentally leak or leave the hydrogel environment, they will be killed.</p>
+                                                <p>We have drawn inspiration from the <a href="https://2021.igem.org/Team:SZU-China">2021-SZU-China</a> team, who designed a phosphate suicide switch. We use the phosphate-sensitive promoter pPhoB, but unlike that project, the expression of the suicide gene is inhibited at normal phosphate concentrations and promoted at low phosphate concentrations. When the PhoB promoter is activated, transcription occurs, and the suicide gene is expressed. If the engineered bacteria accidentally leak or leave the hydrogel environment, they will be killed.</p>
                                                 <figure>
                                                     <img src="../static/img/safety/PHO5.png" alt="pPHO5">
                                                     <figcaption>Schematic diagram of the PHO5 promoter region in repressed (+P(i)) and induced (-P(i)) states.</figcaption>
