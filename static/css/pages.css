@@ -282,6 +282,17 @@
     padding-left: 30px;
 }
 
+/* TODO: scroll margin for h1 */
+[id] {
+    scroll-margin-top: calc(var(--topbar-height, 60px) + 20px);
+}
+
+/* global scroll behavior */
+html {
+    scroll-behavior: smooth;
+    /* scroll-padding-top: calc(var(--topbar-height, 60px) + 20px); */
+}
+
 .content h1::before {
     content: '';
     position: absolute;
