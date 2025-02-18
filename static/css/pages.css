@@ -646,8 +646,9 @@ figure {
 }
 
 figure img {
-    width: 100%;
-    max-width: 800px;
+    /* 98% = 100% / 1.02 */
+    width: 98%; 
+    max-width: calc(800px / 1.02);
     height: auto;
     display: block;
     border-radius: 8px;
