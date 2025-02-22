@@ -20,17 +20,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const footer = document.querySelector('#footer');
             const viewportBottom = scrollTop + window.innerHeight;
             const footerTop = footer ? footer.getBoundingClientRect().top + window.scrollY : Infinity;
-
-            // add anti-shake
-            const threshold = 5; // add a buffer zone
+            
+            // 添加内容区域高度计算
+            const content = document.querySelector('.content');
+            const contentHeight = content ? content.scrollHeight : 0;
+            
+            // 添加防抖
+            const threshold = 5;
             
             if (scrollTop >= (pageTitleBottom - topBarHeight - threshold)) {
                 if (!sidebarBg.classList.contains('fixed')) {
                     sidebarBg.classList.add('fixed');
                 }
-                // 只有当viewport底部接触到footer时才设置footer高度
-                if (footer && viewportBottom >= footerTop) {
-                    document.documentElement.style.setProperty('--footer-height', `${footer.offsetHeight}px`);
+                
+                // 只在真正接触到 footer 且内容高度足够时设置 footer 高度
+                if (footer && viewportBottom >= footerTop && contentHeight > window.innerHeight) {
+                    const remainingScroll = contentHeight - scrollTop - window.innerHeight;
+                    if (remainingScroll <= footer.offsetHeight) {
+                        document.documentElement.style.setProperty('--footer-height', `${footer.offsetHeight}px`);
+                    }
                 } else {
                     document.documentElement.style.setProperty('--footer-height', '0px');
                 }
