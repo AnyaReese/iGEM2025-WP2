@@ -197,21 +197,43 @@
         <script src="../../static/js/pages.js"></script>
         <script src="../../static/js/pdbviewer.js"></script>
         <script src="../../static/js/components.js"></script>
-        <script>
-            // Set content height
+        <!-- <script>
+            // Modify content height
             function setContentHeight() {
+                const content = document.querySelector('.content');
                 const contentSections = document.querySelectorAll('.content section');
                 let totalHeight = 0;
+                
+                // Calculate the actual height of all sections
                 contentSections.forEach(section => {
-                    totalHeight += section.offsetHeight;
+                    const styles = window.getComputedStyle(section);
+                    const marginTop = parseFloat(styles.marginTop);
+                    const marginBottom = parseFloat(styles.marginBottom);
+                    totalHeight += section.offsetHeight + marginTop + marginBottom;
                 });
-                document.documentElement.style.setProperty('--content-height', `${Math.max(totalHeight, 100)}vh`);
+                
+                // Add extra padding space
+                totalHeight += parseFloat(window.getComputedStyle(content).paddingTop);
+                totalHeight += parseFloat(window.getComputedStyle(content).paddingBottom);
+                
+                // Set minimum height
+                document.documentElement.style.setProperty('--content-height', `${Math.max(totalHeight, window.innerHeight)}px`);
             }
 
-            // Initial set
+            // Add more triggers
             window.addEventListener('load', setContentHeight);
-            // Update on window resize
             window.addEventListener('resize', setContentHeight);
-        </script>
+            document.addEventListener('scroll', () => {
+                requestAnimationFrame(setContentHeight);
+            });
+
+            // Monitor content changes
+            const contentObserver = new MutationObserver(setContentHeight);
+            contentObserver.observe(document.querySelector('.content'), {
+                childList: true,
+                subtree: true,
+                attributes: true
+            });
+        </script> -->
     </body>
 </html>
