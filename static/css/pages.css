@@ -23,6 +23,7 @@
 }
 
 :root {
+    --topbar-height: 60px;
     --banner-height: 300px;
     --title-height: 500px;
     /* --title-height-mobile: 300px; */
@@ -221,6 +222,7 @@
 
 /* add background decoration layer */
 .content::before {
+    will-change: transform;
     content: '';
     position: absolute;
     top: 0;
@@ -280,17 +282,13 @@
     margin-bottom: 0.5em;
     position: relative;
     padding-left: 30px;
-}
-
-/* TODO: scroll margin for h1 */
-[id] {
-    scroll-margin-top: calc(var(--topbar-height, 60px) + 20px);
+    scroll-margin-top: calc(var(--topbar-height, 60px) + 20px) !important;
 }
 
 /* global scroll behavior */
 html {
     scroll-behavior: smooth;
-    /* scroll-padding-top: calc(var(--topbar-height, 60px) + 20px); */
+    scroll-padding-top: calc(var(--topbar-height, 60px) + 20px);
 }
 
 .content h1::before {
