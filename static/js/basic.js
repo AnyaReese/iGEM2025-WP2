@@ -137,4 +137,22 @@ document.addEventListener('DOMContentLoaded', function() {
             menuWrap.classList.toggle('active');
         });
     }
+
+    // 禁用滚动
+    document.body.style.overflow = 'hidden';
+    
+    // 在window.onload中启用滚动
+    window.onload = function() {
+        // 隐藏loading容器
+        const loadingContainer = document.querySelector('.loading-container');
+        if (loadingContainer) {
+            loadingContainer.style.opacity = '0';
+            
+            // 延迟启用滚动,等待loading淡出
+            setTimeout(function() {
+                document.body.style.overflow = '';
+                loadingContainer.style.display = 'none';
+            }, 300);
+        }
+    };
 });
